@@ -25,6 +25,38 @@ PARQUET        = ROOT / "data" / "layer2" / "street_ranking_v1.parquet"
 STREET_PARQUET = ROOT / "data" / "layer2" / "street_level_ranking_v1.parquet"
 
 # ---------------------------------------------------------------------------
+# Cached data loaders  (TTL=0 → cache lives for the lifetime of the session;
+# clear with st.cache_data.clear() or app restart after data pipeline re-run)
+# ---------------------------------------------------------------------------
+@st.cache_data(show_spinner=False, ttl=None)
+def _load_segment_df() -> pd.DataFrame:
+    """Load segment-level ranking (field_07 output). Cached for session."""
+    return pd.read_parquet(PARQUET)
+
+
+@st.cache_data(show_spinner=False, ttl=None)
+def _load_street_df() -> pd.DataFrame:
+    """Load street-level ranking (field_08 output). Cached for session."""
+    return pd.read_parquet(STREET_PARQUET)
+
+
+@st.cache_data(show_spinner=False, ttl=None)
+def _load_merged_data() -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Load and merge segment + street data into final render-ready dataframes.
+    Cached so the merge (514 rows × 30 cols) only runs once per session.
+    Returns (segment_df, street_df_with_meta).
+    """
+    seg_df    = _load_segment_df()
+    street_df = _load_street_df()
+    # Pre-merge segment signals (heat_status, hp_status) into street rows
+    seg_meta  = seg_df[["street_id", "heat_status", "hp_status"]].rename(
+        columns={"street_id": "segment_id"}
+    )
+    merged = street_df.merge(seg_meta, on="segment_id", how="left")
+    return seg_df, merged
+
+# ---------------------------------------------------------------------------
 # Badge / label helpers
 # ---------------------------------------------------------------------------
 FERNWAERME_BADGE = {
@@ -462,7 +494,7 @@ def render_street_ranking_view() -> None:
         "No household-level claims implied."
     )
 
-    # --- Load segment-level data (field_07) ---
+    # --- Load data (cached) ---
     if not PARQUET.exists():
         st.warning(
             "⚠️ Segment ranking data not found. "
@@ -470,12 +502,6 @@ def render_street_ranking_view() -> None:
         )
         return
 
-    df = pd.read_parquet(PARQUET)
-    if df.empty:
-        st.info("No segment data available.")
-        return
-
-    # --- Load street-level data (field_08) ---
     if not STREET_PARQUET.exists():
         st.warning(
             "⚠️ Street-level data not found. "
@@ -483,14 +509,10 @@ def render_street_ranking_view() -> None:
         )
         return
 
-    street_df = pd.read_parquet(STREET_PARQUET)
-
-    # Pre-merge segment signals (heat_status, hp_status) into street rows
-    # Required by render_street_roi_expander()
-    seg_meta = df[["street_id", "heat_status", "hp_status"]].rename(
-        columns={"street_id": "segment_id"}
-    )
-    street_df = street_df.merge(seg_meta, on="segment_id", how="left")
+    df, street_df = _load_merged_data()
+    if df.empty:
+        st.info("No segment data available.")
+        return
 
     # --- Summary metrics ---
     total_streets = len(street_df)
