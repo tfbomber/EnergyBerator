@@ -1,0 +1,28 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "raw_review_detected": true,
+      "raw_review_label": "Valid and approved",
+      "normalized_review_label": "VALIDATED_CONTACT_DATA",
+      "reviewer_metadata": {
+        "reviewer_id": "USR77X_CLERK",
+        "timestamp": "2026-03-18T08:16:00Z"
+      },
+      "review_notes_summary": [
+        "Checked against CRM database."
+      ],
+      "intake_reference_summary": "Targeting Stage 69 intake status: CONTACT_DATA_INTAKE_STRUCTURALLY_VALID",
+      "unresolved_issues_after_review": [],
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "CRM_TASK_CREATION",
+        "CONTACT_DATA_USAGE",
+        "APPOINTMENT_BOOKING",
+        "INSTALLER_ASSIGNMENT"
+      ],
+      "governance_warning": "Data validity does NOT imply legal consent or business readiness. No execution actions authorized.",
+      "disclaimer_no_usage_authorization": "no contact data usage authorization created in this stage"
+    }
+  ]
+}

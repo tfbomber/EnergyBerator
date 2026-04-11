@@ -1,0 +1,11 @@
+{
+  "mode": "VALIDATION_ONLY",
+  "spatial_mapping_performed": false,
+  "candidate_matching_performed": false,
+  "unlock_decisions_triggered": false,
+  "recompute_logic_triggered": false,
+  "integration_evaluated": false,
+  "business_mutation_occurred": false,
+  "evidence_sufficiency_judged": false,
+  "assertion": "The pipeline explicitly restricted verifications to JSON structure. Zero integrations fired."
+}

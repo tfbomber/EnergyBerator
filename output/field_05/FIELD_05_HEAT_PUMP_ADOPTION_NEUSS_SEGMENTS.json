@@ -1,0 +1,20 @@
+[
+  {
+    "field_id": "FIELD_05",
+    "segment_id": "NEUSS_SUBURBAN_01",
+    "estimated_heat_pump_adoption": 0.112,
+    "estimated_band": "MEDIUM",
+    "confidence": "LOW_MEDIUM",
+    "drivers": [
+      "LOW_DENSITY_RESIDENTIAL_BOOST"
+    ]
+  },
+  {
+    "field_id": "FIELD_05",
+    "segment_id": "NEUSS_VILLA_01",
+    "estimated_heat_pump_adoption": 0.07,
+    "estimated_band": "LOW",
+    "confidence": "LOW_MEDIUM",
+    "drivers": []
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "assessments": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "retry_review_eligible": false,
+      "retry_execution_authorized": false,
+      "tier_movement_eligibility": false,
+      "current_gate_status": "STILL_BLOCKED_PENDING_PHYSICAL_E4"
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "retry_review_eligible": false,
+      "retry_execution_authorized": false,
+      "tier_movement_eligibility": false,
+      "current_gate_status": "STILL_BLOCKED_PENDING_PHYSICAL_E4"
+    }
+  ]
+}

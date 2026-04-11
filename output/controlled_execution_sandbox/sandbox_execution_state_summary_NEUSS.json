@@ -1,0 +1,11 @@
+{
+  "total_authorized_targets_seen": 0,
+  "sandbox_executed_count": 0,
+  "skipped_conservatively_count": 0,
+  "failed_source_binding_count": 0,
+  "failed_scope_binding_count": 0,
+  "failed_boundary_compliance_count": 0,
+  "production_writebacks": 0,
+  "blocked_state_retained": true,
+  "stage_44_review_ready_targets": 0
+}

@@ -1,0 +1,34 @@
+{
+  "document_name": "KWP_Heat_Gate_Protocol_v1.1_patch",
+  "patched_sections": [
+    {
+      "section_id": "2",
+      "section_title": "SOURCE HIERARCHY CONTRACT",
+      "revised_content": {
+        "hierarchy_realignment": "The physical reality of the utility network takes precedence over administrative planning zones. Priority: 1. SWN_DH_NETWORK_MAP_2024 (Physical Truth) -> 2. NEUSS_KWP_2025_OFFICIAL (Future Planning Truth)."
+      }
+    },
+    {
+      "section_id": "5",
+      "section_title": "DECISION TREE",
+      "revised_content": {
+        "rule_1_refinement": "Rule 1 (Physical Reality): If Segment intersects SWN_DH_NETWORK_MAP_2024 active grid with a configurable buffer 'dh_intersection_buffer_m' (initial pilot default = 20m), then Status = EXISTING_DH. Validation of this buffer is required during pilot calibration.",
+        "rule_4_refinement": "Rule 4 (Textual Evidence Safety): If no spatial intersection exists, status may be DECENTRALIZED_PREFERRED only if (a) the district name in the source explicitly matches the segment mapping AND (b) no conflicting spatial evidence exists. Otherwise, the result must be UNKNOWN."
+      }
+    },
+    {
+      "section_id": "6",
+      "section_title": "GEOGRAPHIC ATTACHMENT RULES",
+      "revised_content": {
+        "threshold_parameterization": "A segment is considered captured by a zone based on a configurable 'dominant_intersection_threshold' (initial pilot default = 40%). This threshold represents the percentage of residential footprints within the segment that must intersect the zone polygon."
+      }
+    },
+    {
+      "section_id": "10",
+      "section_title": "ERROR HANDLING & UNKNOWN POLICY",
+      "revised_content": {
+        "conflict_precedence": "Mandatory reconciliation: If SWN Physical Map and KWP Planning Source provide conflicting status signals, the SWN Physical Network state ALWAYS takes precedence in the final gate assignment."
+      }
+    }
+  ]
+}

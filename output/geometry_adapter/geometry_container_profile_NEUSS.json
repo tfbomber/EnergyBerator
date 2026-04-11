@@ -1,0 +1,15 @@
+{
+  "container_type_distribution": {
+    "Wrapped_Feature": 3
+  },
+  "geometry_type_distribution": {
+    "Polygon": 3
+  },
+  "crs_declaration_status_distribution": {
+    "EXPLICIT_CRS_FOUND": 0,
+    "CRS_NOT_DECLARED": 3
+  },
+  "parseability_distribution": {
+    "PARSEABLE_WITH_LIMITATIONS": 3
+  }
+}

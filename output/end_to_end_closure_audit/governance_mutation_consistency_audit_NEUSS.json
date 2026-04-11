@@ -1,0 +1,15 @@
+{
+  "audits": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "token_scope_respected": true,
+      "sandbox_scope_respected": true,
+      "direct_writeback_only_respected": true,
+      "derived_recompute_not_directly_merged": true,
+      "unlock_based_on_production_truth": true,
+      "business_activation_governance_chain_valid": true,
+      "consistency_verdict": "PASS",
+      "consistency_note": "Decoupling protocol between Stage 43 and Stage 44 isolated recomputes flawlessly."
+    }
+  ]
+}

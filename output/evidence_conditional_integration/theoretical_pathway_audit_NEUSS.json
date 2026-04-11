@@ -1,0 +1,22 @@
+{
+  "pathway_evaluations": [
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_16e104e6.json",
+      "explicit_segment_binding": "NEUSS_NORF_01",
+      "explicit_artifact_identifier": "PHYSICAL_E4_16e104e6",
+      "theoretically_mappable": true
+    },
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a3c32111.json",
+      "explicit_segment_binding": "NEUSS_NORF_01",
+      "explicit_artifact_identifier": "PHYSICAL_E4_a3c32111",
+      "theoretically_mappable": true
+    },
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a79e5e7d.json",
+      "explicit_segment_binding": "NEUSS_NORF_01",
+      "explicit_artifact_identifier": "PHYSICAL_E4_a79e5e7d",
+      "theoretically_mappable": true
+    }
+  ]
+}

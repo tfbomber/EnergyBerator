@@ -1,0 +1,25 @@
+{
+  "classifications": [
+    {
+      "evidence_id": "EVD_ACC8C1F4",
+      "relative_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "evidence_type": "UNKNOWN_EVIDENCE_TYPE",
+      "evidence_format": "JSON",
+      "relevance_tier": "UNKNOWN_RELEVANCE"
+    },
+    {
+      "evidence_id": "EVD_56231492",
+      "relative_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "evidence_type": "UNKNOWN_EVIDENCE_TYPE",
+      "evidence_format": "JSON",
+      "relevance_tier": "UNKNOWN_RELEVANCE"
+    },
+    {
+      "evidence_id": "EVD_8963BBA2",
+      "relative_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "evidence_type": "UNKNOWN_EVIDENCE_TYPE",
+      "evidence_format": "JSON",
+      "relevance_tier": "UNKNOWN_RELEVANCE"
+    }
+  ]
+}

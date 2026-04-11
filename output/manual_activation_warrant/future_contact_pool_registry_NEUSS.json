@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A"
+    },
+    {
+      "contact_id": "TEST_74_CASE_B"
+    },
+    {
+      "contact_id": "TEST_74_CASE_E"
+    },
+    {
+      "contact_id": "TEST_74_CASE_F"
+    },
+    {
+      "contact_id": "TEST_74_CASE_G"
+    },
+    {
+      "contact_id": "TEST_74_CASE_H"
+    },
+    {
+      "contact_id": "TEST_74_CASE_I"
+    }
+  ]
+}

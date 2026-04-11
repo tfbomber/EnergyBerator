@@ -1,0 +1,16 @@
+[
+  {
+    "verdict_id": "VER_NORF_01_FINAL",
+    "segment_id": "NEUSS_NORF_PILOT_01",
+    "status": "DECENTRALIZED_PREFERRED",
+    "joins": [
+      "JOIN_NORF_01_MULTISOURCE"
+    ],
+    "decision_rule": "DECENTRALIZED_ZONE_ASSIGNMENT",
+    "conflict_resolution_policy": "PHYSICAL_NETWORK_PRIORITY",
+    "multi_source_agreement": true,
+    "confidence_score": 0.98,
+    "manual_review_required": false,
+    "resolution_summary": "SWN confirms no network; KWP confirms decentralization zone. Unanimous verdict."
+  }
+]

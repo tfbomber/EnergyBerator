@@ -1,0 +1,51 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_CASE_A",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "ELIGIBLE_FOR_ACTIVATION"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_B",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "READY_FOR_MANUAL_REVIEW"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_C",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "STILL_LOCKED"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_D",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "ELIGIBLE_FOR_ACTIVATION"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_E",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "ELIGIBLE_FOR_ACTIVATION"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_F",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {
+        "activation_verdict": "ELIGIBLE_FOR_ACTIVATION"
+      }
+    },
+    {
+      "contact_id": "TEST_CASE_G",
+      "usage_status": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "activation_policy": {}
+    }
+  ]
+}

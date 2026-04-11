@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GeneralRankingOutputContract",
+  "description": "Output contract for the General Track Ranking module. This schema is SEPARATE from the General Foundation output schema. Do NOT merge these two schemas.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "cluster_id", "street_name", "plz", "address_range",
+      "building_count_total",
+      "sfh_total_ratio", "mfh_ratio", "other_ratio",
+      "structure_profile", "structure_gate", "gate_reason",
+      "general_rank_score", "general_rank", "general_band",
+      "ranking_reason_primary", "ranking_reason_secondary",
+      "ranking_universe"
+    ],
+    "properties": {
+      "cluster_id":              { "type": "string" },
+      "street_name":             { "type": "string" },
+      "plz":                     { "type": "string" },
+      "address_range":           { "type": "string" },
+      "building_count_total":    { "type": "integer", "minimum": 0 },
+      "sfh_total_ratio":         { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+      "mfh_ratio":               { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+      "other_ratio":             { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+      "structure_profile":       { "type": "string", "enum": ["SFH_DOMINANT", "MIXED_RESIDENTIAL", "MFH_HEAVY"] },
+      "structure_gate":          { "type": "string", "enum": ["PASS", "REVIEW", "FAIL"] },
+      "gate_reason":             { "type": "string" },
+      "general_rank_score":      { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+      "general_rank":            { "type": "integer", "minimum": 1 },
+      "general_band":            { "type": "string", "enum": ["HIGH", "MEDIUM", "LOW"] },
+      "ranking_reason_primary":  { "type": "string" },
+      "ranking_reason_secondary":{ "type": "string" },
+      "ranking_universe":        { "type": "string", "enum": ["PASS_ONLY", "PASS_PLUS_REVIEW"] }
+    },
+    "additionalProperties": false
+  }
+}

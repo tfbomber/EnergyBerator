@@ -1,0 +1,468 @@
+[
+    {
+        "case_id": "AUDIT_TC01_PASS_STANDARD",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": 199.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "05.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "NO",
+            "work_started_date": null
+        },
+        "evidence_pack": {
+            "contract": {
+                "status": "YES",
+                "ref": "contract.pdf"
+            },
+            "invoice": {
+                "status": "YES",
+                "ref": "inv.png"
+            }
+        },
+        "expected": {
+            "status": "APPROVED",
+            "eligible_total_eur": 1298.0,
+            "final_subsidy_eur": 600.0,
+            "violations": [
+                "VORHABENBEGINN_PASS"
+            ]
+        }
+    },
+    {
+        "case_id": "AUDIT_TC02_FAIL_PAYMENT_BEFORE_APP",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1298.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "YES",
+            "down_payment_date": "05.02.2026",
+            "work_started": "NO",
+            "work_started_date": null
+        },
+        "expected": {
+            "status": "REJECTED",
+            "violations": [
+                "VORHABENBEGINN_BEFORE_APPLICATION",
+                "PAYMENT_BINDING"
+            ]
+        }
+    },
+    {
+        "case_id": "AUDIT_TC03_FAIL_WORK_STARTED_BEFORE_APP",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1298.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "YES",
+            "work_started_date": "05.02.2026"
+        },
+        "expected": {
+            "status": "REJECTED",
+            "violations": [
+                "WORK_STARTED_BINDING",
+                "VORHABENBEGINN_BEFORE_APPLICATION"
+            ]
+        }
+    },
+    {
+        "case_id": "AUDIT_TC04_PASS_CONDITIONAL_CLAUSE_SAFE_SIGNING",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1298.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "05.02.2026",
+            "has_conditional_clause": "YES",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "NO",
+            "work_started_date": null
+        },
+        "expected": {
+            "status": "APPROVED",
+            "final_subsidy_eur": 600.0,
+            "violations": [
+                "CONDITIONAL_CLAUSE",
+                "VORHABENBEGINN_PASS"
+            ]
+        }
+    },
+    {
+        "case_id": "AUDIT_TC05_AT_RISK_WORK_STARTED_UNKNOWN",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1298.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "UNKNOWN",
+            "work_started_date": null
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "final_subsidy_eur": 600.0,
+            "violations": [
+                "WORK_STARTED_UNKNOWN"
+            ]
+        }
+    },
+    {
+        "case_id": "AUDIT_TC06_NEEDS_INPUT_MISSING_APPLICATION",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1298.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": null,
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "UNKNOWN",
+            "down_payment_date": null,
+            "work_started": "UNKNOWN",
+            "work_started_date": null
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "violations": [
+                "MISSING_APPLICATION_EVENT"
+            ],
+            "final_subsidy_eur": 600.0
+        }
+    },
+    {
+        "case_id": "AUDIT_TC07_COST_FILTER_INELIGIBLE_SHIPPING",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Module",
+                    "amount_eur": 800.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Inverter",
+                    "amount_eur": 250.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Shipping",
+                    "amount_eur": 45.0,
+                    "is_eligible": "NO"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "NO",
+            "work_started_date": null
+        },
+        "expected": {
+            "eligible_total_eur": 1050.0,
+            "final_subsidy_eur": 525.0
+        }
+    },
+    {
+        "case_id": "AUDIT_TC08_PARSE_EURO_STRING_ITEM",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": "1.099,00 \u20ac",
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": "199,00",
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "05.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "down_payment_date": null,
+            "work_started": "NO",
+            "work_started_date": null
+        },
+        "expected": {
+            "eligible_total_eur": 1298.0,
+            "final_subsidy_eur": 600.0
+        }
+    },
+    {
+        "case_id": "AUDIT_TC09_AMBIGUOUS_SAME_DAY_ORDER",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "10.02.2026",
+            "has_conditional_clause": "NO"
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "violations": [
+                "AMBIGUOUS_SAME_DAY_ORDER"
+            ],
+            "final_subsidy_eur": 600.0
+        }
+    },
+    {
+        "case_id": "AUDIT_TC10_PAUSED_OVERLAY_ON_HOLD",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "crawler_observations": {
+            "overlay_keywords": [
+                "\u00fcberarbeitet"
+            ],
+            "crawler_health": "OK"
+        },
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026"
+        },
+        "expected": {
+            "status": "ON_HOLD_PROVISIONAL",
+            "violations": [
+                "POLICY_PAUSED"
+            ],
+            "final_subsidy_eur": 600.0
+        }
+    },
+    {
+        "case_id": "AUDIT_TC11_ELIGIBLE_UNKNOWN_SHOULD_WARN",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "UNKNOWN"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": 199.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "05.02.2026",
+            "contract_signed_date": "15.02.2026"
+        },
+        "expected": {
+            "violations": [
+                "ELIGIBLE_FLAG_UNKNOWN"
+            ],
+            "eligible_total_eur": 199.0,
+            "final_subsidy_eur": 99.5
+        }
+    },
+    {
+        "case_id": "AUDIT_TC12_DUPLICATE_ITEM_DETECTED",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": 199.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "05.02.2026",
+            "contract_signed_date": "15.02.2026"
+        },
+        "expected": {
+            "violations": [
+                "DUPLICATE_ITEM_DETECTED"
+            ],
+            "eligible_total_eur": 1298.0,
+            "final_subsidy_eur": 600.0
+        }
+    }
+]

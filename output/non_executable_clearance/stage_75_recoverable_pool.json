@@ -1,0 +1,34 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_76_CASE_A_FULL_FIX",
+      "deficiencies": [
+        "CRM_INTEGRATION_NOT_DEFINED",
+        "INSTALLER_PIPELINE_NOT_DEFINED"
+      ],
+      "remediation_required": true
+    },
+    {
+      "contact_id": "TEST_76_CASE_B_PARTIAL",
+      "deficiencies": [
+        "EXECUTION_CHAIN_NOT_DEFINED",
+        "MISSING_ACTIVITY_APPROVAL"
+      ],
+      "remediation_required": true
+    },
+    {
+      "contact_id": "TEST_76_CASE_C_FATAL_NEW",
+      "deficiencies": [
+        "CONTACT_EXECUTOR_UNDEFINED"
+      ],
+      "remediation_required": true
+    },
+    {
+      "contact_id": "TEST_76_CASE_D_INVALID",
+      "deficiencies": [
+        "SUPPORTING_DOCUMENTS_INCOMPLETE"
+      ],
+      "remediation_required": true
+    }
+  ]
+}

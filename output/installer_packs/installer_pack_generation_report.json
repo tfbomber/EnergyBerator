@@ -1,0 +1,9 @@
+{
+  "input_file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\output\\routes\\neuss_route_sheets_v1.json",
+  "record_count": 206,
+  "unique_routes": 37,
+  "unique_clusters": 37,
+  "pdfs_generated": 37,
+  "invalid_rows_skipped": 0,
+  "output_dir": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\output\\installer_packs"
+}

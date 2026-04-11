@@ -1,0 +1,9 @@
+{
+  "assertions": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "production_state_retained": "STILL_BLOCKED",
+      "rationale": "Execution explicitly segregated to Rehearsal Mode. No physical truth admitted."
+    }
+  ]
+}

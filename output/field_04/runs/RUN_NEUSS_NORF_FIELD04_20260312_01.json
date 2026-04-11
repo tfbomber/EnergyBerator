@@ -1,0 +1,157 @@
+{
+  "observation_basis": {
+    "source_system": "MaStR",
+    "source_records_used": [
+      "SEE911154395648",
+      "SEE946086541344",
+      "SEE941375360224",
+      "SEE903113819876"
+    ],
+    "observation_window": {
+      "start_date": "2000-01-01",
+      "end_date": "2026-03-12"
+    },
+    "spatial_join_method": "POINT_IN_POLYGON",
+    "spatial_fallback_rule": "N/A",
+    "segment_geometry_source": "MOCK_PILOT_BOUNDARY",
+    "registry_geometry_type": "POINT",
+    "spatial_assignment_status": "DIRECT_SEGMENT_MATCH"
+  },
+  "record_accounting": {
+    "raw_record_count": 5937767,
+    "filtered_record_count": 119,
+    "validated_post_date_count": 118,
+    "deduplicated_record_count": 118,
+    "dedupe_rule_applied": "MASTR_ID_UNIQUE_CONSTRAINT + DATE_VALIDATION"
+  },
+  "raw_metrics": {
+    "pv_installation_count": 118,
+    "pv_total_kwp": 1459.0,
+    "pv_mean_kwp": 12.36,
+    "pv_median_kwp": 7.31,
+    "pv_latest_installation_date": "2026-03-10"
+  },
+  "residential_proxy_metrics": {
+    "pv_installation_count": 117,
+    "pv_total_kwp": 1109.08,
+    "pv_mean_kwp": 9.48,
+    "pv_median_kwp": 7.25,
+    "pv_latest_installation_date": "2026-03-10"
+  },
+  "normalized_metrics": {
+    "metrics_basis": "RESIDENTIAL_PROXY_METRICS",
+    "pv_installation_density_per_km2": 78.0,
+    "pv_installation_density_per_100_buildings": null,
+    "pv_kwp_density_per_km2": 739.39,
+    "pv_kwp_per_building": null,
+    "normalization_block_reason": "Building count denominator (500) lack traceability to segment-exact bounds."
+  },
+  "business_output": {
+    "scoring_basis": "RESIDENTIAL_PROXY_METRICS",
+    "pv_adoption_status": "HIGH_ADOPTION",
+    "pv_signal_strength": "MODERATE",
+    "pv_adoption_score": null,
+    "pv_adoption_score_status": "WITHHELD_INSUFFICIENT_SPATIAL_SUPPORT"
+  },
+  "data_quality": {
+    "coverage_status": "PARTIAL",
+    "spatial_match_quality": "LOW",
+    "registry_completeness_risk": "LOW",
+    "residential_relevance_quality": "MEDIUM",
+    "evidence_tier": "E2"
+  },
+  "audit_sections": {
+    "evidence_items": [
+      {
+        "mastr_id": "SEE911154395648",
+        "last_update": "2019-09-07T16:59:01.9162502",
+        "plz": "41470",
+        "ort": "Neuss",
+        "commissioning_date": "2011-12-21",
+        "status_id": "35",
+        "brutto_kwp": 3.42,
+        "netto_kwp": 3.078
+      },
+      {
+        "mastr_id": "SEE946086541344",
+        "last_update": "2020-10-27T20:19:42.0096656",
+        "plz": "41470",
+        "ort": "Neuss",
+        "commissioning_date": "2020-01-13",
+        "status_id": "35",
+        "brutto_kwp": 6.9,
+        "netto_kwp": 6.9
+      }
+    ],
+    "exclusion_report": {
+      "excluded_future_date_record_count": 1,
+      "excluded_large_system_record_count": 1,
+      "excluded_large_system_total_kwp": 349.92,
+      "residential_proxy_filter_rule": "netto_kwp <= 30 (working proxy, not guaranteed residential)",
+      "sample_excluded_records": [
+        {
+          "mastr_id": "SEE968139912062",
+          "reason": "Large non-residential system (> 30 kWp)",
+          "netto_kwp": 349.92,
+          "commissioning_date": "2010-06-02"
+        },
+        {
+          "mastr_id": "[ANONYMIZED_FUTURE_DATE]",
+          "reason": "Future date anomaly (> 2026-03-12)",
+          "commissioning_date": "2026-09-01"
+        }
+      ]
+    },
+    "decision_trace": {
+      "segment_id": "NEUSS_NORF_01",
+      "run_timestamp": "2026-03-13T06:10:00Z",
+      "correction_pass_timestamp": "2026-03-13T06:33:00Z",
+      "spatial_pinning_timestamp": "2026-03-13T06:45:00Z",
+      "fail_safe_triggered": false,
+      "correction_logic": "Decontamination pass applied to remove future dates and isolate residential proxy metrics via kWp threshold.",
+      "spatial_pinning_logic": {
+        "geometry_ready": false,
+        "geometry_source_type": "UNKNOWN",
+        "geometry_source_name": "N/A",
+        "geometry_type": "N/A",
+        "geometry_traceability_status": "UNKNOWN",
+        "spatial_pinning_status": "BLOCKED_GEOMETRY_MISSING",
+        "coordinate_total_checked": 118,
+        "coordinate_valid_count": 0,
+        "coordinate_missing_count": 118,
+        "coordinate_malformed_count": 0,
+        "coordinate_valid_ratio": 0.0,
+        "building_count_ready": false,
+        "building_count_value": 500,
+        "building_count_source": "PRIOR_RUN_PROXY",
+        "building_count_traceability_status": "WEAK",
+        "records_tested_by_pip": 0,
+        "records_inside_segment": 0,
+        "records_outside_segment": 0,
+        "records_missing_coordinates": 118,
+        "records_malformed_coordinates": 0,
+        "proxy_v1_status": "RETAINED_DUE_TO_BLOCKER"
+      }
+    },
+    "final_rationale": "Attempted Spatial Pinning pass for NEUSS_NORF_01. Execution BLOCKED at Gate 1 due to missing officially traceable segment geometry. Prior proxy logic (PLZ 41470) is RETAINED. Metric counts represent the proxy area. Building-normalized metrics are withheld due to untrusted denominator. Adoption score remains withheld pending spatial pinning.",
+    "unresolved_gaps": [
+      {
+        "gap_id": "GAP_SPATIAL_EXACTNESS",
+        "detail": "no point-in-polygon verification against exact NEUSS_NORF_01 boundary"
+      },
+      {
+        "gap_id": "GAP_RESIDENTIAL_CLASSIFICATION",
+        "detail": "<=30 kWp is heuristic, not certified residential truth"
+      },
+      {
+        "gap_id": "GAP_SEGMENT_SCORE_WITHHELD",
+        "detail": "numeric adoption score intentionally withheld pending spatial pinning"
+      },
+      {
+        "gap_id": "GAP_GEOMETRY_MISSING",
+        "detail": "No official polygon geometry found to execute point-in-polygon tests."
+      }
+    ],
+    "schema_source_of_truth": "field_04_schema.json"
+  }
+}

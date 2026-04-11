@@ -1,0 +1,37 @@
+============================================================
+HOUSEHOLD SALES SUITABILITY GATE — SIMULATION IMPACT REPORT
+============================================================
+Total clusters simulated: 554
+
+=== 1. Tier Distribution ===
+  2.1 MFH_CERTAIN / EXCLUDE:       21 (3.8%)
+  2.2 MFH_HEAVY  / LOW_PRIORITY:   54 (9.7%)
+  2.3 MOSTLY_MIXED / NEUTRAL:     215 (38.8%)
+  2.4 SFH_STRONG / PRIORITY:      264 (47.7%)
+
+=== 2. Top 50 Tier Redistribution ===
+  2.1 EXCLUDE: 4 (8.0%)
+  2.2 LOW_PRI: 4 (8.0%)
+  2.3 NEUTRAL: 18 (36.0%)
+  2.4 PRIORITY: 24 (48.0%)
+
+=== 3. Top 100 Tier Redistribution ===
+  2.1 EXCLUDE: 4 (4.0%)
+  2.2 LOW_PRI: 6 (6.0%)
+  2.3 NEUTRAL: 49 (49.0%)
+  2.4 PRIORITY: 41 (41.0%)
+
+=== 4. Building Count Coverage ===
+  2.4 SFH_STRONG total buildings: 7798
+  (Acceptance threshold: >= 4000 buildings)
+  STATUS: PASS
+
+=== 5. Suppression Risk Check ===
+  2.1+2.2 combined (% of Top 50): 16.0%
+  (Acceptance threshold: <= 30% of Top 50)
+  STATUS: PASS
+
+=== 6. Inner City Prior Coverage ===
+  Clusters with inner_city=True: 54
+  Of those pushed to 2.1 or 2.2: 22
+============================================================

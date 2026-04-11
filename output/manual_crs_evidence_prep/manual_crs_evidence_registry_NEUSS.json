@@ -1,0 +1,139 @@
+{
+  "records": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "file_name": "PHYSICAL_E4_16e104e6.json",
+      "sha256": "add33725764ba444cb0f2b48d34b0f741b059fdb9567510e10b45e9739492ceb",
+      "source_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "stage_58_5_crs_trust_status": "UNTRUSTED_BLOCKED",
+      "stage_58_5_future_real_matching_safety_posture": "NEEDS_MANUAL_CRS_REVIEW",
+      "carried_forward_blocker_reasons": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE",
+        "NO_EXPLICIT_CRS_EVIDENCE",
+        "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+      ],
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "acceptable_evidence_classes": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "EXPLICIT_EPSG_DECLARATION_IN_REGISTERED_DOCUMENTATION",
+        "EXPORTER_SYSTEM_DOCUMENTATION_TIED_TO_EXACT_DATASET",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD_WITH_CITATION"
+      ],
+      "conditionally_reviewable_evidence_classes": [
+        "SOURCE_SIDE_DOCUMENTATION_STRONGLY_SUGGESTING_CRS_NOT_EXACTLY_TIED",
+        "TECHNICAL_NOTES_REQUIRING_HUMAN_VERIFICATION",
+        "INCOMPLETE_BUT_USEFUL_TECHNICAL_EXPORT_CONTEXT"
+      ],
+      "unacceptable_evidence_classes": [
+        "COORDINATE_APPEARANCE_ONLY",
+        "DEGREE_LIKE_OR_METER_LIKE_RANGE_ALONE",
+        "PRIOR_HABIT_OR_EXPECTATION",
+        "LOOKS_CORRECT_ON_MAP",
+        "SUCCESSFUL_SANDBOX_MATCHING",
+        "SUCCESSFUL_REPROJECTION_GUESS_ATTEMPTS",
+        "UNDOCUMENTED_VERBAL_ASSUMPTIONS"
+      ],
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_ACC8C1F4 satisfying policy rules."
+      ],
+      "confidence_class": "HIGH",
+      "notes": "File placed in manual processing queue. No automated trust upgrades performed."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "file_name": "PHYSICAL_E4_a3c32111.json",
+      "sha256": "487ea6fabf6bbccd87f998f8b1ef86136afdfcafc54a994ee9d717fa7f552025",
+      "source_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "stage_58_5_crs_trust_status": "UNTRUSTED_BLOCKED",
+      "stage_58_5_future_real_matching_safety_posture": "NEEDS_MANUAL_CRS_REVIEW",
+      "carried_forward_blocker_reasons": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE",
+        "NO_EXPLICIT_CRS_EVIDENCE",
+        "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+      ],
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "acceptable_evidence_classes": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "EXPLICIT_EPSG_DECLARATION_IN_REGISTERED_DOCUMENTATION",
+        "EXPORTER_SYSTEM_DOCUMENTATION_TIED_TO_EXACT_DATASET",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD_WITH_CITATION"
+      ],
+      "conditionally_reviewable_evidence_classes": [
+        "SOURCE_SIDE_DOCUMENTATION_STRONGLY_SUGGESTING_CRS_NOT_EXACTLY_TIED",
+        "TECHNICAL_NOTES_REQUIRING_HUMAN_VERIFICATION",
+        "INCOMPLETE_BUT_USEFUL_TECHNICAL_EXPORT_CONTEXT"
+      ],
+      "unacceptable_evidence_classes": [
+        "COORDINATE_APPEARANCE_ONLY",
+        "DEGREE_LIKE_OR_METER_LIKE_RANGE_ALONE",
+        "PRIOR_HABIT_OR_EXPECTATION",
+        "LOOKS_CORRECT_ON_MAP",
+        "SUCCESSFUL_SANDBOX_MATCHING",
+        "SUCCESSFUL_REPROJECTION_GUESS_ATTEMPTS",
+        "UNDOCUMENTED_VERBAL_ASSUMPTIONS"
+      ],
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_56231492 satisfying policy rules."
+      ],
+      "confidence_class": "HIGH",
+      "notes": "File placed in manual processing queue. No automated trust upgrades performed."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "file_name": "PHYSICAL_E4_a79e5e7d.json",
+      "sha256": "46e9f93bfa22e76b88fd6680714cc7ae582cdd86cbf1b32aaba22b596c9fa418",
+      "source_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "stage_58_5_crs_trust_status": "UNTRUSTED_BLOCKED",
+      "stage_58_5_future_real_matching_safety_posture": "NEEDS_MANUAL_CRS_REVIEW",
+      "carried_forward_blocker_reasons": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE",
+        "NO_EXPLICIT_CRS_EVIDENCE",
+        "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+      ],
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "acceptable_evidence_classes": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "EXPLICIT_EPSG_DECLARATION_IN_REGISTERED_DOCUMENTATION",
+        "EXPORTER_SYSTEM_DOCUMENTATION_TIED_TO_EXACT_DATASET",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD_WITH_CITATION"
+      ],
+      "conditionally_reviewable_evidence_classes": [
+        "SOURCE_SIDE_DOCUMENTATION_STRONGLY_SUGGESTING_CRS_NOT_EXACTLY_TIED",
+        "TECHNICAL_NOTES_REQUIRING_HUMAN_VERIFICATION",
+        "INCOMPLETE_BUT_USEFUL_TECHNICAL_EXPORT_CONTEXT"
+      ],
+      "unacceptable_evidence_classes": [
+        "COORDINATE_APPEARANCE_ONLY",
+        "DEGREE_LIKE_OR_METER_LIKE_RANGE_ALONE",
+        "PRIOR_HABIT_OR_EXPECTATION",
+        "LOOKS_CORRECT_ON_MAP",
+        "SUCCESSFUL_SANDBOX_MATCHING",
+        "SUCCESSFUL_REPROJECTION_GUESS_ATTEMPTS",
+        "UNDOCUMENTED_VERBAL_ASSUMPTIONS"
+      ],
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_8963BBA2 satisfying policy rules."
+      ],
+      "confidence_class": "HIGH",
+      "notes": "File placed in manual processing queue. No automated trust upgrades performed."
+    }
+  ]
+}

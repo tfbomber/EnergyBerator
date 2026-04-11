@@ -1,0 +1,19 @@
+[
+  {
+    "source_id": "SRC_NEUSS_KWP_2025_SUMMARY",
+    "source_name": "Stadt Neuss: Kommunale W\u00e4rmeplanung (2025) Summary",
+    "source_type": "OFFICIAL_MUNICIPAL_PLAN",
+    "authority": "Stadt Neuss",
+    "source_url": "https://www.neuss.de/rathaus/aemter/61/kommunale-waermeplanung",
+    "decision_eligible": true,
+    "version": "v1.0-final"
+  },
+  {
+    "source_id": "SRC_SWN_ALLERHEILIGEN_FFVAV_2025",
+    "source_name": "Stadtwerke Neuss: Allerheiligen FFVAV Technical Data Sheet",
+    "source_type": "TECHNICAL_UTILITY_DOC",
+    "authority": "Stadtwerke Neuss (SWN)",
+    "decision_eligible": true,
+    "version": "2025-Q1"
+  }
+]

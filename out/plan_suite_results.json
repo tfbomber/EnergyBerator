@@ -1,0 +1,473 @@
+[
+  {
+    "case_id": "TC-PLAN-UI-001",
+    "delta": {},
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UI-002",
+    "delta": {},
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UI-003",
+    "delta": {},
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UI-004",
+    "delta": {},
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UI-005",
+    "delta": {},
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-MAP-001",
+    "delta": {
+      "costs": {
+        "total_estimate_eur": 2000.0
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 2000.0,
+      "grant_estimate": 600.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-MAP-002",
+    "delta": {
+      "timeline": {
+        "first_payment_made": "YES",
+        "first_payment_date": "2026-02-01"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "REJECTED",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 0.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\ud83d\udea8 Copilot \u4fa6\u6d4b\u5230\u81f4\u547d\u7ea2\u7ebf\u62e6\u622a\uff01",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": [
+        "PAYMENT_BINDING"
+      ]
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-MAP-003",
+    "delta": {
+      "timeline": {
+        "work_started": "YES",
+        "work_started_date": "2026-02-01"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "REJECTED",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 0.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\ud83d\udea8 Copilot \u4fa6\u6d4b\u5230\u81f4\u547d\u7ea2\u7ebf\u62e6\u622a\uff01",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": [
+        "WORK_STARTED_BINDING"
+      ]
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-PD1-001",
+    "delta": {
+      "applicant": {
+        "has_duessepass": "YES"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-PD1-002",
+    "delta": {
+      "applicant": {
+        "has_duessepass": "YES"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-PD1-003",
+    "delta": {
+      "applicant": {
+        "has_duessepass": "YES",
+        "has_energy_consult_proof": "YES"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 800.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UC6-A",
+    "delta": {
+      "timeline": {
+        "contract_signed_date": "2026-02-01",
+        "has_conditional_clause": "NO"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "REJECTED",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 0.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "Contract signed on",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": [
+        "VORHABENBEGINN_BEFORE_APPLICATION"
+      ]
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "TC-PLAN-UC6-B",
+    "delta": {
+      "timeline": {
+        "contract_signed_date": "2026-02-01",
+        "has_conditional_clause": "YES"
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u6761\u4ef6\u5141\u8bb8 (Conditional OK)",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "PLAN-R1",
+    "delta": {
+      "costs": {
+        "total_estimate_eur": 1000.0
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 1000.0,
+      "grant_estimate": 500.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  },
+  {
+    "case_id": "PLAN-R2",
+    "delta": {
+      "costs": {
+        "total_estimate_eur": 2000.0
+      }
+    },
+    "actual": {
+      "state_id": "S2",
+      "rag": "APPROVED_PROVISIONAL",
+      "completeness_pct": 50,
+      "policy": "DUS_BALCONY_PV_2025",
+      "project_type": "BALCONY_PV",
+      "eligible_cost": 2000.0,
+      "grant_estimate": 600.0,
+      "final_locked": false,
+      "final_display": "\u2014",
+      "final_numeric": null,
+      "orientation_banner_count": 1,
+      "inspector_status": "AVAILABLE",
+      "copilot_stage_text": "\u575a\u51b3\u4e0d\u884c",
+      "copilot_examples_tags": [
+        "\u63d2\u5ea7\u5f0f\u5149\u4f0f",
+        "\u7535\u8868\u66f4\u6362"
+      ],
+      "missing_facts": [],
+      "redline_tags": []
+    },
+    "pass": true,
+    "root_cause_hint": "",
+    "fix_suggestion": ""
+  }
+]

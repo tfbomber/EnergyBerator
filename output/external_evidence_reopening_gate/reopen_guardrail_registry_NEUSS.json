@@ -1,0 +1,7 @@
+{
+  "duplicate_evidence_hash_conflicts": 0,
+  "repeated_reopen_attempts_suppressed": 0,
+  "multi_case_collision_events": 0,
+  "already_reopened_cases_suppressed": 0,
+  "guardrail_verdict": "SAFE"
+}

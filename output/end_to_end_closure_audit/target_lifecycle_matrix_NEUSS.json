@@ -1,0 +1,15 @@
+{
+  "matrix": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "st_39_authorization": "REQUESTED",
+      "st_40_token": "VERIFIED",
+      "st_43_sandbox": "EXECUTED",
+      "st_44_writeback": "EXECUTED",
+      "st_45_decision": "UNLOCKED",
+      "st_46_opportunity": "GENERATED",
+      "st_47_routing": "DESK_REVIEW_FIRST",
+      "st_48_package": "EXPORTED_TEST_ONLY"
+    }
+  ]
+}

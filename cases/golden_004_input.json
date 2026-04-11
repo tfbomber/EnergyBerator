@@ -1,0 +1,19 @@
+{
+  "case_id": "GOLDEN_004",
+  "policy_id": "DUS_BALCONY_PV_2025",
+  "project_type": "BALCONY_PV",
+  "costs": {
+    "currency": "EUR",
+    "buckets": {
+      "HARDWARE": {
+        "amount": "800.00"
+      }
+    }
+  },
+  "timeline_events": [
+    {
+      "event_type": "CONTRACT_SIGNED",
+      "date": "2026-02-01"
+    }
+  ]
+}

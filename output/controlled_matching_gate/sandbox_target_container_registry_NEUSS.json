@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "target_container_class": "ABSTRACT_ENVELOPE",
+      "target_generation_method": "EXTENT_BUFFER",
+      "target_safety_notes": "Abstract memory envelope decoupled from real segment/district databases."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "target_container_class": "ABSTRACT_ENVELOPE",
+      "target_generation_method": "EXTENT_BUFFER",
+      "target_safety_notes": "Abstract memory envelope decoupled from real segment/district databases."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "target_container_class": "ABSTRACT_ENVELOPE",
+      "target_generation_method": "EXTENT_BUFFER",
+      "target_safety_notes": "Abstract memory envelope decoupled from real segment/district databases."
+    }
+  ]
+}

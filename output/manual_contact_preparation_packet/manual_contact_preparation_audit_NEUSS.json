@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-03-18T06:02:05.172409+00:00",
+  "total_post_stage67_dossiers_scanned": 1,
+  "eligible_contact_preparation_dossiers": 1,
+  "packets_generated": 1,
+  "dossiers_with_contact_data_present": 0,
+  "dossiers_with_missing_contact_data": 1,
+  "zero_activation_violations": 0,
+  "zero_contact_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_booking_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "historical_mutation_violations": 0,
+  "final_stage_verdict": "CONTACT_PREPARATION_PACKETS_GENERATED"
+}

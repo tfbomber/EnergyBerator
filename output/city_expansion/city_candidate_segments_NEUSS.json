@@ -1,0 +1,102 @@
+[
+  {
+    "candidate_id": "CAND_NEUSS_REUSCHENBERG_01",
+    "district_name": "Reuschenberg",
+    "approx_location_description": "Core residential zones within Reuschenberg",
+    "expected_morphology": "Inferred Suburban Mixed",
+    "expected_density": "Inferred Medium-High",
+    "expected_pv_fit": 0.8,
+    "expected_heating_fit": 0.7,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_HOISTEN_01",
+    "district_name": "Hoisten",
+    "approx_location_description": "Core residential zones within Hoisten",
+    "expected_morphology": "Inferred Suburban Detached",
+    "expected_density": "Inferred Low-Medium",
+    "expected_pv_fit": 0.9,
+    "expected_heating_fit": 0.9,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_ROSELLERHEIDE_01",
+    "district_name": "Rosellerheide",
+    "approx_location_description": "Core residential zones within Rosellerheide",
+    "expected_morphology": "Inferred Suburban Edge",
+    "expected_density": "Inferred Low",
+    "expected_pv_fit": 0.95,
+    "expected_heating_fit": 0.95,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_GNADENTAL_01",
+    "district_name": "Gnadental",
+    "approx_location_description": "Core residential zones within Gnadental",
+    "expected_morphology": "Inferred Suburban Row",
+    "expected_density": "Inferred Medium",
+    "expected_pv_fit": 0.6,
+    "expected_heating_fit": 0.4,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_WECKHOVEN_01",
+    "district_name": "Weckhoven",
+    "approx_location_description": "Core residential zones within Weckhoven",
+    "expected_morphology": "Inferred Mixed Residential",
+    "expected_density": "Inferred Medium-High",
+    "expected_pv_fit": 0.5,
+    "expected_heating_fit": 0.5,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_ALLERHEILIGEN_01",
+    "district_name": "Allerheiligen",
+    "approx_location_description": "Core residential zones within Allerheiligen",
+    "expected_morphology": "Inferred Modern Suburban",
+    "expected_density": "Inferred Medium",
+    "expected_pv_fit": 0.85,
+    "expected_heating_fit": 0.8,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_UEDESHEIM_01",
+    "district_name": "Uedesheim",
+    "approx_location_description": "Core residential zones within Uedesheim",
+    "expected_morphology": "Inferred Suburban Village",
+    "expected_density": "Inferred Low-Medium",
+    "expected_pv_fit": 0.75,
+    "expected_heating_fit": 0.8,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_HOLZHEIM_01",
+    "district_name": "Holzheim",
+    "approx_location_description": "Core residential zones within Holzheim",
+    "expected_morphology": "Inferred Town Center Mixed",
+    "expected_density": "Inferred Medium",
+    "expected_pv_fit": 0.65,
+    "expected_heating_fit": 0.6,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_SELIKUM_01",
+    "district_name": "Selikum",
+    "approx_location_description": "Core residential zones within Selikum",
+    "expected_morphology": "Inferred Villa/Suburban",
+    "expected_density": "Inferred Low",
+    "expected_pv_fit": 0.85,
+    "expected_heating_fit": 0.8,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  },
+  {
+    "candidate_id": "CAND_NEUSS_ERFTTAL_01",
+    "district_name": "Erfttal",
+    "approx_location_description": "Core residential zones within Erfttal",
+    "expected_morphology": "Inferred Apartment Heavy",
+    "expected_density": "Inferred High",
+    "expected_pv_fit": 0.2,
+    "expected_heating_fit": 0.1,
+    "strategic_reason_for_selection": "Heuristic match against previously successful D-ESS deployment profiles."
+  }
+]

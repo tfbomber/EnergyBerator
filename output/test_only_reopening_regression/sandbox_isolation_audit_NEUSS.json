@@ -1,0 +1,9 @@
+{
+  "production_files_modified": 0,
+  "production_outputs_overwritten": 0,
+  "synthetic_input_root": "D:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\testdata\\synthetic_external_evidence",
+  "synthetic_output_root": "D:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\output\\test_only_reopening_regression",
+  "isolation_verdict": "STRONG_ISOLATION_VERIFIED",
+  "collision_detected": false,
+  "test_marker": "TEST_ONLY"
+}

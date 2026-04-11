@@ -1,0 +1,157 @@
+{
+  "inventory_id": "d_ess_neuss_raw_data_inventory_v1",
+  "city": "Neuss",
+  "generated_for_stage": "raw_data_contract",
+  "source_groups": [
+    {
+      "group_id": "spatial_geometry",
+      "group_name": "Spatial & Built Geometry",
+      "sources": [
+        {
+          "source_id": "NEUSS_OSM_BUILDINGS_PARQUET",
+          "source_name": "OSM Building Footprints (Local Store)",
+          "source_type": "open_geodata",
+          "authority_level": "open_geodata",
+          "truth_status": "real_grounded",
+          "acquisition_status": "present_in_project",
+          "processing_status": "segment_ready",
+          "raw_storage_path": "d-ess-engine/data/buildings.parquet",
+          "processed_storage_path": "d-ess-engine/data/snapshots/unified_building_snapshot.parquet",
+          "format": "parquet",
+          "geographic_scope": "Neuss (Norf Pilot Only)",
+          "time_scope": "2024-Q4",
+          "used_for_fields": ["field_01", "field_02"],
+          "source_of_truth_for_fields": [],
+          "notes": "Downloaded as pilot-specific extract. Missing city-wide coverage. Lacks fine-grained metadata (age, storeys)."
+        },
+        {
+          "source_id": "NEUSS_OSM_LANDUSE_RESIDENTIAL",
+          "source_name": "OSM Landuse Residential Polygons",
+          "source_type": "open_geodata",
+          "authority_level": "open_geodata",
+          "truth_status": "real_grounded",
+          "acquisition_status": "present_in_project",
+          "processing_status": "segment_ready",
+          "raw_storage_path": "d-ess-engine/data/segments.parquet",
+          "processed_storage_path": null,
+          "format": "parquet",
+          "geographic_scope": "Neuss (Partial)",
+          "time_scope": "2024-Q4",
+          "used_for_fields": ["registry_builder"],
+          "source_of_truth_for_fields": [],
+          "notes": "Used for initial clustering and segment masking."
+        }
+      ]
+    },
+    {
+      "group_id": "heat_infrastructure",
+      "group_name": "Heat Infrastructure & Planning",
+      "sources": [
+        {
+          "source_id": "NEUSS_KWP_2025_OFFICIAL",
+          "source_name": "Stadt Neuss: Kommunale Wärmeplanung (2025)",
+          "source_type": "municipal_plan",
+          "authority_level": "official",
+          "truth_status": "known_source_not_ingested",
+          "acquisition_status": "referenced_only",
+          "processing_status": "unknown",
+          "raw_storage_path": null,
+          "processed_storage_path": null,
+          "format": "PDF / Zoning Map (Target)",
+          "geographic_scope": "Citywide Neuss",
+          "time_scope": "Adopted 2025-07-04",
+          "used_for_fields": ["field_03"],
+          "source_of_truth_for_fields": ["field_03"],
+          "notes": "Critical truth anchor for heating zones. No project-local PDF copy archived yet. Currently cited from public announcements."
+        },
+        {
+          "source_id": "SWN_DH_NETWORK_MAP_2024",
+          "source_name": "Stadtwerke Neuss: Fernwärme-Netzplan",
+          "source_type": "utility_network_map",
+          "authority_level": "utility_official",
+          "truth_status": "known_source_not_ingested",
+          "acquisition_status": "referenced_only",
+          "processing_status": "unknown",
+          "raw_storage_path": null,
+          "processed_storage_path": null,
+          "format": "PDF / Web Viewer",
+          "geographic_scope": "Citywide (DH area focus)",
+          "time_scope": "2024",
+          "used_for_fields": ["field_03"],
+          "source_of_truth_for_fields": ["field_03"],
+          "notes": "Essential for 'Existing DH' truth verification. Not yet archived in project files."
+        }
+      ]
+    },
+    {
+      "group_id": "distributed_energy_signal",
+      "group_name": "Distributed Energy & Adoption Signals",
+      "sources": [
+        {
+          "source_id": "MOCK_MASTR_SIGNAL_V1",
+          "source_name": "Mock MaStR Adoption Signals",
+          "source_type": "synthetic_dataset",
+          "authority_level": "project_internal",
+          "truth_status": "synthetic",
+          "acquisition_status": "present_in_project",
+          "processing_status": "field_ready",
+          "raw_storage_path": "d-ess-engine/data/fields/field_04_pv_adoption.parquet",
+          "processed_storage_path": null,
+          "format": "parquet",
+          "geographic_scope": "Full City (Simulation)",
+          "time_scope": "2024-Q1 (Mocked)",
+          "used_for_fields": ["field_04"],
+          "source_of_truth_for_fields": [],
+          "notes": "Temporary proxy for development. Must be replaced by real MaStR coordinate ingestion."
+        }
+      ]
+    },
+    {
+      "group_id": "administrative_context",
+      "group_name": "Administrative context",
+      "sources": [
+        {
+          "source_id": "NEUSS_OFFICIAL_DISTRICTS",
+          "source_name": "Neuss Stadtteile & Bezirke",
+          "source_type": "administrative_references",
+          "authority_level": "official",
+          "truth_status": "real_grounded",
+          "acquisition_status": "partially_present",
+          "processing_status": "parsed",
+          "raw_storage_path": null,
+          "processed_storage_path": "d-ess-engine/intelligence/registry/segment_registry_neuss_v1_truth.json",
+          "format": "json",
+          "geographic_scope": "Norf, Rosellen, Allerheiligen",
+          "time_scope": "Static",
+          "used_for_fields": ["segment_naming"],
+          "source_of_truth_for_fields": [],
+          "notes": "Used for district-level categorization in truth registry."
+        }
+      ]
+    }
+  ],
+  "missing_critical_sources": [
+    "NEUSS_OSM_CITYWIDE_BUILDINGS (Full city building layer)",
+    "MASTR_REAL_PV_COORDINATES (Actual PV adoption truth entries)",
+    "NEUSS_KWP_2025_PDF (Official Heat Planning Document in project store)",
+    "SWN_DH_GRID_VECTORS (Geographic truth for pipe networks)"
+  ],
+  "stage_readiness": {
+    "registry_builder_ready": true,
+    "field_01_ready": true,
+    "field_02_ready": true,
+    "field_03_ready": false,
+    "field_04_ready": false,
+    "field_04_scaffold_ready": true
+  },
+  "execution_state": {
+    "field_03": "pending_infrastructure_decision_protocol",
+    "field_04": "blocked_pending_real_mastr_source"
+  },
+  "ready_for_processing": false,
+  "processing_blockers": [
+    "Field 03 Truth Gap: Official KWP/SWN maps not yet ingested as project files. Pending Decision Protocol.",
+    "Field 04 Truth Gap: Real MaStR export missing. Pre-ingestion scaffolding (v1.2) is complete and fail-fast mode is active.",
+    "Spatial Scaling: Missing city-wide OSM geometry for full-city scoring."
+  ]
+}

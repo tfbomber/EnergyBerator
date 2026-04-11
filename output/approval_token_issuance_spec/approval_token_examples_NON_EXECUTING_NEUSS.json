@@ -1,0 +1,22 @@
+{
+  "example_only": true,
+  "not_valid_for_execution": true,
+  "not_an_actual_approval": true,
+  "do_not_submit_to_stage41": true,
+  "inert_samples": [
+    {
+      "warning": "THIS IS NON EXECUTABLE",
+      "token_id": "EXAMPLE_ONLY_DO_NOT_USE",
+      "target_id": "TARGET_ID_PLACEHOLDER",
+      "approval_scope": "EXAMPLE_SCOPE_LIMIT_PLACEHOLDER",
+      "approved_field_paths": [
+        "geometry.polygon_placeholder",
+        "properties.residential_override"
+      ],
+      "approval_timestamp": "YYYY-MM-DDTHH:MM:SSZ_EXAMPLE_ONLY",
+      "approver_identifier": "HUMAN_REVIEWER_PLACEHOLDER",
+      "authorization_level": "TIER_A_EXAMPLE",
+      "approval_signature": "NON_TRUSTED_PLACEHOLDER"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "unauthorized_payloads": [
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_16e104e6.json",
+      "reason": "MISSING_EXPLICIT_RECOMPUTE_PREREQUISITES",
+      "missing_geometry_blocks": true
+    },
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a3c32111.json",
+      "reason": "MISSING_EXPLICIT_RECOMPUTE_PREREQUISITES",
+      "missing_geometry_blocks": true
+    },
+    {
+      "file": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a79e5e7d.json",
+      "reason": "MISSING_EXPLICIT_RECOMPUTE_PREREQUISITES",
+      "missing_geometry_blocks": true
+    }
+  ]
+}

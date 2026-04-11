@@ -1,0 +1,18 @@
+[
+  {
+    "segment_id": "NEUSS_NORF_01",
+    "city": "Neuss",
+    "alias": "ALLERHEILIGEN_PILOT_SEG_01",
+    "segment_role": "ACTIONABLE_OPPORTUNITY_UNIT",
+    "target_class": "RESIDENTIAL_LOW_RISE",
+    "identity_status": "LOCKED",
+    "geometry_source_type": "DERIVED_FROM_BUILDING_FOOTPRINTS",
+    "geometry_method": "CONVEX_HULL_298_BUILDINGS",
+    "geometry_traceability": "TIER_B_DERIVED",
+    "geometry_fidelity": "CLUSTER_ENVELOPE",
+    "spatial_anchor_confidence": "MEDIUM",
+    "postal_proxy_basis": "41470",
+    "administrative_equivalence": "NONE",
+    "notes": "Pilot segment. Identity is fully locked for business scoring. Geometry remains a Tier B derived envelope limiting strict POINT_IN_POLYGON confidence."
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_75_CASE_A_READY",
+      "blocking_reasons": []
+    },
+    {
+      "contact_id": "TEST_75_CASE_B_FATAL",
+      "blocking_reasons": [
+        "CONSENT_NOT_EXPLICIT"
+      ]
+    },
+    {
+      "contact_id": "TEST_75_CASE_C_RECOVERABLE",
+      "blocking_reasons": [
+        "CRM_INTEGRATION_NOT_DEFINED",
+        "INSTALLER_PIPELINE_NOT_DEFINED"
+      ]
+    },
+    {
+      "contact_id": "TEST_75_CASE_D_MIXED",
+      "blocking_reasons": [
+        "DATA_CONTROLLER_UNDEFINED",
+        "EXECUTION_CHAIN_NOT_DEFINED"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# === Data files (never commit raw data) ===
+data/
+reports/
+*.parquet
+*.csv
+*.xlsx
+*.pdf
+
+# === Python cache ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# === Environment ===
+.env
+.env.*
+*.env
+
+# === IDE / OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === Temp / build ===
+tmp/
+temp/
+dist/
+build/
+*.egg-info/
+
+# === Streamlit cache ===
+.streamlit/secrets.toml

@@ -1,0 +1,46 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "explicit_crs_evidence_present": false,
+      "explicit_crs_evidence_sources": [],
+      "registered_external_technical_evidence_present": false,
+      "registered_external_technical_evidence_sources": [],
+      "technical_supporting_signals": [
+        "COORDINATE_RANGE_LIKELY_GEOGRAPHIC"
+      ],
+      "contradictory_or_risk_signals": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE"
+      ]
+    },
+    {
+      "file_id": "EVD_56231492",
+      "explicit_crs_evidence_present": false,
+      "explicit_crs_evidence_sources": [],
+      "registered_external_technical_evidence_present": false,
+      "registered_external_technical_evidence_sources": [],
+      "technical_supporting_signals": [
+        "COORDINATE_RANGE_LIKELY_GEOGRAPHIC"
+      ],
+      "contradictory_or_risk_signals": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE"
+      ]
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "explicit_crs_evidence_present": false,
+      "explicit_crs_evidence_sources": [],
+      "registered_external_technical_evidence_present": false,
+      "registered_external_technical_evidence_sources": [],
+      "technical_supporting_signals": [
+        "COORDINATE_RANGE_LIKELY_GEOGRAPHIC"
+      ],
+      "contradictory_or_risk_signals": [
+        "CRS_NOT_DECLARED",
+        "MATCHING_HISTORY_FRAGILE"
+      ]
+    }
+  ]
+}

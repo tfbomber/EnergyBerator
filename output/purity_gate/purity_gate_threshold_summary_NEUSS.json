@@ -1,0 +1,26 @@
+{
+  "Aggressive": {
+    "threshold": 0.6,
+    "key": "t060",
+    "downgraded_clusters": 14,
+    "downgraded_buildings": 643,
+    "retained_clusters": 250,
+    "retained_buildings": 7155
+  },
+  "Moderate": {
+    "threshold": 0.55,
+    "key": "t055",
+    "downgraded_clusters": 3,
+    "downgraded_buildings": 223,
+    "retained_clusters": 261,
+    "retained_buildings": 7575
+  },
+  "Conservative": {
+    "threshold": 0.5,
+    "key": "t050",
+    "downgraded_clusters": 0,
+    "downgraded_buildings": 0,
+    "retained_clusters": 264,
+    "retained_buildings": 7798
+  }
+}

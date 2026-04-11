@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "intake_mode": "PLANNED_ONLY",
+  "activation_rights": "NONE",
+  "evidence_presence_status": "NOT_MOUNTED",
+  "candidate_id": "STRING",
+  "review_type": "ENUM(GEO_CONFIRM, FIELD_CONFIRM)",
+  "evidence_tier": "E5",
+  "blocking_decision": "BOOLEAN"
+}

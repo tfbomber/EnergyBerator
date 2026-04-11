@@ -1,0 +1,102 @@
+[
+  {
+    "wave": "Wave 3",
+    "candidate": "CAND_NEUSS_REUSCHENBERG_01",
+    "next_stage": "Hold",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 1",
+    "candidate": "CAND_NEUSS_HOISTEN_01",
+    "next_stage": "Geometry Acquisition",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 1",
+    "candidate": "CAND_NEUSS_ROSELLERHEIDE_01",
+    "next_stage": "Geometry Acquisition",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 3",
+    "candidate": "CAND_NEUSS_GNADENTAL_01",
+    "next_stage": "Hold",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 3",
+    "candidate": "CAND_NEUSS_WECKHOVEN_01",
+    "next_stage": "Hold",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 1",
+    "candidate": "CAND_NEUSS_ALLERHEILIGEN_01",
+    "next_stage": "Geometry Acquisition",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 1",
+    "candidate": "CAND_NEUSS_UEDESHEIM_01",
+    "next_stage": "Geometry Acquisition",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 3",
+    "candidate": "CAND_NEUSS_HOLZHEIM_01",
+    "next_stage": "Hold",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 1",
+    "candidate": "CAND_NEUSS_SELIKUM_01",
+    "next_stage": "Geometry Acquisition",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  },
+  {
+    "wave": "Wave 3",
+    "candidate": "CAND_NEUSS_ERFTTAL_01",
+    "next_stage": "Hold",
+    "required_inputs": [
+      "Stage 13 Core Script",
+      "District Polygon"
+    ],
+    "blocking_risks": "Missing geometric real-truth validation."
+  }
+]

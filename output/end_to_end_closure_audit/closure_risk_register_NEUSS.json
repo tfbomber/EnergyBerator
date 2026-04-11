@@ -1,0 +1,13 @@
+{
+  "risks": [
+    {
+      "risk_id": "RSK_CLOSURE_001",
+      "risk_title": "Absence of Physical Human PKI integration",
+      "affected_stage_or_module": "Stage 41/42",
+      "affected_targets": "ALL_FUTURE_LIVE",
+      "severity": "MEDIUM",
+      "evidence_basis": "Only MOCK tokens ingested.",
+      "recommended_mitigation": "Integrate production KMS authentication layer for live tokens."
+    }
+  ]
+}

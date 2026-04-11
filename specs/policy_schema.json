@@ -1,0 +1,286 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "D-ESS Policy Schema",
+    "type": "object",
+    "required": [
+        "policy_id",
+        "region",
+        "level",
+        "status",
+        "effective_from",
+        "uncertainty_flag",
+        "timing_rules",
+        "cost_rules",
+        "calculation",
+        "citations"
+    ],
+    "properties": {
+        "policy_id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "level": {
+            "type": "string",
+            "enum": [
+                "City",
+                "State",
+                "Federal"
+            ]
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "Active",
+                "Paused",
+                "Expired"
+            ]
+        },
+        "effective_from": {
+            "type": "string",
+            "format": "date"
+        },
+        "effective_to": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date"
+        },
+        "uncertainty_flag": {
+            "type": "string",
+            "enum": [
+                "LOW",
+                "MED",
+                "HIGH"
+            ]
+        },
+        "timing_rules": {
+            "type": "object",
+            "required": [
+                "requires_application_before",
+                "blocking_actions",
+                "evidence_anchor"
+            ],
+            "properties": {
+                "requires_application_before": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "blocking_actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "evidence_anchor": {
+                    "type": "string"
+                }
+            }
+        },
+        "cost_rules": {
+            "type": "object",
+            "required": [
+                "input_amount_basis",
+                "buckets"
+            ],
+            "properties": {
+                "input_amount_basis": {
+                    "type": "string",
+                    "enum": [
+                        "GROSS",
+                        "NET"
+                    ]
+                },
+                "buckets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "eligible",
+                            "vat_rate",
+                            "evidence_anchor"
+                        ],
+                        "properties": {
+                            "eligible": {
+                                "type": "boolean"
+                            },
+                            "vat_rate": {
+                                "type": [
+                                    "string",
+                                    "number"
+                                ]
+                            },
+                            "evidence_anchor": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "calculation": {
+            "type": "object",
+            "required": [
+                "type",
+                "evidence_anchor"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "CAP_ON_ELIGIBLE_COST",
+                        "GRANT_ON_ELIGIBLE_COST"
+                    ]
+                },
+                "grant_rate": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0
+                },
+                "stacking_limit": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0
+                },
+                "cap_cents": {
+                    "type": "integer"
+                },
+                "eligible_basis": {
+                    "type": "string",
+                    "enum": [
+                        "GROSS",
+                        "NET"
+                    ]
+                },
+                "bonuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "code",
+                            "trigger",
+                            "evidence_anchor"
+                        ],
+                        "properties": {
+                            "code": {
+                                "type": "string"
+                            },
+                            "trigger": {
+                                "type": "string"
+                            },
+                            "trigger_value": {
+                                "type": [
+                                    "string",
+                                    "boolean",
+                                    "number"
+                                ]
+                            },
+                            "eligibility_checks": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "event_type": {
+                                            "type": "string"
+                                        },
+                                        "latest_date": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "attribute": {
+                                            "type": "string"
+                                        },
+                                        "expected": {
+                                            "type": [
+                                                "string",
+                                                "boolean",
+                                                "number"
+                                            ]
+                                        },
+                                        "reason_code": {
+                                            "type": "string"
+                                        },
+                                        "evidence_anchor": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "effect": {
+                                "type": "object",
+                                "properties": {
+                                    "set_grant_rate": {
+                                        "type": "number"
+                                    },
+                                    "set_cap_cents": {
+                                        "type": "integer"
+                                    },
+                                    "add_fixed_cents": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "evidence_anchor": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "tiers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "amount_cents"
+                        ],
+                        "properties": {
+                            "min_kw": {
+                                "type": "number"
+                            },
+                            "max_kw": {
+                                "type": "number"
+                            },
+                            "amount_cents": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "evidence_anchor": {
+                    "type": "string"
+                }
+            }
+        },
+        "citations": {
+            "type": "object",
+            "required": [
+                "source_url",
+                "doc_version",
+                "last_policy_sync_timestamp",
+                "doc_hash"
+            ],
+            "properties": {
+                "source_url": {
+                    "type": "string"
+                },
+                "doc_version": {
+                    "type": "string"
+                },
+                "last_policy_sync_timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "doc_hash": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+{"authorization_requests": [{"target_id": "MOCK_TARGET_NEUSS_01", "requested_approval_scope": "Grant permission sequentially limiting execution specifically to the documented physical_boundary spatial upgrades.", "requested_field_paths": ["geometry.physical_boundary.coordinates"], "out_of_scope_field_paths": ["confidence"], "prohibited_field_paths": ["segment_id"]}]}

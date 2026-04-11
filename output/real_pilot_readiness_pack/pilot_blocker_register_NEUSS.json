@@ -1,0 +1,20 @@
+{
+  "blockers": [
+    {
+      "blocker_id": "BLK_REAL_PILOT_001",
+      "blocker_title": "Absence of KMS PKI Signing logic",
+      "blocker_category": "Governance Framework",
+      "severity": "CRITICAL",
+      "resolution_required_before_pilot": true,
+      "mitigation_path": "Integrate standard ECDSA/Ed25519 signer tools or use physical thumb-drives for secure airgapped token generation."
+    },
+    {
+      "blocker_id": "BLK_REAL_PILOT_002",
+      "blocker_title": "Absence of real physical target sample",
+      "blocker_category": "Data Substrate",
+      "severity": "CRITICAL",
+      "resolution_required_before_pilot": true,
+      "mitigation_path": "Complete Stage 14/15/22 geospatial pipelines ingesting true Polygon footprints instead of Mock Box variants."
+    }
+  ]
+}

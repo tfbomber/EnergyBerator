@@ -1,0 +1,44 @@
+{
+  "field_matrix": [
+    {
+      "field_name": "FIELD_03_HEAT_GATE",
+      "ready_for_future_semantic_parse_count": 0,
+      "conditionally_usable_count": 0,
+      "blocked_count": 0,
+      "retained_only_count": 0,
+      "critical_gap_status": "CRITICAL_MISSING",
+      "readiness_verdict": "NOT_READY",
+      "notes": "Derived without semantic extraction."
+    },
+    {
+      "field_name": "FIELD_04_SOCIAL_PROOF",
+      "ready_for_future_semantic_parse_count": 0,
+      "conditionally_usable_count": 0,
+      "blocked_count": 0,
+      "retained_only_count": 0,
+      "critical_gap_status": "CRITICAL_MISSING",
+      "readiness_verdict": "NOT_READY",
+      "notes": "Derived without semantic extraction."
+    },
+    {
+      "field_name": "GEOMETRY_BUILDING_FOOTPRINT",
+      "ready_for_future_semantic_parse_count": 0,
+      "conditionally_usable_count": 3,
+      "blocked_count": 0,
+      "retained_only_count": 0,
+      "critical_gap_status": "SCHEMA_OR_DEPENDENCY_RISK",
+      "readiness_verdict": "CONDITIONALLY_PREPARED",
+      "notes": "Derived without semantic extraction."
+    },
+    {
+      "field_name": "MANUAL_SUPPORTING_DOCUMENT",
+      "ready_for_future_semantic_parse_count": 0,
+      "conditionally_usable_count": 0,
+      "blocked_count": 0,
+      "retained_only_count": 0,
+      "critical_gap_status": "CRITICAL_MISSING",
+      "readiness_verdict": "NOT_READY",
+      "notes": "Derived without semantic extraction."
+    }
+  ]
+}

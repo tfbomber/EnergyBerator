@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "review_status": "VALIDATED_CONTACT_DATA",
+      "usage_input_status": "REAL_USAGE_DECISION_PRESENT",
+      "normalized_usage_decision": "USAGE_APPROVED_FOR_FUTURE_MANUAL_CONTACT_STAGE",
+      "usage_eligibility_status": "ELIGIBLE",
+      "human_review_required": true,
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ],
+      "disclaimer_no_execution": "CONTACT_USAGE_ELIGIBILITY_ONLY / NOT_AN_EXECUTION_COMMAND"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "segment_id": "NEUSS_SUBURBAN_01",
+    "estimated_buildings": 120,
+    "dominant_morphology": "Mixed Low-Rise",
+    "district_heating_likelihood": "LOW",
+    "pv_roof_potential": "Low/Unknown",
+    "opportunity_signal": "MEDIUM",
+    "reason": "Residential cluster."
+  },
+  {
+    "segment_id": "NEUSS_VILLA_01",
+    "estimated_buildings": 80,
+    "dominant_morphology": "Detached",
+    "district_heating_likelihood": "HIGH",
+    "pv_roof_potential": "Low/Unknown",
+    "opportunity_signal": "LOW",
+    "reason": "District heating risk limits opportunity."
+  },
+  {
+    "segment_id": "NEUSS_OLD_TOWN_01",
+    "estimated_buildings": 150,
+    "dominant_morphology": "Rowhouse",
+    "district_heating_likelihood": "HIGH",
+    "pv_roof_potential": "Low/Unknown",
+    "opportunity_signal": "LOW",
+    "reason": "District heating risk limits opportunity."
+  }
+]

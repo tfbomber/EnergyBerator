@@ -1,0 +1,12 @@
+{
+  "plz": "41464",
+  "segment": "NEUSS_GRIML_01",
+  "bbox": [
+    51.125,
+    6.635,
+    51.175,
+    6.755
+  ],
+  "overpass_count": 6814,
+  "valid_rows": 863
+}

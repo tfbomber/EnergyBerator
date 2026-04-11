@@ -1,0 +1,300 @@
+[
+    {
+        "case_id": "M2-A1-EVIDENCE-MISSING",
+        "description": "Policy refers to a non-existent evidence file. Must BLOCKED before any eligibility/maths.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-03-01",
+                "contract_signed_date": "2026-03-05",
+                "has_conditional_clause": false,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "evidence": {
+                "evidence_ref": "policies/2026/dus_missing.pdf",
+                "anchor_id": "policy_main_anchor"
+            }
+        },
+        "expected": {
+            "verdict": "BLOCKED",
+            "reason_code": "EVIDENCE_NOT_FOUND",
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "not found",
+                "anchor not evaluated"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-A2-ANCHOR-FAIL",
+        "description": "PDF exists but mandatory text anchor cannot be located. Must BLOCKED (zero-inference).",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-03-01",
+                "contract_signed_date": "2026-03-05",
+                "has_conditional_clause": false,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "NON_EXISTENT_ANCHOR_ID"
+            }
+        },
+        "expected": {
+            "verdict": "BLOCKED",
+            "reason_code": "ANCHOR_NOT_FOUND",
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "anchor_id",
+                "not found"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-B1-OVERLAY-VARIANT",
+        "description": "Overlay keyword variant/case sensitivity: \u00dcberarbeitung/\u00dcberarbeitet/wird \u00fcberarbeitet should trigger PAUSED_OVERLAY, without changing maths inputs.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-03-01",
+                "contract_signed_date": "2026-03-05",
+                "has_conditional_clause": false,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            },
+            "test_hook": {
+                "evidence_mock_content": "Diese Richtlinie befindet sich aktuell in der \u00dcberarbeitung. Der Text wird \u00fcberarbeitet."
+            }
+        },
+        "expected": {
+            "verdict": "ELIGIBLE_APPROVED",
+            "runtime_status": "PAUSED_OVERLAY",
+            "reason_code": "OK_WITH_OVERLAY",
+            "overlay_keywords_any_of": [
+                "\u00dcberarbeitung",
+                "\u00fcberarbeitet",
+                "wird \u00fcberarbeitet",
+                "\u00dcberarbeitet"
+            ],
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "Program under revision",
+                "overlay"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-B3-PRIORITY-VORHABENBEGINN-OVERRIDE-OVERLAY",
+        "description": "Overlay hit + Vorhabenbeginn violation: verdict must be REJECTED, overlay may remain as runtime tag. Hard gate overrides.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-03-01",
+                "contract_signed_date": "2026-02-15",
+                "has_conditional_clause": false,
+                "work_started": true,
+                "first_payment_made": true
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            },
+            "test_hook": {
+                "evidence_mock_content": "Richtlinie wird \u00fcberarbeitet."
+            }
+        },
+        "expected": {
+            "verdict": "INELIGIBLE_REJECTED",
+            "runtime_status": "PAUSED_OVERLAY",
+            "reason_code": "VORHABENBEGINN_VIOLATION",
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "Vorhabenbeginn",
+                "takes precedence",
+                "overlay"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-C1-MISSING-MANDATORY-TIMELINE",
+        "description": "Missing mandatory timing field: must return NEEDS_INFO and list missing fields. No guessing.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "contract_signed_date": "2026-03-10",
+                "has_conditional_clause": false
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            }
+        },
+        "expected": {
+            "verdict": "NEEDS_INFO",
+            "runtime_status": "ACTIVE",
+            "reason_code": "MISSING_FACTS",
+            "missing_fields_must_include": [
+                "timeline.application_submitted_date"
+            ],
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "missing_fields"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-C2-INVALID-DATE",
+        "description": "Non-existent calendar date should return INVALID_INPUT with error_path.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-02-30",
+                "contract_signed_date": "2026-03-05",
+                "has_conditional_clause": false,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            }
+        },
+        "expected": {
+            "verdict": "INVALID_INPUT",
+            "runtime_status": "ACTIVE",
+            "reason_code": "FIELD_PARSE_ERROR",
+            "error_path": "timeline.application_submitted_date",
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "not a valid date",
+                "application_submitted_date"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-D1-CONFLICT-DETECTED",
+        "description": "User declares work_started=false but cost item indicates execution_date in the past. Must surface conflicts and stop (no verdict guessing).",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-03-01",
+                "contract_signed_date": "2026-03-05",
+                "has_conditional_clause": false,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "costs": {
+                "items": [
+                    {
+                        "label": "Install",
+                        "execution_date": "2026-01-01",
+                        "amount_eur": 100.0
+                    }
+                ]
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            }
+        },
+        "expected": {
+            "verdict": "NEEDS_INFO",
+            "runtime_status": "ACTIVE",
+            "reason_code": "CONFLICT_DETECTED",
+            "conflicts_must_include": [
+                {
+                    "field": "timeline.work_started",
+                    "conflict_source_path": "costs.items[0].execution_date"
+                }
+            ],
+            "math_impact": "NONE",
+            "trace_must_contain": [
+                "conflict",
+                "execution_date",
+                "work_started"
+            ]
+        }
+    },
+    {
+        "case_id": "M2-GOLDEN-001",
+        "description": "Golden regression: clean standard path. No overlay, no missing, no conflict.",
+        "input": {
+            "policy_id": "dus_balcony_pv.json",
+            "measure": {
+                "type": "BALCONY_PV"
+            },
+            "jurisdiction": {
+                "city": "Dusseldorf"
+            },
+            "timeline": {
+                "application_submitted_date": "2026-02-01",
+                "contract_signed_date": "2026-02-15",
+                "has_conditional_clause": true,
+                "work_started": false,
+                "first_payment_made": false
+            },
+            "evidence": {
+                "evidence_ref": "dus_balcony_pv.pdf",
+                "anchor_id": "policy_main_anchor"
+            }
+        },
+        "expected": {
+            "verdict": "ELIGIBLE_APPROVED",
+            "runtime_status": "ACTIVE",
+            "reason_code": "OK",
+            "math_impact": "ALLOWED",
+            "trace_must_contain": [
+                "resolved"
+            ]
+        }
+    }
+]

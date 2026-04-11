@@ -1,0 +1,36 @@
+{
+  "contract_name": "FIELD_04 Execution Gate Configuration",
+  "version": "1.0",
+  "gates": {
+    "GATE_1_SOURCE_PRESENCE": {
+      "required": true,
+      "check": "file_exists",
+      "target": "Lokationen_*.xml"
+    },
+    "GATE_2_LINEAGE_CONSISTENCY": {
+      "required": true,
+      "max_delta_days": 7,
+      "check": "snapshot_date_proximity"
+    },
+    "GATE_3_JOIN_QUALITY": {
+      "required": true,
+      "min_success_rate": 0.90,
+      "target_key": "LokationMaStRNummer"
+    },
+    "GATE_4_ANCHOR_QUALITY": {
+      "required": true,
+      "min_coordinate_fill_rate": 0.80,
+      "scope": "joined_subset"
+    },
+    "GATE_5_SPATIAL_PINNING": {
+      "required": true,
+      "min_geometry_buildings": 10,
+      "engine": "shapely"
+    },
+    "GATE_6_SCORE_ELIGIBILITY": {
+      "required": true,
+      "check_denominator_traceability": true,
+      "disallow_fallback_denominator": true
+    }
+  }
+}

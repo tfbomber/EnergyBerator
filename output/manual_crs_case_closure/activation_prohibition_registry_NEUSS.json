@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "activation_status": "PROHIBITED",
+      "prohibition_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "eligible_for_auto_activation": false
+    },
+    {
+      "case_id": "EVD_8963BBA2",
+      "activation_status": "PROHIBITED",
+      "prohibition_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "eligible_for_auto_activation": false
+    },
+    {
+      "case_id": "EVD_ACC8C1F4",
+      "activation_status": "PROHIBITED",
+      "prohibition_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "eligible_for_auto_activation": false
+    }
+  ]
+}

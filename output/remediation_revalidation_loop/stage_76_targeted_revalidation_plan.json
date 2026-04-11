@@ -1,0 +1,33 @@
+{
+  "records": [
+    {
+      "case_id": "TEST_76_CASE_A_FULL_FIX",
+      "modules_to_execute": [
+        "OPERATIONAL_STRUCTURE_CHAIN",
+        "INSTALLER_READY_CHAIN"
+      ],
+      "skip_full_recomputation": true
+    },
+    {
+      "case_id": "TEST_76_CASE_B_PARTIAL",
+      "modules_to_execute": [
+        "OPERATIONAL_STRUCTURE_CHAIN"
+      ],
+      "skip_full_recomputation": true
+    },
+    {
+      "case_id": "TEST_76_CASE_C_FATAL_NEW",
+      "modules_to_execute": [
+        "IDENTITY_MAPPING_CHAIN"
+      ],
+      "skip_full_recomputation": true
+    },
+    {
+      "case_id": "TEST_76_CASE_D_INVALID",
+      "modules_to_execute": [
+        "DOCUMENT_VALIDATION_CHAIN"
+      ],
+      "skip_full_recomputation": true
+    }
+  ]
+}

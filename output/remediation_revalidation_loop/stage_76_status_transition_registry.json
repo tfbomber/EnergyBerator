@@ -1,0 +1,28 @@
+{
+  "records": [
+    {
+      "case_id": "TEST_76_CASE_A_FULL_FIX",
+      "prior_status": "NON_EXECUTABLE_BUT_VISIBLE",
+      "new_status": "READY_FOR_CONTROLLED_EXECUTION",
+      "revalidation_success": true
+    },
+    {
+      "case_id": "TEST_76_CASE_B_PARTIAL",
+      "prior_status": "NON_EXECUTABLE_BUT_VISIBLE",
+      "new_status": "NON_EXECUTABLE_BUT_VISIBLE",
+      "revalidation_success": false
+    },
+    {
+      "case_id": "TEST_76_CASE_C_FATAL_NEW",
+      "prior_status": "NON_EXECUTABLE_BUT_VISIBLE",
+      "new_status": "FULLY_BLOCKED",
+      "revalidation_success": false
+    },
+    {
+      "case_id": "TEST_76_CASE_D_INVALID",
+      "prior_status": "NON_EXECUTABLE_BUT_VISIBLE",
+      "new_status": "FULLY_BLOCKED",
+      "revalidation_success": false
+    }
+  ]
+}

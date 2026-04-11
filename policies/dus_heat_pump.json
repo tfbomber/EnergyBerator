@@ -1,0 +1,83 @@
+{
+    "policy_id": "DUS_HEAT_PUMP_2025",
+    "region": "Duesseldorf",
+    "level": "City",
+    "status": "Active",
+    "effective_from": "2025-01-01",
+    "effective_to": null,
+    "uncertainty_flag": "LOW",
+    "timing_rules": {
+        "requires_application_before": [
+            "CONTRACT_SIGNED",
+            "WORK_STARTED",
+            "PAYMENT_MADE"
+        ],
+        "blocking_actions": [
+            "CONTRACT_SIGNED",
+            "WORK_STARTED",
+            "PAYMENT_MADE"
+        ],
+        "evidence_anchor": "19.303 Punkt 4.1"
+    },
+    "cost_rules": {
+        "input_amount_basis": "GROSS",
+        "buckets": {
+            "HARDWARE": {
+                "eligible": true,
+                "vat_rate": "19%",
+                "evidence_anchor": "19.303 Punkt 5.9.1 Anlage"
+            },
+            "LABOR": {
+                "eligible": true,
+                "vat_rate": "19%",
+                "evidence_anchor": "19.303 Punkt 5.9.1 Installation und Abgleich"
+            }
+        }
+    },
+    "calculation": {
+        "type": "FIXED_AMOUNT_TIERS",
+        "eligible_basis": "GROSS",
+        "stacking_limit": 0.60,
+        "cap_cents": 1000000,
+        "tiers": [
+            {
+                "min_kw": 0,
+                "max_kw": 25,
+                "amount_cents": 425000
+            },
+            {
+                "min_kw": 25,
+                "max_kw": 50,
+                "amount_cents": 475000
+            },
+            {
+                "min_kw": 50,
+                "max_kw": 75,
+                "amount_cents": 550000
+            },
+            {
+                "min_kw": 75,
+                "max_kw": 9999,
+                "amount_cents": 650000
+            }
+        ],
+        "bonuses": [
+            {
+                "code": "EXTRA_SOUNDPROOFING",
+                "trigger": "USER_ATTRIBUTE",
+                "trigger_value": true,
+                "effect": {
+                    "add_fixed_cents": 50000
+                },
+                "evidence_anchor": "19.303 Punkt 5.9.1 Schallschutzhaube"
+            }
+        ],
+        "evidence_anchor": "19.303 Punkt 5.9 Förderung"
+    },
+    "citations": {
+        "source_url": "https://www.duesseldorf.de/fileadmin/Amt19/umweltamt/foerderundberatungsprogramme/klimafreundlichwohnen/pdf/Richtlinien/Richtlinie_2025_vom_12.12.2024.pdf",
+        "doc_version": "2025-01-01",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+        "doc_hash": ""
+    }
+}

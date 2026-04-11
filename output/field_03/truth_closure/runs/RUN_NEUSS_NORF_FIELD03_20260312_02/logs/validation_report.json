@@ -1,0 +1,33 @@
+{
+  "run_id": "RUN_NEUSS_NORF_FIELD03_20260312_02",
+  "run_status": "SUCCESS",
+  "scope_confirmation": {
+    "city": "NEUSS",
+    "field_id": "FIELD_03",
+    "pilot_area": "NORF",
+    "segments": [
+      "NEUSS_NORF_PILOT_01"
+    ]
+  },
+  "source_family_counts": {
+    "MUNICIPAL": 1,
+    "UTILITY": 1
+  },
+  "object_counts": {
+    "sources": 2,
+    "artifacts": 2,
+    "evidence": 2,
+    "joins": 1,
+    "verdicts": 1
+  },
+  "truth_closure_mode": "AGREEMENT",
+  "json_validity": true,
+  "referential_integrity": true,
+  "enum_compliance": true,
+  "required_field_completeness": true,
+  "evidence_tier_sanity": true,
+  "conflict_detection_status": "NONE_DETECTED",
+  "verdict_traceability": "FULL",
+  "uncertainty_notes": "None. Strong multi-source agreement.",
+  "blocking_issues": []
+}

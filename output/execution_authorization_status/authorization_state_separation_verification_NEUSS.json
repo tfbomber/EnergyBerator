@@ -1,0 +1,14 @@
+{
+  "stage_entry_separations": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "stage_entry_authorized": true,
+      "execution_authorized": false,
+      "recompute_authorized": false,
+      "writeback_authorized": false,
+      "execution_performed": false,
+      "blocked_state_retained": true,
+      "separation_note": "Stage-entry allowance does NOT equal execution/writeback authorization."
+    }
+  ]
+}

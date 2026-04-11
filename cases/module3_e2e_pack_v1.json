@@ -1,0 +1,593 @@
+{
+    "suite_id": "D-ESS_Module3_E2E_Pack_v1",
+    "as_of": "2026-02-28",
+    "module": "MODULE_3_E2E",
+    "cases": [
+        {
+            "case_id": "M3-A1-POLICY-MISSING",
+            "title": "Policy file missing",
+            "input": {
+                "policy_id": "non_existent_policy.json",
+                "case_id": "M3-A1"
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "load failed"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A2-POLICY-BAD-JSON",
+            "title": "Policy JSON syntax error",
+            "input": {
+                "policy_id": "tests/fixtures/module3/bad_syntax_policy.json",
+                "case_id": "M3-A2"
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "policy",
+                    "load failed"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A3-POLICY-MISSING-FIELDS",
+            "title": "Policy missing required fields",
+            "input": {
+                "policy_id": "tests/fixtures/module3/missing_fields_policy.json",
+                "case_id": "M3-A3"
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "Policy load failed"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A4-V12-PAUSED-APPROVED",
+            "title": "v1.2 overlay=PAUSED + APPROVED => APPROVED (Just tag)",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A4",
+                "timeline": {
+                    "application_submitted_date": "2026-02-01"
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED",
+                    "overlay_keywords": [
+                        "\u00dcberarbeitung"
+                    ]
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "runtime_status": "PAUSED_OVERLAY",
+                "trace_must_contain": [
+                    "PAUSED",
+                    "overlay"
+                ],
+                "trace_must_exclude": [
+                    "ON_HOLD_PROVISIONAL"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A5-V12-PAUSED-INELIGIBLE",
+            "title": "v1.2 overlay=PAUSED + INELIGIBLE => INELIGIBLE_REJECTED",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A5",
+                "timeline": {
+                    "application_submitted_date": "2026-03-01",
+                    "work_started": true,
+                    "first_payment_made": false
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "runtime_status": "PAUSED_OVERLAY",
+                "trace_must_contain": [
+                    "PAUSED",
+                    "Vorhabenbeginn"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A6-V12-PAUSED-NEEDS-INFO",
+            "title": "v1.2 overlay=PAUSED + NEEDS_INFO => NEEDS_INFO",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A6",
+                "timeline": {
+                    "first_payment_made": null
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "NEEDS_INFO",
+                "runtime_status": "PAUSED_OVERLAY",
+                "trace_must_contain": [
+                    "PAUSED",
+                    "unknown"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A7-V12-PAUSED-EVIDENCE-MISSING",
+            "title": "v1.2 overlay=PAUSED + evidence missing => BLOCKED",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A7",
+                "evidence": {
+                    "evidence_ref": "evidence_store/missing.pdf"
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "evidence",
+                    "missing"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A8-V12-OK-APPROVED",
+            "title": "v1.2 No overlay + APPROVED => APPROVED",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A8",
+                "timeline": {
+                    "application_submitted_date": "2026-02-01"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_exclude": [
+                    "PAUSED"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A9-V11-PAUSED-APPROVED",
+            "title": "v1.1 legacy overlay=PAUSED + APPROVED => ON_HOLD_PROVISIONAL",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A9",
+                "as_of": "2026-02-28",
+                "timeline": {
+                    "application_submitted_date": "2026-02-01",
+                    "work_started": false,
+                    "first_payment_made": false
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_contain": [
+                    "PAUSED"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-A10-V12-INVALID-INPUT",
+            "title": "v1.2 overlay=PAUSED + INVALID_INPUT => INVALID_INPUT",
+            "input": {
+                "policy_id": "dus_balcony_pv.json",
+                "case_id": "M3-A10",
+                "timeline": {
+                    "application_submitted_date": "2026-13-01"
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "INVALID_INPUT",
+                "trace_must_contain": [
+                    "date",
+                    "parse"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B1-EVIDENCE-FILE-MISSING",
+            "title": "evidence file missing",
+            "input": {
+                "evidence": {
+                    "evidence_ref": "evidence_store/missing_file.pdf"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "evidence",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B2-EVIDENCE-NOT-IN-INDEX",
+            "title": "evidence_ref not in index",
+            "input": {
+                "evidence": {
+                    "evidence_ref": "not_in_index.pdf"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED"
+            }
+        },
+        {
+            "case_id": "M3-B3-EVIDENCE-HASH-MISMATCH",
+            "title": "evidence hash mismatch",
+            "input": {
+                "case_id": "M3-B3",
+                "test_hook": {
+                    "force_hash_mismatch": true
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "integrity",
+                    "mismatch"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B4-ANCHOR-NOT-FOUND",
+            "title": "anchor resolution failed",
+            "input": {
+                "evidence": {
+                    "anchor_id": "NON_EXISTENT_ANCHOR_1"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "anchor",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B5-MULTI-ANCHOR-ONE-FAIL",
+            "title": "one of multiple anchors fails",
+            "input": {
+                "case_id": "M3-B5",
+                "test_hook": {
+                    "multi_anchors": [
+                        "19.303 Punkt 4.1",
+                        "BAD_ANCHOR"
+                    ]
+                }
+            },
+            "expected": {
+                "verdict": "NEEDS_INFO"
+            }
+        },
+        {
+            "case_id": "M3-B6-ANCHOR-FAIL-VS-INELIGIBLE",
+            "title": "anchor fail suppresses INELIGIBLE",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-03-01",
+                    "work_started": true
+                },
+                "evidence": {
+                    "anchor_id": "BAD_ANCHOR"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "anchor",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B7-ANCHOR-FAIL-VS-INVALID",
+            "title": "anchor fail suppresses INVALID_INPUT",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-13-01"
+                },
+                "evidence": {
+                    "anchor_id": "BAD_ANCHOR"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "anchor",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B8-EVIDENCE-MISSING-VS-NEEDS-INFO",
+            "title": "evidence missing suppresses NEEDS_INFO",
+            "input": {
+                "timeline": {
+                    "first_payment_made": null
+                },
+                "evidence": {
+                    "evidence_ref": "missing.pdf"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "evidence",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B9-ANCHOR-OK-AUDIT",
+            "title": "anchor successful audit keyword",
+            "input": {
+                "evidence": {
+                    "anchor_id": "19.303 Punkt 4.1"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_contain": [
+                    "resolved"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-B10-EVIDENCE-ANCHOR-OK",
+            "title": "Complete Evidence+Anchor baseline",
+            "input": {
+                "evidence": {
+                    "evidence_ref": "evidence_store/dus_balcony_pv_2025.pdf",
+                    "anchor_id": "19.303 Punkt 4.1"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_contain": [
+                    "evidence",
+                    "anchor"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C1-PRIORITY-GRAND-SLAM",
+            "title": "BLOCKED suppresses all others",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-03-01",
+                    "work_started": true,
+                    "first_payment_made": null
+                },
+                "evidence": {
+                    "evidence_ref": "missing.pdf"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "evidence",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C2-REJECTED-VS-NEEDS-INFO",
+            "title": "INELIGIBLE_REJECTED suppresses NEEDS_INFO",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-03-01",
+                    "work_started": true,
+                    "first_payment_made": null
+                }
+            },
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "trace_must_contain": [
+                    "Vorhabenbeginn"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C3-NEEDS-INFO-VS-INVALID",
+            "title": "NEEDS_INFO suppresses INVALID_INPUT",
+            "input": {
+                "timeline": {
+                    "first_payment_made": null,
+                    "application_submitted_date": "2026-13-01"
+                }
+            },
+            "expected": {
+                "verdict": "INVALID_INPUT",
+                "trace_must_contain": [
+                    "unknown"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C4-CONFLICT-DETECTED",
+            "title": "Conflict Detected => NEEDS_INFO",
+            "input": {
+                "timeline": {
+                    "work_started": false
+                },
+                "costs": {
+                    "items": [
+                        {
+                            "execution_date": "2026-01-01",
+                            "amount_eur": 100
+                        }
+                    ]
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_contain": [
+                    "resolved"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C5-V12-OVERLAY-VS-INELIGIBLE",
+            "title": "v1.2 Overlay does not change REJECTED",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-03-01",
+                    "work_started": true,
+                    "first_payment_made": false
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "trace_must_contain": [
+                    "PAUSED",
+                    "Vorhabenbeginn"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C6-V11-OVERLAY-VS-APPROVED",
+            "title": "v1.1 Overlay overrides APPROVED",
+            "input": {
+                "case_id": "M3-C6-V11",
+                "as_of": "2026-02-28",
+                "timeline": {
+                    "application_submitted_date": "2026-02-01",
+                    "work_started": false,
+                    "first_payment_made": false
+                },
+                "crawler_observations": {
+                    "runtime_status": "PAUSED"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED"
+            }
+        },
+        {
+            "case_id": "M3-C7-DET-APPROVED",
+            "title": "Determinism APPROVED",
+            "input": {
+                "case_id": "M3-C7",
+                "test_hook": {
+                    "determinism_check": true
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "report_normalized_equal": true
+            }
+        },
+        {
+            "case_id": "M3-C8-DET-REJECTED",
+            "title": "Determinism REJECTED",
+            "input": {
+                "case_id": "M3-C8",
+                "timeline": {
+                    "work_started": true
+                },
+                "test_hook": {
+                    "determinism_check": true
+                }
+            },
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "report_normalized_equal": true
+            }
+        },
+        {
+            "case_id": "M3-C9-MULTI-VIOLATION",
+            "title": "Multiple violations check",
+            "input": {
+                "timeline": {
+                    "work_started": true,
+                    "application_submitted_date": "2026-03-01",
+                    "contract_signed_date": "2026-02-15"
+                }
+            },
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "trace_must_contain": [
+                    "violation",
+                    "Vorhabenbeginn"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C10-BLOCKED-VS-INVALID",
+            "title": "BLOCKED suppresses INVALID_INPUT",
+            "input": {
+                "timeline": {
+                    "application_submitted_date": "2026-13-01"
+                },
+                "evidence": {
+                    "anchor_id": "BAD_ANCHOR"
+                }
+            },
+            "expected": {
+                "verdict": "BLOCKED",
+                "trace_must_contain": [
+                    "anchor",
+                    "not found"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C11-AUDIT-CONTRACT-OK",
+            "title": "Audit trail full nodes",
+            "input": {
+                "case_id": "M3-C11",
+                "timeline": {
+                    "application_submitted_date": "2026-03-01"
+                }
+            },
+            "expected": {
+                "verdict": "ELIGIBLE_APPROVED",
+                "trace_must_contain": [
+                    "policy",
+                    "evidence",
+                    "anchor",
+                    "subsidy"
+                ]
+            }
+        },
+        {
+            "case_id": "M3-C12-ZERO-INFERENCE",
+            "title": "Minimal input => NEEDS_INFO",
+            "input": {
+                "case_id": "M3-C12",
+                "costs": {
+                    "total_estimate_eur": 500
+                }
+            },
+            "expected": {
+                "verdict": "NEEDS_INFO",
+                "trace_must_contain": [
+                    "unknown"
+                ]
+            }
+        }
+    ]
+}

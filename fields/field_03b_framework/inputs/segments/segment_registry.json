@@ -1,0 +1,10 @@
+[
+  {
+    "segment_id": "NEUSS_NORF_PILOT_01",
+    "physical_id": "ALLERHEILIGEN_PILOT_SEG_01",
+    "alias": ["NORF_01", "ALLERHEILIGEN_PILOT_SEG_01"],
+    "city_name": "Neuss",
+    "postal_code": "41469",
+    "street_name": "Norf Elvekum Pilot Street"
+  }
+]

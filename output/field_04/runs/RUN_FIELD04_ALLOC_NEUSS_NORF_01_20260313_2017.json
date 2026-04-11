@@ -1,0 +1,26 @@
+{
+  "field_id": "FIELD_04",
+  "city": "Neuss",
+  "segment_id": "NEUSS_NORF_01",
+  "source_truth_level": "POSTAL_CODE_AGGREGATE",
+  "location_accuracy": "ALLOCATED_PROXY",
+  "allocation_method": "LINEAR_PROPORTIONAL",
+  "allocation_basis": "BUILDING_COUNT_RATIO",
+  "pv_installation_count_est": 97,
+  "pv_total_kwp_est": 777.6,
+  "pv_adoption_intensity_raw": 0.3255,
+  "pv_adoption_status": "STRONG",
+  "pv_signal_strength": "MEDIUM",
+  "pv_adoption_score": 100.0,
+  "evidence_tier": "E3",
+  "data_honesty_note": "Score is an allocated proxy derived from PLZ-level data. Exact spatial coordinates are currently unavailable. Figures represent statistical probability, not point-confirmed installations.",
+  "metadata": {
+    "plz_basis": "41470",
+    "plz_total_pv_units": 1259,
+    "plz_total_pv_kwp": 10081.9,
+    "denominator_segment_buildings": 298,
+    "denominator_plz_buildings": 4250,
+    "morphology_factor_applied": 1.1,
+    "run_timestamp": "2026-03-13T19:17:33.859566+00:00"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "total_unlock_candidates_seen": 0,
+  "unlock_approved_count": 0,
+  "remain_blocked_count": 0,
+  "blocked_writeback_compliance_count": 0,
+  "blocked_recompute_inconsistency_count": 0,
+  "blocked_business_readiness_count": 0,
+  "blocked_governance_uncertainty_count": 0,
+  "downstream_activations_performed": 0
+}

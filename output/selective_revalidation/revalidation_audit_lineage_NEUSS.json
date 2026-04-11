@@ -1,0 +1,13 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "prior_closure_reference": "manual_crs_case_closure_registry_NEUSS.json",
+      "reopen_trigger_reference": "reopening_trigger_registry_NEUSS.json",
+      "stage62_qualification_reference": "evidence_qualification_registry_NEUSS.json",
+      "stage63_routing_reference": "revalidation_module_routing_registry_NEUSS.json",
+      "stage63_execution_reference": "selective_revalidation_execution_registry_NEUSS.json",
+      "final_revalidation_result_reference": "revalidation_result_registry_NEUSS.json"
+    }
+  ]
+}

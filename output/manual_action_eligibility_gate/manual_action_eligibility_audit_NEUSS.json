@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-03-18T05:56:21.599479+00:00",
+  "total_post_review_dossiers_scanned": 1,
+  "eligible_post_review_dossiers": 1,
+  "dossiers_mapped_to_future_contact_preparation": 1,
+  "dossiers_mapped_to_future_document_collection_preparation": 0,
+  "dossiers_mapped_to_future_installer_precheck_consideration": 1,
+  "zero_activation_violations": 0,
+  "zero_contact_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_booking_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "historical_mutation_violations": 0,
+  "final_stage_verdict": "MANUAL_PATHWAY_ELIGIBILITY_MAPPED"
+}

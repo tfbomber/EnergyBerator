@@ -1,0 +1,31 @@
+{
+  "run_timestamp_utc": "2026-03-22T16:51:34.319539+00:00",
+  "target_segments": [
+    "NEUSS_GRIML_01",
+    "NEUSS_SUBURB_01"
+  ],
+  "patch_method": "osm_building_tag + standard_footprint_proxy",
+  "footprint_proxies": {
+    "detached": 130.0,
+    "semi": 80.0,
+    "rowhouse": 60.0,
+    "apartment": 200.0,
+    "unknown": 100.0
+  },
+  "utilization_factors": {
+    "detached": 0.45,
+    "semi": 0.4,
+    "rowhouse": 0.35,
+    "apartment": 0.2,
+    "unknown": 0.2
+  },
+  "area_proxy_multiplier": 3.5,
+  "f02_confidence": 0.7,
+  "f01_confidence": 0.65,
+  "caveats": [
+    "OSM building tags may not reflect true attachment status",
+    "Footprint areas are proxies, not measured polygon areas",
+    "Segment area proxy is a density-based estimate, not a real boundary",
+    "Use as weak signal only \u2014 do not claim polygon-grade accuracy"
+  ]
+}

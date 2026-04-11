@@ -1,0 +1,31 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "parseability_status": "PARSEABLE_WITH_LIMITATIONS",
+      "schema_stability": "MOSTLY_STABLE",
+      "future_adapter_readiness": "NEEDS_SCHEMA_BRIDGE",
+      "blocker_reasons": [
+        "CRS_NOT_DECLARED"
+      ]
+    },
+    {
+      "file_id": "EVD_56231492",
+      "parseability_status": "PARSEABLE_WITH_LIMITATIONS",
+      "schema_stability": "MOSTLY_STABLE",
+      "future_adapter_readiness": "NEEDS_SCHEMA_BRIDGE",
+      "blocker_reasons": [
+        "CRS_NOT_DECLARED"
+      ]
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "parseability_status": "PARSEABLE_WITH_LIMITATIONS",
+      "schema_stability": "MOSTLY_STABLE",
+      "future_adapter_readiness": "NEEDS_SCHEMA_BRIDGE",
+      "blocker_reasons": [
+        "CRS_NOT_DECLARED"
+      ]
+    }
+  ]
+}

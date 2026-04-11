@@ -1,0 +1,18 @@
+{
+  "recompute_requirements": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "evidence_integrated": "NONE",
+      "downstream_recompute_required": false,
+      "recompute_priority": "N/A - BLOCKED",
+      "blocked_until_recompute": "YES"
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "evidence_integrated": "NONE",
+      "downstream_recompute_required": false,
+      "recompute_priority": "N/A - BLOCKED",
+      "blocked_until_recompute": "YES"
+    }
+  ]
+}

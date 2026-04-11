@@ -1,0 +1,18 @@
+{
+  "assessments": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "retry_review_eligible": false,
+      "recompute_review_eligible": false,
+      "tier_review_eligible": false,
+      "current_gate_status": "STILL_BLOCKED"
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "retry_review_eligible": false,
+      "recompute_review_eligible": false,
+      "tier_review_eligible": false,
+      "current_gate_status": "STILL_BLOCKED"
+    }
+  ]
+}

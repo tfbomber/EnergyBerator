@@ -1,0 +1,16 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "upstream_contact_preparation_eligibility": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "packet_generation_status": "GENERATED",
+      "unresolved_gap_count": 0,
+      "contact_detail_availability_status": "ALL_DATA_MISSING",
+      "human_review_required": true,
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ],
+      "disclaimer_no_execution": "CONTACT_PREPARATION_ONLY / NOT_AN_EXECUTION_COMMAND / HUMAN_REVIEW_REQUIRED"
+    }
+  ]
+}

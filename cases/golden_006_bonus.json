@@ -1,0 +1,27 @@
+{
+    "case_id": "GOLDEN_006_BONUS",
+    "policy_id": "DUS_BALCONY_PV_2026",
+    "project_type": "BALCONY_PV",
+    "attributes": {
+        "DUESSELPASS": true
+    },
+    "costs": {
+        "currency": "EUR",
+        "buckets": {
+            "HARDWARE": {
+                "amount": "1200.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    },
+    "timeline_events": [
+        {
+            "event_type": "APPLICATION_SUBMITTED",
+            "date": "2026-02-01"
+        },
+        {
+            "event_type": "CONTRACT_SIGNED",
+            "date": "2026-02-05"
+        }
+    ]
+}

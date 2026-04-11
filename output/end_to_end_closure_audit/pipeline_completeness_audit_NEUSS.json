@@ -1,0 +1,156 @@
+{
+  "audits": [
+    {
+      "stage_id": 37,
+      "stage_name": "Controlled Recompute Execution",
+      "required_outputs_expected": [
+        "sandbox_execution_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "sandbox_execution_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 38,
+      "stage_name": "Governance Promotion Readiness",
+      "required_outputs_expected": [
+        "promotion_readiness_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "promotion_readiness_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 39,
+      "stage_name": "Human Governance Authorization Pack",
+      "required_outputs_expected": [
+        "authorization_candidate_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "authorization_candidate_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 40,
+      "stage_name": "Execution Authorization Status",
+      "required_outputs_expected": [
+        "execution_authorization_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "execution_authorization_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 41,
+      "stage_name": "Approval Token Intake",
+      "required_outputs_expected": [
+        "registered_tokens_NEUSS.json"
+      ],
+      "required_outputs_found": [],
+      "handoff_integrity": false,
+      "completeness_verdict": "FAIL",
+      "completeness_note": "Stage output is missing or corrupt."
+    },
+    {
+      "stage_id": 42,
+      "stage_name": "Token Issuance Spec",
+      "required_outputs_expected": [
+        "token_issuance_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [],
+      "handoff_integrity": false,
+      "completeness_verdict": "FAIL",
+      "completeness_note": "Stage output is missing or corrupt."
+    },
+    {
+      "stage_id": 43,
+      "stage_name": "Controlled Execution Sandbox",
+      "required_outputs_expected": [
+        "sandbox_execution_run_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "sandbox_execution_run_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 44,
+      "stage_name": "Controlled Writeback",
+      "required_outputs_expected": [
+        "writeback_run_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "writeback_run_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 45,
+      "stage_name": "Governance Unlock Decision",
+      "required_outputs_expected": [
+        "unlock_decision_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "unlock_decision_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 46,
+      "stage_name": "Opportunity Generation",
+      "required_outputs_expected": [
+        "opportunity_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "opportunity_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 47,
+      "stage_name": "Prioritization & Routing",
+      "required_outputs_expected": [
+        "opportunity_priority_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "opportunity_priority_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    },
+    {
+      "stage_id": 48,
+      "stage_name": "Activation Pack Export",
+      "required_outputs_expected": [
+        "activation_pack_registry_NEUSS.json"
+      ],
+      "required_outputs_found": [
+        "activation_pack_registry_NEUSS.json"
+      ],
+      "handoff_integrity": true,
+      "completeness_verdict": "PASS",
+      "completeness_note": "Stage outputs exist and match."
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "rehearsal_requirements": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "simulated_downstream_trigger": "trigger_cluster_rebuild",
+      "execution_status": "BLOCKED_BY_REHEARSAL_MODE"
+    }
+  ]
+}

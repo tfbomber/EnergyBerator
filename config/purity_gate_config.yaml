@@ -1,0 +1,25 @@
+# Purity Gate Feature Config
+# ============================================================
+# Phase 9 - Non-destructive overlay. All keys can be changed
+# without touching any business logic or scoring code.
+#
+# REVIEW MODE (default):
+#   purity_use_adjusted_label_for_display: false
+#   => Original label visible in main ranking; purity note shown in detail cards only.
+#
+# ADJUSTED MODE (optional, for future consideration):
+#   purity_use_adjusted_label_for_display: true
+#   => Adjusted label shows in detail card; ranking order still unchanged.
+# ============================================================
+
+enable_purity_gate: true
+
+# Default threshold for 2.4 -> 2.3 downgrade (from Phase 8 Moderate scenario)
+purity_threshold: 0.55
+
+# If false (Review Mode): main label/ranking unchanged; purity result shown as audit field only
+# If true  (Adjusted Mode): detail card shows purity_adjusted_label; ranking still unchanged
+purity_use_adjusted_label_for_display: false
+
+# Show ⚠️ explainer note in Cluster Detail Cards for downgraded 2.4 clusters
+purity_show_explainer_note: true

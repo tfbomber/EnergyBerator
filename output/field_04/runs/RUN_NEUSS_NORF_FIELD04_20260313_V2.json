@@ -1,0 +1,47 @@
+{
+  "observation_basis": {
+    "source_system": "MaStR",
+    "observation_window": {
+      "start_date": "2000-01-01",
+      "end_date": "2026-03-13"
+    },
+    "spatial_join_method": "POINT_IN_POLYGON_DERIVED",
+    "spatial_fallback_rule": "NONE",
+    "segment_geometry_source": "PROJECT_DERIVED_CONVEX_HULL",
+    "registry_geometry_type": "POINT",
+    "spatial_assignment_status": "PROJECT_DERIVED_CONVEX_HULL"
+  },
+  "record_accounting": {
+    "raw_postal_records": 119,
+    "pinned_segment_records": 0,
+    "dropped_out_of_bounds": 119,
+    "residential_subsegment_count": 0
+  },
+  "raw_metrics": {
+    "pv_installation_count_raw": 0,
+    "pv_total_kwp": 0.0,
+    "building_count": 298
+  },
+  "business_output": {
+    "pv_adoption_status": "LOW",
+    "pv_signal_strength": "WEAK",
+    "pv_adoption_score": null,
+    "pv_adoption_score_status": "WITHHELD_INSUFFICIENT_SPATIAL_SUPPORT"
+  },
+  "data_quality": {
+    "coverage_status": "ANCHOR_PARTIAL",
+    "spatial_match_quality": "MEDIUM_PROJECT_DERIVED",
+    "evidence_tier": "E2",
+    "geometry_honesty": {
+      "label": "PROJECT_DERIVED_CONVEX_HULL",
+      "closure_grade": false,
+      "risk": "MEDIUM_OVER_INCLUSION",
+      "comment": "Boundary is a mathematical envelope of 298 footprints. False positives likely on segment edges."
+    }
+  },
+  "audit_sections": {
+    "run_id": "RUN_NEUSS_NORF_FIELD04_20260313_V2",
+    "run_timestamp": "2026-03-13T13:25:01.951382",
+    "final_rationale": "FIELD_04 executed Point-in-Polygon join using project-derived Convex Hull against the validated pilot baseline. Evidence tier E2 reflects proxy-geometry validation. Score status: WITHHELD_INSUFFICIENT_SPATIAL_SUPPORT."
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "source_id": "KWP_NEUSS_2025",
+    "source_type": "PDF_MAP",
+    "official": true,
+    "decision_eligible": true,
+    "local_path": "neuss_kwp_2025_draft.pdf",
+    "url": "https://www.neuss.de/kwp-2025-draft",
+    "trust_score": 1.0,
+    "last_updated": "2025-01-15T00:00:00Z"
+  }
+]

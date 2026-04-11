@@ -1,0 +1,15 @@
+{
+  "total_records_seen": 7,
+  "total_structurally_valid_records": 6,
+  "total_structurally_invalid_records": 1,
+  "total_review_artifacts_found": 6,
+  "total_unique_review_artifacts": 4,
+  "total_conflicting_review_artifacts": 1,
+  "total_unmappable_review_artifacts": 0,
+  "total_warrant_not_granted": 5,
+  "total_warrant_granted_for_preparation_only": 1,
+  "total_warrant_granted_for_future_contact_stage": 1,
+  "total_future_contact_pool_records": 1,
+  "total_execution_flags_still_forbidden": 35,
+  "hard_lock_integrity_status": "PASS"
+}

@@ -1,0 +1,4444 @@
+{
+  "audit_timestamp": "2026-03-23T19:52:24Z",
+  "boundary_status": "POLYGON_PIP_OK",
+  "boundary_method": "POLYGON_PIP",
+  "source_file": "D:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\output\\clusters\\neuss_hybrid_clusters_v1.json",
+  "total_input_clusters": 554,
+  "kept": 554,
+  "rejected": 0,
+  "note": "Trusted polygon PiP filtering applied. Only in-boundary centroids passed.",
+  "clusters": [
+    {
+      "cluster_id": "N_001",
+      "primary_street": "Meertal",
+      "lat": 51.18457095283019,
+      "lon": 6.702673911320755,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_002",
+      "primary_street": "Agrippinaweg",
+      "lat": 51.1845421,
+      "lon": 6.703686785714285,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_003",
+      "primary_street": "Liviusweg",
+      "lat": 51.183836625,
+      "lon": 6.7030530611111105,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_004",
+      "primary_street": "Pliniusweg",
+      "lat": 51.182333467999996,
+      "lon": 6.701941308,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_005",
+      "primary_street": "Bahnhofstraße",
+      "lat": 51.1647844125,
+      "lon": 6.6637657062499995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_006",
+      "primary_street": "Am Hohen Weg",
+      "lat": 51.21754570270271,
+      "lon": 6.674023014864865,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_007",
+      "primary_street": "Berliner Platz",
+      "lat": 51.20873183076923,
+      "lon": 6.674138130769231,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_008",
+      "primary_street": "Frankenstraße",
+      "lat": 51.20972892876713,
+      "lon": 6.675491684931507,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_009",
+      "primary_street": "Wolkerstraße",
+      "lat": 51.21029352000001,
+      "lon": 6.68109108,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_010",
+      "primary_street": "Wingenderstraße",
+      "lat": 51.2093019,
+      "lon": 6.68144204,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_011",
+      "primary_street": "Neusser Weyhe",
+      "lat": 51.21466705633803,
+      "lon": 6.676741483098591,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_012",
+      "primary_street": "Im Melchersfeld",
+      "lat": 51.1784561,
+      "lon": 6.711898509677419,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_013",
+      "primary_street": "Berghäuschensweg",
+      "lat": 51.1784963382353,
+      "lon": 6.716853071568628,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_014",
+      "primary_street": "Bonner Straße",
+      "lat": 51.17413682608696,
+      "lon": 6.748604913043478,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_015",
+      "primary_street": "Franz-Leuninger-Straße",
+      "lat": 51.157925816981134,
+      "lon": 6.706357430188679,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_016",
+      "primary_street": "Leostraße",
+      "lat": 51.210342041379306,
+      "lon": 6.673051462068966,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_017",
+      "primary_street": "Römerstraße",
+      "lat": 51.213475591566265,
+      "lon": 6.676824944578313,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_018",
+      "primary_street": "Weißenberger Weg",
+      "lat": 51.212466915151516,
+      "lon": 6.676794057575758,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_019",
+      "primary_street": "Weißenberger Weg",
+      "lat": 51.21183404342106,
+      "lon": 6.677413027631579,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_020",
+      "primary_street": "Fesserstraße",
+      "lat": 51.21124135333333,
+      "lon": 6.677994193333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_021",
+      "primary_street": "Klever Straße",
+      "lat": 51.200220931578954,
+      "lon": 6.66759392736842,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_022",
+      "primary_street": "Kölner Straße",
+      "lat": 51.18861156,
+      "lon": 6.707997988,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_023",
+      "primary_street": "Kölner Straße",
+      "lat": 51.18420517241379,
+      "lon": 6.720063665517242,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_024",
+      "primary_street": "Gnadentaler Allee",
+      "lat": 51.178556750000006,
+      "lon": 6.713451216666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_025",
+      "primary_street": "Grüner Weg",
+      "lat": 51.18148465932203,
+      "lon": 6.718638408474576,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_026",
+      "primary_street": "Weißdornweg",
+      "lat": 51.1791672,
+      "lon": 6.719009421428572,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_027",
+      "primary_street": "Jasminweg",
+      "lat": 51.18123585263157,
+      "lon": 6.716847107894737,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_028",
+      "primary_street": "Ginsterweg",
+      "lat": 51.18174433225807,
+      "lon": 6.715991941935483,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_029",
+      "primary_street": "Gagelweg",
+      "lat": 51.1826538,
+      "lon": 6.717390032,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_030",
+      "primary_street": "Feltenstraße",
+      "lat": 51.1830431631579,
+      "lon": 6.713618805263158,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_031",
+      "primary_street": "Konradstraße",
+      "lat": 51.183238608108105,
+      "lon": 6.717285737837838,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_032",
+      "primary_street": "Koenenstraße",
+      "lat": 51.184046728571424,
+      "lon": 6.713903828571428,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_033",
+      "primary_street": "Annostraße",
+      "lat": 51.208298906818186,
+      "lon": 6.670220386363636,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_034",
+      "primary_street": "Hüttenstraße",
+      "lat": 51.15835541568627,
+      "lon": 6.69692081372549,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_035",
+      "primary_street": "Kurt-Huber-Straße",
+      "lat": 51.15893616363636,
+      "lon": 6.6947091606060605,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_036",
+      "primary_street": "Further Straße",
+      "lat": 51.20746022857143,
+      "lon": 6.676221475238095,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_037",
+      "primary_street": "Kolpingstraße",
+      "lat": 51.20907878703704,
+      "lon": 6.677165866666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_038",
+      "primary_street": "Adolfstraße",
+      "lat": 51.20631333870968,
+      "lon": 6.674492406451613,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_039",
+      "primary_street": "Karolingerstraße",
+      "lat": 51.20773825714286,
+      "lon": 6.6739418285714285,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_040",
+      "primary_street": "Wacholderweg",
+      "lat": 51.18106382272727,
+      "lon": 6.721185509090909,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_041",
+      "primary_street": "Hainbuchenweg",
+      "lat": 51.18015604642857,
+      "lon": 6.719937632142857,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_042",
+      "primary_street": "Fliederweg",
+      "lat": 51.180120537837844,
+      "lon": 6.721835783783783,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_043",
+      "primary_street": "Sophienstraße",
+      "lat": 51.184376029999996,
+      "lon": 6.71644817,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_044",
+      "primary_street": "Löhrerstraße",
+      "lat": 51.18404475,
+      "lon": 6.715372825,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_045",
+      "primary_street": "Dietrichstraße",
+      "lat": 51.18373996315789,
+      "lon": 6.719236921052632,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_046",
+      "primary_street": "Abteiweg",
+      "lat": 51.17583701363637,
+      "lon": 6.715479477272726,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_047",
+      "primary_street": "Lothringerstraße",
+      "lat": 51.20826544230769,
+      "lon": 6.665385242307693,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_048",
+      "primary_street": "Wingenderstraße",
+      "lat": 51.21049175454545,
+      "lon": 6.682885531818181,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_049",
+      "primary_street": "Peter-Loer-Straße",
+      "lat": 51.209306795833335,
+      "lon": 6.668586475000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_050",
+      "primary_street": "Freiheitstraße",
+      "lat": 51.208396864516125,
+      "lon": 6.668153441935484,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_051",
+      "primary_street": "Schlesienstraße",
+      "lat": 51.21298425714286,
+      "lon": 6.664687142857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_052",
+      "primary_street": "Pommernstraße",
+      "lat": 51.213178752380955,
+      "lon": 6.6631848047619044,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_053",
+      "primary_street": "Schabernackstraße",
+      "lat": 51.21179305094339,
+      "lon": 6.663078324528302,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_054",
+      "primary_street": "Am Kivitzbusch",
+      "lat": 51.2121047,
+      "lon": 6.669506557142857,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_055",
+      "primary_street": "Plankstraße",
+      "lat": 51.205385671875,
+      "lon": 6.671852853125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_056",
+      "primary_street": "Jostenallee",
+      "lat": 51.210627599999995,
+      "lon": 6.665243923076924,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_057",
+      "primary_street": "Nordparkweg",
+      "lat": 51.21550839500001,
+      "lon": 6.665979665,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_058",
+      "primary_street": "Nibelungenstraße",
+      "lat": 51.21739669791666,
+      "lon": 6.66581684375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_059",
+      "primary_street": "Gladbacher Straße",
+      "lat": 51.22220366896552,
+      "lon": 6.672904675862069,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_060",
+      "primary_street": "Auf'm Kamp",
+      "lat": 51.21866344722222,
+      "lon": 6.669130541666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_061",
+      "primary_street": "Am Weyerskamp",
+      "lat": 51.217597833333336,
+      "lon": 6.667641866666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_062",
+      "primary_street": "Pfarrer-Klinker-Straße",
+      "lat": 51.219063757142855,
+      "lon": 6.6678460500000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_063",
+      "primary_street": "Nibelungenstraße",
+      "lat": 51.21682718888889,
+      "lon": 6.665742822222223,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_064",
+      "primary_street": "Schirmerstraße",
+      "lat": 51.2127511,
+      "lon": 6.664004875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_065",
+      "primary_street": "Am Kotthauserweg",
+      "lat": 51.216921064285714,
+      "lon": 6.6775705625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_066",
+      "primary_street": "Am Kotthauserweg",
+      "lat": 51.216138791304346,
+      "lon": 6.678483221739131,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_067",
+      "primary_street": "Broichstraße",
+      "lat": 51.20948371764706,
+      "lon": 6.662837458823529,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_068",
+      "primary_street": "Steinhausstraße",
+      "lat": 51.2049662971831,
+      "lon": 6.668536215492958,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_069",
+      "primary_street": "Gladbacher Straße",
+      "lat": 51.221497942372885,
+      "lon": 6.671782615254237,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_070",
+      "primary_street": "Leni-Wollenhaupt-Straße",
+      "lat": 51.220862876470584,
+      "lon": 6.6757851911764705,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_071",
+      "primary_street": "Vogelsangstraße",
+      "lat": 51.21989093055556,
+      "lon": 6.675366941666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_072",
+      "primary_street": "Hildegundisstraße",
+      "lat": 51.21994134375,
+      "lon": 6.6736632,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_073",
+      "primary_street": "Im Hexfeld",
+      "lat": 51.220420966666666,
+      "lon": 6.6731475,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_074",
+      "primary_street": "Venloer Straße",
+      "lat": 51.21422922839506,
+      "lon": 6.66553377654321,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_075",
+      "primary_street": "Wilhelmstraße",
+      "lat": 51.212914971428575,
+      "lon": 6.668621085714285,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_076",
+      "primary_street": "Brandenburgstraße",
+      "lat": 51.2132449375,
+      "lon": 6.6624225875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_077",
+      "primary_street": "Geulenstraße",
+      "lat": 51.21339978153846,
+      "lon": 6.661812286153846,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_078",
+      "primary_street": "Am Hasenberg",
+      "lat": 51.21487414666667,
+      "lon": 6.661315186666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_079",
+      "primary_street": "Josefstraße",
+      "lat": 51.20772734545455,
+      "lon": 6.683124963636363,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_080",
+      "primary_street": "Ripuarierstraße",
+      "lat": 51.208501885714284,
+      "lon": 6.6823612,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_081",
+      "primary_street": "Am Pappelwäldchen",
+      "lat": 51.220468229870136,
+      "lon": 6.666750854545454,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_082",
+      "primary_street": "Brabanter Straße",
+      "lat": 51.2214458,
+      "lon": 6.670765433333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_083",
+      "primary_street": "Burgunderstraße",
+      "lat": 51.206655028947374,
+      "lon": 6.673671626315789,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_084",
+      "primary_street": "Gotenstraße",
+      "lat": 51.210080276666666,
+      "lon": 6.67742842,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_085",
+      "primary_street": "Alemannenstraße",
+      "lat": 51.20618917894737,
+      "lon": 6.675554615789474,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_086",
+      "primary_street": "Furtherhofstraße",
+      "lat": 51.22139885294117,
+      "lon": 6.662865901960783,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_087",
+      "primary_street": "Daimlerstraße",
+      "lat": 51.22515659457365,
+      "lon": 6.6640049155038765,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_088",
+      "primary_street": "Gepaplatz",
+      "lat": 51.183725,
+      "lon": 6.7179969333333345,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_089",
+      "primary_street": "An der Obererft",
+      "lat": 51.18798591372549,
+      "lon": 6.697816307843137,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_090",
+      "primary_street": "Schillerstraße",
+      "lat": 51.18797428095238,
+      "lon": 6.69672355,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_091",
+      "primary_street": "Düsseldorfer Straße",
+      "lat": 51.216541384,
+      "lon": 6.6943678,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_092",
+      "primary_street": "Gneisenaustraße",
+      "lat": 51.21611136363636,
+      "lon": 6.693809000000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_093",
+      "primary_street": "Schlehenweg",
+      "lat": 51.18213970714286,
+      "lon": 6.722786796428571,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_094",
+      "primary_street": "Hagebuttenweg",
+      "lat": 51.18217026666667,
+      "lon": 6.724701688888889,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_095",
+      "primary_street": "Magnolienweg",
+      "lat": 51.180799702777776,
+      "lon": 6.724328463888889,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_096",
+      "primary_street": "Nixhütter Weg",
+      "lat": 51.178331011428575,
+      "lon": 6.721942439999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_097",
+      "primary_street": "Nordkanalallee",
+      "lat": 51.19140540227273,
+      "lon": 6.696366263636364,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_098",
+      "primary_street": "Von-Kempis-Straße",
+      "lat": 51.17972483846154,
+      "lon": 6.738747284615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_099",
+      "primary_street": "Rotdornweg",
+      "lat": 51.18242170227273,
+      "lon": 6.721424222727273,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_100",
+      "primary_street": "Engelbertstraße",
+      "lat": 51.20633920833333,
+      "lon": 6.67118115,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_101",
+      "primary_street": "Kaarster Straße",
+      "lat": 51.222326253846155,
+      "lon": 6.65465261048951,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_102",
+      "primary_street": "Keltenstraße",
+      "lat": 51.20769612857143,
+      "lon": 6.677432538095238,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_103",
+      "primary_street": "Kettelerstraße",
+      "lat": 51.20912830416666,
+      "lon": 6.6786279875000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_104",
+      "primary_street": "Hesemannstraße",
+      "lat": 51.19809194705882,
+      "lon": 6.684461417647059,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_105",
+      "primary_street": "Gielenstraße",
+      "lat": 51.20039909333333,
+      "lon": 6.6814132866666665,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_106",
+      "primary_street": "Marienstraße",
+      "lat": 51.20400737204301,
+      "lon": 6.67569864516129,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_107",
+      "primary_street": "Am Lindenplatz",
+      "lat": 51.159227933333334,
+      "lon": 6.692668983333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_108",
+      "primary_street": "Gillbachstraße",
+      "lat": 51.15574034545455,
+      "lon": 6.6900527,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_109",
+      "primary_street": "Bauerbahn",
+      "lat": 51.19598969375,
+      "lon": 6.64317924375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_110",
+      "primary_street": "Preußenstraße",
+      "lat": 51.189917055555554,
+      "lon": 6.672571413333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_111",
+      "primary_street": "Helmholtzstraße",
+      "lat": 51.18718826333334,
+      "lon": 6.67437024,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_112",
+      "primary_street": "Grefrather Weg",
+      "lat": 51.18625264375,
+      "lon": 6.67441125625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_113",
+      "primary_street": "Im Jagdfeld",
+      "lat": 51.1897967125,
+      "lon": 6.677050175,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_114",
+      "primary_street": "Im Jagdfeld",
+      "lat": 51.18838075357143,
+      "lon": 6.674468492857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_115",
+      "primary_street": "In der Huppertslaach",
+      "lat": 51.19025285357143,
+      "lon": 6.678175464285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_116",
+      "primary_street": "Virchowstraße",
+      "lat": 51.189573806666665,
+      "lon": 6.67494984,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_117",
+      "primary_street": "Pollenderstraße",
+      "lat": 51.1900847,
+      "lon": 6.67608326,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_118",
+      "primary_street": "Lützowstraße",
+      "lat": 51.18955485,
+      "lon": 6.678550660000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_119",
+      "primary_street": "Lützowstraße",
+      "lat": 51.19028841,
+      "lon": 6.679358430000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_120",
+      "primary_street": "Preußenstraße",
+      "lat": 51.191203075,
+      "lon": 6.67827131875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_121",
+      "primary_street": "Jülicher Landstraße",
+      "lat": 51.186405674074074,
+      "lon": 6.6817755,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_122",
+      "primary_street": "Holzbüttgener Straße",
+      "lat": 51.20863566666667,
+      "lon": 6.6508602,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_123",
+      "primary_street": "Auf der Heide",
+      "lat": 51.208785725,
+      "lon": 6.653618875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_124",
+      "primary_street": "Am Stadtwald",
+      "lat": 51.21207613333333,
+      "lon": 6.653682333333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_125",
+      "primary_street": "Ehrlichstraße",
+      "lat": 51.18919395217391,
+      "lon": 6.673215452173913,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_126",
+      "primary_street": "Hermannsplatz",
+      "lat": 51.19966345454546,
+      "lon": 6.682026081818182,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_127",
+      "primary_street": "Büttger Straße",
+      "lat": 51.19898711836735,
+      "lon": 6.684881759183674,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_128",
+      "primary_street": "Stephanstraße",
+      "lat": 51.2009769,
+      "lon": 6.6781526,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_129",
+      "primary_street": "Stauffenbergstraße",
+      "lat": 51.19810523636364,
+      "lon": 6.678265245454545,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_130",
+      "primary_street": "Rheydter Straße",
+      "lat": 51.19823715126051,
+      "lon": 6.67172470420168,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_131",
+      "primary_street": "Bismarckstraße",
+      "lat": 51.19724651470589,
+      "lon": 6.678105117647059,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_132",
+      "primary_street": "Gutenbergstraße",
+      "lat": 51.199898014285715,
+      "lon": 6.678433471428571,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_133",
+      "primary_street": "Augustastraße",
+      "lat": 51.19960720833333,
+      "lon": 6.674644175,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_134",
+      "primary_street": "Breite Straße",
+      "lat": 51.19663486296296,
+      "lon": 6.687021514814814,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_135",
+      "primary_street": "Jülicher Landstraße",
+      "lat": 51.18677465454545,
+      "lon": 6.682864345454546,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_136",
+      "primary_street": "Behringstraße",
+      "lat": 51.18781818,
+      "lon": 6.67245234,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_137",
+      "primary_street": "Konrad-Adenauer-Ring",
+      "lat": 51.19023699534884,
+      "lon": 6.669857651162791,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_138",
+      "primary_street": "Simrockstraße",
+      "lat": 51.191156875,
+      "lon": 6.694676375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_139",
+      "primary_street": "Weingartstraße",
+      "lat": 51.19050636,
+      "lon": 6.69351812,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_140",
+      "primary_street": "Jülicher Straße",
+      "lat": 51.190674692307695,
+      "lon": 6.689171401923077,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_141",
+      "primary_street": "Sternstraße",
+      "lat": 51.197051162068966,
+      "lon": 6.682561668965517,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_142",
+      "primary_street": "Drususallee",
+      "lat": 51.19647529863013,
+      "lon": 6.685503347945206,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_143",
+      "primary_street": "Maastrichter Straße",
+      "lat": 51.19747793333334,
+      "lon": 6.662249916666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_144",
+      "primary_street": "Roermonder Weg",
+      "lat": 51.19703832608696,
+      "lon": 6.66311012173913,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_145",
+      "primary_street": "Nimwegener Straße",
+      "lat": 51.198318336363634,
+      "lon": 6.663417454545455,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_146",
+      "primary_street": "Sankt-Anna-Straße",
+      "lat": 51.1977194923077,
+      "lon": 6.667196234615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_147",
+      "primary_street": "Sternstraße",
+      "lat": 51.1954628,
+      "lon": 6.68542255882353,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_148",
+      "primary_street": "Kanalstraße",
+      "lat": 51.1958392,
+      "lon": 6.687388984375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_149",
+      "primary_street": "Kaiser-Friedrich-Straße",
+      "lat": 51.1947591875,
+      "lon": 6.6846562375000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_150",
+      "primary_street": "Kaiser-Friedrich-Straße",
+      "lat": 51.194394526530616,
+      "lon": 6.6863675204081625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_151",
+      "primary_street": "Krurstraße",
+      "lat": 51.19635070454546,
+      "lon": 6.6815794,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_152",
+      "primary_street": "Selfkantstraße",
+      "lat": 51.198982754545455,
+      "lon": 6.670727259090909,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_153",
+      "primary_street": "Heinsberger Straße",
+      "lat": 51.198930739999994,
+      "lon": 6.671939500000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_154",
+      "primary_street": "Quaxpfad",
+      "lat": 51.19852839,
+      "lon": 6.66960364,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_155",
+      "primary_street": "Jahnstraße",
+      "lat": 51.19482830277778,
+      "lon": 6.6771137000000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_156",
+      "primary_street": "Glehner Weg",
+      "lat": 51.19661632857142,
+      "lon": 6.670961064285715,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_157",
+      "primary_street": "Einsteinstraße",
+      "lat": 51.18365956666667,
+      "lon": 6.673711133333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_158",
+      "primary_street": "Felkestraße",
+      "lat": 51.18685003,
+      "lon": 6.67054239,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_159",
+      "primary_street": "Am Krausenbaum",
+      "lat": 51.18453966428571,
+      "lon": 6.686725892857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_160",
+      "primary_street": "Mendelstraße",
+      "lat": 51.187430150000004,
+      "lon": 6.669638471428572,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_161",
+      "primary_street": "Virchowstraße",
+      "lat": 51.18764074375,
+      "lon": 6.6754259625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_162",
+      "primary_street": "Gaußstraße",
+      "lat": 51.185087577272725,
+      "lon": 6.675000686363637,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_163",
+      "primary_street": "Kneippstraße",
+      "lat": 51.18823995555555,
+      "lon": 6.669191761111112,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_164",
+      "primary_street": "Deutsche Straße",
+      "lat": 51.19275351428571,
+      "lon": 6.681748321428572,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_165",
+      "primary_street": "Hahnenweg",
+      "lat": 51.16066249375,
+      "lon": 6.694036428125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_166",
+      "primary_street": "Fichtestraße",
+      "lat": 51.19279418205128,
+      "lon": 6.67710587948718,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_167",
+      "primary_street": "Olympiastraße",
+      "lat": 51.19226515263158,
+      "lon": 6.678033642105263,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_168",
+      "primary_street": "Holzheimer Weg",
+      "lat": 51.181203104878044,
+      "lon": 6.685318241463414,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_169",
+      "primary_street": "Am Baldhof",
+      "lat": 51.17984586538462,
+      "lon": 6.685743688461538,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_170",
+      "primary_street": "Steubenstraße",
+      "lat": 51.180931183333335,
+      "lon": 6.686753800000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_171",
+      "primary_street": "Am Baldhof",
+      "lat": 51.18159453333333,
+      "lon": 6.686491922222221,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_172",
+      "primary_street": "Bergheimer Straße",
+      "lat": 51.18822700114942,
+      "lon": 6.690261191954023,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_173",
+      "primary_street": "Am Strickmorgen",
+      "lat": 51.1829501,
+      "lon": 6.6872497,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_174",
+      "primary_street": "Am Strickmorgen",
+      "lat": 51.18325123333333,
+      "lon": 6.687442816666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_175",
+      "primary_street": "Holzheimer Weg",
+      "lat": 51.18507645,
+      "lon": 6.688115025,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_176",
+      "primary_street": "Alte Aachener Straße",
+      "lat": 51.188556983999995,
+      "lon": 6.6821767880000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_177",
+      "primary_street": "Eintrachtstraße",
+      "lat": 51.20246770192308,
+      "lon": 6.671681040384616,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_178",
+      "primary_street": "Karl-Schorn-Straße",
+      "lat": 51.2105171875,
+      "lon": 6.660452221875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_179",
+      "primary_street": "Sudetenstraße",
+      "lat": 51.21133012307693,
+      "lon": 6.661271738461538,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_180",
+      "primary_street": "Hein-Minkenberg-Straße",
+      "lat": 51.21014009411765,
+      "lon": 6.661409511764706,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_181",
+      "primary_street": "Pomona",
+      "lat": 51.17920648055556,
+      "lon": 6.691698966666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_182",
+      "primary_street": "Pomona",
+      "lat": 51.17934877407407,
+      "lon": 6.691444263888889,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_183",
+      "primary_street": "Erprather Straße",
+      "lat": 51.1613655,
+      "lon": 6.690189694117647,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_184",
+      "primary_street": "Kreitzer Straße",
+      "lat": 51.16748404545455,
+      "lon": 6.65964540909091,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_185",
+      "primary_street": "Schellbergstraße",
+      "lat": 51.16612762,
+      "lon": 6.73511436,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_186",
+      "primary_street": "Bedburger Straße",
+      "lat": 51.16917753114754,
+      "lon": 6.729223208196721,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_187",
+      "primary_street": "Harffer Straße",
+      "lat": 51.16897460408163,
+      "lon": 6.726569465306122,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_188",
+      "primary_street": "Am Derikumer Hof",
+      "lat": 51.1668662,
+      "lon": 6.7310088,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_189",
+      "primary_street": "Euskirchener Straße",
+      "lat": 51.16498935172414,
+      "lon": 6.726385282758621,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_190",
+      "primary_street": "Lechenicher Straße",
+      "lat": 51.16707301538462,
+      "lon": 6.727510230769231,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_191",
+      "primary_street": "Blankenheimer Straße",
+      "lat": 51.16495424166667,
+      "lon": 6.728661349999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_192",
+      "primary_street": "Vereinsstraße",
+      "lat": 51.16298075084745,
+      "lon": 6.670262479661017,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_193",
+      "primary_street": "Maximilianstraße",
+      "lat": 51.164686106666665,
+      "lon": 6.668146453333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_194",
+      "primary_street": "Reuschenberger Straße",
+      "lat": 51.16033362666667,
+      "lon": 6.67388672,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_195",
+      "primary_street": "Bockholtstraße",
+      "lat": 51.222998088095245,
+      "lon": 6.69575266904762,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_196",
+      "primary_street": "Gladbacher Straße",
+      "lat": 51.226205140000005,
+      "lon": 6.68428102,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_197",
+      "primary_street": "Tiberiusstraße",
+      "lat": 51.18319557894737,
+      "lon": 6.727278752631579,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_198",
+      "primary_street": "Blücherstraße",
+      "lat": 51.214656260000005,
+      "lon": 6.69252594,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_199",
+      "primary_street": "Haselweg",
+      "lat": 51.177506541666666,
+      "lon": 6.719028708333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_200",
+      "primary_street": "Kasterstraße",
+      "lat": 51.18016173749999,
+      "lon": 6.7371767375000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_201",
+      "primary_street": "Rheinuferstraße",
+      "lat": 51.180094530000005,
+      "lon": 6.741134130000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_202",
+      "primary_street": "Am Römerlager",
+      "lat": 51.18265277142857,
+      "lon": 6.733299923809524,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_203",
+      "primary_street": "Von-Holte-Straße",
+      "lat": 51.17902805,
+      "lon": 6.7387345750000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_204",
+      "primary_street": "Grimlinghauserbrücke",
+      "lat": 51.182136375,
+      "lon": 6.728483375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_205",
+      "primary_street": "Bergheimer Straße",
+      "lat": 51.16792012083334,
+      "lon": 6.684997220833334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_206",
+      "primary_street": "Cyriakusstraße",
+      "lat": 51.180000166666666,
+      "lon": 6.739784066666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_207",
+      "primary_street": "Am Röttgen",
+      "lat": 51.1783896,
+      "lon": 6.751882775,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_208",
+      "primary_street": "Werresweg",
+      "lat": 51.174095225,
+      "lon": 6.7462428125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_209",
+      "primary_street": "Wahlenstraße",
+      "lat": 51.178116966666664,
+      "lon": 6.747105866666668,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_210",
+      "primary_street": "Quinheimer Straße",
+      "lat": 51.17641332857143,
+      "lon": 6.745638971428571,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_211",
+      "primary_street": "Hüsenstraße",
+      "lat": 51.1782749,
+      "lon": 6.7415533,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_212",
+      "primary_street": "Dunantstraße",
+      "lat": 51.18597608275862,
+      "lon": 6.719082068965518,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_213",
+      "primary_street": "Hochstraße",
+      "lat": 51.19440602857143,
+      "lon": 6.688703938095237,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_214",
+      "primary_street": "Grünstraße",
+      "lat": 51.19493589375,
+      "lon": 6.68791428125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_215",
+      "primary_street": "Niederrheinstraße",
+      "lat": 51.17853253461538,
+      "lon": 6.6312800076923075,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_216",
+      "primary_street": "Lechstraße",
+      "lat": 51.1634593,
+      "lon": 6.734633820000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_217",
+      "primary_street": "Am Goldberg",
+      "lat": 51.16442640980392,
+      "lon": 6.736733445098039,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_218",
+      "primary_street": "Am Sandhof",
+      "lat": 51.16445203043478,
+      "lon": 6.733741352173913,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_219",
+      "primary_street": "Itterstraße",
+      "lat": 51.164211935714285,
+      "lon": 6.735409017857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_220",
+      "primary_street": "Weserstraße",
+      "lat": 51.161863422222225,
+      "lon": 6.739757155555555,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_221",
+      "primary_street": "An der Norf",
+      "lat": 51.165022789655175,
+      "lon": 6.732694093103448,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_222",
+      "primary_street": "Lippestraße",
+      "lat": 51.16177177631579,
+      "lon": 6.732926560526316,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_223",
+      "primary_street": "Friedenstraße",
+      "lat": 51.2086329,
+      "lon": 6.67193105,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_224",
+      "primary_street": "Ubierstraße",
+      "lat": 51.204590229411764,
+      "lon": 6.671234217647059,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_225",
+      "primary_street": "Lanzerather Dorfstraße",
+      "lat": 51.1793909125,
+      "lon": 6.647653425,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_226",
+      "primary_street": "Lanzerather Feldstraße",
+      "lat": 51.180694085714286,
+      "lon": 6.645723714285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_227",
+      "primary_street": "Mecklenburgstraße",
+      "lat": 51.21495986666667,
+      "lon": 6.661638083333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_228",
+      "primary_street": "Rampenstraße",
+      "lat": 51.16481708709677,
+      "lon": 6.665711629032257,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_229",
+      "primary_street": "Weststraße",
+      "lat": 51.16258907391304,
+      "lon": 6.6340431869565215,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_230",
+      "primary_street": "Buscherhofstraße",
+      "lat": 51.162231633333334,
+      "lon": 6.635329344444445,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_231",
+      "primary_street": "Norfer Straße",
+      "lat": 51.1747829,
+      "lon": 6.7389671333333325,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_232",
+      "primary_street": "Friedrichstraße",
+      "lat": 51.1944130875,
+      "lon": 6.69270653125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_233",
+      "primary_street": "Clarenbachstraße",
+      "lat": 51.22198063235294,
+      "lon": 6.663464505882352,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_234",
+      "primary_street": "Jaegersstraße",
+      "lat": 51.202793,
+      "lon": 6.67614675,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_235",
+      "primary_street": "Buschstraße",
+      "lat": 51.20266996153846,
+      "lon": 6.67431673076923,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_236",
+      "primary_street": "Riedstraße",
+      "lat": 51.203163059999994,
+      "lon": 6.6752414799999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_237",
+      "primary_street": "Eggenhofstraße",
+      "lat": 51.22819692857143,
+      "lon": 6.6489707000000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_238",
+      "primary_street": "Viktoriastraße",
+      "lat": 51.19704860833334,
+      "lon": 6.676746583333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_239",
+      "primary_street": "Brücke",
+      "lat": 51.22644587419355,
+      "lon": 6.6560543596774195,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_240",
+      "primary_street": "Josef-Selders-Straße",
+      "lat": 51.229507178947365,
+      "lon": 6.683568831578947,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_241",
+      "primary_street": "Bataverstraße",
+      "lat": 51.2276117375,
+      "lon": 6.6833493625000004,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_242",
+      "primary_street": "Tückingstraße",
+      "lat": 51.20025695,
+      "lon": 6.68478061,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_243",
+      "primary_street": "Gartenstraße",
+      "lat": 51.199396441666664,
+      "lon": 6.684568666666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_244",
+      "primary_street": "Schwannstraße",
+      "lat": 51.20010022142857,
+      "lon": 6.683905457142857,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_245",
+      "primary_street": "Wolberostraße",
+      "lat": 51.20551918333334,
+      "lon": 6.677146166666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_246",
+      "primary_street": "Johannes-Geller-Straße",
+      "lat": 51.20422889,
+      "lon": 6.67730648,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_247",
+      "primary_street": "Kurze Straße",
+      "lat": 51.20303943846154,
+      "lon": 6.677990765384616,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_248",
+      "primary_street": "Katharina-Braeckeler-Straße",
+      "lat": 51.20372266875,
+      "lon": 6.6794892875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_249",
+      "primary_street": "Schorlemerstraße",
+      "lat": 51.192043187500005,
+      "lon": 6.683908125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_250",
+      "primary_street": "Dreikönigenstraße",
+      "lat": 51.189261200000004,
+      "lon": 6.689332133333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_251",
+      "primary_street": "Kirchfeldweg",
+      "lat": 51.17223985,
+      "lon": 6.6314881,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_252",
+      "primary_street": "Dycker Straße",
+      "lat": 51.17440820909091,
+      "lon": 6.631806590909091,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_253",
+      "primary_street": "Lüttenglehner Straße",
+      "lat": 51.17115081153846,
+      "lon": 6.632651180769231,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_254",
+      "primary_street": "Salmstraße",
+      "lat": 51.17291098571428,
+      "lon": 6.631637271428572,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_255",
+      "primary_street": "Schwalbenweg",
+      "lat": 51.17207832857143,
+      "lon": 6.636930650000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_256",
+      "primary_street": "Wachtelstraße",
+      "lat": 51.1751716,
+      "lon": 6.6368830333333335,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_257",
+      "primary_street": "Bergheimer Straße",
+      "lat": 51.18746486428571,
+      "lon": 6.6899518928571435,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_258",
+      "primary_street": "Mergelsweg",
+      "lat": 51.17002665166667,
+      "lon": 6.6326923550000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_259",
+      "primary_street": "Vockrather Straße",
+      "lat": 51.16920946229508,
+      "lon": 6.632199442622951,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_260",
+      "primary_street": "Trockenpützstraße",
+      "lat": 51.169533078125,
+      "lon": 6.63451138125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_261",
+      "primary_street": "Rottelsgasse",
+      "lat": 51.195443225,
+      "lon": 6.6958202,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_262",
+      "primary_street": "Eichendorffstraße",
+      "lat": 51.18601067142857,
+      "lon": 6.693480354761905,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_263",
+      "primary_street": "Böcklerstraße",
+      "lat": 51.2243733,
+      "lon": 6.66603578,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_264",
+      "primary_street": "Klara-Fey-Straße",
+      "lat": 51.19747916666666,
+      "lon": 6.671511925,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_265",
+      "primary_street": "Kamillianerstraße",
+      "lat": 51.196934139130434,
+      "lon": 6.6695827478260865,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_266",
+      "primary_street": "Josefstraße",
+      "lat": 51.2067915125,
+      "lon": 6.680051533333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_267",
+      "primary_street": "Körnerstraße",
+      "lat": 51.186881920588235,
+      "lon": 6.693025747058823,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_268",
+      "primary_street": "Saarstraße",
+      "lat": 51.18756262,
+      "lon": 6.6826223,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_269",
+      "primary_street": "Eichenallee",
+      "lat": 51.151022853125,
+      "lon": 6.729304753125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_270",
+      "primary_street": "Auf'm Kamp",
+      "lat": 51.2191727,
+      "lon": 6.67063235,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_271",
+      "primary_street": "Röntgenstraße",
+      "lat": 51.20009803888889,
+      "lon": 6.676625866666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_272",
+      "primary_street": "Zeppelinstraße",
+      "lat": 51.199948437931035,
+      "lon": 6.677592506896551,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_273",
+      "primary_street": "Florastraße",
+      "lat": 51.194111414285715,
+      "lon": 6.6901689285714285,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_274",
+      "primary_street": "Liedmannstraße",
+      "lat": 51.195365978260874,
+      "lon": 6.690971717391304,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_275",
+      "primary_street": "Heerdter Straße",
+      "lat": 51.21601666923077,
+      "lon": 6.693210096153846,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_276",
+      "primary_street": "Robert-Koch-Straße",
+      "lat": 51.1993836483871,
+      "lon": 6.675324461290323,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_277",
+      "primary_street": "Parkstraße",
+      "lat": 51.19242766470588,
+      "lon": 6.690329047058824,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_278",
+      "primary_street": "Brücke",
+      "lat": 51.225027250000004,
+      "lon": 6.655892966666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_279",
+      "primary_street": "Mühlenbachstraße",
+      "lat": 51.22742950909091,
+      "lon": 6.6589832340909085,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_280",
+      "primary_street": "Mühlenbachstraße",
+      "lat": 51.22593185714286,
+      "lon": 6.658458011428571,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_281",
+      "primary_street": "Zum Zörr",
+      "lat": 51.2270933,
+      "lon": 6.6584122875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_282",
+      "primary_street": "Viersener Straße",
+      "lat": 51.21718849848485,
+      "lon": 6.65234166060606,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_283",
+      "primary_street": "Am Katzenberg",
+      "lat": 51.218801625,
+      "lon": 6.671579225,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_284",
+      "primary_street": "Zum Zörr",
+      "lat": 51.2268477,
+      "lon": 6.65750905,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_285",
+      "primary_street": "Benzstraße",
+      "lat": 51.226618035294116,
+      "lon": 6.6541404235294115,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_286",
+      "primary_street": "Marienburger Straße",
+      "lat": 51.21973565135135,
+      "lon": 6.654794772972973,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_287",
+      "primary_street": "Lauvenburger Straße",
+      "lat": 51.221083766666666,
+      "lon": 6.654918638888889,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_288",
+      "primary_street": "Schulstraße",
+      "lat": 51.1992444875,
+      "lon": 6.685992825,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_289",
+      "primary_street": "Erftstraße",
+      "lat": 51.19744032777778,
+      "lon": 6.689492733333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_290",
+      "primary_street": "Kapitelstraße",
+      "lat": 51.20082175294118,
+      "lon": 6.682729229411764,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_291",
+      "primary_street": "Buschhausen",
+      "lat": 51.21495653809524,
+      "lon": 6.657521204761904,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_292",
+      "primary_street": "Roonstraße",
+      "lat": 51.197773139999995,
+      "lon": 6.67652294,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_293",
+      "primary_street": "Moltkestraße",
+      "lat": 51.19699263076923,
+      "lon": 6.677509484615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_294",
+      "primary_street": "Herbert-Karrenberg-Straße",
+      "lat": 51.19229379090909,
+      "lon": 6.6866761,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_295",
+      "primary_street": "Markt",
+      "lat": 51.19824676666667,
+      "lon": 6.6947458666666675,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_296",
+      "primary_street": "Christian-Schaurte-Straße",
+      "lat": 51.220463970666664,
+      "lon": 6.653683292,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_297",
+      "primary_street": "Rheintorstraße",
+      "lat": 51.203364028571436,
+      "lon": 6.691043628571428,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_298",
+      "primary_street": "Königstraße",
+      "lat": 51.20311448571429,
+      "lon": 6.690142857142858,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_299",
+      "primary_street": "Hafenstraße",
+      "lat": 51.201834030769234,
+      "lon": 6.688795407692307,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_300",
+      "primary_street": "Salzstraße",
+      "lat": 51.20242008571428,
+      "lon": 6.689758599999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_301",
+      "primary_street": "Feldstraße",
+      "lat": 51.22115343442623,
+      "lon": 6.652728750819672,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_302",
+      "primary_street": "Saarbrückener Straße",
+      "lat": 51.21941302692308,
+      "lon": 6.653253561538462,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_303",
+      "primary_street": "Flurstraße",
+      "lat": 51.22004358103449,
+      "lon": 6.650655996551724,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_304",
+      "primary_street": "Kirchstraße",
+      "lat": 51.19838922,
+      "lon": 6.686024059999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_305",
+      "primary_street": "Hamtorwall",
+      "lat": 51.198093416666666,
+      "lon": 6.689132400000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_306",
+      "primary_street": "Am Marianum",
+      "lat": 51.1920761076923,
+      "lon": 6.674472846153846,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_307",
+      "primary_street": "Wernher-von-Braun-Straße",
+      "lat": 51.22577124285714,
+      "lon": 6.655594242857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_308",
+      "primary_street": "Kaarster Straße",
+      "lat": 51.225629979999994,
+      "lon": 6.652233440000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_309",
+      "primary_street": "Boschstraße",
+      "lat": 51.22598400434782,
+      "lon": 6.654580673913043,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_310",
+      "primary_street": "Schmolzstraße",
+      "lat": 51.22351376666666,
+      "lon": 6.66109815,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_311",
+      "primary_street": "Bickenbachstraße",
+      "lat": 51.22250884153846,
+      "lon": 6.660737444615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_312",
+      "primary_street": "Böhmerstraße",
+      "lat": 51.2242514,
+      "lon": 6.6606248,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_313",
+      "primary_street": "Am Flachshof",
+      "lat": 51.22157671666667,
+      "lon": 6.659930783333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_314",
+      "primary_street": "Oberstraße",
+      "lat": 51.196141940000004,
+      "lon": 6.6957895800000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_315",
+      "primary_street": "Nordstraße",
+      "lat": 51.162635419354835,
+      "lon": 6.668315203225807,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_316",
+      "primary_street": "Bleichstraße",
+      "lat": 51.20270411578947,
+      "lon": 6.687497452631579,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_317",
+      "primary_street": "Josef-Kuchen-Straße",
+      "lat": 51.21982833333334,
+      "lon": 6.658892316666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_318",
+      "primary_street": "Clarenbachstraße",
+      "lat": 51.22151590625,
+      "lon": 6.663725075,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_319",
+      "primary_street": "Porschestraße",
+      "lat": 51.22377934166667,
+      "lon": 6.6594188999999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_320",
+      "primary_street": "Am Jröne Meerke",
+      "lat": 51.21708001111111,
+      "lon": 6.659248066666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_321",
+      "primary_street": "Augustinusstraße",
+      "lat": 51.19306234,
+      "lon": 6.70034766,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_322",
+      "primary_street": "Niersstraße",
+      "lat": 51.163419166666664,
+      "lon": 6.740439508333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_323",
+      "primary_street": "Emsstraße",
+      "lat": 51.16280549333334,
+      "lon": 6.741381942222222,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_324",
+      "primary_street": "Stahlstraße",
+      "lat": 51.211571649999996,
+      "lon": 6.66529496,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_325",
+      "primary_street": "Schillerstraße",
+      "lat": 51.18869544418605,
+      "lon": 6.692652860465116,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_326",
+      "primary_street": "Karl-Arnold-Straße",
+      "lat": 51.209740325,
+      "lon": 6.683937075,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_327",
+      "primary_street": "Alfred-Delp-Straße",
+      "lat": 51.160834099999995,
+      "lon": 6.696606281818182,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_328",
+      "primary_street": "Kanutenstraße",
+      "lat": 51.157480292857144,
+      "lon": 6.667516964285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_329",
+      "primary_street": "Röckrather Weg",
+      "lat": 51.160817525,
+      "lon": 6.65993735,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_330",
+      "primary_street": "Münchener Straße",
+      "lat": 51.159173404166665,
+      "lon": 6.664644933333332,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_331",
+      "primary_street": "Lövelinger Straße",
+      "lat": 51.16868937058823,
+      "lon": 6.660931582352941,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_332",
+      "primary_street": "Wilhelm-Lehmbruck-Straße",
+      "lat": 51.13499865,
+      "lon": 6.744267428571429,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_333",
+      "primary_street": "Hermannstraße",
+      "lat": 51.19889671428571,
+      "lon": 6.680902142857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_334",
+      "primary_street": "Lortzingstraße",
+      "lat": 51.13722765384615,
+      "lon": 6.745947292307692,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_335",
+      "primary_street": "Altebrücker Straße",
+      "lat": 51.13687613333334,
+      "lon": 6.740771416666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_336",
+      "primary_street": "Friedhofstraße",
+      "lat": 51.1607107,
+      "lon": 6.6635322,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_337",
+      "primary_street": "An der Eiche",
+      "lat": 51.17598626666666,
+      "lon": 6.743383833333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_338",
+      "primary_street": "Volmerswerther Straße",
+      "lat": 51.175596899999995,
+      "lon": 6.750716566666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_339",
+      "primary_street": "Derikumer Weg",
+      "lat": 51.17468375,
+      "lon": 6.7438440625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_340",
+      "primary_street": "Kuhweg",
+      "lat": 51.1719596483871,
+      "lon": 6.7511601064516125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_341",
+      "primary_street": "Am Dormannsbusch",
+      "lat": 51.17430709,
+      "lon": 6.746945504999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_342",
+      "primary_street": "Bahnstraße",
+      "lat": 51.15997371666666,
+      "lon": 6.7304833833333335,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_343",
+      "primary_street": "Sanddornweg",
+      "lat": 51.15037494,
+      "lon": 6.72653734,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_344",
+      "primary_street": "Zedernweg",
+      "lat": 51.150218475,
+      "lon": 6.7264793,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_345",
+      "primary_street": "Uedesheimer Straße",
+      "lat": 51.15637045,
+      "lon": 6.72691175,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_346",
+      "primary_street": "Stormstraße",
+      "lat": 51.1557932,
+      "lon": 6.732049525,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_347",
+      "primary_street": "Südstraße",
+      "lat": 51.15394207142857,
+      "lon": 6.7311420857142865,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_348",
+      "primary_street": "Kleiststraße",
+      "lat": 51.153653633333334,
+      "lon": 6.732160299999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_349",
+      "primary_street": "Manfred-Hausmann-Weg",
+      "lat": 51.152210644444445,
+      "lon": 6.730472177777778,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_350",
+      "primary_street": "Feuerbachweg",
+      "lat": 51.15233876,
+      "lon": 6.73191302,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_351",
+      "primary_street": "Geibelstraße",
+      "lat": 51.15529366,
+      "lon": 6.73238886,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_352",
+      "primary_street": "Nievenheimer Straße",
+      "lat": 51.1556177,
+      "lon": 6.733953966666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_353",
+      "primary_street": "Grillparzerweg",
+      "lat": 51.149607294117644,
+      "lon": 6.734933682352941,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_354",
+      "primary_street": "Rilkestraße",
+      "lat": 51.152677075,
+      "lon": 6.73507635,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_355",
+      "primary_street": "Norfer Kirchstraße",
+      "lat": 51.156523047368424,
+      "lon": 6.718712021052632,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_356",
+      "primary_street": "Stiegergasse",
+      "lat": 51.15565414,
+      "lon": 6.718996526666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_357",
+      "primary_street": "Von-Waldthausen-Straße",
+      "lat": 51.15503985319149,
+      "lon": 6.718114025531915,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_358",
+      "primary_street": "Ulmenallee",
+      "lat": 51.149648598214284,
+      "lon": 6.733599346428571,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_359",
+      "primary_street": "Gerhart-Hauptmann-Weg",
+      "lat": 51.14874185,
+      "lon": 6.73651955625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_360",
+      "primary_street": "Brucknerstraße",
+      "lat": 51.227984325,
+      "lon": 6.6807723,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_361",
+      "primary_street": "Am Strauchbusch",
+      "lat": 51.22783091923077,
+      "lon": 6.6799591,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_362",
+      "primary_street": "Lucas-Bols-Straße",
+      "lat": 51.22643600833334,
+      "lon": 6.681287641666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_363",
+      "primary_street": "Wagnerstraße",
+      "lat": 51.2285266625,
+      "lon": 6.6810041625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_364",
+      "primary_street": "Berghäuschensweg",
+      "lat": 51.185317705882355,
+      "lon": 6.708628870588235,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_365",
+      "primary_street": "Stegerwaldstraße",
+      "lat": 51.22289149583333,
+      "lon": 6.662518550000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_366",
+      "primary_street": "Am Kruchensbusch",
+      "lat": 51.20148634615384,
+      "lon": 6.672161823076923,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_367",
+      "primary_street": "Weidenstraße",
+      "lat": 51.203111925,
+      "lon": 6.6701706000000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_368",
+      "primary_street": "Hebbelstraße",
+      "lat": 51.19106152,
+      "lon": 6.69623902,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_369",
+      "primary_street": "Michaelstraße",
+      "lat": 51.197556199999994,
+      "lon": 6.69069215,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_370",
+      "primary_street": "Hülchrather Straße",
+      "lat": 51.15537479545455,
+      "lon": 6.693083565909091,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_371",
+      "primary_street": "Hoistener Straße",
+      "lat": 51.15504689701493,
+      "lon": 6.6962436985074625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_372",
+      "primary_street": "Brahmsstraße",
+      "lat": 51.2284864125,
+      "lon": 6.6830118249999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_373",
+      "primary_street": "Niederdonker Weg",
+      "lat": 51.228981714999996,
+      "lon": 6.681804275,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_374",
+      "primary_street": "Niederdonker Weg",
+      "lat": 51.2287522,
+      "lon": 6.682089133333332,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_375",
+      "primary_street": "Lisztstraße",
+      "lat": 51.225786694444444,
+      "lon": 6.678595266666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_376",
+      "primary_street": "Schubertstraße",
+      "lat": 51.2275516875,
+      "lon": 6.6788134999999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_377",
+      "primary_street": "Mozartstraße",
+      "lat": 51.226460625,
+      "lon": 6.67895505,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_378",
+      "primary_street": "Sebastianusstraße",
+      "lat": 51.19874513333334,
+      "lon": 6.689423933333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_379",
+      "primary_street": "Lupinenstraße",
+      "lat": 51.17191485,
+      "lon": 6.6891838,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_380",
+      "primary_street": "Veilchenstraße",
+      "lat": 51.17365852857143,
+      "lon": 6.684277842857143,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_381",
+      "primary_street": "Dahlienstraße",
+      "lat": 51.16866666666667,
+      "lon": 6.677021177777778,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_382",
+      "primary_street": "Marienburger Straße",
+      "lat": 51.21819406666666,
+      "lon": 6.654606066666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_383",
+      "primary_street": "Germanicusweg",
+      "lat": 51.18543494285715,
+      "lon": 6.704400985714286,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_384",
+      "primary_street": "Wiedstraße",
+      "lat": 51.186178375,
+      "lon": 6.685024825,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_385",
+      "primary_street": "Im Tal",
+      "lat": 51.2150546,
+      "lon": 6.679302725,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_386",
+      "primary_street": "Sistemichstraße",
+      "lat": 51.177586999999995,
+      "lon": 6.742145016666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_387",
+      "primary_street": "Nixhütter Weg",
+      "lat": 51.171444425,
+      "lon": 6.705349975,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_388",
+      "primary_street": "Ludgerusring",
+      "lat": 51.16650451860465,
+      "lon": 6.659817718604651,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_389",
+      "primary_street": "Bonifatiusweg",
+      "lat": 51.166259258620684,
+      "lon": 6.659318582758621,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_390",
+      "primary_street": "Suitbertusweg",
+      "lat": 51.16654701346154,
+      "lon": 6.658112040384615,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_391",
+      "primary_street": "Hölderlinstraße",
+      "lat": 51.18532610769231,
+      "lon": 6.692004646153847,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_392",
+      "primary_street": "Weberstraße",
+      "lat": 51.18452758536585,
+      "lon": 6.692685607317074,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_393",
+      "primary_street": "Stifterstraße",
+      "lat": 51.1853265,
+      "lon": 6.693314399999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_394",
+      "primary_street": "Lessingplatz",
+      "lat": 51.15213385,
+      "lon": 6.7353234749999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_395",
+      "primary_street": "Nehringskamp",
+      "lat": 51.22222248555556,
+      "lon": 6.651812571111111,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_396",
+      "primary_street": "Mühlenstraße",
+      "lat": 51.19558016470588,
+      "lon": 6.694764152941176,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_397",
+      "primary_street": "Römerplatz",
+      "lat": 51.177068580000004,
+      "lon": 6.7408428,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_398",
+      "primary_street": "Kirchstraße",
+      "lat": 51.198112975,
+      "lon": 6.6864013875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_399",
+      "primary_street": "Tilmannstraße",
+      "lat": 51.190575110000005,
+      "lon": 6.684328793333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_400",
+      "primary_street": "Langenbachstraße",
+      "lat": 51.19006146666666,
+      "lon": 6.685129475,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_401",
+      "primary_street": "Thywissenstraße",
+      "lat": 51.19173203529412,
+      "lon": 6.683099082352942,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_402",
+      "primary_street": "Schorlemerstraße",
+      "lat": 51.191193266666666,
+      "lon": 6.6860208000000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_403",
+      "primary_street": "Loerickstraße",
+      "lat": 51.19159525625,
+      "lon": 6.68753709375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_404",
+      "primary_street": "Stingesbachstraße",
+      "lat": 51.2221352125,
+      "lon": 6.6579133625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_405",
+      "primary_street": "Stingesbachstraße",
+      "lat": 51.22196929230769,
+      "lon": 6.657613553846153,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_406",
+      "primary_street": "Georg-Bauer-Straße",
+      "lat": 51.2219637,
+      "lon": 6.656602066666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_407",
+      "primary_street": "Nikolaus-Otto-Straße",
+      "lat": 51.22254628,
+      "lon": 6.65627324,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_408",
+      "primary_street": "Am Margaretenbusch",
+      "lat": 51.22265006,
+      "lon": 6.659332480000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_409",
+      "primary_street": "Kreitzweg",
+      "lat": 51.163033,
+      "lon": 6.6628308700000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_410",
+      "primary_street": "Pskowstraße",
+      "lat": 51.19828846,
+      "lon": 6.660280953333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_411",
+      "primary_street": "Anne-Frank-Straße",
+      "lat": 51.15725297083333,
+      "lon": 6.6957745625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_412",
+      "primary_street": "Georg-Becker-Straße",
+      "lat": 51.17558062,
+      "lon": 6.6384932800000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_413",
+      "primary_street": "Carl-Sonnenschein-Straße",
+      "lat": 51.156167604477616,
+      "lon": 6.708473694029851,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_414",
+      "primary_street": "Friedrich-von-der-Schulenburg-Straße",
+      "lat": 51.15613694864865,
+      "lon": 6.706081741441442,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_415",
+      "primary_street": "Bernhard-Letterhaus-Straße",
+      "lat": 51.16061775555555,
+      "lon": 6.702294728888888,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_416",
+      "primary_street": "Ludwig-Beck-Straße",
+      "lat": 51.15951068043478,
+      "lon": 6.70246885,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_417",
+      "primary_street": "Im Stüttgesfeld",
+      "lat": 51.14322033137255,
+      "lon": 6.753286603921569,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_418",
+      "primary_street": "An der Feldscheune",
+      "lat": 51.144482636842106,
+      "lon": 6.752265331578947,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_419",
+      "primary_street": "Am Mühlenweg",
+      "lat": 51.14438347647059,
+      "lon": 6.751025405882353,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_420",
+      "primary_street": "Bongarder Hof",
+      "lat": 51.14246507066667,
+      "lon": 6.753254733333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_421",
+      "primary_street": "Wolfskamphof",
+      "lat": 51.143564964444444,
+      "lon": 6.752109753333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_422",
+      "primary_street": "Am Lichtweg",
+      "lat": 51.14384289583333,
+      "lon": 6.7513563125000005,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_423",
+      "primary_street": "Parisstraße",
+      "lat": 51.17127515714286,
+      "lon": 6.719092864285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_424",
+      "primary_street": "Wilhelm-Leuschner-Straße",
+      "lat": 51.15849806071429,
+      "lon": 6.702091139285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_425",
+      "primary_street": "Von-Galen-Straße",
+      "lat": 51.15612516428571,
+      "lon": 6.701651728571428,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_426",
+      "primary_street": "Erich-Hoepner-Straße",
+      "lat": 51.15680798095239,
+      "lon": 6.701845628571429,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_427",
+      "primary_street": "Mainstraße",
+      "lat": 51.16169488333333,
+      "lon": 6.730746983333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_428",
+      "primary_street": "Lahnstraße",
+      "lat": 51.16309894444444,
+      "lon": 6.737143266666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_429",
+      "primary_street": "Hammer Landstraße",
+      "lat": 51.1994898,
+      "lon": 6.698666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_430",
+      "primary_street": "Industriestraße",
+      "lat": 51.199550675,
+      "lon": 6.6982274749999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_431",
+      "primary_street": "Merkurstraße",
+      "lat": 51.191685063636356,
+      "lon": 6.666687572727272,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_432",
+      "primary_street": "Görresstraße",
+      "lat": 51.191437990909094,
+      "lon": 6.668709818181818,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_433",
+      "primary_street": "Roseggerstraße",
+      "lat": 51.1545948,
+      "lon": 6.73072345,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_434",
+      "primary_street": "Ricarda-Huch-Weg",
+      "lat": 51.152100527777776,
+      "lon": 6.729751533333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_435",
+      "primary_street": "Am Stadtarchiv",
+      "lat": 51.19472149090909,
+      "lon": 6.699306509090909,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_436",
+      "primary_street": "Windthorststraße",
+      "lat": 51.190003499999996,
+      "lon": 6.668365257142858,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_437",
+      "primary_street": "Bernhard-Lichtenberg-Straße",
+      "lat": 51.153427975,
+      "lon": 6.700910915,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_438",
+      "primary_street": "Julius-Leber-Straße",
+      "lat": 51.15401786,
+      "lon": 6.702193424,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_439",
+      "primary_street": "Weckhovener Straße",
+      "lat": 51.1539831828125,
+      "lon": 6.703187290625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_440",
+      "primary_street": "Am Alten Weiher",
+      "lat": 51.193972511111106,
+      "lon": 6.693927807407407,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_441",
+      "primary_street": "Jochen-Klepper-Straße",
+      "lat": 51.15235357692308,
+      "lon": 6.693309057692308,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_442",
+      "primary_street": "Uhlandstraße",
+      "lat": 51.18844002,
+      "lon": 6.6884986133333335,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_443",
+      "primary_street": "Goethestraße",
+      "lat": 51.18712633333333,
+      "lon": 6.692642033333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_444",
+      "primary_street": "Am Jröne Meerke",
+      "lat": 51.217294339999995,
+      "lon": 6.65823144,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_445",
+      "primary_street": "Auf den Stöcken",
+      "lat": 51.13895616666667,
+      "lon": 6.681414766666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_446",
+      "primary_street": "Karlstraße",
+      "lat": 51.14099987777777,
+      "lon": 6.698630333333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_447",
+      "primary_street": "Hochstadenstraße",
+      "lat": 51.14560211666667,
+      "lon": 6.701699616666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_448",
+      "primary_street": "Furtherhofstraße",
+      "lat": 51.223028664285714,
+      "lon": 6.667342285714286,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_449",
+      "primary_street": "Gottfried-Benn-Weg",
+      "lat": 51.14994173333333,
+      "lon": 6.7349963,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_450",
+      "primary_street": "Gell'sche Straße",
+      "lat": 51.157756525,
+      "lon": 6.662164510714286,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_451",
+      "primary_street": "Am Linckhof",
+      "lat": 51.14238082666667,
+      "lon": 6.7509526555555555,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_452",
+      "primary_street": "Fritz-Gerlich-Straße",
+      "lat": 51.16110312777778,
+      "lon": 6.697616933333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_453",
+      "primary_street": "Gohrer Straße",
+      "lat": 51.15876073333333,
+      "lon": 6.69636172,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_454",
+      "primary_street": "Burgweg",
+      "lat": 51.16076526,
+      "lon": 6.6900018,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_455",
+      "primary_street": "Erich-Klausener-Straße",
+      "lat": 51.15457021724138,
+      "lon": 6.705962951724138,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_456",
+      "primary_street": "Nikolaus-Gross-Straße",
+      "lat": 51.15377794,
+      "lon": 6.705267340000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_457",
+      "primary_street": "Vossenacker Straße",
+      "lat": 51.185841861538464,
+      "lon": 6.687719584615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_458",
+      "primary_street": "Liedberger Straße",
+      "lat": 51.17455452,
+      "lon": 6.63513348,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_459",
+      "primary_street": "Edith-Stein-Straße",
+      "lat": 51.15151091052631,
+      "lon": 6.695232363157895,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_460",
+      "primary_street": "Willi-Graf-Straße",
+      "lat": 51.15150742,
+      "lon": 6.697462539999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_461",
+      "primary_street": "Sandstraße",
+      "lat": 51.1574607,
+      "lon": 6.690723566666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_462",
+      "primary_street": "Händelstraße",
+      "lat": 51.230548375,
+      "lon": 6.680231725,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_463",
+      "primary_street": "Beethovenstraße",
+      "lat": 51.228397199999996,
+      "lon": 6.6788715,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_464",
+      "primary_street": "Haydnstraße",
+      "lat": 51.23019782,
+      "lon": 6.678720199999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_465",
+      "primary_street": "Nikolaus-Otto-Straße",
+      "lat": 51.22278179999999,
+      "lon": 6.6562285,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_466",
+      "primary_street": "Schmolzstraße",
+      "lat": 51.22333285,
+      "lon": 6.6590990375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_467",
+      "primary_street": "Daimlerstraße",
+      "lat": 51.224940608,
+      "lon": 6.665471847999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_468",
+      "primary_street": "Karl-Goerdeler-Straße",
+      "lat": 51.159893457692306,
+      "lon": 6.698280588461539,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_469",
+      "primary_street": "An der Obererft",
+      "lat": 51.18703836666666,
+      "lon": 6.6973558,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_470",
+      "primary_street": "Fontanestraße",
+      "lat": 51.188421966666674,
+      "lon": 6.696407366666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_471",
+      "primary_street": "Röckrather Hauptstraße",
+      "lat": 51.16232757096775,
+      "lon": 6.637478819354839,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_472",
+      "primary_street": "An der Maar",
+      "lat": 51.16326745833334,
+      "lon": 6.639161466666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_473",
+      "primary_street": "Röckrather Feldweg",
+      "lat": 51.16164903333333,
+      "lon": 6.637054008333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_474",
+      "primary_street": "Am Selikumer Weg",
+      "lat": 51.162597576923076,
+      "lon": 6.673224184615385,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_475",
+      "primary_street": "Donaustraße",
+      "lat": 51.16112461212121,
+      "lon": 6.743754818181818,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_476",
+      "primary_street": "Am Kirschbäumchen",
+      "lat": 51.159102455555555,
+      "lon": 6.6981061111111115,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_477",
+      "primary_street": "Heinestraße",
+      "lat": 51.18367892,
+      "lon": 6.69546847,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_478",
+      "primary_street": "Droste-Hülshoff-Straße",
+      "lat": 51.184407074999996,
+      "lon": 6.69889765,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_479",
+      "primary_street": "Am Deußhof",
+      "lat": 51.158193742857144,
+      "lon": 6.693944614285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_480",
+      "primary_street": "Otto-Wels-Straße",
+      "lat": 51.156520853846146,
+      "lon": 6.6966167692307685,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_481",
+      "primary_street": "Maximilian-Kolbe-Straße",
+      "lat": 51.1559332625,
+      "lon": 6.697162875,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_482",
+      "primary_street": "Am Palmstrauch",
+      "lat": 51.155206210526316,
+      "lon": 6.6949583052631585,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_483",
+      "primary_street": "Josef-Wirmer-Straße",
+      "lat": 51.151805304166665,
+      "lon": 6.6999561666666665,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_484",
+      "primary_street": "Theresienstraße",
+      "lat": 51.153520633333336,
+      "lon": 6.6987060666666665,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_485",
+      "primary_street": "Goldregenweg",
+      "lat": 51.178340694999996,
+      "lon": 6.718240570000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_486",
+      "primary_street": "Am Illinghauser Hof",
+      "lat": 51.140694700000005,
+      "lon": 6.748633166666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_487",
+      "primary_street": "Blausteinsweg",
+      "lat": 51.16771143333333,
+      "lon": 6.664227208333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_488",
+      "primary_street": "Brückerfeldstraße",
+      "lat": 51.22115995555556,
+      "lon": 6.657742788888888,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_489",
+      "primary_street": "Hauptstraße",
+      "lat": 51.1601407,
+      "lon": 6.6669853,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_490",
+      "primary_street": "Roisdorfer Straße",
+      "lat": 51.158954800000004,
+      "lon": 6.666215566666668,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_491",
+      "primary_street": "Martinstraße",
+      "lat": 51.161638618518516,
+      "lon": 6.669697603703703,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_492",
+      "primary_street": "Herbergstraße",
+      "lat": 51.15950228333333,
+      "lon": 6.66931015,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_493",
+      "primary_street": "An der Schleppbahn",
+      "lat": 51.1626745,
+      "lon": 6.675333125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_494",
+      "primary_street": "Weimarer Straße",
+      "lat": 51.1614347125,
+      "lon": 6.6722541625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_495",
+      "primary_street": "Am Erprather Weg",
+      "lat": 51.16239937,
+      "lon": 6.67399044,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_496",
+      "primary_street": "Leipziger Straße",
+      "lat": 51.16155235,
+      "lon": 6.6709235499999995,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_497",
+      "primary_street": "Am Sandberg",
+      "lat": 51.1627694875,
+      "lon": 6.67141,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_498",
+      "primary_street": "Christian-Walter-Heye-Weg",
+      "lat": 51.16289173333334,
+      "lon": 6.672663288888889,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_499",
+      "primary_street": "Potsdamer Straße",
+      "lat": 51.1634753,
+      "lon": 6.66841922,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_500",
+      "primary_street": "Am Zeechenplätzchen",
+      "lat": 51.163569986956524,
+      "lon": 6.671196086956522,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_501",
+      "primary_street": "Am Heiligenhäuschen",
+      "lat": 51.16383611818182,
+      "lon": 6.673641545454545,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_502",
+      "primary_street": "Im Birkenbusch",
+      "lat": 51.168938722727276,
+      "lon": 6.630060859090909,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_503",
+      "primary_street": "Christian-Schaurte-Straße",
+      "lat": 51.21869736666667,
+      "lon": 6.654032366666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_504",
+      "primary_street": "Lange Hecke",
+      "lat": 51.21887421428572,
+      "lon": 6.651272214285714,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_505",
+      "primary_street": "Oellersstraße",
+      "lat": 51.218303375,
+      "lon": 6.652165325,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_506",
+      "primary_street": "Birkhofstraße",
+      "lat": 51.171672365384616,
+      "lon": 6.6302069153846155,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_507",
+      "primary_street": "Stephanusstraße",
+      "lat": 51.17153474,
+      "lon": 6.628449111111111,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_508",
+      "primary_street": "Tannenweg",
+      "lat": 51.17229207333333,
+      "lon": 6.62744406,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_509",
+      "primary_street": "Gottfried-Schmitz-Weg",
+      "lat": 51.206221984,
+      "lon": 6.667765848,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_510",
+      "primary_street": "Glockhammer",
+      "lat": 51.19962837,
+      "lon": 6.691499329999999,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_511",
+      "primary_street": "Brückerfeldstraße",
+      "lat": 51.221439180000004,
+      "lon": 6.65859388,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_512",
+      "primary_street": "Am Flachshof",
+      "lat": 51.220904100000006,
+      "lon": 6.6605917,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_513",
+      "primary_street": "Ernst-Mollenhauer-Straße",
+      "lat": 51.21752375555556,
+      "lon": 6.648910844444444,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_514",
+      "primary_street": "Im Püllenkamp",
+      "lat": 51.21802791818182,
+      "lon": 6.649954718181818,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_515",
+      "primary_street": "Im Püllenkamp",
+      "lat": 51.2173394,
+      "lon": 6.650324425,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_516",
+      "primary_street": "Leo-Wenke-Straße",
+      "lat": 51.21577767777778,
+      "lon": 6.660264533333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_517",
+      "primary_street": "Vogelsangstraße",
+      "lat": 51.22099428333333,
+      "lon": 6.673913333333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_518",
+      "primary_street": "Am Stock",
+      "lat": 51.228568759999995,
+      "lon": 6.63940416,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_519",
+      "primary_street": "Krefelder Straße",
+      "lat": 51.20127686666667,
+      "lon": 6.686509933333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_520",
+      "primary_street": "Krefelder Straße",
+      "lat": 51.20139328571429,
+      "lon": 6.6867352,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_521",
+      "primary_street": "Carossastraße",
+      "lat": 51.18648770000001,
+      "lon": 6.695518333333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_522",
+      "primary_street": "Promenadenstraße",
+      "lat": 51.19551356,
+      "lon": 6.69422898,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_523",
+      "primary_street": "Ridderstraße",
+      "lat": 51.19168983333333,
+      "lon": 6.681988933333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_524",
+      "primary_street": "Dreikönigenstraße",
+      "lat": 51.189023271428574,
+      "lon": 6.689407928571429,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_525",
+      "primary_street": "Körnerstraße",
+      "lat": 51.1876847,
+      "lon": 6.69310177,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_526",
+      "primary_street": "Kantstraße",
+      "lat": 51.1872822,
+      "lon": 6.688423333333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_527",
+      "primary_street": "Dr.-Dorothea-Erxleben-Straße",
+      "lat": 51.187337695652175,
+      "lon": 6.6767509173913036,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_528",
+      "primary_street": "Grefrather Weg",
+      "lat": 51.188508375,
+      "lon": 6.683203608333334,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_529",
+      "primary_street": "Dyckhofstraße",
+      "lat": 51.21362914615384,
+      "lon": 6.691100792307693,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_530",
+      "primary_street": "Klosterstraße",
+      "lat": 51.16914605,
+      "lon": 6.659856775000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_531",
+      "primary_street": "An der Alten Räucherei",
+      "lat": 51.167203341666664,
+      "lon": 6.664885275,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_532",
+      "primary_street": "Glockenhütte",
+      "lat": 51.15798302857143,
+      "lon": 6.6726712571428575,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_533",
+      "primary_street": "Am Clemenshof",
+      "lat": 51.208759380000004,
+      "lon": 6.65357498,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_534",
+      "primary_street": "Marga-Groove-Straße",
+      "lat": 51.14113679677419,
+      "lon": 6.754843870967742,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_535",
+      "primary_street": "Elisabeth-Kadow-Straße",
+      "lat": 51.140765699999996,
+      "lon": 6.756269214754098,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_536",
+      "primary_street": "Angelika-Kauffmann-Straße",
+      "lat": 51.140408025,
+      "lon": 6.75708635,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_537",
+      "primary_street": "Käthe-Kollwitz-Straße",
+      "lat": 51.139804375,
+      "lon": 6.755808125,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_538",
+      "primary_street": "Bettina-von-Arnim-Straße",
+      "lat": 51.18748944090908,
+      "lon": 6.696514504545454,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_539",
+      "primary_street": "Vellbrüggener Straße",
+      "lat": 51.1604495125,
+      "lon": 6.728175375,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_540",
+      "primary_street": "Schluchenhausstraße",
+      "lat": 51.14834893333333,
+      "lon": 6.698994166666666,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_541",
+      "primary_street": "Simonsweg",
+      "lat": 51.1946097,
+      "lon": 6.670003185000001,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_542",
+      "primary_street": "Am Haus Vogelsang",
+      "lat": 51.22266496206897,
+      "lon": 6.6663836689655165,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_543",
+      "primary_street": "An der Erftmündung",
+      "lat": 51.179049266666674,
+      "lon": 6.729167633333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_544",
+      "primary_street": "Reichenspergerstraße",
+      "lat": 51.1904624,
+      "lon": 6.6658888,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_545",
+      "primary_street": "Rosmarinstraße",
+      "lat": 51.17226083333333,
+      "lon": 6.684343233333333,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_546",
+      "primary_street": "Magda-Menn-Straße",
+      "lat": 51.15381712,
+      "lon": 6.73563182,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_547",
+      "primary_street": "Elise-Stoffels-Straße",
+      "lat": 51.152990471428566,
+      "lon": 6.737176638095238,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_548",
+      "primary_street": "Am Theisenhof",
+      "lat": 51.1702990375,
+      "lon": 6.6655624625,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_549",
+      "primary_street": "Virneburger Straße",
+      "lat": 51.16926866666666,
+      "lon": 6.664868416666667,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_550",
+      "primary_street": "Am Lousfeld",
+      "lat": 51.1697471,
+      "lon": 6.665751644444445,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_551",
+      "primary_street": "An der Zehntscheune",
+      "lat": 51.1692851,
+      "lon": 6.6656858,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_552",
+      "primary_street": "Am Fährweg",
+      "lat": 51.176912925,
+      "lon": 6.75330035,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_553",
+      "primary_street": "Hasselhofweg",
+      "lat": 51.16867861764706,
+      "lon": 6.662735594117647,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    },
+    {
+      "cluster_id": "N_554",
+      "primary_street": "Am Alten Wasserturm",
+      "lat": 51.1684154,
+      "lon": 6.6652118,
+      "verdict": "KEPT",
+      "rejection_reason": null
+    }
+  ]
+}

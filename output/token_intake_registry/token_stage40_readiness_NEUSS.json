@@ -1,0 +1,11 @@
+{
+  "stage40_readiness": [
+    {
+      "token_id": "TEST_TOKEN_MOCK_TARGET_NEUSS_01_001",
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "registry_status": "REGISTERED_PENDING_STAGE40_VERIFICATION",
+      "intake_eligible_for_stage40": true,
+      "readiness_note": "Ready for verification pass."
+    }
+  ]
+}

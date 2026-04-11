@@ -1,0 +1,72 @@
+{
+  "document_name": "MaStR_Ingestion_Protocol_v1.1_patch",
+  "patched_sections": [
+    {
+      "section_id": "4",
+      "section_title": "SPATIAL JOIN PROTOCOL",
+      "revised_content": {
+        "hierarchy_rules": "1. Tier 1 (Anchor Match): Inside residential footprint. 2. Tier 2 (Buffer Match): Within configurable tolerance. 3. Tier 3 (Segment Match): Inside segment but outside specific building. 4. Tier 4 (Unresolved).",
+        "numerator_inclusion_rule": "ONLY Tier 1 and Tier 2 matches may contribute to the building_pv_count and adoption_rate numerator. Tier 3 (SEG_POLY) matches are strictly for contextual statistics and MUST NOT be counted as building-level truth.",
+        "ambiguity_handling": "ZERO FORCED ASSIGNMENT POLICY: If a record matches multiple candidate residential buildings (Tier 1 or Tier 2) and no deterministic tie-breaker (e.g., explicit address match) exists, the record must be marked AMBIGUOUS. Ambiguous records are excluded from the building-level adoption numerator by default."
+      }
+    },
+    {
+      "section_id": "5",
+      "section_title": "COORDINATE TOLERANCE POLICY",
+      "revised_content": {
+        "tolerance_definition": "Spatial buffer tolerance must be a configurable parameter, not a fixed truth constant.",
+        "pilot_default": "A value of 10m is established as the initial pilot default for Norf calibration. This value must be validated and adjusted based on local morphology audits.",
+        "audit_requirement": "Every ingestion run must preserve and report the actual tolerance value used in the metadata audit summary."
+      }
+    },
+    {
+      "section_id": "6",
+      "section_title": "BUILDING-LEVEL DEDUPLICATION LOGIC",
+      "revised_content": {
+        "deduplication_stages": "a) Raw record deduplication (remove identical rows). b) Installation-level deduplication (via id_mastr). c) Building-level deduplication (via resolved Building ID).",
+        "adoption_numerator_rule": "The building-level adoption numerator is based strictly on resolved residential building attachment. If multiple distinct installation records (different id_mastr) resolve to the same Building ID, they count as ONE building in the numerator.",
+        "truth_priority": "Spatial attachment to a unique building ID is the primary truth anchor; installation IDs are secondary support for raw data cleaning."
+      }
+    },
+    {
+      "section_id": "7",
+      "section_title": "SEGMENT AGGREGATION LOGIC",
+      "revised_content": {
+        "required_metrics": [
+          "pv_installation_count_raw",
+          "pv_installation_count_resolved",
+          "pv_installation_count_unresolved",
+          "pv_installation_count_ambiguous",
+          "count_match_footprint",
+          "count_match_buffer",
+          "count_match_seg_poly",
+          "building_pv_count",
+          "building_total_count",
+          "segment_pv_adoption_rate"
+        ],
+        "numerator_formula": "building_pv_count = Count(Unique Building IDs with Tier 1 or Tier 2 matches).",
+        "consistency_rule": "The count_match_seg_poly (Tier 3) MUST remain distinct from building_pv_count."
+      }
+    },
+    {
+      "section_id": "8",
+      "section_title": "OUTPUT DATASET SCHEMA",
+      "revised_content": {
+        "evidence_labeling": "Replace the single 'REAL_MASTR_GROUNDED' tier with an explicit match quality field.",
+        "new_fields": {
+          "spatial_match_mode": "Categorical: FOOTPRINT, BUFFER, SEGPOLY, UNRESOLVED, AMBIGUOUS",
+          "spatial_confidence_level": "Derived from match mode (e.g., HIGH for Footprint, MEDIUM for Buffer, LOW for SegPoly)",
+          "tolerance_used": "The distance parameter applied during the run"
+        }
+      }
+    },
+    {
+      "section_id": "10",
+      "section_title": "AUDIT & VALIDATION CHECKS",
+      "revised_content": {
+        "threshold_reframing": "The '70% resolution' threshold is downgraded from a hard truth standard to a 'PROVISIONAL PILOT AUDIT HEURISTIC'. Failure to meet this threshold triggers a diagnostic review but does not inherently invalidate low-density grounded segments.",
+        "mandatory_stats": "Final ingestion reports must explicitly show the share resolved to building-level (Tier 1+2) vs. segment-context (Tier 3), as SEG_POLY-only coverage is insufficient to validate adoption quality."
+      }
+    }
+  ]
+}

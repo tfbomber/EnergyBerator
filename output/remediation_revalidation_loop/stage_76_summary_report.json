@@ -1,0 +1,8 @@
+{
+  "total_incoming_payloads": 5,
+  "payloads_accepted_for_revalidation": 4,
+  "payloads_rejected_not_in_pool": 1,
+  "cases_upgraded_to_ready": 1,
+  "cases_remained_visible": 1,
+  "cases_downgraded_to_blocked": 2
+}

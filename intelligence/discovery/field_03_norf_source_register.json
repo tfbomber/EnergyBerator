@@ -1,0 +1,26 @@
+[
+  {
+    "source_id": "SRC_NEUSS_KWP_2025_SUMMARY",
+    "title": "Neuss Kommunale Wärmeplanung (KWP) 2025 Summary",
+    "publisher": "Stadt Neuss",
+    "source_type": "MUNICIPAL_ZONING_PLAN",
+    "official": true,
+    "decision_eligible": true,
+    "publication_date": "2025-01-01",
+    "local_archive_path": "d-ess-engine/data/sources/neuss_kwp_2025/kwp_summary_norf.pdf",
+    "role_in_verdict": "Provides primary regulatory designation (Prüfgebiet Einzellösungen) for the Norf segment.",
+    "notes": "Tier E1 Evidence. Confirms decentralized priority."
+  },
+  {
+    "source_id": "SRC_SWN_ALLERHEILIGEN_FFVAV_2025",
+    "title": "SWN FFVAV Network Expansion Limit Report 2025",
+    "publisher": "Stadtwerke Neuss (SWN)",
+    "source_type": "UTILITY_NETWORK_PLAN",
+    "official": true,
+    "decision_eligible": true,
+    "publication_date": "2025-02-15",
+    "local_archive_path": "d-ess-engine/data/sources/swn/ffvav_allerheiligen_limits.json",
+    "role_in_verdict": "Provides technical utility confirmation that district heating will not be expanded into the residential core.",
+    "notes": "Tier E1 Evidence. Independent corroboration of municipal zoning."
+  }
+]

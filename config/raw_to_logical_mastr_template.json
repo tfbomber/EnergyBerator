@@ -1,0 +1,14 @@
+{
+  "logical_fields": {
+    "technology_type": "",
+    "installation_id": "",
+    "status": "",
+    "postcode": "",
+    "municipality": "",
+    "commissioning_date": "",
+    "installed_power_kw": "",
+    "latitude": "",
+    "longitude": ""
+  },
+  "mapping_status": "DRAFT_PENDING_SCHEMA_INSPECTION"
+}

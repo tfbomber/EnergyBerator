@@ -1,0 +1,7 @@
+{
+  "total_cases_checked": 3,
+  "retry_locked_cases": 3,
+  "unlocked_cases_detected": 0,
+  "retry_leakage_detected": false,
+  "retry_verdict": "PASS"
+}

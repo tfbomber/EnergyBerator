@@ -1,0 +1,33 @@
+{
+  "registry_id": "segment_registry_neuss_v1_truth",
+  "city": "Neuss",
+  "segmentation_version": "v1",
+  "registry_maturity": "truth_only",
+  "truth_coverage_status": "partial_truth_coverage",
+  "calculation_standard": "EPSG:25832 (ETRS89 / UTM zone 32N)",
+  "clustering_principle": "OSM residential land-use masking with 20m soft-edge rule",
+  "adjacency_status": "computed_for_available_segments",
+  "segments": [
+    {
+      "segment_id": "NEUSS_NORF_01",
+      "city": "Neuss",
+      "segment_name": "Norf Residential Pilot",
+      "district_name": "Norf / Elvekum",
+      "segment_type": "residential_lowrise",
+      "segmentation_version": "v1",
+      "geometry_source": "osm_buildings_ground_truth",
+      "segment_area_m2": 762600.4,
+      "building_count": 298,
+      "residential_building_count": 298,
+      "centroid_lat": 51.1552,
+      "centroid_lon": 6.7384,
+      "boundary_logic": "Bounded by Norf S-Bahn rail corridor to the east and L380 to the west. Continuous low-rise residential cluster southwest of the station.",
+      "adjacent_segment_ids": [],
+      "potential_split_flag": false,
+      "morphology_variance_flag": false,
+      "truth_status": "real_grounded",
+      "status": "active",
+      "legacy_segment_id": "ALLERHEILIGEN_PILOT_SEG_01"
+    }
+  ]
+}

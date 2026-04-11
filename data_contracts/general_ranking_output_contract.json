@@ -1,0 +1,39 @@
+{
+  "title": "GeneralRankingOutputContract",
+  "description": "Data contract for General Ranking output. Separate from the General Foundation contract.",
+  "version": "1.0",
+  "input_source": "output/foundation/foundation_structure_results.json",
+  "output_path": "output/ranking/general_ranking_results.json",
+  "ranking_dimensions": {
+    "structure_strength": {
+      "weight": 0.50,
+      "formula": "sfh_total_ratio - mfh_ratio (clamped >= 0)",
+      "direction": "higher_is_better"
+    },
+    "scale": {
+      "weight": 0.30,
+      "formula": "building_count_total",
+      "direction": "higher_is_better"
+    },
+    "purity": {
+      "weight": 0.20,
+      "formula": "1 - other_ratio",
+      "direction": "higher_is_better"
+    }
+  },
+  "band_thresholds": {
+    "HIGH": "score >= 0.65",
+    "MEDIUM": "0.35 <= score < 0.65",
+    "LOW": "score < 0.35"
+  },
+  "ranking_universe_modes": {
+    "PASS_ONLY": "Default. Only clusters where structure_gate == PASS.",
+    "PASS_PLUS_REVIEW": "Debug mode. Clusters where structure_gate in [PASS, REVIEW]."
+  },
+  "strict_prohibitions": [
+    "Do NOT append ranking fields to foundation_structure_results.json",
+    "Do NOT implement PV, heat pump, or bundle logic in this module",
+    "Do NOT use probability language in ranking reasons",
+    "Do NOT redefine Foundation gate thresholds"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "preservations": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "status": "HONESTLY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "preserved_limitation": "MATCHING_HISTORY_FRAGILE",
+      "status": "HONESTLY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "status": "HONESTLY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "preserved_limitation": "MATCHING_HISTORY_FRAGILE",
+      "status": "HONESTLY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "status": "HONESTLY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "preserved_limitation": "MATCHING_HISTORY_FRAGILE",
+      "status": "HONESTLY_PRESERVED"
+    }
+  ]
+}

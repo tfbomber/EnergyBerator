@@ -1,0 +1,18 @@
+{
+  "legal_safe_count": 4,
+  "legal_conditional_count": 1,
+  "legal_forbidden_count": 3,
+  "downgrade_reasons": {
+    "CONSENT_NOT_EXPLICIT": 2,
+    "DATA_CONTROLLER_UNDEFINED": 2,
+    "LEGAL_BASIS_NOT_CONFIRMED": 2,
+    "EXECUTION_CHAIN_NOT_DEFINED": 2,
+    "DATA_ORIGIN_NOT_TRACEABLE": 2,
+    "COMMERCIAL_PATH_UNKNOWN": 1,
+    "CONTACT_EXECUTOR_UNDEFINED": 1,
+    "CRM_INTEGRATION_NOT_DEFINED": 1,
+    "FALLBACK_NOT_DEFINED": 1,
+    "INSTALLER_PIPELINE_NOT_DEFINED": 1
+  },
+  "config_availability_note": "legal_config.json parsed applied via declarative strict mapping."
+}

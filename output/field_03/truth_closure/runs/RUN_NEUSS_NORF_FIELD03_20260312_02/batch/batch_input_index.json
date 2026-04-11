@@ -1,0 +1,33 @@
+[
+  {
+    "batch_id": "BATCH_RUN_NEUSS_NORF_FIELD03_20260312_02",
+    "run_id": "RUN_NEUSS_NORF_FIELD03_20260312_02",
+    "timestamp": "2026-03-12T17:10:40.904707",
+    "target_segments": [
+      "NEUSS_NORF_PILOT_01"
+    ],
+    "processed_segments": [
+      "NEUSS_NORF_PILOT_01"
+    ],
+    "object_manifest": {
+      "sources": [
+        "SRC_NEUSS_KWP_2025_SUMMARY",
+        "SRC_SWN_ALLERHEILIGEN_FFVAV_2025"
+      ],
+      "artifacts": [
+        "ART_KWP_REPORT_2025_SUMMARY",
+        "ART_SWN_FFVAV_SHEET"
+      ],
+      "evidence": [
+        null,
+        null
+      ],
+      "joins": [
+        "JOIN_NORF_01_MULTISOURCE"
+      ],
+      "verdicts": [
+        "VER_NORF_01_FINAL"
+      ]
+    }
+  }
+]

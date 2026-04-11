@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "upstream_stage_64_status": "REVALIDATION_PASSED",
+      "opportunity_status": "OPPORTUNITY_CONFIRMED",
+      "commercial_readiness_label": "INSTALLER_CANDIDATE",
+      "handoff_readiness_status": "CONDITIONALLY_READY_FOR_HUMAN_REVIEW",
+      "human_review_required": true,
+      "blocker_count": 1,
+      "unresolved_gap_count": 1,
+      "allowed_next_step_profile": [
+        "HUMAN_REVIEW"
+      ],
+      "forbidden_action_profile": [
+        "AUTO_CONTACT",
+        "AUTO_ASSIGN_INSTALLER"
+      ],
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ]
+    }
+  ]
+}

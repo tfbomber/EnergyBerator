@@ -1,0 +1,18 @@
+{
+  "total_records_seen": 8,
+  "total_records_in_future_contact_pool": 7,
+  "total_records_in_warrant_registry": 8,
+  "eligible_for_simulation": 2,
+  "skipped_due_to_missing_data": 1,
+  "skipped_due_to_invalid_warrant": 1,
+  "skipped_due_to_pool_mismatch": 3,
+  "skipped_due_to_lock_failure": 1,
+  "skipped_due_to_lineage_failure": 1,
+  "simulated_contact_drafts": 2,
+  "simulated_crm_tasks": 2,
+  "simulated_appointments": 2,
+  "simulated_installer_matches": 2,
+  "global_abort_triggered": false,
+  "execution_attempts_detected": 0,
+  "hard_lock_integrity_status": "FAIL"
+}

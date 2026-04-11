@@ -1,0 +1,487 @@
+{
+  "segment_id": "NEUSS_SUBURBAN_01",
+  "validation_timestamp": "2026-03-15T12:50:08Z",
+  "cluster_validations": [
+    {
+      "cluster_id": "C_001",
+      "cluster_label": "Himmelgeister Stra\u00dfe (Part 1)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "mixed_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.77,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_002",
+      "cluster_label": "Himmelgeister Stra\u00dfe (Part 2)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "mixed_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.77,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_003",
+      "cluster_label": "Himmelgeister Stra\u00dfe (Part 3)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "good_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.87,
+      "validation_confidence": "HIGH"
+    },
+    {
+      "cluster_id": "C_004",
+      "cluster_label": "Himmelgeister Stra\u00dfe (Part 4)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "good_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.87,
+      "validation_confidence": "HIGH"
+    },
+    {
+      "cluster_id": "C_005",
+      "cluster_label": "Himmelgeister Stra\u00dfe (Part 5)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "good_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.87,
+      "validation_confidence": "HIGH"
+    },
+    {
+      "cluster_id": "C_006",
+      "cluster_label": "Universit\u00e4tsstra\u00dfe",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_007",
+      "cluster_label": "Moorenstra\u00dfe",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_008",
+      "cluster_label": "Ernst-Derra-Stra\u00dfe",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_009",
+      "cluster_label": "Christophstra\u00dfe",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_010",
+      "cluster_label": "Wiesbadener Stra\u00dfe",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_011",
+      "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_012",
+      "cluster_label": "UNNAMED_SPATIAL_CLUSTER_2",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_013",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_014",
+      "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_015",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "mixed",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.61,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_016",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "north",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.55,
+      "validation_confidence": "LOW"
+    },
+    {
+      "cluster_id": "C_017",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "north",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.55,
+      "validation_confidence": "LOW"
+    },
+    {
+      "cluster_id": "C_018",
+      "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_019",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_020",
+      "cluster_label": "UNNAMED_SPATIAL_CLUSTER_10",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_021",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "north",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.55,
+      "validation_confidence": "LOW"
+    },
+    {
+      "cluster_id": "C_022",
+      "cluster_label": "UNNAMED_SPATIAL_CLUSTER_12",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_023",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_024",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_025",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_026",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_027",
+      "cluster_label": "NEAR_Wiesbadener Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "north",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.55,
+      "validation_confidence": "LOW"
+    },
+    {
+      "cluster_id": "C_028",
+      "cluster_label": "NEAR_Moorenstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_029",
+      "cluster_label": "UNNAMED_SPATIAL_CLUSTER_19",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_030",
+      "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "mixed",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.61,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_031",
+      "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_032",
+      "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_033",
+      "cluster_label": "NEAR_Wiesbadener Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "mixed",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.61,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_034",
+      "cluster_label": "NEAR_Moorenstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_035",
+      "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "east_west",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_036",
+      "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "south",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.67,
+      "validation_confidence": "MEDIUM"
+    },
+    {
+      "cluster_id": "C_037",
+      "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+      "ground_truth": {
+        "building_type": "row_house",
+        "roof_quality": "bad_roof",
+        "roof_orientation": "north",
+        "pv_ratio_est": "10_30",
+        "heat_pump_visibility": "uncertain"
+      },
+      "validation_score": 0.55,
+      "validation_confidence": "LOW"
+    }
+  ]
+}

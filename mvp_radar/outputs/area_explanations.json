@@ -1,0 +1,59 @@
+{
+  "data": [
+    {
+      "area_id": "NEUSS_NORF_01",
+      "opportunity_score": 67.87,
+      "top_drivers": "PV:8.3|BS:20.0",
+      "main_uncertainties": [
+        "None"
+      ],
+      "sales_hook_type": "ELECTRIFICATION_READY_BLOCK",
+      "sales_hook_text": "Strong signs of existing modernization (EVs/Adoption). Pitch ecosystem integration.",
+      "recommended_action": "WAIT"
+    },
+    {
+      "area_id": "NEUSS_GRIML_01",
+      "opportunity_score": 49.15,
+      "top_drivers": "PV:8.4|BS:18.0",
+      "main_uncertainties": [
+        "Sparse historical signal density. Confidence lowered."
+      ],
+      "sales_hook_type": "HEAT_PUMP_CONSTRAINED_BUT_PV_STRONG",
+      "sales_hook_text": "Dense heating overlap. Lead with solar arrays and storage, de-prioritize heat-pump messaging.",
+      "recommended_action": "WAIT"
+    },
+    {
+      "area_id": "NEUSS_CENTRAL_01",
+      "opportunity_score": 49.92,
+      "top_drivers": "PV:8.2|BS:20.0",
+      "main_uncertainties": [
+        "Sparse historical signal density. Confidence lowered."
+      ],
+      "sales_hook_type": "GENERAL_OPPORTUNITY",
+      "sales_hook_text": "Good baseline opportunity area.",
+      "recommended_action": "DOOR_TO_DOOR"
+    },
+    {
+      "area_id": "NEUSS_OLD_TOWN_01",
+      "opportunity_score": 44.48,
+      "top_drivers": "PV:8.4|BS:13.3",
+      "main_uncertainties": [
+        "Sparse historical signal density. Confidence lowered."
+      ],
+      "sales_hook_type": "HEAT_PUMP_CONSTRAINED_BUT_PV_STRONG",
+      "sales_hook_text": "Dense heating overlap. Lead with solar arrays and storage, de-prioritize heat-pump messaging.",
+      "recommended_action": "WAIT"
+    },
+    {
+      "area_id": "NEUSS_SUBURB_01",
+      "opportunity_score": 49.92,
+      "top_drivers": "PV:8.0|BS:20.0",
+      "main_uncertainties": [
+        "Sparse historical signal density. Confidence lowered."
+      ],
+      "sales_hook_type": "GENERAL_OPPORTUNITY",
+      "sales_hook_text": "Good baseline opportunity area.",
+      "recommended_action": "DOOR_TO_DOOR"
+    }
+  ]
+}

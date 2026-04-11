@@ -1,0 +1,17 @@
+{
+    "case_id": "E2E-02",
+    "as_of": "2026-03-01",
+    "policy_id": "DESS-V1.2-GOLDEN",
+    "costs": {
+        "mode": "EXACT",
+        "buckets": {
+            "HARDWARE": {
+                "amount": "1000.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    },
+    "evidence": {
+        "evidence_ref": "non_existent_file.pdf"
+    }
+}

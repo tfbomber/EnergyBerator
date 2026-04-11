@@ -1,0 +1,15 @@
+[
+  {
+    "join_id": "JOIN_NORF_01_MULTISOURCE",
+    "segment_id": "NEUSS_NORF_PILOT_01",
+    "physical_segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+    "evidence_items": [
+      "EVI_KWP_ZONING_NORF",
+      "EVI_SWN_NETWORK_LIMIT"
+    ],
+    "spatial_precision": "SEGMENT_LEVEL",
+    "conflict_flag": false,
+    "conflict_note": null,
+    "join_rationale": "Mapping confirmed by both municipal zoning (KWP) and utility network limits (SWN)."
+  }
+]

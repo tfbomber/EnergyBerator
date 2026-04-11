@@ -1,0 +1,20 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_75_CASE_B_FATAL",
+      "fatal_reasons": [
+        "CONSENT_NOT_EXPLICIT"
+      ],
+      "recoverable_reasons": []
+    },
+    {
+      "contact_id": "TEST_75_CASE_D_MIXED",
+      "fatal_reasons": [
+        "DATA_CONTROLLER_UNDEFINED"
+      ],
+      "recoverable_reasons": [
+        "EXECUTION_CHAIN_NOT_DEFINED"
+      ]
+    }
+  ]
+}

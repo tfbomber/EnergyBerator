@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "case_id": "EVD_56231492",
+      "evidence_ids": [
+        "SYNTH_EVD_ITEM_001"
+      ],
+      "intake_state": "QUEUED_FOR_REVALIDATION",
+      "downstream_required_action": "PERFORM_FULL_REVALIDATION",
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

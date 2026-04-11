@@ -1,0 +1,47 @@
+{
+  "records": [
+    {
+      "case_id": "TEST_76_CASE_A_FULL_FIX",
+      "known_deficiencies": [
+        "CRM_INTEGRATION_NOT_DEFINED",
+        "INSTALLER_PIPELINE_NOT_DEFINED"
+      ],
+      "submitted_evidence_hash": "a1b2c3d4e5f6g7h8",
+      "claims_to_resolve": [
+        "CRM_INTEGRATION_NOT_DEFINED",
+        "INSTALLER_PIPELINE_NOT_DEFINED"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_B_PARTIAL",
+      "known_deficiencies": [
+        "EXECUTION_CHAIN_NOT_DEFINED",
+        "MISSING_ACTIVITY_APPROVAL"
+      ],
+      "submitted_evidence_hash": "zzzzzzzzzzzzz",
+      "claims_to_resolve": [
+        "EXECUTION_CHAIN_NOT_DEFINED"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_C_FATAL_NEW",
+      "known_deficiencies": [
+        "CONTACT_EXECUTOR_UNDEFINED"
+      ],
+      "submitted_evidence_hash": "11111111111111",
+      "claims_to_resolve": [
+        "CONTACT_EXECUTOR_UNDEFINED"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_D_INVALID",
+      "known_deficiencies": [
+        "SUPPORTING_DOCUMENTS_INCOMPLETE"
+      ],
+      "submitted_evidence_hash": "null",
+      "claims_to_resolve": [
+        "SUPPORTING_DOCUMENTS_INCOMPLETE"
+      ]
+    }
+  ]
+}

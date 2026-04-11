@@ -1,0 +1,63 @@
+{
+  "discovery_id": "neuss_segment_expansion_targets_v1",
+  "city": "Neuss",
+  "existing_registry": ["NEUSS_NORF_01"],
+  "candidate_segments": [
+    {
+      "candidate_id": "TARGET_ROSELLERHEIDE_01",
+      "district_name": "Rosellerheide / Neuenbaum",
+      "approx_location_description": "Southern edge of Neuss, southern part of the Rosellen district. Primarily low-rise residential areas south of the A57.",
+      "reason_for_selection": [
+        "High degree of morphology consistency with Norf pilot",
+        "Predominantly detached and semi-detached housing stock",
+        "Official zoning as decentralized heating zone (Prüfgebiet Einzellösungen)",
+        "No known major district heating infrastructure"
+      ],
+      "expected_morphology": "residential_lowrise",
+      "expected_building_density": "low_to_medium",
+      "expected_electrification_potential": "highest_priority"
+    },
+    {
+      "candidate_id": "TARGET_HOISTEN_01",
+      "district_name": "Hoisten",
+      "approx_location_description": "Compact suburban residential district south-west of the city center, surrounded by agricultural land.",
+      "reason_for_selection": [
+        "Homogeneous residential structure with high roof-to-building ratio",
+        "Structurally isolated from central district heating nodes",
+        "High potential for individual heat pump adoption and roof PV",
+        "Stable suburban property values supporting investment"
+      ],
+      "expected_morphology": "residential_lowrise",
+      "expected_building_density": "low_to_medium",
+      "expected_electrification_potential": "high_priority"
+    },
+    {
+      "candidate_id": "TARGET_HOLZHEIM_WEST_01",
+      "district_name": "Holzheim (West)",
+      "approx_location_description": "Residential clusters on the western periphery of Holzheim, extending towards the agricultural fringe.",
+      "reason_for_selection": [
+        "Significant share of modern or fully renovated residential units",
+        "Large roof areas suitable for commercial-scale residential PV and storage",
+        "Geographically distant from the primary SWN district heating network",
+        "Good accessibility for field survey and truth-grounding"
+      ],
+      "expected_morphology": "residential_mixed",
+      "expected_building_density": "medium",
+      "expected_electrification_potential": "medium_high_priority"
+    },
+    {
+      "candidate_id": "TARGET_ALLERHEILIGEN_FRINGE_01",
+      "district_name": "Allerheiligen (Fringe Blocks)",
+      "approx_location_description": "Specific residential blocks on the outskirts of Allerheiligen that are not connected to the legacy 1999 Fernwärme network.",
+      "reason_for_selection": [
+        "Leverages high-quality 90s/2000s building stock where DH is absent",
+        "Excellent architectural suitability for air-source heat pumps",
+        "Possibility of 'truth-bridge' adjacency to Norf segment",
+        "Requires careful spatial masking to avoid DH-covered core"
+      ],
+      "expected_morphology": "residential_lowrise",
+      "expected_building_density": "medium",
+      "expected_electrification_potential": "medium_priority_selective"
+    }
+  ]
+}

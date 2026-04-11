@@ -1,0 +1,52 @@
+{
+  "field_id": "FIELD_04",
+  "city": "Neuss",
+  "segment_id": "NEUSS_NORF_01",
+  "source_truth_level": "POSTAL_CODE_AGGREGATE",
+  "location_accuracy": "ALLOCATED_PROXY",
+  "allocation_method": "LINEAR_PROPORTIONAL",
+  "allocation_basis": "BUILDING_COUNT_RATIO",
+  "pv_installation_count_est": 97,
+  "pv_total_kwp_est": 777.6,
+  "pv_adoption_intensity_raw": 0.3255,
+  "pv_adoption_status": "STRONG",
+  "pv_signal_strength": "MEDIUM",
+  "pv_adoption_score": 50.0,
+  "evidence_tier": "E3",
+  "estimation_nature": {
+    "pv_count_estimation_type": "PLZ_ALLOCATION",
+    "pv_kwp_estimation_type": "PLZ_ALLOCATION",
+    "spatial_confirmability": "UNCONFIRMABLE_AT_POINT_LEVEL",
+    "spatial_truth_scope": "POSTAL_CODE_LEVEL",
+    "proxy_distribution_assumption": "UNIFORM_BUILDING_DISTRIBUTION"
+  },
+  "confidence_evidence_layer": {
+    "evidence_confidence_level": "LIMITED_PROXY",
+    "confidence_penalty_applied": true,
+    "confidence_penalty_factor": 0.5,
+    "score_cap_applied": true,
+    "score_cap_basis": "E3_MAX_ALLOWABLE_SCORE",
+    "max_score_allowed_by_evidence_tier": 50.0
+  },
+  "audit_use_constraints": {
+    "allowed_for_segment_level_ranking": true,
+    "allowed_for_social_proof_proxy_display": true,
+    "allowed_for_point_level_installation_claims": false,
+    "allowed_for_street_level_targeting": false,
+    "allowed_for_subsegment_spatial_clustering": false
+  },
+  "narrative_honesty": {
+    "business_interpretation": "Segment exhibits strong PV adoption intensity at the aggregate PLZ level, but exact point-specific installations within the segment cannot be verified.",
+    "audit_conclusion": "Evidence tier E3 triggers automatic confidence penalty and score capping. Allocated proxy metrics must not be presented as exact observations."
+  },
+  "data_honesty_note": "Score is an allocated proxy derived from PLZ-level data. Exact spatial coordinates are currently unavailable. Figures represent statistical probability, not point-confirmed installations.",
+  "metadata": {
+    "plz_basis": "41470",
+    "plz_total_pv_units": 1259,
+    "plz_total_pv_kwp": 10081.9,
+    "denominator_segment_buildings": 298,
+    "denominator_plz_buildings": 4250,
+    "morphology_factor_applied": 1.1,
+    "run_timestamp": "2026-03-13T19:24:27.115267+00:00"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "registry_version": "1.0",
+  "operators": [
+    {
+      "operator_id": "DI_WU",
+      "role": "SYSTEM_OPERATOR",
+      "trust_level": "ROOT",
+      "authorized_scopes": [
+        "PIPELINE_EXECUTION",
+        "EVIDENCE_INTAKE",
+        "SANDBOX_RECOMPUTE"
+      ],
+      "status": "ACTIVE"
+    },
+    {
+      "operator_id": "INACTIVE_USER",
+      "role": "SYSTEM_OPERATOR",
+      "trust_level": "STANDARD",
+      "authorized_scopes": [
+        "PIPELINE_EXECUTION"
+      ],
+      "status": "INACTIVE"
+    }
+  ]
+}

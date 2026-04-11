@@ -1,0 +1,14 @@
+{
+  "test_only": true,
+  "example_only": true,
+  "token_id": "TEST_TOKEN_MOCK_TARGET_NEUSS_01_001",
+  "target_id": "MOCK_TARGET_NEUSS_01",
+  "approval_scope": "Grant permission sequentially limiting execution specifically to the documented physical_boundary spatial upgrades.",
+  "approved_field_paths": [
+    "geometry.physical_boundary.coordinates"
+  ],
+  "approval_timestamp": "2026-03-16T06:43:25Z_EXAMPLE_ONLY",
+  "approver_identifier": "HUMAN_TEST_APPROVER",
+  "authorization_level": "TEST_BOUNDARY_SCOPE_ONLY",
+  "approval_signature": "TEST_ONLY_PIPELINE_VALIDATION"
+}

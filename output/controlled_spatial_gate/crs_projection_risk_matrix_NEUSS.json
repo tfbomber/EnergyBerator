@@ -1,0 +1,28 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE"
+    }
+  ]
+}

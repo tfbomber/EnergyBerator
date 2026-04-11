@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "D-ESS Report Schema",
+    "type": "object",
+    "required": [
+        "report_id",
+        "case_id",
+        "policy_id",
+        "generated_at_utc",
+        "policy_version_set",
+        "last_policy_sync_timestamp",
+        "disclaimer_hash",
+        "status",
+        "policy_runtime_status",
+        "subsidy_total_cents",
+        "subsidy_total_eur",
+        "violations",
+        "audit_trail"
+    ],
+    "properties": {
+        "report_id": {
+            "type": "string"
+        },
+        "case_id": {
+            "type": "string"
+        },
+        "policy_id": {
+            "type": "string"
+        },
+        "generated_at_utc": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "policy_version_set": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "last_policy_sync_timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "disclaimer_hash": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "APPROVED",
+                "BLOCKED",
+                "REJECTED",
+                "NEEDS_INPUT"
+            ]
+        },
+        "policy_runtime_status": {
+            "type": "object",
+            "required": [
+                "source",
+                "status",
+                "status_reason_de",
+                "health",
+                "last_checked_utc",
+                "snapshot_id"
+            ],
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "enum": [
+                        "STATIC",
+                        "OVERLAY"
+                    ]
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "OPEN",
+                        "PAUSED",
+                        "CLOSED",
+                        "UNKNOWN"
+                    ]
+                },
+                "status_reason_de": {
+                    "type": "string"
+                },
+                "health": {
+                    "type": "string"
+                },
+                "last_checked_utc": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "snapshot_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "subsidy_total_cents": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "subsidy_total_eur": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d{2}$"
+        },
+        "violations": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "code",
+                    "message",
+                    "evidence_anchor"
+                ],
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "evidence_anchor": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "audit_trail": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "step_id",
+                    "description",
+                    "evidence_anchor",
+                    "source_url",
+                    "doc_version"
+                ],
+                "properties": {
+                    "step_id": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "amount_cents": {
+                        "type": "integer"
+                    },
+                    "amount_eur": {
+                        "type": "string"
+                    },
+                    "evidence_anchor": {
+                        "type": "string"
+                    },
+                    "source_url": {
+                        "type": "string"
+                    },
+                    "doc_version": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

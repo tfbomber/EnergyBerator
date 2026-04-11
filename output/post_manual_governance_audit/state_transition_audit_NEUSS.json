@@ -1,0 +1,6 @@
+{
+  "total_transitions_checked": 3,
+  "unauthorized_transitions_detected": 0,
+  "violation_samples": [],
+  "transition_verdict": "PASS"
+}

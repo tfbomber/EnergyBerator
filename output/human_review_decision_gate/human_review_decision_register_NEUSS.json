@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "upstream_queue_status": "CONDITIONALLY_READY_FOR_HUMAN_REVIEW",
+      "human_input_status": "REAL_HUMAN_DECISION_INPUT_PRESENT",
+      "normalized_decision": "APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "decision_record_status": "RECORDED",
+      "reviewer_id_present": true,
+      "review_timestamp_present": true,
+      "human_review_required": true,
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ],
+      "disclaimer_no_execution": "HUMAN_DECISION_RECORDED_ONLY / NOT_AN_EXECUTION_COMMAND"
+    }
+  ]
+}

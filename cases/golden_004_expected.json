@@ -1,0 +1,22 @@
+{
+    "report_id": "REP-GOLDEN_004-20260221202303",
+    "case_id": "GOLDEN_004",
+    "policy_id": "DUS_BALCONY_PV_2025",
+    "generated_at_utc": "2026-02-21T20:23:03.154087Z",
+    "policy_version_set": {
+        "DUS_BALCONY_PV_2025": "2025-01-01"
+    },
+    "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+    "disclaimer_hash": "4106776c92d3a9727db7d25cba04b328af8577a69797837e6313b42ecd52864e",
+    "status": "NEEDS_INPUT",
+    "subsidy_total_cents": 0,
+    "subsidy_total_eur": "0.00",
+    "violations": [
+        {
+            "code": "MISSING_APPLICATION_EVENT",
+            "message": "No APPLICATION_SUBMITTED event found in timeline.",
+            "evidence_anchor": "19.303 Punkt 4.1"
+        }
+    ],
+    "audit_trail": []
+}

@@ -1,0 +1,133 @@
+{
+  "records": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "file_name": "PHYSICAL_E4_16e104e6.json",
+      "sha256": "add33725764ba444cb0f2b48d34b0f741b059fdb9567510e10b45e9739492ceb",
+      "source_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "stage_55_canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "stage_55_future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "stage_55_confidence_class": "MEDIUM",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "geometry_object_missing_count": 0,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "readable_geometry_type_count": 1,
+      "unreadable_geometry_type_count": 0,
+      "geometry_type_profile_observed": [
+        "Polygon"
+      ],
+      "coordinates_present_count": 1,
+      "coordinates_missing_count": 0,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE",
+      "future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Sandbox structural ingestion test completed. Geometry payloads safely unrolled over canonical extraction paths."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "file_name": "PHYSICAL_E4_a3c32111.json",
+      "sha256": "487ea6fabf6bbccd87f998f8b1ef86136afdfcafc54a994ee9d717fa7f552025",
+      "source_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "stage_55_canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "stage_55_future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "stage_55_confidence_class": "MEDIUM",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "geometry_object_missing_count": 0,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "readable_geometry_type_count": 1,
+      "unreadable_geometry_type_count": 0,
+      "geometry_type_profile_observed": [
+        "Polygon"
+      ],
+      "coordinates_present_count": 1,
+      "coordinates_missing_count": 0,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE",
+      "future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Sandbox structural ingestion test completed. Geometry payloads safely unrolled over canonical extraction paths."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "file_name": "PHYSICAL_E4_a79e5e7d.json",
+      "sha256": "46e9f93bfa22e76b88fd6680714cc7ae582cdd86cbf1b32aaba22b596c9fa418",
+      "source_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "stage_55_canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "stage_55_future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "stage_55_confidence_class": "MEDIUM",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "geometry_object_missing_count": 0,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "readable_geometry_type_count": 1,
+      "unreadable_geometry_type_count": 0,
+      "geometry_type_profile_observed": [
+        "Polygon"
+      ],
+      "coordinates_present_count": 1,
+      "coordinates_missing_count": 0,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE",
+      "future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Sandbox structural ingestion test completed. Geometry payloads safely unrolled over canonical extraction paths."
+    }
+  ]
+}

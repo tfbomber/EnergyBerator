@@ -1,0 +1,57 @@
+{
+  "NEUSS_NORF_01": {
+    "unit_status": "REAL_GROUNDED",
+    "f02_confidence": 0.9,
+    "f02_building_count": 298.0,
+    "roof_building_count": 298.0,
+    "f01_confidence": 0.85,
+    "sfh_friendly_share": 1.0,
+    "pct_l1_gate_pass": 1.0,
+    "pv_coverage_score": 0.5,
+    "row_usable_for_ranking": true
+  },
+  "NEUSS_GRIML_01": {
+    "unit_status": "REAL_GROUNDED",
+    "f02_confidence": 0.9,
+    "f02_building_count": 1063.0,
+    "roof_building_count": 863.0,
+    "f01_confidence": 0.65,
+    "sfh_friendly_share": 0.7065,
+    "pct_l1_gate_pass": 0.514,
+    "pv_coverage_score": 0.3592,
+    "row_usable_for_ranking": true
+  },
+  "NEUSS_CENTRAL_01": {
+    "unit_status": "SYNTHETIC",
+    "f02_confidence": null,
+    "f02_building_count": null,
+    "roof_building_count": null,
+    "f01_confidence": null,
+    "sfh_friendly_share": null,
+    "pct_l1_gate_pass": null,
+    "pv_coverage_score": null,
+    "row_usable_for_ranking": false
+  },
+  "NEUSS_OLD_TOWN_01": {
+    "unit_status": "SYNTHETIC",
+    "f02_confidence": null,
+    "f02_building_count": null,
+    "roof_building_count": null,
+    "f01_confidence": null,
+    "sfh_friendly_share": null,
+    "pct_l1_gate_pass": null,
+    "pv_coverage_score": null,
+    "row_usable_for_ranking": false
+  },
+  "NEUSS_SUBURB_01": {
+    "unit_status": "REAL_GROUNDED",
+    "f02_confidence": 0.9,
+    "f02_building_count": 3556.0,
+    "roof_building_count": 3436.0,
+    "f01_confidence": 0.65,
+    "sfh_friendly_share": 0.8467,
+    "pct_l1_gate_pass": 0.8095,
+    "pv_coverage_score": 0.3696,
+    "row_usable_for_ranking": true
+  }
+}

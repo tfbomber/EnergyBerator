@@ -1,0 +1,39 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "packet_status": "PREPARED_FOR_REVIEW",
+      "dossier_identity_summary": "Target Identifier: EVD_56231492. Upstream lineage intact.",
+      "upstream_decision_summary": "Stage 66 Normalized Decision: APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "upstream_eligibility_summary": "Manual Contact Preparation: CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "factual_readiness_summary": "Dossier eligibility confirmed derived from Stage 66 human review constraints.",
+      "unresolved_information_checklist": [],
+      "pre_contact_verification_checklist": [
+        "verify whether any real contact channel exists in approved future input sources",
+        "confirm unresolved factual gaps before any future manual contact consideration",
+        "confirm governance boundary before any future manual review re-opening",
+        "verify that no blocked status has been introduced upstream"
+      ],
+      "available_contact_data_summary": {},
+      "missing_contact_data_summary": [
+        "phone_number",
+        "email_address",
+        "contact_name",
+        "preferred_time"
+      ],
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "MANUAL_CONTACT_EXECUTION",
+        "CRM_TASK_CREATION",
+        "APPOINTMENT_BOOKING",
+        "INSTALLER_ASSIGNMENT",
+        "SUBSIDY_INITIATION"
+      ],
+      "governance_warning": "This packet is for preparation and informational purposes only. It is not an execution authorization.",
+      "evidence_sources_used": [
+        "Stage 67 Manual Action Eligibility Gate"
+      ],
+      "disclaimer_no_contact_authorization": "no contact authorization is created in this stage"
+    }
+  ]
+}

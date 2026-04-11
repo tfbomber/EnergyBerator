@@ -1,0 +1,34 @@
+{
+  "cataloged_items": [
+    {
+      "file_origin": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_16e104e6.json",
+      "parsed_metadata": {
+        "evidence_source": "OpenStreetMap",
+        "evidence_class": "E4_Geometry",
+        "segment_binding": "NEUSS_NORF_01",
+        "lineage_anchor": "EP_GEO_16e104e67c4a",
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "file_origin": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a3c32111.json",
+      "parsed_metadata": {
+        "evidence_source": "OpenStreetMap",
+        "evidence_class": "E4_Geometry",
+        "segment_binding": "NEUSS_NORF_01",
+        "lineage_anchor": "EP_GEO_a3c32111a32c",
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "file_origin": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\external_evidence\\geometry\\PHYSICAL_E4_a79e5e7d.json",
+      "parsed_metadata": {
+        "evidence_source": "OpenStreetMap",
+        "evidence_class": "E4_Geometry",
+        "segment_binding": "NEUSS_NORF_01",
+        "lineage_anchor": "EP_GEO_a79e5e7dcaf3",
+        "schema_version": "1.0"
+      }
+    }
+  ]
+}

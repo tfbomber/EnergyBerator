@@ -1,0 +1,1127 @@
+[
+  {
+    "future_segment_id": "NEUSS_HOISTEN_01",
+    "clusters": [
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_000",
+        "cluster_size": 29,
+        "estimated_house_count": 29,
+        "lead_density": 0.4,
+        "estimated_campaignable_households": 23,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_001",
+        "cluster_size": 26,
+        "estimated_house_count": 26,
+        "lead_density": 0.7,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_002",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.77,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_003",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_004",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.55,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_005",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.62,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_006",
+        "cluster_size": 43,
+        "estimated_house_count": 43,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 34,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_007",
+        "cluster_size": 31,
+        "estimated_house_count": 31,
+        "lead_density": 0.49,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_008",
+        "cluster_size": 39,
+        "estimated_house_count": 39,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 31,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_009",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.34,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_010",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.77,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_011",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.62,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_012",
+        "cluster_size": 42,
+        "estimated_house_count": 42,
+        "lead_density": 0.33,
+        "estimated_campaignable_households": 33,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_013",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.55,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_014",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.77,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_015",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.42,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_016",
+        "cluster_size": 39,
+        "estimated_house_count": 39,
+        "lead_density": 0.76,
+        "estimated_campaignable_households": 31,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_017",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.42,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_018",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.46,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_019",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_020",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_021",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.49,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_022",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.49,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_023",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.47,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_024",
+        "cluster_size": 43,
+        "estimated_house_count": 43,
+        "lead_density": 0.76,
+        "estimated_campaignable_households": 34,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_025",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.71,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_026",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.33,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_027",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.74,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_028",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.6,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_029",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.8,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_030",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.36,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_HOISTEN_01_031",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      }
+    ]
+  },
+  {
+    "future_segment_id": "NEUSS_ROSELLERHEIDE_01",
+    "clusters": [
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_000",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.52,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_001",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.67,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_002",
+        "cluster_size": 41,
+        "estimated_house_count": 41,
+        "lead_density": 0.74,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_003",
+        "cluster_size": 29,
+        "estimated_house_count": 29,
+        "lead_density": 0.65,
+        "estimated_campaignable_households": 23,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_004",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.67,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_005",
+        "cluster_size": 31,
+        "estimated_house_count": 31,
+        "lead_density": 0.64,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_006",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.53,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_007",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.4,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_008",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.37,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_009",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.32,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_010",
+        "cluster_size": 26,
+        "estimated_house_count": 26,
+        "lead_density": 0.62,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_011",
+        "cluster_size": 39,
+        "estimated_house_count": 39,
+        "lead_density": 0.52,
+        "estimated_campaignable_households": 31,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_012",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.79,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_013",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.65,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_014",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.7,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_015",
+        "cluster_size": 29,
+        "estimated_house_count": 29,
+        "lead_density": 0.78,
+        "estimated_campaignable_households": 23,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_016",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.44,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_017",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.55,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_018",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.32,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_019",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.73,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_020",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.31,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_021",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.37,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_022",
+        "cluster_size": 29,
+        "estimated_house_count": 29,
+        "lead_density": 0.59,
+        "estimated_campaignable_households": 23,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_023",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.59,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_024",
+        "cluster_size": 26,
+        "estimated_house_count": 26,
+        "lead_density": 0.53,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_025",
+        "cluster_size": 36,
+        "estimated_house_count": 36,
+        "lead_density": 0.51,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_026",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.57,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_027",
+        "cluster_size": 26,
+        "estimated_house_count": 26,
+        "lead_density": 0.31,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_028",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.69,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_029",
+        "cluster_size": 39,
+        "estimated_house_count": 39,
+        "lead_density": 0.79,
+        "estimated_campaignable_households": 31,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_030",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.68,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ROSELLERHEIDE_01_031",
+        "cluster_size": 59,
+        "estimated_house_count": 59,
+        "lead_density": 0.44,
+        "estimated_campaignable_households": 47,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      }
+    ]
+  },
+  {
+    "future_segment_id": "NEUSS_ALLERHEILIGEN_01",
+    "clusters": [
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_000",
+        "cluster_size": 38,
+        "estimated_house_count": 38,
+        "lead_density": 0.63,
+        "estimated_campaignable_households": 30,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_001",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.64,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_002",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.72,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_003",
+        "cluster_size": 31,
+        "estimated_house_count": 31,
+        "lead_density": 0.5,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_004",
+        "cluster_size": 33,
+        "estimated_house_count": 33,
+        "lead_density": 0.63,
+        "estimated_campaignable_households": 26,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_005",
+        "cluster_size": 39,
+        "estimated_house_count": 39,
+        "lead_density": 0.41,
+        "estimated_campaignable_households": 31,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_006",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.55,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_007",
+        "cluster_size": 42,
+        "estimated_house_count": 42,
+        "lead_density": 0.64,
+        "estimated_campaignable_households": 33,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_008",
+        "cluster_size": 43,
+        "estimated_house_count": 43,
+        "lead_density": 0.78,
+        "estimated_campaignable_households": 34,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_009",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.67,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_ALLERHEILIGEN_01_010",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.56,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      }
+    ]
+  },
+  {
+    "future_segment_id": "NEUSS_UEDESHEIM_01",
+    "clusters": [
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_000",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.67,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_001",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.76,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_002",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.66,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_003",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.38,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_004",
+        "cluster_size": 43,
+        "estimated_house_count": 43,
+        "lead_density": 0.78,
+        "estimated_campaignable_households": 34,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_005",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.46,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_006",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.54,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_007",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.62,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_008",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.69,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_009",
+        "cluster_size": 41,
+        "estimated_house_count": 41,
+        "lead_density": 0.36,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_010",
+        "cluster_size": 45,
+        "estimated_house_count": 45,
+        "lead_density": 0.32,
+        "estimated_campaignable_households": 36,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_011",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.43,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_012",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.57,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_013",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_014",
+        "cluster_size": 41,
+        "estimated_house_count": 41,
+        "lead_density": 0.5,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_015",
+        "cluster_size": 41,
+        "estimated_house_count": 41,
+        "lead_density": 0.38,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_016",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.79,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_017",
+        "cluster_size": 28,
+        "estimated_house_count": 28,
+        "lead_density": 0.64,
+        "estimated_campaignable_households": 22,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_018",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.64,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_019",
+        "cluster_size": 33,
+        "estimated_house_count": 33,
+        "lead_density": 0.7,
+        "estimated_campaignable_households": 26,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_020",
+        "cluster_size": 44,
+        "estimated_house_count": 44,
+        "lead_density": 0.33,
+        "estimated_campaignable_households": 35,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_021",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_022",
+        "cluster_size": 27,
+        "estimated_house_count": 27,
+        "lead_density": 0.48,
+        "estimated_campaignable_households": 21,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_UEDESHEIM_01_023",
+        "cluster_size": 23,
+        "estimated_house_count": 23,
+        "lead_density": 0.49,
+        "estimated_campaignable_households": 18,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      }
+    ]
+  },
+  {
+    "future_segment_id": "NEUSS_SELIKUM_01",
+    "clusters": [
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_000",
+        "cluster_size": 38,
+        "estimated_house_count": 38,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 30,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_001",
+        "cluster_size": 32,
+        "estimated_house_count": 32,
+        "lead_density": 0.53,
+        "estimated_campaignable_households": 25,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_002",
+        "cluster_size": 30,
+        "estimated_house_count": 30,
+        "lead_density": 0.49,
+        "estimated_campaignable_households": 24,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_003",
+        "cluster_size": 34,
+        "estimated_house_count": 34,
+        "lead_density": 0.48,
+        "estimated_campaignable_households": 27,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_004",
+        "cluster_size": 37,
+        "estimated_house_count": 37,
+        "lead_density": 0.79,
+        "estimated_campaignable_households": 29,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_005",
+        "cluster_size": 40,
+        "estimated_house_count": 40,
+        "lead_density": 0.46,
+        "estimated_campaignable_households": 32,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_006",
+        "cluster_size": 28,
+        "estimated_house_count": 28,
+        "lead_density": 0.6,
+        "estimated_campaignable_households": 22,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_007",
+        "cluster_size": 35,
+        "estimated_house_count": 35,
+        "lead_density": 0.57,
+        "estimated_campaignable_households": 28,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_008",
+        "cluster_size": 38,
+        "estimated_house_count": 38,
+        "lead_density": 0.45,
+        "estimated_campaignable_households": 30,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_009",
+        "cluster_size": 25,
+        "estimated_house_count": 25,
+        "lead_density": 0.58,
+        "estimated_campaignable_households": 20,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      },
+      {
+        "cluster_id": "C_PROXY_NEUSS_SELIKUM_01_010",
+        "cluster_size": 70,
+        "estimated_house_count": 70,
+        "lead_density": 0.51,
+        "estimated_campaignable_households": 56,
+        "clustering_mode": "proxy_clustering",
+        "simulation_mode": true,
+        "epistemic_status": "simulated"
+      }
+    ]
+  }
+]

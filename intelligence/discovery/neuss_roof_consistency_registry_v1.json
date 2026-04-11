@@ -1,0 +1,20 @@
+[
+  {
+    "segment_id": "NEUSS_SUBURBAN_01",
+    "roof_orientation_consistency": "LOW",
+    "roof_slope_consistency": "LOW",
+    "building_type_uniformity": "LOW",
+    "roof_consistency_factor": "LOW",
+    "installer_scalability": "Highly heterogeneous. Custom design required per roof; low batch efficiency.",
+    "notes": "Determined via morphological proxies. Dominant form (Detached/Semi Mix) heavily influences structural heterogeneity assumptions."
+  },
+  {
+    "segment_id": "NEUSS_VILLA_01",
+    "roof_orientation_consistency": "LOW",
+    "roof_slope_consistency": "MEDIUM",
+    "building_type_uniformity": "HIGH",
+    "roof_consistency_factor": "MEDIUM",
+    "installer_scalability": "Partial variation exists. 2-3 standard installation templates needed per street.",
+    "notes": "Determined via morphological proxies. Dominant form (Detached) heavily influences structural heterogeneity assumptions."
+  }
+]

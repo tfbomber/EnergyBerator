@@ -1,0 +1,19 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "geometry_id": "UNKNOWN",
+      "qualified_evidence_ids": [
+        "SYNTH_EVD_ITEM_001"
+      ],
+      "routed_modules": [
+        "PROGRAM_COMPLIANCE_REVALIDATION"
+      ],
+      "routing_basis": [
+        "Evidence SYNTH_EVD_ITEM_001 typed as 'invoice' maps to ['PROGRAM_COMPLIANCE_REVALIDATION']"
+      ],
+      "unresolved_routing_flags": false,
+      "governing_stage": "STAGE_63"
+    }
+  ]
+}

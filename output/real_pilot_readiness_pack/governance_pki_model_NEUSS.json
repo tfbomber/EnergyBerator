@@ -1,0 +1,12 @@
+{
+  "issuer_roles": [
+    "Compliance_Officer",
+    "Data_Protection_Representative",
+    "Technical_Lead"
+  ],
+  "token_structure_requirements": "Ed25519 Cryptographic Signature, 24-hr expiry lock, Explicit Target ID array bounding.",
+  "verification_rules": "Strict token format validation vs Stage 42 spec. Any missing signature invalidates intake implicitly.",
+  "revocation_model": "Revocation Drop API deletes offline token halting Stage 40 verification natively.",
+  "issuance_lifecycle": "1. Request generated inside Stage 39 -> 2. Human Review -> 3. KMS Sign -> 4. Intake Deposit -> 5. Expire Post-Consumption",
+  "governance_execution_separation": "Approver accounts (Governance) cannot execute Writeback APIs (Execution) structurally."
+}

@@ -1,0 +1,31 @@
+{
+  "schema_purpose": "documentation_guidance_only",
+  "required_fields": [
+    "token_id",
+    "target_id",
+    "approval_scope",
+    "approved_field_paths",
+    "approval_timestamp",
+    "approver_identifier",
+    "authorization_level",
+    "approval_signature"
+  ],
+  "expected_types": {
+    "token_id": "string",
+    "target_id": "string",
+    "approval_scope": "string",
+    "approved_field_paths": "array[string]",
+    "approval_timestamp": "string (ISO 8601)",
+    "approver_identifier": "string",
+    "authorization_level": "string",
+    "approval_signature": "string (Cryptographic or verifiable payload)"
+  },
+  "validation_notes": [
+    "Target ID must map exactly to an upstream authorization candidate.",
+    "Field paths must not overlap with explicitly prohibited blocks."
+  ],
+  "non_authorizing_constraints": [
+    "Presence of this JSON inside `governance_tokens/` evaluates exclusively to AUTHORIZATION_FOR_EXECUTION_STAGE_ENTRY.",
+    "This schema explicitly bans simulation, direct recomputes, and direct writebacks."
+  ]
+}

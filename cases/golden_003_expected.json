@@ -1,0 +1,32 @@
+{
+    "report_id": "REP-GOLDEN_003-20260221202303",
+    "case_id": "GOLDEN_003",
+    "policy_id": "DUS_BALCONY_PV_2025",
+    "generated_at_utc": "2026-02-21T20:23:03.147421Z",
+    "policy_version_set": {
+        "DUS_BALCONY_PV_2025": "2025-01-01"
+    },
+    "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+    "disclaimer_hash": "4106776c92d3a9727db7d25cba04b328af8577a69797837e6313b42ecd52864e",
+    "status": "REJECTED",
+    "subsidy_total_cents": 0,
+    "subsidy_total_eur": "0.00",
+    "violations": [
+        {
+            "code": "VORHABENBEGINN_BEFORE_APPLICATION",
+            "message": "Event PAYMENT_MADE on 2026-02-01 occurred before Application on 2026-02-05.",
+            "evidence_anchor": "19.303 Punkt 4.1"
+        }
+    ],
+    "audit_trail": [
+        {
+            "step_id": "TIMING_CHECK",
+            "description": "Vorhabenbeginn check: REJECTED",
+            "amount_cents": 0,
+            "amount_eur": "0.00",
+            "evidence_anchor": "19.303 Punkt 4.1",
+            "source_url": "https://www.duesseldorf.de/fileadmin/Amt19/umweltamt/foerderundberatungsprogramme/klimafreundlichwohnen/pdf/Richtlinien/Richtlinie_2025_vom_12.12.2024.pdf",
+            "doc_version": "2025-01-01"
+        }
+    ]
+}

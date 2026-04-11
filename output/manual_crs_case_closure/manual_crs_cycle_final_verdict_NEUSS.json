@@ -1,0 +1,9 @@
+{
+  "total_cases_reviewed": 3,
+  "total_cases_closed": 3,
+  "total_cases_with_valid_submission": 0,
+  "total_cases_without_valid_submission": 3,
+  "total_retry_locked": 3,
+  "total_activation_prohibited": 3,
+  "overall_cycle_verdict": "CLOSED_WITH_NO_VALID_MANUAL_EVIDENCE"
+}

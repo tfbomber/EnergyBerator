@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A",
+      "trace_id": "6dc8014d-f722-49c6-b524-78107f6babcb",
+      "AUTO_CONTACT_ALLOWED": false,
+      "MANUAL_CONTACT_EXECUTION_ALLOWED": false,
+      "CRM_TASK_CREATION_ALLOWED": false,
+      "APPOINTMENT_BOOKING_ALLOWED": false,
+      "INSTALLER_ASSIGNMENT_ALLOWED": false
+    },
+    {
+      "contact_id": "TEST_74_CASE_I",
+      "trace_id": "0a63f2fc-8d4f-4d26-a846-e58796faa996",
+      "AUTO_CONTACT_ALLOWED": false,
+      "MANUAL_CONTACT_EXECUTION_ALLOWED": false,
+      "CRM_TASK_CREATION_ALLOWED": false,
+      "APPOINTMENT_BOOKING_ALLOWED": false,
+      "INSTALLER_ASSIGNMENT_ALLOWED": false
+    }
+  ]
+}

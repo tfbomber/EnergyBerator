@@ -1,0 +1,14 @@
+{
+  "assessments": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "status": "STILL_BLOCKED",
+      "reason": "Missing fundamental Authoritative Geometry (E4) and Field Signals."
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "status": "STILL_BLOCKED",
+      "reason": "Missing fundamental Authoritative Geometry (E4) and Field Signals."
+    }
+  ]
+}

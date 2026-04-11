@@ -1,0 +1,14 @@
+{
+    "DESS-V1.2-GOLDEN": {
+        "evidence_file": "tests/fixtures/e2e/evidence/golden_evidence.pdf",
+        "anchors_map": {
+            "DUMMY": "Mock Anchor Text"
+        }
+    },
+    "DESS-V1.1-LEGACY": {
+        "evidence_file": "tests/fixtures/e2e/evidence/legacy.pdf",
+        "anchors_map": {
+            "DUMMY": "Legacy Anchor Text"
+        }
+    }
+}

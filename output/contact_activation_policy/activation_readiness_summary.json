@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "contact_id": "EVD_56231492",
+      "readiness_score": 1.0,
+      "readiness_verdict": "ELIGIBLE_FOR_ACTIVATION",
+      "missing_critical_conditions": [],
+      "disclaimer": "Scores and readiness markers DO NOT EXECUTE OUTREACH."
+    }
+  ]
+}

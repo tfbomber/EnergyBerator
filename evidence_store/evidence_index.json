@@ -1,0 +1,43 @@
+{
+    "DUS_BALCONY_PV_2025": {
+        "source_url": "https://www.duesseldorf.de/fileadmin/Amt19/umweltamt/foerderundberatungsprogramme/klimafreundlichwohnen/pdf/Richtlinien/Richtlinie_2025_vom_12.12.2024.pdf",
+        "doc_version": "2025-01-01",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+        "evidence_file": "evidence_store/dus_balcony_pv_2025.pdf",
+        "anchors_map": {
+            "19.303 Punkt 4.1": "19.303 Punkt 4.1",
+            "19.303 Punkt 5.7.2 Materialkosten": "19.303 Punkt 5.7.2 Materialkosten",
+            "19.303 Punkt 5.7.2 Installationskosten": "19.303 Punkt 5.7.2 Installationskosten",
+            "19.303 Punkt 5.7.2 Cradle to Cradle Bonus": "19.303 Punkt 5.7.2 Cradle to Cradle Bonus",
+            "19.303 Punkt 5.7.2 Sonderförderung Düsselpass": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass",
+            "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (befristet bis 31.03.2026)": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (befristet bis 31.03.2026)",
+            "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (mit Energiesparberatung)": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (mit Energiesparberatung)",
+            "19.303 Punkt 5.7.2 Förderung": "19.303 Punkt 5.7.2 Förderung"
+        }
+    },
+    "DUS_HEAT_PUMP_2025": {
+        "source_url": "https://www.duesseldorf.de/fileadmin/Amt19/umweltamt/foerderundberatungsprogramme/klimafreundlichwohnen/pdf/Richtlinien/Richtlinie_2025_vom_12.12.2024.pdf",
+        "doc_version": "2025-01-01",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+        "evidence_file": "evidence_store/dus_balcony_pv_2025.pdf",
+        "anchors_map": {
+            "19.303 Punkt 4.1": "19.303 Punkt 4.1",
+            "19.303 Punkt 5.9.1 Anlage": "19.303 Punkt 5.9.1 Anlage",
+            "19.303 Punkt 5.9.1 Installation und Abgleich": "19.303 Punkt 5.9.1 Installation und Abgleich",
+            "19.303 Punkt 5.9.1 Schallschutzhaube": "19.303 Punkt 5.9.1 Schallschutzhaube",
+            "19.303 Punkt 5.9 Förderung": "19.303 Punkt 5.9 Förderung"
+        }
+    },
+    "KFW_458_HEIZUNGSFOERDERUNG": {
+        "source_url": "https://www.kfw.de/PDF/Download-Center/F%C3%B6rderprogramme-%28Inlandsf%C3%B6rderung%29/PDF-Dokumente/6000005131_M_458.pdf",
+        "doc_version": "2024",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z",
+        "evidence_file": "evidence_store/kfw_458_2024.pdf",
+        "anchors_map": {
+            "Merkblatt BEG: Punkt 4.1. exception for aufschiebende Bedingung": "Merkblatt BEG: Punkt 4.1. exception for aufschiebende Bedingung",
+            "Merkblatt BEG: Klimageschwindigkeits-Bonus": "Merkblatt BEG: Klimageschwindigkeits-Bonus",
+            "Merkblatt BEG: Einkommens-Bonus <= 40000": "Merkblatt BEG: Einkommens-Bonus <= 40000",
+            "Merkblatt BEG: max 70% rate, 30,000 eligible cost": "Merkblatt BEG: max 70% rate, 30,000 eligible cost"
+        }
+    }
+}

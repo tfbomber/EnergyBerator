@@ -1,0 +1,142 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.2, pytest-9.0.2, pluggy-1.5.0 -- C:\Users\jiudi\Miniconda3\python.exe
+cachedir: .pytest_cache
+rootdir: D:\Stock Analysis\D-Energy Berater\d-ess-engine
+plugins: anyio-4.12.0
+collecting ... collected 40 items / 32 deselected / 8 selected
+
+tests/test_audit_robustness.py::test_extreme_suite[case0] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_be19_report.json
+
+[EXTREME] M2-A1-EVIDENCE-MISSING
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case1] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_3c17_report.json
+
+[EXTREME] M2-A2-ANCHOR-FAIL
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case2] [INTELLIGENCE] Regex Match Triggered for DUS_BALCONY_PV_2025
+[SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_3c0e_report.json
+
+[EXTREME] M2-B1-OVERLAY-VARIANT
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case3] [INTELLIGENCE] Regex Match Triggered for DUS_BALCONY_PV_2025
+[SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_5d3f_report.json
+
+[EXTREME] M2-B3-PRIORITY-VORHABENBEGINN-OVERRIDE-OVERLAY
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case4] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_c775_report.json
+
+[EXTREME] M2-C1-MISSING-MANDATORY-TIMELINE
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case5] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_57fe_report.json
+
+[EXTREME] M2-C2-INVALID-DATE
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case6] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_c568_report.json
+
+[EXTREME] M2-D1-CONFLICT-DETECTED
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+tests/test_audit_robustness.py::test_extreme_suite[case7] [SUCCESS] Report generated at d:\Stock Analysis\D-Energy Berater\d-ess-engine\reports\bus_d9d7_report.json
+
+[EXTREME] M2-GOLDEN-001
+  Status: BLOCKED
+  Final Subsidy: 0.00
+FAILED
+
+================================== FAILURES ===================================
+__________________________ test_extreme_suite[case0] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:133: in run_test_logic
+    assert snippet.lower() in full_trace_text.lower(), f"Trace missing snippet: {snippet}"
+E   AssertionError: Trace missing snippet: anchor not evaluated
+E   assert 'anchor not evaluated' in "{'report_id': 'rep-bus_be19-20260228192103', 'case_id': 'bus_be19', 'policy_id': 'dus_balcony_pv_2025', 'generated_at_utc': '2026-02-28t19:21:03.291906z', 'policy_version_set': {'dus_balcony_pv_2025': '2025'}, 'last_policy_sync_timestamp': '2026-02-21t00:00:00z', 'disclaimer_hash': '4106776c92d3a9727db7d25cba04b328af8577a69797837e6313b42ecd52864e', 'status': 'blocked', 'policy_runtime_status': {'source': 'static', 'status': 'active', 'status_reason_de': 'baseline policy status.', 'health': 'ok', 'last_checked_utc': '2026-02-21t00:00:00z', 'snapshot_id': none}, 'runtime_gate': {'policy_status': 'error'}, 'subsidy_total_cents': 0, 'subsidy_total_eur': '0.00', 'violations': [{'severity': 'info', 'reason_code_raw': 'unknown_payment_status', 'message': 'it is unknown if a down payment was made. cannot evaluate payment bounds.', 'trace': {'source': 'adapter_injection'}, 'reason_code': 'info_only', 'code': 'info_only', 'evidence_anchor': 'general'}, {'severity': 'blocked', 'runtime_status': 'error', 'reason_code_raw': 'evidence_file_not_found', 'message': 'evidence file not found: policies/2026/dus_missing.pdf', 'trace': {'evidence_ref': 'policies/2026/dus_missing.pdf', 'error': 'evidence file not found: policies/2026/dus_missing.pdf'}, 'reason_code': 'evidence_file_not_found', 'code': 'evidence_file_not_found', 'evidence_anchor': 'general'}], 'audit_trail': [], 'report_meta': {'runtime_status': 'error', 'as_of': '2026-02-28'}}"
+E    +  where 'anchor not evaluated' = <built-in method lower of str object at 0x0000024EBA0662B0>()
+E    +    where <built-in method lower of str object at 0x0000024EBA0662B0> = 'anchor not evaluated'.lower
+E    +  and   "{'report_id': 'rep-bus_be19-20260228192103', 'case_id': 'bus_be19', 'policy_id': 'dus_balcony_pv_2025', 'generated_at_utc': '2026-02-28t19:21:03.291906z', 'policy_version_set': {'dus_balcony_pv_2025': '2025'}, 'last_policy_sync_timestamp': '2026-02-21t00:00:00z', 'disclaimer_hash': '4106776c92d3a9727db7d25cba04b328af8577a69797837e6313b42ecd52864e', 'status': 'blocked', 'policy_runtime_status': {'source': 'static', 'status': 'active', 'status_reason_de': 'baseline policy status.', 'health': 'ok', 'last_checked_utc': '2026-02-21t00:00:00z', 'snapshot_id': none}, 'runtime_gate': {'policy_status': 'error'}, 'subsidy_total_cents': 0, 'subsidy_total_eur': '0.00', 'violations': [{'severity': 'info', 'reason_code_raw': 'unknown_payment_status', 'message': 'it is unknown if a down payment was made. cannot evaluate payment bounds.', 'trace': {'source': 'adapter_injection'}, 'reason_code': 'info_only', 'code': 'info_only', 'evidence_anchor': 'general'}, {'severity': 'blocked', 'runtime_status': 'error', 'reason_code_raw': 'evidence_file_not_found', 'message': 'evidence file not found: policies/2026/dus_missing.pdf', 'trace': {'evidence_ref': 'policies/2026/dus_missing.pdf', 'error': 'evidence file not found: policies/2026/dus_missing.pdf'}, 'reason_code': 'evidence_file_not_found', 'code': 'evidence_file_not_found', 'evidence_anchor': 'general'}], 'audit_trail': [], 'report_meta': {'runtime_status': 'error', 'as_of': '2026-02-28'}}" = <built-in method lower of str object at 0x0000024EB7284000>()
+E    +    where <built-in method lower of str object at 0x0000024EB7284000> = "{'report_id': 'REP-BUS_BE19-20260228192103', 'case_id': 'BUS_BE19', 'policy_id': 'DUS_BALCONY_PV_2025', 'generated_at_utc': '2026-02-28T19:21:03.291906Z', 'policy_version_set': {'DUS_BALCONY_PV_2025': '2025'}, 'last_policy_sync_timestamp': '2026-02-21T00:00:00Z', 'disclaimer_hash': '4106776c92d3a9727db7d25cba04b328af8577a69797837e6313b42ecd52864e', 'status': 'BLOCKED', 'policy_runtime_status': {'source': 'STATIC', 'status': 'ACTIVE', 'status_reason_de': 'Baseline policy status.', 'health': 'OK', 'last_checked_utc': '2026-02-21T00:00:00Z', 'snapshot_id': None}, 'runtime_gate': {'policy_status': 'ERROR'}, 'subsidy_total_cents': 0, 'subsidy_total_eur': '0.00', 'violations': [{'severity': 'INFO', 'reason_code_raw': 'UNKNOWN_PAYMENT_STATUS', 'message': 'It is unknown if a down payment was made. Cannot evaluate payment bounds.', 'trace': {'source': 'adapter_injection'}, 'reason_code': 'INFO_ONLY', 'code': 'INFO_ONLY', 'evidence_anchor': 'GENERAL'}, {'severity': 'BLOCKED', 'runtime_status': 'ERROR', 'reason_code_raw': 'EVIDENCE_FILE_NOT_FOUND', 'message': 'Evidence file not found: policies/2026/dus_missing.pdf', 'trace': {'evidence_ref': 'policies/2026/dus_missing.pdf', 'error': 'Evidence file not found: policies/2026/dus_missing.pdf'}, 'reason_code': 'EVIDENCE_FILE_NOT_FOUND', 'code': 'EVIDENCE_FILE_NOT_FOUND', 'evidence_anchor': 'GENERAL'}], 'audit_trail': [], 'report_meta': {'runtime_status': 'ERROR', 'as_of': '2026-02-28'}}".lower
+__________________________ test_extreme_suite[case1] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code ANCHOR_RESOLUTION_FAILED in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+E   assert 'ANCHOR_RESOLUTION_FAILED' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+__________________________ test_extreme_suite[case2] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code OK_WITH_OVERLAY in {'EVIDENCE_FILE_NOT_FOUND', 'POLICY_PAUSED', 'INFO_ONLY'}
+E   assert 'OK_WITH_OVERLAY' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY', 'POLICY_PAUSED'}
+__________________________ test_extreme_suite[case3] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code VORHABENBEGINN_VIOLATION in {'EVIDENCE_FILE_NOT_FOUND', 'POLICY_PAUSED', 'INFO_ONLY'}
+E   assert 'VORHABENBEGINN_VIOLATION' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY', 'POLICY_PAUSED'}
+__________________________ test_extreme_suite[case4] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code MISSING_FACTS in {'EVIDENCE_FILE_NOT_FOUND', 'WORK_STARTED_UNKNOWN', 'INFO_ONLY'}
+E   assert 'MISSING_FACTS' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY', 'WORK_STARTED_UNKNOWN'}
+__________________________ test_extreme_suite[case5] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code FIELD_PARSE_ERROR in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+E   assert 'FIELD_PARSE_ERROR' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+__________________________ test_extreme_suite[case6] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code CONFLICT_DETECTED in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+E   assert 'CONFLICT_DETECTED' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+__________________________ test_extreme_suite[case7] __________________________
+tests\test_audit_robustness.py:161: in test_extreme_suite
+    run_test_logic(case, "EXTREME")
+tests\test_audit_robustness.py:118: in run_test_logic
+    assert exp["reason_code"] in actual_codes, f"Missing expected reason_code {exp['reason_code']} in {actual_codes}"
+E   AssertionError: Missing expected reason_code OK in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+E   assert 'OK' in {'EVIDENCE_FILE_NOT_FOUND', 'INFO_ONLY'}
+============================== warnings summary ===============================
+tests/test_audit_robustness.py::test_extreme_suite[case0]
+tests/test_audit_robustness.py::test_extreme_suite[case1]
+tests/test_audit_robustness.py::test_extreme_suite[case2]
+tests/test_audit_robustness.py::test_extreme_suite[case3]
+tests/test_audit_robustness.py::test_extreme_suite[case4]
+tests/test_audit_robustness.py::test_extreme_suite[case5]
+tests/test_audit_robustness.py::test_extreme_suite[case6]
+tests/test_audit_robustness.py::test_extreme_suite[case7]
+  d:\Stock Analysis\D-Energy Berater\d-ess-engine\core\main.py:277: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    report["report_meta"] = {"runtime_status": run_status, "as_of": case.get("as_of", datetime.utcnow().strftime("%Y-%m-%d"))}
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case0] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case1] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case2] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case3] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case4] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case5] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case6] - AssertionE...
+FAILED tests/test_audit_robustness.py::test_extreme_suite[case7] - AssertionE...
+================ 8 failed, 32 deselected, 8 warnings in 0.34s =================

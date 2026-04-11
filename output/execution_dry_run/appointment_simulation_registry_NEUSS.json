@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A",
+      "trace_id": "6dc8014d-f722-49c6-b524-78107f6babcb",
+      "appointment_draft": {
+        "appointment_type": "ONSITE_ASSESSMENT",
+        "suggested_window": "NEXT_4_WEEKS",
+        "status": "NOT_BOOKED_SIMULATION",
+        "compliance_note": "DO NOT BOOK - SIMULATION ONLY"
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_I",
+      "trace_id": "0a63f2fc-8d4f-4d26-a846-e58796faa996",
+      "appointment_draft": {
+        "appointment_type": "ONSITE_ASSESSMENT",
+        "suggested_window": "NEXT_4_WEEKS",
+        "status": "NOT_BOOKED_SIMULATION",
+        "compliance_note": "DO NOT BOOK - SIMULATION ONLY"
+      }
+    }
+  ]
+}

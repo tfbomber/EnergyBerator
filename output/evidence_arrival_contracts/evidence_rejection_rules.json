@@ -1,0 +1,46 @@
+{
+  "rejection_registry": [
+    {
+      "code": "ERR_001",
+      "name": "Missing Metadata",
+      "trigger": "File lacks `candidate_id`",
+      "action": "REJECT_AND_LOG",
+      "terminal": true
+    },
+    {
+      "code": "ERR_002",
+      "name": "Stale Artifact",
+      "trigger": "Timestamp older than segment creation",
+      "action": "REJECT_AND_LOG",
+      "terminal": true
+    },
+    {
+      "code": "ERR_003",
+      "name": "Unsupported Schema",
+      "trigger": "Field schema unmatched against Stage 25 maps",
+      "action": "REJECT_AND_LOG",
+      "terminal": true
+    },
+    {
+      "code": "ERR_004",
+      "name": "Lineage Broken",
+      "trigger": "No E4 source anchor documented",
+      "action": "REJECT_AND_LOG",
+      "terminal": true
+    },
+    {
+      "code": "ERR_005",
+      "name": "Semantic Version Collision",
+      "trigger": "Conflicting payload with identical Candidate ID",
+      "action": "HOLD_FOR_MANUAL_REVIEW",
+      "terminal": false
+    },
+    {
+      "code": "ERR_006",
+      "name": "Rogue Override",
+      "trigger": "Manual review attempts payload rewrite outside of Governance gating",
+      "action": "REJECT_AND_LOG",
+      "terminal": true
+    }
+  ]
+}

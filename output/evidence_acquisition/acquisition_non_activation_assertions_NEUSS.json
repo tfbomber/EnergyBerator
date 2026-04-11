@@ -1,0 +1,7 @@
+{
+  "acquisitions_triggering_activations": 0,
+  "acquisitions_triggering_tier_movement": 0,
+  "acquisitions_triggering_recompute": 0,
+  "mode_enforced": "ACQUISITION_ONLY",
+  "assertion": "Raw geometries successfully minted into /data/external_evidence/geometry/ entirely decoupled from Integration Engine. Candidates unequivocally remain STILL_BLOCKED until future Stage 30 sweep."
+}

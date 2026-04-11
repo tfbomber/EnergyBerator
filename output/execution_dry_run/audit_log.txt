@@ -1,0 +1,13 @@
+STAGE 74 AUDIT LOG - 2026-03-18T19:52:14.761671+00:00
+================================================================================
+SKIP [TEST_74_CASE_E]: Found in pool but completely missing from warrant_registry.
+SKIP [TEST_74_CASE_G]: Found in pool but completely missing from warrant_registry.
+SIMULATED [TEST_74_CASE_A]: Lineage pure, locks intact. Generating drafts.
+SKIP [TEST_74_CASE_B]: Warrant != GRANTED_FOR_FUTURE_CONTACT_STAGE (MANUAL_WARRANT_GRANTED_FOR_PREPARATION_ONLY).
+SKIP [TEST_74_CASE_C]: Not found in future_contact_pool_registry.
+SKIP: Missing contact_id in warrant_registry.
+SKIP [TEST_74_CASE_F]: Governance locks breached! Flag is not FORBIDDEN.
+SKIP [TEST_74_CASE_H]: Lineage not uniquely mappable (Duplicate encountered).
+SIMULATED [TEST_74_CASE_I]: Lineage pure, locks intact. Generating drafts.
+================================================================================
+Final Lock Verification Result: FAIL

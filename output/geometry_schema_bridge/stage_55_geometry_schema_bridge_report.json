@@ -1,0 +1,17 @@
+{
+  "stage": "55",
+  "mode": "GEOMETRY_SCHEMA_BRIDGE",
+  "files_considered": 3,
+  "files_processed": 3,
+  "canonicalized_count": 0,
+  "canonicalized_with_limitations_count": 3,
+  "partially_bridged_count": 0,
+  "not_canonicalizable_count": 0,
+  "eligible_for_dry_run_count": 0,
+  "eligible_with_limitations_count": 3,
+  "needs_manual_schema_review_count": 0,
+  "not_eligible_count": 0,
+  "overall_verdict": "CANONICAL_CONTRACT_READY_WITH_LIMITATIONS",
+  "governance_summary": "Successfully bridged parseable containers to canonical extraction paths. Maintained ambiguity specifically around undeclared CRS.",
+  "safety_confirmation": "Confirmed: Bridging was pure metadata routing. No spatial relationships assigned. No property payloads were deserialized into business variables."
+}

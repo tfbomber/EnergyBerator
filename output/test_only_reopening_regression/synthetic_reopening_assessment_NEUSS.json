@@ -1,0 +1,49 @@
+{
+  "records": [
+    {
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "case_id": "EVD_56231492",
+      "actual_reopen_decision_state": "REOPEN_TRIGGER_APPROVED",
+      "next_cycle_entry_state": "QUALIFICATION_QUEUE",
+      "reopen_trigger_allowed": true,
+      "reopen_reason": "Sandbox mock execution",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_2_DUPLICATE_OLD",
+      "case_id": "EVD_8963BBA2",
+      "actual_reopen_decision_state": "NO_NEW_EVIDENCE_DETECTED",
+      "next_cycle_entry_state": "REMAINS_CLOSED",
+      "reopen_trigger_allowed": false,
+      "reopen_reason": "Sandbox mock execution",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_3_UNMATCHED",
+      "case_id": "UNMATCHED_UNKNOWN",
+      "actual_reopen_decision_state": "NO_NEW_EVIDENCE_DETECTED",
+      "next_cycle_entry_state": "REMAINS_CLOSED",
+      "reopen_trigger_allowed": false,
+      "reopen_reason": "Sandbox mock execution",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_4_EMPTY_CORRUPT",
+      "case_id": "SYNTHETIC_CASE_04",
+      "actual_reopen_decision_state": "REOPEN_TRIGGER_APPROVED",
+      "next_cycle_entry_state": "QUALIFICATION_QUEUE",
+      "reopen_trigger_allowed": true,
+      "reopen_reason": "Sandbox mock execution",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_5_BORDERLINE_PARTIAL",
+      "case_id": "SYNTHETIC_CASE_05",
+      "actual_reopen_decision_state": "REOPEN_TRIGGER_APPROVED",
+      "next_cycle_entry_state": "QUALIFICATION_QUEUE",
+      "reopen_trigger_allowed": true,
+      "reopen_reason": "Sandbox mock execution",
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

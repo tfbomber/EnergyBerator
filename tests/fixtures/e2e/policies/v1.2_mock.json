@@ -1,0 +1,42 @@
+{
+    "policy_id": "DESS-V1.2-GOLDEN",
+    "policy_version": "V1.2",
+    "status": "ACTIVE",
+    "metadata": {
+        "policy_hash": "HASH_V1_2_MOCK",
+        "effective_date": "2026-01-01"
+    },
+    "rules": {
+        "vorhabenbeginn_limit_days": 0,
+        "cutoff_date": "2026-12-31"
+    },
+    "timing_rules": {
+        "blocking_actions": [
+            "CONTRACT_SIGNED",
+            "WORK_STARTED",
+            "PAYMENT_MADE",
+            "FIRST_PAYMENT_MADE"
+        ]
+    },
+    "cost_rules": {
+        "input_amount_basis": "GROSS",
+        "buckets": {
+            "HARDWARE": {
+                "eligible": true,
+                "vat_rate": "19%",
+                "evidence_anchor": "COST_SPEC"
+            }
+        }
+    },
+    "calculation": {
+        "type": "GRANT_ON_ELIGIBLE_COST",
+        "eligible_basis": "GROSS",
+        "grant_rate": 0.5,
+        "cap_cents": 120000,
+        "evidence_anchor": "CAP_RULE"
+    },
+    "citations": {
+        "source_url": "https://example.com/policy_v1.2.pdf",
+        "doc_version": "1.2.0"
+    }
+}

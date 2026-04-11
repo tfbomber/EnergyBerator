@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-03-18T07:18:04.499392+00:00",
+  "total_dossiers": 1,
+  "with_review_input": 1,
+  "without_review_input": 0,
+  "validated_count": 1,
+  "rejected_count": 0,
+  "correction_needed_count": 0,
+  "zero_contact_violations": 0,
+  "zero_crm_violations": 0,
+  "zero_booking_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "final_stage_verdict": "CONTACT_DATA_REVIEW_RECORDED"
+}

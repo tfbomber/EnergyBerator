@@ -1,0 +1,16 @@
+{
+  "schema_name": "Field04 Metadata Audit Schema",
+  "description": "Ingestion lifecycle and spatial truth metadata.",
+  "fields": [
+    { "name": "source_file", "type": "string" },
+    { "name": "source_version", "type": "string" },
+    { "name": "tolerance_used", "type": "float" },
+    { "name": "total_raw_records", "type": "integer" },
+    { "name": "records_after_filter", "type": "integer" },
+    { "name": "count_match_footprint", "type": "integer" },
+    { "name": "count_match_buffer", "type": "integer" },
+    { "name": "count_match_seg_poly", "type": "integer" },
+    { "name": "count_unresolved", "type": "integer" },
+    { "name": "count_ambiguous", "type": "integer" }
+  ]
+}

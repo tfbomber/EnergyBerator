@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FIELD_04 PV_ADOPTION_SIGNAL Schema",
+  "description": "Canonical machine-readable structure for observed PV adoption metadata at segment level.",
+  "type": "object",
+  "required": [
+    "observation_basis",
+    "record_accounting",
+    "raw_metrics",
+    "normalized_metrics",
+    "business_output",
+    "data_quality",
+    "audit_sections"
+  ],
+  "properties": {
+    "observation_basis": {
+      "type": "object",
+      "properties": {
+        "source_system": { "type": "string", "example": "MaStR" },
+        "source_records_used": { "type": "array", "items": { "type": "string" } },
+        "observation_window": { 
+          "type": "object",
+          "properties": {
+            "start_date": { "type": ["string", "null"], "format": "date" },
+            "end_date": { "type": ["string", "null"], "format": "date" }
+          }
+        },
+        "spatial_join_method": { "type": "string", "enum": ["POINT_IN_POLYGON_OFFICIAL", "POINT_IN_POLYGON_DERIVED", "POSTAL_CODE_PROXY", "UNRESOLVED", "UNASSIGNED"] },
+        "spatial_fallback_rule": { "type": "string" },
+        "segment_geometry_source": { "type": "string" },
+        "registry_geometry_type": { "type": ["string", "null"] },
+        "spatial_assignment_status": { 
+          "type": "string", 
+          "enum": ["PROJECT_DERIVED_CONVEX_HULL", "OFFICIAL_BOUNDARY", "PLZ_PROXY", "GEOMETRY_MISSING", "UNASSIGNED"] 
+        }
+      }
+    },
+    "record_accounting": {
+      "type": "object",
+      "properties": {
+        "raw_record_count": { "type": "integer" },
+        "filtered_record_count": { "type": "integer" },
+        "deduplicated_record_count": { "type": "integer" },
+        "dedupe_rule_applied": { "type": "string" }
+      }
+    },
+    "raw_metrics": {
+      "type": "object",
+      "properties": {
+        "pv_installation_count": { "type": ["integer", "null"] },
+        "pv_total_kwp": { "type": ["number", "null"] },
+        "pv_mean_kwp": { "type": ["number", "null"] },
+        "pv_median_kwp": { "type": ["number", "null"] },
+        "pv_latest_installation_date": { "type": ["string", "null"], "format": "date" }
+      }
+    },
+    "normalized_metrics": {
+      "type": "object",
+      "properties": {
+        "pv_installation_density_per_km2": { "type": ["number", "null"] },
+        "pv_installation_density_per_100_buildings": { "type": ["number", "null"] },
+        "pv_kwp_density_per_km2": { "type": ["number", "null"] },
+        "pv_kwp_per_building": { "type": ["number", "null"] }
+      }
+    },
+    "business_output": {
+      "type": "object",
+      "properties": {
+        "pv_adoption_status": { 
+          "type": "string", 
+          "enum": ["NONE_OBSERVED", "LOW_ADOPTION", "MODERATE_ADOPTION", "HIGH_ADOPTION", "UNKNOWN"] 
+        },
+        "pv_signal_strength": { 
+          "type": "string", 
+          "enum": ["STRONG", "MODERATE", "WEAK", "UNKNOWN"] 
+        },
+        "pv_adoption_score": { "type": ["number", "null"] },
+        "pv_adoption_score_status": {
+          "type": "string",
+          "enum": ["WITHHELD_LOKATION_DATA_PENDING", "WITHHELD_INSUFFICIENT_SPATIAL_SUPPORT", "RESTORED_PROJECT_GEOMETRY", "RESTORED_OFFICIAL", "OBSERVED_ZERO"]
+        }
+      }
+    },
+    "data_quality": {
+      "type": "object",
+      "properties": {
+        "coverage_status": { 
+          "type": "string", 
+          "enum": ["ANCHOR_VALIDATED", "ANCHOR_PARTIAL", "ANCHOR_MISSING", "LOKATION_DATA_PENDING", "UNKNOWN"] 
+        },
+        "spatial_match_quality": { 
+          "type": "string", 
+          "enum": ["HIGH", "MEDIUM_PROJECT_DERIVED", "MEDIUM", "LOW", "NONE"] 
+        },
+        "registry_completeness_risk": { 
+          "type": "string", 
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL", "UNKNOWN"] 
+        },
+        "residential_relevance_quality": { 
+          "type": "string", 
+          "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"] 
+        },
+        "evidence_tier": { "type": "string", "enum": ["E1", "E2", "E3", "UNKNOWN"] }
+      }
+    },
+    "audit_sections": {
+      "type": "object",
+      "properties": {
+        "evidence_items": { "type": "array" },
+        "decision_trace": { "type": "object" },
+        "final_rationale": { "type": "string" },
+        "unresolved_gaps": { "type": "array" },
+        "schema_source_of_truth": { "type": "string" }
+      }
+    }
+  }
+}

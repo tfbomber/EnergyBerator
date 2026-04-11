@@ -1,0 +1,61 @@
+fields:
+
+  field_01:
+    name: field_01_lite_pv_potential
+    level: building
+    purpose: estimate PV system size potential
+    status: implemented
+
+  field_02:
+    name: building_type
+    level: building
+    purpose: classify buildings into detached / semi / rowhouse
+    status: implemented
+
+  field_03:
+    name: district_heating
+    level: building
+    purpose: identify district heating influence
+    status: implemented
+
+  field_04:
+    name: pv_density
+    level: segment
+    purpose: estimate solar adoption signals
+    status: planned
+
+  field_05:
+    name: building_age_proxy
+    level: building
+    purpose: approximate construction period
+    status: planned
+
+  field_06:
+    name: household_size_proxy
+    level: building
+    purpose: approximate electricity demand
+    status: planned
+
+  field_07:
+    name: electrification_potential
+    level: building
+    purpose: evaluate suitability for electrification
+    status: planned
+
+  field_08:
+    name: ownership_probability
+    level: building
+    purpose: estimate likelihood of owner occupancy
+    status: planned
+
+  field_09:
+    name: street_uniformity
+    level: segment
+    purpose: detect homogeneous housing clusters
+    status: planned
+
+  field_10:
+    name: street_opportunity_score
+    level: segment
+    purpose: rank streets for energy sales targeting
+    status: planned

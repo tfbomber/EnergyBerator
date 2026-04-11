@@ -1,0 +1,8 @@
+{
+  "mode": "DISCOVERY_ONLY",
+  "spatial_joins_executed": false,
+  "candidate_mappings_executed": false,
+  "business_conclusions_generated": false,
+  "STILL_BLOCKED_status_mutated": false,
+  "assertion": "Metadata parse success is strictly decoupled from downstream validity. No inferred data was generated for MISSING properties."
+}

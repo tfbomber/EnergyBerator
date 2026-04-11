@@ -1,0 +1,33 @@
+{
+  "run_id": "NORF_TRUTH_INGESTION_RUN_01",
+  "run_status": "SUCCESS",
+  "blocking_issue": null,
+  "resolution_summary": {
+    "canonical_id": "NEUSS_NORF_PILOT_01",
+    "physical_id": "ALLERHEILIGEN_PILOT_SEG_01",
+    "method": "REGISTRY_BRIDGE"
+  },
+  "scope_confirmation": {
+    "city": "Neuss",
+    "field_id": "03B",
+    "segment_ids_actually_processed": [
+      "NEUSS_NORF_PILOT_01"
+    ]
+  },
+  "object_counts": {
+    "sources": 1,
+    "artifacts": 1,
+    "evidence": 1,
+    "joins": 1,
+    "verdicts": 1
+  },
+  "file_existence": {
+    "sources": true,
+    "artifacts": true,
+    "evidence": true,
+    "joins": true,
+    "verdicts": true,
+    "batch": true,
+    "logs": true
+  }
+}

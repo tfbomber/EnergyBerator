@@ -1,0 +1,69 @@
+{
+  "records": [
+    {
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "scenario_name": "VALID_NEW_MATCHED_EVIDENCE",
+      "synthetic_case_id": "EVD_56231492",
+      "synthetic_evidence_item_id": "SYNTH_EVD_ITEM_001",
+      "file_name": "EVD_56231492_valid_evidence.json",
+      "file_type": "application/json",
+      "linkage_method": "FILENAME_EMBEDDED",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "QUALIFIED_FOR_REVALIDATION",
+      "expected_queue_outcome": "REVALIDATION_READY",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_2_DUPLICATE_OLD",
+      "scenario_name": "DUPLICATE_OLD_EVIDENCE",
+      "synthetic_case_id": "EVD_8963BBA2",
+      "synthetic_evidence_item_id": "SYNTH_EVD_ITEM_002",
+      "file_name": "EVD_8963BBA2_duplicate_evidence.json",
+      "file_type": "application/json",
+      "linkage_method": "FILENAME_EMBEDDED",
+      "expected_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_3_UNMATCHED",
+      "scenario_name": "NEW_BUT_UNMATCHED_EVIDENCE",
+      "synthetic_case_id": "UNMATCHED_UNKNOWN",
+      "synthetic_evidence_item_id": "SYNTH_EVD_ITEM_003",
+      "file_name": "some_random_file_with_no_case_id.json",
+      "file_type": "application/json",
+      "linkage_method": "UNMATCHED",
+      "expected_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_4_EMPTY_CORRUPT",
+      "scenario_name": "NEW_MATCHED_BUT_EMPTY_OR_CORRUPT",
+      "synthetic_case_id": "SYNTHETIC_CASE_04",
+      "synthetic_evidence_item_id": "SYNTH_EVD_ITEM_004",
+      "file_name": "SYNTHETIC_CASE_04_empty.txt",
+      "file_type": "text/plain",
+      "linkage_method": "FILENAME_EMBEDDED",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_5_BORDERLINE_PARTIAL",
+      "scenario_name": "BORDERLINE_PARTIAL_EVIDENCE",
+      "synthetic_case_id": "SYNTHETIC_CASE_05",
+      "synthetic_evidence_item_id": "SYNTH_EVD_ITEM_005",
+      "file_name": "SYNTHETIC_CASE_05_partial.json",
+      "file_type": "application/json",
+      "linkage_method": "FILENAME_EMBEDDED",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "PARTIALLY_QUALIFIED_EVIDENCE",
+      "expected_queue_outcome": "NONE",
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

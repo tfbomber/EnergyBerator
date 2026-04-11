@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://d-ess.energy/schemas/field_03b_audit.json",
+  "title": "Field 03B: Official Heat-Path Eligibility Audit Schema",
+  "description": "Schema for official-evidence-driven heat network eligibility auditing.",
+  "type": "object",
+  "required": [
+    "field_id",
+    "city",
+    "segment_id",
+    "audit_run_id",
+    "segment_heat_status",
+    "building_heat_status",
+    "evidence_tier",
+    "evidence_items",
+    "search_coverage",
+    "realization_horizon",
+    "window_of_opportunity",
+    "heat_source_type",
+    "decision_impact",
+    "manual_verification_required",
+    "disclaimer"
+  ],
+  "properties": {
+    "field_id": {
+      "type": "string",
+      "const": "03B"
+    },
+    "city": {
+      "type": "string",
+      "description": "City or municipality name."
+    },
+    "segment_id": {
+      "type": "string",
+      "description": "Unique identifier for the street segment or spatial unit."
+    },
+    "audit_run_id": {
+      "type": "string",
+      "description": "Unique ID for the specific audit execution."
+    },
+    "segment_heat_status": {
+      "type": "string",
+      "enum": [
+        "existing_heat_network_area",
+        "official_service_area_confirmed",
+        "planned_heat_network_area",
+        "decentral_likely_area",
+        "not_indicated",
+        "unknown"
+      ]
+    },
+    "building_heat_status": {
+      "type": "string",
+      "enum": [
+        "building_connection_confirmed",
+        "building_in_serviceable_area",
+        "building_near_network_but_unconfirmed",
+        "not_indicated",
+        "unknown"
+      ],
+      "default": "unknown"
+    },
+    "evidence_tier": {
+      "type": "string",
+      "enum": ["E1", "E2", "E3", "E4", "NONE"],
+      "description": "Highest level of evidence found for this audit object."
+    },
+    "evidence_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_type",
+          "official",
+          "decision_eligible",
+          "citation_ref",
+          "extracted_claim",
+          "review_outcome",
+          "relevance_to_segment",
+          "evidence_strength"
+        ],
+        "properties": {
+          "source_id": { "type": "string" },
+          "source_type": { "type": "string" },
+          "official": { "type": "boolean" },
+          "decision_eligible": { "type": "boolean" },
+          "citation_ref": { "type": "string" },
+          "page_ref_or_section": { "type": ["string", "null"] },
+          "extracted_claim": { "type": "string" },
+          "review_outcome": {
+            "type": "string",
+            "enum": [
+              "checked_and_relevant",
+              "checked_not_indicated",
+              "not_reviewed",
+              "inaccessible"
+            ]
+          },
+          "relevance_to_segment": { "type": "string" },
+          "evidence_strength": {
+            "type": "string",
+            "enum": ["E1", "E2", "E3", "E4"]
+          }
+        }
+      }
+    },
+    "search_coverage": {
+      "type": "string",
+      "enum": [
+        "source_checked_and_relevant_section_found",
+        "source_checked_but_segment_not_indicated",
+        "source_present_but_not_yet_reviewed",
+        "insufficient_source_coverage"
+      ]
+    },
+    "realization_horizon": {
+      "type": "object",
+      "required": ["status", "target_year", "basis"],
+      "properties": {
+        "status": { "type": "string", "enum": ["known", "unknown", "not_applicable"] },
+        "target_year": { "type": ["integer", "null"] },
+        "basis": {
+          "type": "string",
+          "enum": ["official_plan", "official_timeline", "inferred_from_stage", "unknown"]
+        }
+      }
+    },
+    "window_of_opportunity": {
+      "type": "object",
+      "required": ["status", "estimated_until_year", "basis"],
+      "properties": {
+        "status": { "type": "string", "enum": ["present", "absent", "unknown"] },
+        "estimated_until_year": { "type": ["integer", "null"] },
+        "basis": {
+          "type": "string",
+          "enum": ["official_realization_horizon", "inferred_from_planning_stage", "unknown"]
+        },
+        "note": { "type": ["string", "null"] }
+      }
+    },
+    "heat_source_type": {
+      "type": "string",
+      "enum": ["industrial_waste_heat", "gas", "biomass", "mixed", "unknown"],
+      "default": "unknown"
+    },
+    "decision_impact": {
+      "type": "string",
+      "enum": [
+        "block_hp_default_path",
+        "suppress_hp_direct_push",
+        "allow_hp_with_window_note",
+        "allow_hp_with_local_obligation_check",
+        "allow_hp_pv_priority_path",
+        "manual_check_required"
+      ]
+    },
+    "manual_verification_required": {
+      "type": "boolean"
+    },
+    "disclaimer": {
+      "type": "string"
+    }
+  }
+}

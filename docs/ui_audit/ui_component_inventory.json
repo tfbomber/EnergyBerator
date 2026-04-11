@@ -1,0 +1,67 @@
+{
+  "tables": [
+    {
+      "component_name": "st.dataframe",
+      "purpose": "Renders interactive pandas dataframes for trace logs and ROI scenario comparisons. Supports native sorting.",
+      "reusable": true,
+      "notes": "Lowest effort for displaying multi-row tabular data like opportunity clusters."
+    },
+    {
+      "component_name": "HTML Math Table",
+      "purpose": "Static styled table for displaying final subsidy/cost breakdowns.",
+      "reusable": false,
+      "notes": "Hardcoded HTML structure in s2_report.py; better to use st.dataframe for dynamic Neuss lists."
+    }
+  ],
+  "cards": [
+    {
+      "component_name": "st.columns + st.metric",
+      "purpose": "Displays key performance indicators (KPIs) in a responsive grid layout.",
+      "reusable": true,
+      "notes": "Highly reusable for top-level stats like 'Total Leads' or 'Avg Score'."
+    },
+    {
+      "component_name": "HTML Blocker Card",
+      "purpose": "Displays policy violations or redlines with custom CSS styling.",
+      "reusable": true,
+      "notes": "Can be repurposed to display top reasons for opportunity scoring."
+    }
+  ],
+  "filters": [
+    {
+      "component_name": "st.radio / st.selectbox",
+      "purpose": "Sidebar global settings and navigation.",
+      "reusable": true,
+      "notes": "Standard Streamlit inputs, ready for immediate reuse."
+    }
+  ],
+  "badges": [
+    {
+      "component_name": "render_tier_badge",
+      "purpose": "Displays data quality/confidence levels (Level A, B, C).",
+      "reusable": true,
+      "notes": "Perfect for displaying the 'confidence' metric in the MVP."
+    },
+    {
+      "component_name": "HTML Verdict Banner",
+      "purpose": "Large colored banners indicating case outcome (e.g. ELIGIBLE, BLOCKED).",
+      "reusable": true,
+      "notes": "CSS classes (report-verdict-ELIGIBLE) can be reused for recommended actions."
+    }
+  ],
+  "panels": [
+    {
+      "component_name": "st.expander",
+      "purpose": "Collapsible containers for detailed/secondary information.",
+      "reusable": true,
+      "notes": "Ideal for the 'expandable detail card' requirement for cluster specifics."
+    },
+    {
+      "component_name": "st.info / st.warning / st.error",
+      "purpose": "Native callout blocks for context and alerts.",
+      "reusable": true,
+      "notes": "Good for contextual instructions or disclaimers."
+    }
+  ],
+  "other": []
+}

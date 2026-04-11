@@ -1,0 +1,18 @@
+{
+  "layer_updates": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "geometry_state_after": "PROXY_ONLY",
+      "field_state_after": "SIMULATED_ONLY",
+      "tier_after": "E0",
+      "retry_assessment_state": "STILL_BLOCKED"
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "geometry_state_after": "PROXY_ONLY",
+      "field_state_after": "SIMULATED_ONLY",
+      "tier_after": "E0",
+      "retry_assessment_state": "STILL_BLOCKED"
+    }
+  ]
+}

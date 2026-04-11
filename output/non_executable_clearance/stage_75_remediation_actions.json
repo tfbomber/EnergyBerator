@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_75_CASE_C_RECOVERABLE",
+      "actions": [
+        {
+          "blocker": "CRM_INTEGRATION_NOT_DEFINED",
+          "remediation": "REQUEST_CRM_INTEGRATION_DESIGN"
+        },
+        {
+          "blocker": "INSTALLER_PIPELINE_NOT_DEFINED",
+          "remediation": "REQUEST_INSTALLER_PIPELINE_DESIGN"
+        }
+      ]
+    }
+  ]
+}

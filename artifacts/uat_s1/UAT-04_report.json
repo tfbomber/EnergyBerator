@@ -1,0 +1,98 @@
+{
+  "report_id": "REP-E2E-04-20260301093554",
+  "case_id": "E2E-04",
+  "policy_id": "DESS-V1.2-GOLDEN",
+  "generated_at_utc": "2026-03-01T09:35:54.823354Z",
+  "policy_version_set": {
+    "DESS-V1.2-GOLDEN": "1.2.0"
+  },
+  "last_policy_sync_timestamp": "2026-03-01T09:35:54.823354Z",
+  "disclaimer_hash": "fa14f671bb46b0f483ea58f6c830c0fd6afb429bc388912bdbc81d96064106cf",
+  "status": "INELIGIBLE_REJECTED",
+  "policy_runtime_status": {
+    "source": "STATIC",
+    "status": "ACTIVE",
+    "status_reason_de": "Baseline policy status.",
+    "health": "OK",
+    "last_checked_utc": "2026-02-21T00:00:00Z",
+    "snapshot_id": null,
+    "doc_hash": null
+  },
+  "runtime_gate": {
+    "policy_status": "ACTIVE"
+  },
+  "subsidy_total_cents": 0,
+  "subsidy_total_eur": "0.00",
+  "violations": [
+    {
+      "severity": "INFO",
+      "reason_code_raw": "EVIDENCE_OK",
+      "message": "resolved: tests/fixtures/e2e/evidence/v_start.pdf",
+      "evidence_check": true,
+      "evidence_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason_code": "EVIDENCE_OK",
+      "code": "EVIDENCE_OK",
+      "evidence_anchor": "GENERAL"
+    },
+    {
+      "severity": "INFO",
+      "reason_code_raw": "ANCHOR_RESOLVED",
+      "anchor_id": "GENERAL",
+      "anchor_strategy": "INDEX_MATCH",
+      "anchor_resolved": true,
+      "message": "Anchor resolved via INDEX_MATCH: Mock Anchor Text...",
+      "reason_code": "ANCHOR_RESOLVED",
+      "code": "ANCHOR_RESOLVED",
+      "evidence_anchor": "GENERAL"
+    },
+    {
+      "severity": "REJECTED",
+      "reason_code_raw": "VORHABENBEGINN_VIOLATION",
+      "message": "Vorhabenbeginn violation: WORK_STARTED on 2025-12-01 is 212 days before Application (Limit: 0).",
+      "gate": "VORHABENBEGINN",
+      "cutoff_date": "2026-12-31",
+      "trace": {
+        "event": "WORK_STARTED",
+        "date": "2025-12-01",
+        "app_date": "2026-07-01",
+        "note": "overlay ignored for core eligibility"
+      },
+      "reason_code": "VORHABENBEGINN_VIOLATION",
+      "code": "VORHABENBEGINN_VIOLATION",
+      "evidence_anchor": "GENERAL"
+    }
+  ],
+  "audit_trail": [
+    {
+      "policy_hash": "HASH_V1_2_MOCK",
+      "msg": "Policy snapshot loaded."
+    },
+    {
+      "step_id": "TIMING_CHECK",
+      "description": "Vorhabenbeginn: REJECTED",
+      "amount_cents": 0,
+      "evidence_anchor": "19.303 Punkt 4.1"
+    },
+    {
+      "step_id": "COST_CALC_HARDWARE",
+      "description": "Eligible Cost for HARDWARE: 1000.00 EUR (GROSS)",
+      "amount_cents": 100000,
+      "amount_eur": "1000.00",
+      "evidence_anchor": "COST_SPEC",
+      "source_url": "https://example.com/policy_v1.2.pdf",
+      "doc_version": "1.2.0"
+    },
+    {
+      "export_ok": true,
+      "msg": "Report ready for export."
+    }
+  ],
+  "report_meta": {
+    "as_of": "2026-03-01",
+    "runtime_status": "ACTIVE"
+  },
+  "math_trace": {
+    "eligible_cost_total_cents": 100000,
+    "potential_subsidy_cents": 50000
+  }
+}

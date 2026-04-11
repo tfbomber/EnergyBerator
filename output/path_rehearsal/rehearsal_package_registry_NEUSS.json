@@ -1,0 +1,41 @@
+{
+  "rehearsal_artifacts": [
+    {
+      "artifact_id": "REHEARSAL_GEO_001",
+      "operation_mode": "REHEARSAL_ONLY",
+      "evidence_class": "Authoritative_Geometry_E4",
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "source_tier": "E4",
+      "epistemic_lineage_anchor": "MOCK_GOV_API_V1",
+      "payload": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      },
+      "production_truth_claim": false
+    }
+  ],
+  "status": "REGISTERED_FOR_PATH_EVAL"
+}

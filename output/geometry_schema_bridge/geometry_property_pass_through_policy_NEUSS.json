@@ -1,0 +1,80 @@
+{
+  "policies": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "property_key_inventory": [
+        "addr:city",
+        "addr:country",
+        "addr:housenumber",
+        "addr:postcode",
+        "addr:street",
+        "building",
+        "height",
+        "name",
+        "osm_id",
+        "phone",
+        "website"
+      ],
+      "pass_through_property_policy": "RAW_PASS_THROUGH_LIMITED",
+      "structural_rationale": "Conservative default without deep value scan."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "property_key_inventory": [
+        "access",
+        "addr:city",
+        "addr:country",
+        "addr:postcode",
+        "addr:street",
+        "amenity",
+        "building",
+        "capacity",
+        "capacity:disabled",
+        "capacity:women",
+        "charge",
+        "contact:email",
+        "contact:phone",
+        "contact:website",
+        "fee",
+        "maxheight",
+        "name",
+        "opening_hours",
+        "operator",
+        "osm_id",
+        "parking",
+        "surveillance",
+        "surveillance:type"
+      ],
+      "pass_through_property_policy": "RAW_PASS_THROUGH_LIMITED",
+      "structural_rationale": "Conservative default without deep value scan."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "property_key_inventory": [
+        "addr:city",
+        "addr:country",
+        "addr:housenumber",
+        "addr:postcode",
+        "addr:street",
+        "building",
+        "email",
+        "fax",
+        "loc_name",
+        "name",
+        "old_name",
+        "opening_hours",
+        "operator",
+        "osm_id",
+        "phone",
+        "shop",
+        "short_name",
+        "website",
+        "wheelchair",
+        "wikidata",
+        "wikipedia"
+      ],
+      "pass_through_property_policy": "RAW_PASS_THROUGH_LIMITED",
+      "structural_rationale": "Conservative default without deep value scan."
+    }
+  ]
+}

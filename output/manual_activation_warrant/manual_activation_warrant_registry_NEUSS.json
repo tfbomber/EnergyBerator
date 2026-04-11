@@ -1,0 +1,59 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_B",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_PREPARATION_ONLY",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_C",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_NOT_GRANTED",
+        "approved_scope": {}
+      }
+    },
+    {
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_F",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_H",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_H",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_I",
+      "manual_activation_warrant": {
+        "warrant_verdict": "MANUAL_WARRANT_GRANTED_FOR_FUTURE_CONTACT_STAGE",
+        "approved_scope": {}
+      }
+    }
+  ]
+}

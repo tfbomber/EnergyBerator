@@ -1,0 +1,13 @@
+{
+  "mandatory_fields": [
+    "neuss_property_id",
+    "geometry.coordinates.polygon",
+    "audit_trace.field_04_evidence_tier"
+  ],
+  "evidence_requirements": "Must contain exact source identifiers proving physical origin extraction (Kataster/MaStR real linkages).",
+  "geometry_requirements": "Must conform to fully defined MultiPolygon or Polygon boundaries without `MOCK` prefixes.",
+  "audit_trace_requirements": "Must map pipeline passage dates matching E0 to E4 trace standards.",
+  "entry_conditions": "Must represent physically verified, schema-congruent data drops.",
+  "allowed_entry_stage": "STAGE_37_CONDITIONAL_RECOMPUTE_PREVIEW (Only upon crossing Real Evidence Intake).",
+  "forbidden_direct_stage_injection": "Targets CANNOT be injected manually into Sandbox bypassing Governance Promotion Readiness gaps."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "future_segment_id": "NEUSS_HOISTEN_01",
+    "district_name": "Hoisten",
+    "geometry_type": "bounding_box_proxy",
+    "geometry_status": "inferred_pending_actual_osm_draw",
+    "simulation_mode": true,
+    "epistemic_status": "inferred",
+    "estimated_building_count": 1149,
+    "estimated_area_m2": 298740,
+    "estimated_total_roof_area_m2": 96516,
+    "density_class": "HIGH"
+  },
+  {
+    "future_segment_id": "NEUSS_ROSELLERHEIDE_01",
+    "district_name": "Rosellerheide",
+    "geometry_type": "bounding_box_proxy",
+    "geometry_status": "inferred_pending_actual_osm_draw",
+    "simulation_mode": true,
+    "epistemic_status": "inferred",
+    "estimated_building_count": 1127,
+    "estimated_area_m2": 422625,
+    "estimated_total_roof_area_m2": 135240,
+    "density_class": "HIGH"
+  },
+  {
+    "future_segment_id": "NEUSS_ALLERHEILIGEN_01",
+    "district_name": "Allerheiligen",
+    "geometry_type": "bounding_box_proxy",
+    "geometry_status": "inferred_pending_actual_osm_draw",
+    "simulation_mode": true,
+    "epistemic_status": "inferred",
+    "estimated_building_count": 405,
+    "estimated_area_m2": 132840,
+    "estimated_total_roof_area_m2": 25515,
+    "density_class": "MEDIUM"
+  },
+  {
+    "future_segment_id": "NEUSS_UEDESHEIM_01",
+    "district_name": "Uedesheim",
+    "geometry_type": "bounding_box_proxy",
+    "geometry_status": "inferred_pending_actual_osm_draw",
+    "simulation_mode": true,
+    "epistemic_status": "inferred",
+    "estimated_building_count": 858,
+    "estimated_area_m2": 300300,
+    "estimated_total_roof_area_m2": 81510,
+    "density_class": "HIGH"
+  },
+  {
+    "future_segment_id": "NEUSS_SELIKUM_01",
+    "district_name": "Selikum",
+    "geometry_type": "bounding_box_proxy",
+    "geometry_status": "inferred_pending_actual_osm_draw",
+    "simulation_mode": true,
+    "epistemic_status": "inferred",
+    "estimated_building_count": 407,
+    "estimated_area_m2": 165242,
+    "estimated_total_roof_area_m2": 29304,
+    "density_class": "MEDIUM"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "token_intake": [
+    {
+      "token_filename": "approval_token_MOCK_TARGET_NEUSS_01_TEST_2026-03-16.json",
+      "token_id": "TEST_TOKEN_MOCK_TARGET_NEUSS_01_001",
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "json_readable": true,
+      "required_fields_present": true,
+      "schema_valid": true,
+      "target_match_found": true,
+      "duplicate_target_token": false,
+      "registry_status": "REGISTERED_PENDING_STAGE40_VERIFICATION",
+      "intake_eligible_for_stage40": true,
+      "registration_note": "Successfully ingested."
+    }
+  ]
+}

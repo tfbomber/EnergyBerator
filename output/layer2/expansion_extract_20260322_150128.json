@@ -1,0 +1,22 @@
+{
+  "run_timestamp_utc": "2026-03-22T13:59:37.946884+00:00",
+  "target_plz_segments": {
+    "41472": "NEUSS_SUBURB_01",
+    "41464": "NEUSS_GRIML_01"
+  },
+  "extractions": [
+    {
+      "plz": "41472",
+      "segment_id": "NEUSS_SUBURB_01",
+      "overpass_count": 5486,
+      "valid_rows": 5486
+    },
+    {
+      "plz": "41464",
+      "segment_id": "NEUSS_GRIML_01",
+      "overpass_count": 0,
+      "valid_rows": 0
+    }
+  ],
+  "total_new_rows": 5486
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "future_segment_id": "NEUSS_HOISTEN_01",
+    "district_name": "Hoisten",
+    "simulation_mode": true,
+    "truth_level": "simulated_inference",
+    "epistemic_status": "simulated",
+    "field_03": {
+      "heat_gate_status": "PASSED_SIMULATED",
+      "notes": "Fernw\u00e4rme absence assumed for suburban morphology proxy."
+    },
+    "field_04": {
+      "pv_adoption_score": 0.43,
+      "pv_signal_strength": "STRONG",
+      "pv_adoption_category": "EARLY_MAJORITY",
+      "estimated_pv_capacity_potential_kwp": 6434.4
+    }
+  },
+  {
+    "future_segment_id": "NEUSS_ROSELLERHEIDE_01",
+    "district_name": "Rosellerheide",
+    "simulation_mode": true,
+    "truth_level": "simulated_inference",
+    "epistemic_status": "simulated",
+    "field_03": {
+      "heat_gate_status": "PASSED_SIMULATED",
+      "notes": "Fernw\u00e4rme absence assumed for suburban morphology proxy."
+    },
+    "field_04": {
+      "pv_adoption_score": 0.24,
+      "pv_signal_strength": "MODERATE",
+      "pv_adoption_category": "EARLY_ADOPTERS",
+      "estimated_pv_capacity_potential_kwp": 9016.0
+    }
+  },
+  {
+    "future_segment_id": "NEUSS_ALLERHEILIGEN_01",
+    "district_name": "Allerheiligen",
+    "simulation_mode": true,
+    "truth_level": "simulated_inference",
+    "epistemic_status": "simulated",
+    "field_03": {
+      "heat_gate_status": "PASSED_SIMULATED",
+      "notes": "Fernw\u00e4rme absence assumed for suburban morphology proxy."
+    },
+    "field_04": {
+      "pv_adoption_score": 0.23,
+      "pv_signal_strength": "MODERATE",
+      "pv_adoption_category": "EARLY_ADOPTERS",
+      "estimated_pv_capacity_potential_kwp": 1701.0
+    }
+  },
+  {
+    "future_segment_id": "NEUSS_UEDESHEIM_01",
+    "district_name": "Uedesheim",
+    "simulation_mode": true,
+    "truth_level": "simulated_inference",
+    "epistemic_status": "simulated",
+    "field_03": {
+      "heat_gate_status": "PASSED_SIMULATED",
+      "notes": "Fernw\u00e4rme absence assumed for suburban morphology proxy."
+    },
+    "field_04": {
+      "pv_adoption_score": 0.18,
+      "pv_signal_strength": "MODERATE",
+      "pv_adoption_category": "EARLY_ADOPTERS",
+      "estimated_pv_capacity_potential_kwp": 5434.0
+    }
+  },
+  {
+    "future_segment_id": "NEUSS_SELIKUM_01",
+    "district_name": "Selikum",
+    "simulation_mode": true,
+    "truth_level": "simulated_inference",
+    "epistemic_status": "simulated",
+    "field_03": {
+      "heat_gate_status": "PASSED_SIMULATED",
+      "notes": "Fernw\u00e4rme absence assumed for suburban morphology proxy."
+    },
+    "field_04": {
+      "pv_adoption_score": 0.22,
+      "pv_signal_strength": "MODERATE",
+      "pv_adoption_category": "EARLY_ADOPTERS",
+      "estimated_pv_capacity_potential_kwp": 1953.6
+    }
+  }
+]

@@ -1,0 +1,115 @@
+{
+  "records": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "file_name": "PHYSICAL_E4_16e104e6.json",
+      "sha256": "add33725764ba444cb0f2b48d34b0f741b059fdb9567510e10b45e9739492ceb",
+      "source_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "stage_56_sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "stage_56_future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "stage_56_confidence_class": "MEDIUM",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE",
+      "extent_profile": {
+        "min_x": 6.717532,
+        "max_x": 6.718744,
+        "min_y": 51.203415,
+        "max_y": 51.205203
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS",
+      "future_controlled_matching_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Technical geometry bounds and CRS assessed. Ambiguity inherited correctly without masking."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "file_name": "PHYSICAL_E4_a3c32111.json",
+      "sha256": "487ea6fabf6bbccd87f998f8b1ef86136afdfcafc54a994ee9d717fa7f552025",
+      "source_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "stage_56_sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "stage_56_future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "stage_56_confidence_class": "MEDIUM",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE",
+      "extent_profile": {
+        "min_x": 6.685192,
+        "max_x": 6.686026,
+        "min_y": 51.20051,
+        "max_y": 51.200972
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS",
+      "future_controlled_matching_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Technical geometry bounds and CRS assessed. Ambiguity inherited correctly without masking."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "file_name": "PHYSICAL_E4_a79e5e7d.json",
+      "sha256": "46e9f93bfa22e76b88fd6680714cc7ae582cdd86cbf1b32aaba22b596c9fa418",
+      "source_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "stage_56_sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "stage_56_future_controlled_spatial_readiness": "READY_WITH_LIMITATIONS",
+      "stage_56_confidence_class": "MEDIUM",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "crs_status": "CRS_NOT_DECLARED",
+      "explicit_crs_value": null,
+      "crs_reprojection_readiness": "UNSAFE",
+      "crs_risk_class": "HIGH",
+      "coordinate_range_profile": "DEGREE_LIKE",
+      "extent_profile": {
+        "min_x": 6.717329,
+        "max_x": 6.719495,
+        "min_y": 51.200723,
+        "max_y": 51.202716
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS",
+      "future_controlled_matching_readiness": "READY_WITH_LIMITATIONS",
+      "blocker_reasons": [
+        "CONTRACT_AMBIGUITY_PRESERVED",
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "confidence_class": "MEDIUM",
+      "notes": "Technical geometry bounds and CRS assessed. Ambiguity inherited correctly without masking."
+    }
+  ]
+}

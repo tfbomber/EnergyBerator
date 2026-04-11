@@ -1,0 +1,10 @@
+{
+  "sources": [
+    {
+      "source_id": "OSM_NEUSS_NORF_RAW",
+      "authority": "OpenStreetMap",
+      "acquisition_path": "d:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\sources\\buildings\\osm_overpass\\2026-03-15\\neuss_osm_buildings_normalized.geojson",
+      "status": "APPROVED_RAW_OBSERVATIONAL"
+    }
+  ]
+}

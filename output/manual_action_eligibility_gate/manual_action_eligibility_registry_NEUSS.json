@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "upstream_post_review_state": "HUMAN_APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "normalized_decision": "APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "contact_preparation_eligibility": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "document_collection_preparation_eligibility": "NOT_YET_ELIGIBLE",
+      "installer_precheck_consideration_eligibility": "CONDITIONALLY_ELIGIBLE_FOR_FUTURE_STAGE",
+      "eligibility_record_status": "MAPPED",
+      "human_review_required": true,
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ],
+      "disclaimer_no_execution": "FUTURE_MANUAL_PATHWAY_ELIGIBILITY_ONLY / NOT_AN_EXECUTION_COMMAND"
+    }
+  ]
+}

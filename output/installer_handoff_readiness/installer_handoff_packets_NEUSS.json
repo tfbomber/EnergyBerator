@@ -1,0 +1,57 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "packet_status": "LOCKED_FOR_HUMAN_REVIEW",
+      "identity_summary": {
+        "dossier_id": "EVD_56231492",
+        "domain_classification": "ENERGY_OPPORTUNITY"
+      },
+      "lineage_summary": {
+        "revalidation_stage_pass": true,
+        "confirmed_opportunity": true
+      },
+      "technical_confirmation_summary": {
+        "statement": "Upstream rules engines indicate physical and technical constraints are clear based on qualified evidence."
+      },
+      "commercial_candidate_summary": {
+        "statement": "Objectively categorized as INSTALLER_CANDIDATE due to upstream rule: Clear pass on all explicitly routed revalidation modules without blocking signals.."
+      },
+      "risk_summary": {
+        "statement": "No inferred data allowed. See upstream technical models for risk scoring."
+      },
+      "blocker_summary": {
+        "active_blockers": [
+          "Missing human contact authorization clearance"
+        ]
+      },
+      "unresolved_information_gaps": [
+        {
+          "gap_description": "Lack of overt human contact authorization.",
+          "governance_impact": "Prevents any automated downstream signaling for deployment or appointments.",
+          "resolution_required": "Must be established by a human operator."
+        }
+      ],
+      "recommended_human_actions": [
+        "Review dossier completeness",
+        "Validate customer/contact pathway externally",
+        "Decide whether installer pre-check should be scheduled manually"
+      ],
+      "forbidden_automated_actions": [
+        "automatic contact",
+        "automatic appointment booking",
+        "automatic installer dispatch",
+        "automatic eligibility grant",
+        "automatic contract initiation",
+        "automatic subsidy trigger"
+      ],
+      "approval_requirements": [
+        "Human signature / Review status update"
+      ],
+      "evidence_sources_used": [
+        "d-ess-engine/output/opportunity_confirmation/opportunity_registry_NEUSS.json"
+      ],
+      "disclaimer_no_auto_execution": "HUMAN_REVIEW_REQUIRED. This packet is NOT an execution command. Do NOT infer customer intent or automate deployment."
+    }
+  ]
+}

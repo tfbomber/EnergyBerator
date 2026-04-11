@@ -1,0 +1,49 @@
+{
+  "limitations": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "preserved_limitation": "CONTRACT_AMBIGUITY_PRESERVED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "preserved_limitation": "CRS_REPROJECTION_UNSAFE",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "preserved_limitation": "CONTRACT_AMBIGUITY_PRESERVED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "preserved_limitation": "CRS_REPROJECTION_UNSAFE",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "preserved_limitation": "CONTRACT_AMBIGUITY_PRESERVED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "preserved_limitation": "CRS_NOT_DECLARED",
+      "resolution_status": "UNRESOLVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "preserved_limitation": "CRS_REPROJECTION_UNSAFE",
+      "resolution_status": "UNRESOLVED"
+    }
+  ]
+}

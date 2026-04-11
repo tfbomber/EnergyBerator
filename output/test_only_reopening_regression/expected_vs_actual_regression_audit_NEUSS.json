@@ -1,0 +1,69 @@
+{
+  "records": [
+    {
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "actual_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "QUALIFIED_FOR_REVALIDATION",
+      "actual_qualification_outcome": "QUALIFIED_FOR_REVALIDATION",
+      "expected_queue_outcome": "REVALIDATION_READY",
+      "actual_queue_outcome": "REVALIDATION_READY",
+      "regression_result": "PASS",
+      "deviation_reason": "Executed exactly as expected.",
+      "severity": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_2_DUPLICATE_OLD",
+      "expected_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "actual_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "actual_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "actual_queue_outcome": "NONE",
+      "regression_result": "PASS",
+      "deviation_reason": "Executed exactly as expected.",
+      "severity": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_3_UNMATCHED",
+      "expected_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "actual_reopen_outcome": "NO_NEW_EVIDENCE_DETECTED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "actual_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "actual_queue_outcome": "NONE",
+      "regression_result": "PASS",
+      "deviation_reason": "Executed exactly as expected.",
+      "severity": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_4_EMPTY_CORRUPT",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "actual_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "NOT_QUALIFIED",
+      "actual_qualification_outcome": "NOT_QUALIFIED",
+      "expected_queue_outcome": "NONE",
+      "actual_queue_outcome": "NONE",
+      "regression_result": "PASS",
+      "deviation_reason": "Executed exactly as expected.",
+      "severity": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_5_BORDERLINE_PARTIAL",
+      "expected_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "actual_reopen_outcome": "REOPEN_TRIGGER_APPROVED",
+      "expected_qualification_outcome": "PARTIALLY_QUALIFIED_EVIDENCE",
+      "actual_qualification_outcome": "PARTIALLY_QUALIFIED_EVIDENCE",
+      "expected_queue_outcome": "NONE",
+      "actual_queue_outcome": "NONE",
+      "regression_result": "PASS",
+      "deviation_reason": "Executed exactly as expected.",
+      "severity": "NONE",
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

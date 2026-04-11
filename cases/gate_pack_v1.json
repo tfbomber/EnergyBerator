@@ -1,0 +1,383 @@
+[
+    {
+        "case_id": "GATE_AUDIT_01_POLICY_CLOSED_BLOCKED",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "crawler_observations": {
+            "runtime_status": "CLOSED",
+            "crawler_health": "OK"
+        },
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "BLOCKED",
+            "final_eur": 0.0,
+            "violations": [
+                "REJECTED_POLICY_CLOSED"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_02_PAUSED_OVERLAY_ON_HOLD_NOT_REJECTED",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "crawler_observations": {
+            "overlay_keywords": [
+                "überarbeitet"
+            ],
+            "crawler_health": "OK"
+        },
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "05.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "YES",
+            "down_payment_date": "01.02.2026",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "ON_HOLD_PROVISIONAL",
+            "final_eur": 0.0,
+            "violations": [
+                "POLICY_PAUSED",
+                "VORHABENBEGINN_BEFORE_APPLICATION",
+                "PAYMENT_BINDING"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_03_SAME_DAY_AMBIGUOUS",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "10.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "final_eur": 600.0,
+            "violations": [
+                "AMBIGUOUS_SAME_DAY_ORDER"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_04_CONDITIONAL_CLAUSE_UNKNOWN_CONSERVATIVE",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "05.02.2026",
+            "has_conditional_clause": "UNKNOWN",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "final_eur": 600.0,
+            "violations": [
+                "MISSING_ATTRIBUTES"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_05_ELIGIBLE_UNKNOWN_EXCLUDED",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "UNKNOWN"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": 199.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "APPROVED",
+            "eligible_cost_total_eur": 199.0,
+            "violations": [
+                "ELIGIBLE_FLAG_UNKNOWN"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_06_DUPLICATE_ITEM_ECHO",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1099.0,
+                    "is_eligible": "YES"
+                },
+                {
+                    "label": "Mount",
+                    "amount_eur": 199.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "final_eur": 600.0,
+            "violations": [
+                "DUPLICATE_ITEM_DETECTED"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_07_DATE_TZ_ISO8601",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "2026-02-10T10:30:00+01:00",
+            "contract_signed_date": "2026-02-15T09:00:00+01:00",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "APPROVED",
+            "final_eur": 600.0
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_08_MONEY_FORMAT_SPACES",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "YES",
+            "has_duessepass": "NO"
+        },
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": " 1.200,00 € ",
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "status": "APPROVED",
+            "final_eur": 600.0
+        }
+    },
+    {
+        "case_id": "GATE_AUDIT_09_APPLICANT_NULL_NO_CRASH",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": null,
+        "measure": {
+            "type": "BALCONY_PV"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "label": "PV Set",
+                    "amount_eur": 1200.0,
+                    "is_eligible": "YES"
+                }
+            ]
+        },
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "expected": {
+            "final_eur": 600.0
+        }
+    },
+    {
+        "case_id": "GATE_PLAN_01_EMPTY_STRING_BUDGET_PARSE_ERROR",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": ""
+        },
+        "expected": {
+            "final_eur": 0.0,
+            "violations": [
+                "COST_PARSE_ERROR"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_PLAN_02_NEGATIVE_BUDGET_INVALID",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": -1200.0
+        },
+        "expected": {
+            "final_eur": 0.0,
+            "violations": [
+                "INPUT_INVALID_NEGATIVE_AMOUNT"
+            ]
+        }
+    },
+    {
+        "case_id": "GATE_PLAN_03_APPLICANT_NULL_NO_CRASH",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": null,
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": 1200.0
+        },
+        "expected": {
+            "final_eur": 600.0
+        }
+    }
+]

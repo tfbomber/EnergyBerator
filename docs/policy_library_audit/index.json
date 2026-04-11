@@ -1,0 +1,58 @@
+[
+  {
+    "policy_id": "DUS_BALCONY_PV_2025",
+    "has_timing_rules": true,
+    "has_cost_rules": true,
+    "has_calculation": true,
+    "required_evidence_types": [
+      "INVOICE",
+      "CONTRACT"
+    ],
+    "anchor_ids": [
+      "19.303 Punkt 5.7.2 Sonderf\u00f6rderung D\u00fcsselpass",
+      "19.303 Punkt 4.1",
+      "19.303 Punkt 5.7.2 Sonderf\u00f6rderung D\u00fcsselpass (mit Energiesparberatung)",
+      "19.303 Punkt 5.7.2 F\u00f6rderung",
+      "19.303 Punkt 5.7.2 Sonderf\u00f6rderung D\u00fcsselpass (befristet bis 31.03.2026)"
+    ],
+    "schema_version": "v1.2",
+    "engine_protocol": "v1.2"
+  },
+  {
+    "policy_id": "DUS_HEAT_PUMP_2025",
+    "has_timing_rules": true,
+    "has_cost_rules": true,
+    "has_calculation": true,
+    "required_evidence_types": [
+      "INVOICE",
+      "CONTRACT"
+    ],
+    "anchor_ids": [
+      "19.303 Punkt 5.9.1 Anlage",
+      "19.303 Punkt 4.1",
+      "19.303 Punkt 5.9.1 Installation und Abgleich",
+      "19.303 Punkt 5.9.1 Schallschutzhaube",
+      "19.303 Punkt 5.9 F\u00f6rderung"
+    ],
+    "schema_version": "v1.2",
+    "engine_protocol": "v1.2"
+  },
+  {
+    "policy_id": "KFW_458_HEIZUNGSFOERDERUNG",
+    "has_timing_rules": true,
+    "has_cost_rules": true,
+    "has_calculation": true,
+    "required_evidence_types": [
+      "INVOICE",
+      "CONTRACT"
+    ],
+    "anchor_ids": [
+      "Merkblatt BEG: Klimageschwindigkeits-Bonus",
+      "Merkblatt BEG: max 70% rate, 30,000 eligible cost",
+      "Merkblatt BEG: Einkommens-Bonus <= 40000",
+      "Merkblatt BEG: Punkt 4.1. exception for aufschiebende Bedingung"
+    ],
+    "schema_version": "v1.2",
+    "engine_protocol": "v1.2"
+  }
+]

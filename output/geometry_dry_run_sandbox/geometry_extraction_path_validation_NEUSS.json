@@ -1,0 +1,40 @@
+{
+  "validation": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "path_execution_notes": "JSONPath navigation strictly valid for payload layout."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "path_execution_notes": "JSONPath navigation strictly valid for payload layout."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "extraction_path_success_flags": {
+        "feature": true,
+        "geometry": true,
+        "properties": true
+      },
+      "path_execution_notes": "JSONPath navigation strictly valid for payload layout."
+    }
+  ]
+}

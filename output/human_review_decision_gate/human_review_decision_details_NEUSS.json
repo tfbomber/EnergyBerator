@@ -1,0 +1,34 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "decision_detail_status": "RECORDED_WITH_INPUT",
+      "raw_review_input_detected": true,
+      "raw_decision_label": "APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "normalized_decision_label": "APPROVED_FOR_MANUAL_CONTACT_PREPARATION",
+      "reviewer_metadata": {
+        "reviewer_id": "REV_441_ADMIN",
+        "review_source": "MANUAL_UI_INPUT",
+        "review_timestamp": "2026-03-18T05:55:00Z",
+        "reviewer_notes": "All geometry and physical checks look good. We can proceed to contact prep.",
+        "evidence_gap_references": []
+      },
+      "review_notes_summary": "All geometry and physical checks look good. We can proceed to contact prep.",
+      "unresolved_gaps_after_review": [],
+      "allowed_future_manual_pathways": [
+        "eligible for future manual contact preparation review"
+      ],
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "AUTO_ASSIGN_INSTALLER",
+        "AUTO_APPOINTMENT",
+        "AUTO_ACTIVATION",
+        "AUTO_SUBSIDY_INITIATION"
+      ],
+      "governance_warning": "This decision is read-only. No operations are authorized.",
+      "evidence_sources_used": [
+        "Stage 65 Installer Handoff Registry"
+      ]
+    }
+  ]
+}

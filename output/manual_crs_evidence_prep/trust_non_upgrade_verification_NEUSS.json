@@ -1,0 +1,19 @@
+{
+  "verifications": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "upgraded_trust_status": false,
+      "maintained_conservative_workflow_state": "AWAITING_EVIDENCE_SUBMISSION"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "upgraded_trust_status": false,
+      "maintained_conservative_workflow_state": "AWAITING_EVIDENCE_SUBMISSION"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "upgraded_trust_status": false,
+      "maintained_conservative_workflow_state": "AWAITING_EVIDENCE_SUBMISSION"
+    }
+  ]
+}

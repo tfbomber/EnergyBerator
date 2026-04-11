@@ -1,0 +1,19 @@
+{
+  "verified_authorization_states": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "governance_state": "GOVERNANCE_REVIEW_REQUIRED",
+      "authorization_token_found": true,
+      "token_count": 1,
+      "token_valid": true,
+      "token_scope_valid": true,
+      "token_boundary_valid": true,
+      "authorization_status": "AUTHORIZED_FOR_EXECUTION_STAGE_ENTRY",
+      "stage_entry_authorized": true,
+      "execution_performed": false,
+      "recompute_performed": false,
+      "writeback_performed": false,
+      "current_state_preserved": "STILL_BLOCKED"
+    }
+  ]
+}

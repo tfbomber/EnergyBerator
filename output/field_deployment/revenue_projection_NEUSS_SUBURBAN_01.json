@@ -1,0 +1,261 @@
+[
+  {
+    "cluster_id": "C_003",
+    "estimated_installs_d2d": 1.45,
+    "estimated_revenue_PV": 17340.0,
+    "estimated_revenue_PV_Battery": 26010.0,
+    "estimated_revenue_HeatPump": 36125.0
+  },
+  {
+    "cluster_id": "C_004",
+    "estimated_installs_d2d": 1.53,
+    "estimated_revenue_PV": 18360.0,
+    "estimated_revenue_PV_Battery": 27540.0,
+    "estimated_revenue_HeatPump": 38250.0
+  },
+  {
+    "cluster_id": "C_005",
+    "estimated_installs_d2d": 1.28,
+    "estimated_revenue_PV": 15300.0,
+    "estimated_revenue_PV_Battery": 22950.0,
+    "estimated_revenue_HeatPump": 31875.0
+  },
+  {
+    "cluster_id": "C_001",
+    "estimated_installs_d2d": 1.45,
+    "estimated_revenue_PV": 17340.0,
+    "estimated_revenue_PV_Battery": 26010.0,
+    "estimated_revenue_HeatPump": 36125.0
+  },
+  {
+    "cluster_id": "C_002",
+    "estimated_installs_d2d": 1.28,
+    "estimated_revenue_PV": 15300.0,
+    "estimated_revenue_PV_Battery": 22950.0,
+    "estimated_revenue_HeatPump": 31875.0
+  },
+  {
+    "cluster_id": "C_008",
+    "estimated_installs_d2d": 1.79,
+    "estimated_revenue_PV": 21420.0,
+    "estimated_revenue_PV_Battery": 32130.0,
+    "estimated_revenue_HeatPump": 44625.0
+  },
+  {
+    "cluster_id": "C_009",
+    "estimated_installs_d2d": 1.79,
+    "estimated_revenue_PV": 21420.0,
+    "estimated_revenue_PV_Battery": 32130.0,
+    "estimated_revenue_HeatPump": 44625.0
+  },
+  {
+    "cluster_id": "C_006",
+    "estimated_installs_d2d": 1.62,
+    "estimated_revenue_PV": 19380.0,
+    "estimated_revenue_PV_Battery": 29070.0,
+    "estimated_revenue_HeatPump": 40375.0
+  },
+  {
+    "cluster_id": "C_007",
+    "estimated_installs_d2d": 1.02,
+    "estimated_revenue_PV": 12240.0,
+    "estimated_revenue_PV_Battery": 18360.0,
+    "estimated_revenue_HeatPump": 25500.0
+  },
+  {
+    "cluster_id": "C_010",
+    "estimated_installs_d2d": 0.68,
+    "estimated_revenue_PV": 8160.0,
+    "estimated_revenue_PV_Battery": 12240.0,
+    "estimated_revenue_HeatPump": 17000.0
+  },
+  {
+    "cluster_id": "C_028",
+    "estimated_installs_d2d": 0.51,
+    "estimated_revenue_PV": 6120.0,
+    "estimated_revenue_PV_Battery": 9180.0,
+    "estimated_revenue_HeatPump": 12750.0
+  },
+  {
+    "cluster_id": "C_011",
+    "estimated_installs_d2d": 0.34,
+    "estimated_revenue_PV": 4080.0,
+    "estimated_revenue_PV_Battery": 6120.0,
+    "estimated_revenue_HeatPump": 8500.0
+  },
+  {
+    "cluster_id": "C_019",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_020",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_023",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_032",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_035",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_012",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_013",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_014",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_018",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_022",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_024",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_025",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_026",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_029",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_031",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_034",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_036",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_015",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_030",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_033",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_016",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_021",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_027",
+    "estimated_installs_d2d": 0.17,
+    "estimated_revenue_PV": 2040.0,
+    "estimated_revenue_PV_Battery": 3060.0,
+    "estimated_revenue_HeatPump": 4250.0
+  },
+  {
+    "cluster_id": "C_017",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  },
+  {
+    "cluster_id": "C_037",
+    "estimated_installs_d2d": 0.09,
+    "estimated_revenue_PV": 1020.0,
+    "estimated_revenue_PV_Battery": 1530.0,
+    "estimated_revenue_HeatPump": 2125.0
+  }
+]

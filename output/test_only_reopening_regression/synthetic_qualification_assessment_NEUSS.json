@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "case_id": "EVD_56231492",
+      "structural_score": 1.0,
+      "linkage_score": 1.0,
+      "content_score": 1.0,
+      "uniqueness_score": 1.0,
+      "qualification_verdict": "QUALIFIED_FOR_REVALIDATION",
+      "intake_state": "EVALUATED",
+      "revalidation_lane": "DOCUMENT_REVALIDATION_LANE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_2_DUPLICATE_OLD",
+      "case_id": "EVD_8963BBA2",
+      "structural_score": 0.0,
+      "linkage_score": 1.0,
+      "content_score": 1.0,
+      "uniqueness_score": 0.0,
+      "qualification_verdict": "NOT_QUALIFIED",
+      "intake_state": "EVALUATED",
+      "revalidation_lane": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_3_UNMATCHED",
+      "case_id": "UNMATCHED_UNKNOWN",
+      "structural_score": 1.0,
+      "linkage_score": 0.0,
+      "content_score": 1.0,
+      "uniqueness_score": 1.0,
+      "qualification_verdict": "NOT_QUALIFIED",
+      "intake_state": "EVALUATED",
+      "revalidation_lane": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_4_EMPTY_CORRUPT",
+      "case_id": "SYNTHETIC_CASE_04",
+      "structural_score": 1.0,
+      "linkage_score": 1.0,
+      "content_score": 0.0,
+      "uniqueness_score": 1.0,
+      "qualification_verdict": "NOT_QUALIFIED",
+      "intake_state": "EVALUATED",
+      "revalidation_lane": "NONE",
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "scenario_id": "SCENARIO_5_BORDERLINE_PARTIAL",
+      "case_id": "SYNTHETIC_CASE_05",
+      "structural_score": 1.0,
+      "linkage_score": 1.0,
+      "content_score": 0.5,
+      "uniqueness_score": 1.0,
+      "qualification_verdict": "PARTIALLY_QUALIFIED_EVIDENCE",
+      "intake_state": "EVALUATED",
+      "revalidation_lane": "NONE",
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

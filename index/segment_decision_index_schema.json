@@ -1,0 +1,50 @@
+{
+  "contract_type": "Segment_Decision_Index_Schema",
+  "version": "1.0",
+  "schema": {
+    "segment_id": "string",
+    "city": "string",
+    "index_version": "string",
+    "field_inputs": {
+      "field_01_potential": "string",
+      "field_02_morphology": "string",
+      "field_03_heat_gate": "string",
+      "field_04_pv_adoption": "string"
+    },
+    "decision_logic": {
+      "hard_gate_status": {
+        "type": "string",
+        "enum": ["PASSED_DECENTRALIZED", "BLOCKED_CENTRALIZED", "PENDING"]
+      },
+      "adoption_signal_strength": {
+        "type": "string",
+        "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN_PROXY_ONLY"]
+      },
+      "morphology_suitability": {
+        "type": "string",
+        "enum": ["OPTIMAL", "SUBOPTIMAL", "COMPLEX"]
+      }
+    },
+    "final_business_output": {
+      "overall_opportunity": {
+        "type": "string",
+        "enum": ["LOW", "MEDIUM", "HIGH"]
+      },
+      "decision_status": {
+        "type": "string",
+        "enum": ["NOT_ACTIONABLE", "WATCHLIST", "ACTIONABLE"]
+      },
+      "confidence": {
+        "type": "string",
+        "enum": ["LOW", "MEDIUM", "HIGH"]
+      },
+      "supporting_reasons": ["string"],
+      "blockers_and_caveats": ["string"]
+    },
+    "audit_trace": {
+      "assembly_timestamp": "string",
+      "field_03_evidence_tier": "string",
+      "field_04_evidence_tier": "string"
+    }
+  }
+}

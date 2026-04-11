@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-03-18T07:28:36.313453+00:00",
+  "total_dossiers": 1,
+  "with_usage_input": 1,
+  "without_usage_input": 0,
+  "usage_approved_count": 1,
+  "not_approved_count": 0,
+  "compliance_pending_count": 0,
+  "zero_contact_violations": 0,
+  "zero_crm_violations": 0,
+  "zero_booking_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "final_stage_verdict": "CONTACT_USAGE_ELIGIBILITY_RECORDED"
+}

@@ -1,0 +1,22 @@
+{
+  "hashes": [
+    {
+      "evidence_id": "EVD_ACC8C1F4",
+      "relative_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "sha256": "add33725764ba444cb0f2b48d34b0f741b059fdb9567510e10b45e9739492ceb",
+      "hash_status": "SUCCESS"
+    },
+    {
+      "evidence_id": "EVD_56231492",
+      "relative_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "sha256": "487ea6fabf6bbccd87f998f8b1ef86136afdfcafc54a994ee9d717fa7f552025",
+      "hash_status": "SUCCESS"
+    },
+    {
+      "evidence_id": "EVD_8963BBA2",
+      "relative_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "sha256": "46e9f93bfa22e76b88fd6680714cc7ae582cdd86cbf1b32aaba22b596c9fa418",
+      "hash_status": "SUCCESS"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+    "case_id": "E2E-11",
+    "engine_context": "V1.1",
+    "as_of": "2026-03-01",
+    "policy_id": "DESS-V1.1-LEGACY",
+    "timeline_events": [
+        {
+            "event_type": "APPLICATION_SUBMITTED",
+            "date": "2026-03-01"
+        },
+        {
+            "event_type": "CONTRACT_SIGNED",
+            "date": "2025-11-01"
+        }
+    ],
+    "costs": {
+        "mode": "EXACT",
+        "buckets": {
+            "HARDWARE": {
+                "amount": "1000.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    }
+}

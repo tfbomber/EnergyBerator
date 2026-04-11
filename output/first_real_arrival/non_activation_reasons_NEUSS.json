@@ -1,0 +1,14 @@
+{
+  "non_activation_explanations": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "retained_status": "STILL_BLOCKED",
+      "justification": "Absence of real physical evidence. No contract decision triggered downstream review eligibility. Segment architecture remains safely offline."
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "retained_status": "STILL_BLOCKED",
+      "justification": "Absence of real physical evidence. No contract decision triggered downstream review eligibility. Segment architecture remains safely offline."
+    }
+  ]
+}

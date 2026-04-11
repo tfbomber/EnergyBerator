@@ -1,0 +1,19 @@
+{
+  "deposition_manifest": [
+    {
+      "file": "PHYSICAL_E4_16e104e6.json",
+      "status": "DROPPED_IDEMPOTENTLY",
+      "action": "CREATED"
+    },
+    {
+      "file": "PHYSICAL_E4_a3c32111.json",
+      "status": "DROPPED_IDEMPOTENTLY",
+      "action": "CREATED"
+    },
+    {
+      "file": "PHYSICAL_E4_a79e5e7d.json",
+      "status": "DROPPED_IDEMPOTENTLY",
+      "action": "CREATED"
+    }
+  ]
+}

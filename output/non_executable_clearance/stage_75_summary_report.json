@@ -1,0 +1,8 @@
+{
+  "total_evaluated": 4,
+  "ready_for_controlled_execution": 1,
+  "non_executable_but_visible": 1,
+  "fully_blocked": 2,
+  "total_fatal_blockers_found": 2,
+  "total_remediation_actions_issued": 2
+}

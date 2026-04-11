@@ -1,0 +1,13 @@
+{
+  "run_id": "NORF_TRUTH_INGESTION_RUN_01",
+  "timestamp": "2026-03-12T15:06:50.967833",
+  "target_segments": [
+    "NEUSS_NORF_PILOT_01"
+  ],
+  "resolved_segments": [
+    "ALLERHEILIGEN_PILOT_SEG_01"
+  ],
+  "processed_segments": [
+    "NEUSS_NORF_PILOT_01"
+  ]
+}

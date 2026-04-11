@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "geometry_id": "EVD_56231492",
+      "prior_manual_review_status": "AWAITING_EVIDENCE_SUBMISSION",
+      "intake_cycle_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "submissions_received_count": 0,
+      "valid_submissions_count": 0,
+      "closure_status": "CASE_CLOSED",
+      "closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "recompute_status": "NOT_AUTHORIZED",
+      "reopening_rule": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "governing_stage_reference": "STAGE_59",
+      "evidence_basis_summary": "Intake cycle elapsed without zero formally registered submissions mapping to expected geometrical identifiers.",
+      "source_file_trace": "manual_crs_review_intake_queue_NEUSS.json"
+    },
+    {
+      "case_id": "EVD_8963BBA2",
+      "geometry_id": "EVD_8963BBA2",
+      "prior_manual_review_status": "AWAITING_EVIDENCE_SUBMISSION",
+      "intake_cycle_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "submissions_received_count": 0,
+      "valid_submissions_count": 0,
+      "closure_status": "CASE_CLOSED",
+      "closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "recompute_status": "NOT_AUTHORIZED",
+      "reopening_rule": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "governing_stage_reference": "STAGE_59",
+      "evidence_basis_summary": "Intake cycle elapsed without zero formally registered submissions mapping to expected geometrical identifiers.",
+      "source_file_trace": "manual_crs_review_intake_queue_NEUSS.json"
+    },
+    {
+      "case_id": "EVD_ACC8C1F4",
+      "geometry_id": "EVD_ACC8C1F4",
+      "prior_manual_review_status": "AWAITING_EVIDENCE_SUBMISSION",
+      "intake_cycle_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "submissions_received_count": 0,
+      "valid_submissions_count": 0,
+      "closure_status": "CASE_CLOSED",
+      "closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "recompute_status": "NOT_AUTHORIZED",
+      "reopening_rule": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "governing_stage_reference": "STAGE_59",
+      "evidence_basis_summary": "Intake cycle elapsed without zero formally registered submissions mapping to expected geometrical identifiers.",
+      "source_file_trace": "manual_crs_review_intake_queue_NEUSS.json"
+    }
+  ]
+}

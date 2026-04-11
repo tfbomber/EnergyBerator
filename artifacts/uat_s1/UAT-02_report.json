@@ -1,0 +1,50 @@
+{
+  "report_id": "REP-E2E-01-20260301093554",
+  "case_id": "E2E-01",
+  "policy_id": "DESS-V1.2-GOLDEN",
+  "generated_at_utc": "2026-03-01T09:35:54.817463Z",
+  "policy_version_set": {
+    "DESS-V1.2-GOLDEN": "1.2.0"
+  },
+  "last_policy_sync_timestamp": "2026-03-01T09:35:54.817463Z",
+  "disclaimer_hash": "fa14f671bb46b0f483ea58f6c830c0fd6afb429bc388912bdbc81d96064106cf",
+  "status": "BLOCKED",
+  "policy_runtime_status": {
+    "source": "STATIC",
+    "status": "ACTIVE",
+    "status_reason_de": "Baseline policy status.",
+    "health": "OK",
+    "last_checked_utc": "2026-02-21T00:00:00Z",
+    "snapshot_id": null,
+    "doc_hash": null
+  },
+  "runtime_gate": {
+    "policy_status": "ACTIVE"
+  },
+  "subsidy_total_cents": 0,
+  "subsidy_total_eur": "0.00",
+  "violations": [
+    {
+      "severity": "BLOCKED",
+      "reason_code_raw": "EVIDENCE_NOT_FOUND",
+      "reason": "EVIDENCE_NOT_FOUND",
+      "message": "evidence file not found: missing_file.pdf (anchor not evaluated)",
+      "evidence_check": false,
+      "anchor_id": "UNKNOWN",
+      "anchor_strategy": "FAILED",
+      "reason_code": "EVIDENCE_NOT_FOUND",
+      "code": "EVIDENCE_NOT_FOUND",
+      "evidence_anchor": "GENERAL"
+    }
+  ],
+  "audit_trail": [
+    {
+      "policy_hash": "HASH_V1_2_MOCK",
+      "msg": "Policy snapshot loaded."
+    },
+    {
+      "export_ok": true,
+      "msg": "Blocked report ready for export."
+    }
+  ]
+}

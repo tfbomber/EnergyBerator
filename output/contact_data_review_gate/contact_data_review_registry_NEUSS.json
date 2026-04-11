@@ -1,0 +1,15 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "intake_status": "CONTACT_DATA_INTAKE_STRUCTURALLY_VALID",
+      "review_input_status": "REAL_REVIEW_PRESENT",
+      "normalized_review_decision": "VALIDATED_CONTACT_DATA",
+      "reviewer_id_present": true,
+      "review_timestamp_present": true,
+      "trustworthiness_status": "TRUSTED",
+      "human_review_required": true,
+      "disclaimer_no_execution": "CONTACT_DATA_REVIEW_ONLY / NOT_AN_EXECUTION_COMMAND / USAGE_NOT_AUTHORIZED"
+    }
+  ]
+}

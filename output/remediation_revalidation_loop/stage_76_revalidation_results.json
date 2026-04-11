@@ -1,0 +1,41 @@
+{
+  "records": [
+    {
+      "case_id": "TEST_76_CASE_A_FULL_FIX",
+      "evidence_valid": true,
+      "fatal_flaw_introduced": false,
+      "all_prior_blockers_resolved": true,
+      "modules_executed": [
+        "OPERATIONAL_STRUCTURE_CHAIN",
+        "INSTALLER_READY_CHAIN"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_B_PARTIAL",
+      "evidence_valid": true,
+      "fatal_flaw_introduced": false,
+      "all_prior_blockers_resolved": false,
+      "modules_executed": [
+        "OPERATIONAL_STRUCTURE_CHAIN"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_C_FATAL_NEW",
+      "evidence_valid": true,
+      "fatal_flaw_introduced": true,
+      "all_prior_blockers_resolved": false,
+      "modules_executed": [
+        "IDENTITY_MAPPING_CHAIN"
+      ]
+    },
+    {
+      "case_id": "TEST_76_CASE_D_INVALID",
+      "evidence_valid": false,
+      "fatal_flaw_introduced": true,
+      "all_prior_blockers_resolved": false,
+      "modules_executed": [
+        "DOCUMENT_VALIDATION_CHAIN"
+      ]
+    }
+  ]
+}

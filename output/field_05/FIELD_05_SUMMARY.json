@@ -1,0 +1,11 @@
+{
+  "segments_processed": 2,
+  "average_estimated_adoption": 0.091,
+  "segments_in_each_band": {
+    "VERY_LOW": 0,
+    "LOW": 1,
+    "MEDIUM": 1,
+    "HIGH": 0,
+    "VERY_HIGH": 0
+  }
+}

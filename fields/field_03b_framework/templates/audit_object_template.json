@@ -1,0 +1,39 @@
+{
+  "field_id": "03B",
+  "city": "SampleCity",
+  "segment_id": "SEG_12345",
+  "audit_run_id": "RUN_20260309_001",
+  "segment_heat_status": "planned_heat_network_area",
+  "building_heat_status": "unknown",
+  "evidence_tier": "E1",
+  "evidence_items": [
+    {
+      "source_id": "SRC_MUNICIPAL_PLAN_2024",
+      "source_type": "PDF_OFFICIAL_MAP",
+      "official": true,
+      "decision_eligible": true,
+      "citation_ref": "Municipal Heat Planning Report 2024",
+      "page_ref_or_section": "Page 42, Map Section B",
+      "extracted_claim": "Segment SEG_12345 is designated as a mandatory connection area for the 2028 network expansion.",
+      "review_outcome": "checked_and_relevant",
+      "relevance_to_segment": "direct_match",
+      "evidence_strength": "E1"
+    }
+  ],
+  "search_coverage": "source_checked_and_relevant_section_found",
+  "realization_horizon": {
+    "status": "known",
+    "target_year": 2028,
+    "basis": "official_timeline"
+  },
+  "window_of_opportunity": {
+    "status": "present",
+    "estimated_until_year": 2027,
+    "basis": "official_realization_horizon",
+    "note": "Final connection mandatory by 2028; installation window closes end of 2027."
+  },
+  "heat_source_type": "industrial_waste_heat",
+  "decision_impact": "suppress_hp_direct_push",
+  "manual_verification_required": false,
+  "disclaimer": "This audit is based on official municipal maps as of 2024. Building-level connection status remains unknown without address-level proof."
+}

@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-03-18T05:48:40.236965+00:00",
+  "total_queue_dossiers_scanned": 1,
+  "eligible_reviewable_dossiers": 1,
+  "dossiers_with_real_human_input": 1,
+  "dossiers_without_human_input": 0,
+  "normalized_decisions_recorded": 1,
+  "zero_activation_violations": 0,
+  "zero_contact_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "historical_mutation_violations": 0,
+  "final_stage_verdict": "HUMAN_DECISIONS_RECORDED"
+}

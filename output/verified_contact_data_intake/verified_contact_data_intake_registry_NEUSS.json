@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "upstream_packet_status": "GENERATED",
+      "contact_data_input_status": "REAL_CONTACT_DATA_INPUT_PRESENT",
+      "intake_status": "CONTACT_DATA_INTAKE_STRUCTURALLY_VALID",
+      "linkage_status": "VALID",
+      "structural_validity_status": "VALID",
+      "completeness_status": "PARTIAL_OR_COMPLETE",
+      "human_review_required": true,
+      "lineage_reference_ids": [
+        "EVD_56231492"
+      ],
+      "disclaimer_no_execution": "CONTACT_DATA_INTAKE_ONLY / NOT_AN_EXECUTION_COMMAND / HUMAN_REVIEW_REQUIRED"
+    }
+  ]
+}

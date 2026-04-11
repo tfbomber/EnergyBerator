@@ -1,0 +1,34 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "confidence_class": "MEDIUM"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "confidence_class": "MEDIUM"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "canonical_container_class": "NONSTANDARD_WRAPPED_FEATURE",
+      "feature_extraction_path": "$.observational_payload",
+      "geometry_extraction_path": "$.geometry",
+      "properties_extraction_path": "$.properties",
+      "canonicalization_status": "CANONICALIZED_WITH_LIMITATIONS",
+      "future_sandbox_eligibility": "ELIGIBLE_WITH_LIMITATIONS",
+      "confidence_class": "MEDIUM"
+    }
+  ]
+}

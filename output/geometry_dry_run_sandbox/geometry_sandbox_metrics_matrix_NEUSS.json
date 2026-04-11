@@ -1,0 +1,46 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "coordinates_present_count": 1,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "coordinates_present_count": 1,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "expected_feature_count_from_contract": 1,
+      "observed_unpackable_feature_count": 1,
+      "geometry_object_present_count": 1,
+      "null_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "coordinates_present_count": 1,
+      "coordinate_dimensionality_profile": [
+        "2D"
+      ],
+      "sandbox_execution_status": "EXECUTABLE_WITH_LIMITATIONS",
+      "geometry_load_quality": "STABLE"
+    }
+  ]
+}

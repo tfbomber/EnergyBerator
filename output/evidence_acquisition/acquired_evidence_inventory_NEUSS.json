@@ -1,0 +1,17 @@
+[
+  {
+    "source_id": "OSM_NEUSS_NORF_RAW",
+    "extracted_record_index": 0,
+    "raw_sha256": "16e104e67c4ac6620cc09469ab0f1907dbc46ad894271cbaeb9792a0844acdbd"
+  },
+  {
+    "source_id": "OSM_NEUSS_NORF_RAW",
+    "extracted_record_index": 1,
+    "raw_sha256": "a3c32111a32c7db1d3a4fa06a58590ec2d1afff01c2c32a7aba8a687d363263b"
+  },
+  {
+    "source_id": "OSM_NEUSS_NORF_RAW",
+    "extracted_record_index": 2,
+    "raw_sha256": "a79e5e7dcaf36b008b30cfa624af96bd6c8f87183b2b62741bc373fb4d9c06d7"
+  }
+]

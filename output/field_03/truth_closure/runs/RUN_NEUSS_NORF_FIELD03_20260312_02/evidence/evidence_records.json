@@ -1,0 +1,20 @@
+[
+  {
+    "evidence_id": "EVI_KWP_ZONING_NORF",
+    "artifact_id": "ART_KWP_REPORT_2025_SUMMARY",
+    "raw_excerpt": "Der Stadtteil Norf/Elvekum wird als Pr\u00fcfgebiet f\u00fcr Einzell\u00f6sungen (W\u00e4rmepumpen) ausgewiesen.",
+    "normalized_claim": "Pr\u00fcfgebiet Einzell\u00f6sungen",
+    "claim_value": "DECENTRALIZED",
+    "evidence_tier": "E1",
+    "geographic_anchor": "Norf / Elvekum"
+  },
+  {
+    "evidence_id": "EVI_SWN_NETWORK_LIMIT",
+    "artifact_id": "ART_SWN_FFVAV_SHEET",
+    "raw_excerpt": "Das Fernw\u00e4rmenetz endet \u00f6stlich der Bahntrasse. Im Wohngebiet Norf-West besteht keine Ausbauplanung.",
+    "normalized_claim": "No grid expansion in Norf Residential Core",
+    "claim_value": "NO_DH_AVAILABILITY",
+    "evidence_tier": "E1",
+    "geographic_anchor": "Norf Residential Core (West of S-Bahn)"
+  }
+]

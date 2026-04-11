@@ -1,0 +1,29 @@
+{
+    "case_id": "E2E-10",
+    "engine_context": "V1.2",
+    "as_of": "2026-03-01",
+    "policy_id": "DESS-V1.2-MODERN",
+    "evidence": {
+        "evidence_ref": "tests/fixtures/e2e/evidence/golden_evidence.pdf",
+        "anchor_id": "NON_EXISTENT_ID"
+    },
+    "timeline_events": [
+        {
+            "event_type": "APPLICATION_SUBMITTED",
+            "date": "2026-03-01"
+        },
+        {
+            "event_type": "CONTRACT_SIGNED",
+            "date": "2026-03-02"
+        }
+    ],
+    "costs": {
+        "mode": "EXACT",
+        "buckets": {
+            "HARDWARE": {
+                "amount": "1000.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    }
+}

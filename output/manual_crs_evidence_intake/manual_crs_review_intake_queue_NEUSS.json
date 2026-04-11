@@ -1,0 +1,25 @@
+{
+  "queue": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "submissions_received_count": 0,
+      "file_review_readiness_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "linked_submission_ids": [],
+      "rerun_prep_status": "AWAITING_EXTERNAL_MANUAL_EVIDENCE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "submissions_received_count": 0,
+      "file_review_readiness_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "linked_submission_ids": [],
+      "rerun_prep_status": "AWAITING_EXTERNAL_MANUAL_EVIDENCE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "submissions_received_count": 0,
+      "file_review_readiness_status": "NO_VALID_SUBMISSION_RECEIVED",
+      "linked_submission_ids": [],
+      "rerun_prep_status": "AWAITING_EXTERNAL_MANUAL_EVIDENCE"
+    }
+  ]
+}

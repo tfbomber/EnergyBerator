@@ -1,0 +1,61 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "candidate_id": "EVD_56231492",
+      "geometry_id": "EVD_56231492",
+      "prior_closure_status": "CASE_CLOSED",
+      "prior_closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "evidence_items_checked_count": 0,
+      "new_evidence_items_detected_count": 0,
+      "matched_new_evidence_count": 0,
+      "reopen_decision_state": "NO_NEW_EVIDENCE_DETECTED",
+      "next_cycle_entry_state": "REMAINS_CLOSED",
+      "reopen_trigger_allowed": false,
+      "reopen_trigger_reason": "No exogenous files discovered in external intake mounts. Case remains fully locked down.",
+      "governing_stage_reference": "STAGE_61",
+      "source_trace": "manual_crs_case_closure_registry_NEUSS.json",
+      "evidence_lineage_trace": "None"
+    },
+    {
+      "case_id": "EVD_8963BBA2",
+      "candidate_id": "EVD_8963BBA2",
+      "geometry_id": "EVD_8963BBA2",
+      "prior_closure_status": "CASE_CLOSED",
+      "prior_closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "evidence_items_checked_count": 0,
+      "new_evidence_items_detected_count": 0,
+      "matched_new_evidence_count": 0,
+      "reopen_decision_state": "NO_NEW_EVIDENCE_DETECTED",
+      "next_cycle_entry_state": "REMAINS_CLOSED",
+      "reopen_trigger_allowed": false,
+      "reopen_trigger_reason": "No exogenous files discovered in external intake mounts. Case remains fully locked down.",
+      "governing_stage_reference": "STAGE_61",
+      "source_trace": "manual_crs_case_closure_registry_NEUSS.json",
+      "evidence_lineage_trace": "None"
+    },
+    {
+      "case_id": "EVD_ACC8C1F4",
+      "candidate_id": "EVD_ACC8C1F4",
+      "geometry_id": "EVD_ACC8C1F4",
+      "prior_closure_status": "CASE_CLOSED",
+      "prior_closure_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "retry_lock_status": "LOCKED",
+      "activation_status": "PROHIBITED",
+      "evidence_items_checked_count": 0,
+      "new_evidence_items_detected_count": 0,
+      "matched_new_evidence_count": 0,
+      "reopen_decision_state": "NO_NEW_EVIDENCE_DETECTED",
+      "next_cycle_entry_state": "REMAINS_CLOSED",
+      "reopen_trigger_allowed": false,
+      "reopen_trigger_reason": "No exogenous files discovered in external intake mounts. Case remains fully locked down.",
+      "governing_stage_reference": "STAGE_61",
+      "source_trace": "manual_crs_case_closure_registry_NEUSS.json",
+      "evidence_lineage_trace": "None"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "commercial_path_counts": {
+    "dess": 7,
+    "installer": 0,
+    "consultant": 0,
+    "unknown": 1
+  },
+  "ownership_clarity_distribution": {
+    "CLEAR": 6,
+    "PARTIAL": 1,
+    "UNCLEAR": 1
+  }
+}

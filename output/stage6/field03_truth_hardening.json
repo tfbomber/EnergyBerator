@@ -1,0 +1,28 @@
+{
+  "field_id": "field_03",
+  "city": "Neuss",
+  "segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+  "segment_heat_status": "Prüfgebiet Einzellösungen",
+  "district_heating_status": "NO_DH",
+  "district_heating_risk_score": 0.1,
+  "heat_pump_preference_score": 0.95,
+  "evidence_tier": "E1",
+  "evidence_items": [
+    {
+      "source_id": "KWP_NEUSS_2025_DRAFT",
+      "source_type": "official_municipal_document",
+      "citation_ref": "Kommunale Wärmeplanung Neuss - Zonierungskarte Entwurf (Stand 2025)",
+      "extracted_claim": "The Norf/Elvekum residential cluster is designated as a focus area for individual/decentralized heating solutions (Prüfgebiet Einzellösungen).",
+      "geographic_scope": "Norf / Elvekum Residential Area",
+      "confidence": 0.95
+    },
+    {
+      "source_id": "SWN_NETWORK_MAP_2024",
+      "source_type": "utility_map",
+      "citation_ref": "Stadtwerke Neuss Netzplan Fernwärme",
+      "extracted_claim": "Residential Norf is not connected to the existing district heating network serving Allerheiligen.",
+      "geographic_scope": "Norf Borough",
+      "confidence": 0.98
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "execution_chain_coverage": 6,
+  "crm_integration_coverage": 7,
+  "installer_pipeline_coverage": 7,
+  "fallback_coverage": 7,
+  "operational_readiness_distribution": {
+    "READY": 6,
+    "PARTIAL": 1,
+    "NOT_READY": 1
+  }
+}

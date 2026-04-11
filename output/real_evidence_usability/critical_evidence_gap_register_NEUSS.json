@@ -1,0 +1,7 @@
+{
+  "gaps": {
+    "FIELD_03_HEAT": "CRITICAL_MISSING",
+    "FIELD_04_SOLAR": "CRITICAL_MISSING",
+    "GEOMETRY_ASSETS": "SCHEMA_RISK"
+  }
+}

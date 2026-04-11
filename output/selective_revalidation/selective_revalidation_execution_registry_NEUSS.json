@@ -1,0 +1,19 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "module_name": "PROGRAM_COMPLIANCE_REVALIDATION",
+      "prior_module_state_reference": "historic_program_compliance_revalidation_output.json",
+      "evidence_ids_applied": [
+        "SYNTH_EVD_ITEM_001"
+      ],
+      "module_input_files_read": [
+        "historic_program_compliance_revalidation_output.json"
+      ],
+      "execution_status": "COMPLETED",
+      "module_revalidation_result": "MODULE_REVALIDATION_PASS",
+      "result_reason": "Evidence overrides prior constraints and resolves negative gating condition.",
+      "governing_stage": "STAGE_63"
+    }
+  ]
+}

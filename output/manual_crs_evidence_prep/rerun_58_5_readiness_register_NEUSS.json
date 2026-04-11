@@ -1,0 +1,31 @@
+{
+  "readiness": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "rerun_currently_justified": false,
+      "missing_prerequisites": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_ACC8C1F4 satisfying policy rules."
+      ],
+      "technical_escalation_needed": false
+    },
+    {
+      "file_id": "EVD_56231492",
+      "rerun_currently_justified": false,
+      "missing_prerequisites": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_56231492 satisfying policy rules."
+      ],
+      "technical_escalation_needed": false
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "rerun_currently_justified": false,
+      "missing_prerequisites": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_8963BBA2 satisfying policy rules."
+      ],
+      "technical_escalation_needed": false
+    }
+  ]
+}

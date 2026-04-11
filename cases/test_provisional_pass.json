@@ -1,0 +1,43 @@
+{
+    "case_id": "TEST_PROVISIONAL_PASS",
+    "applicant": {
+        "type": "NATURAL_PERSON",
+        "is_duesselpass_holder": false,
+        "has_energy_consultation": false
+    },
+    "attributes": {
+        "combining_with_kfw": false
+    },
+    "timeline_events": [
+        {
+            "event_type": "APPLICATION_SUBMITTED",
+            "date": "2026-03-05"
+        },
+        {
+            "event_type": "CONTRACT_SIGNED",
+            "date": "2026-03-10"
+        },
+        {
+            "event_type": "WORK_STARTED",
+            "date": "2026-03-15"
+        }
+    ],
+    "costs": {
+        "buckets": {
+            "HARDWARE": {
+                "amount": "800.00",
+                "amount_basis": "GROSS"
+            },
+            "LABOR": {
+                "amount": "200.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    },
+    "project": {
+        "specs": {
+            "balcony_pv_watts": 800,
+            "balcony_pv_count": 1
+        }
+    }
+}

@@ -1,0 +1,475 @@
+{
+    "spec_name": "D-ESS Intake Question Tree",
+    "spec_version": "0.1.0",
+    "locale": "zh-CN",
+    "engine_case_schema_version": "v1",
+    "supported_project_types": [
+        "BALCONY_PV",
+        "HEAT_PUMP"
+    ],
+    "enums": {
+        "yes_no_unknown": [
+            "YES",
+            "NO",
+            "UNKNOWN"
+        ],
+        "amount_basis": [
+            "NET",
+            "GROSS",
+            "UNKNOWN"
+        ]
+    },
+    "fact_codes": {
+        "T.APPLICATION_SUBMITTED.DATE": {
+            "label": "申请提交日期",
+            "path_hint": "timeline_events[APPLICATION_SUBMITTED].date",
+            "kind": "timing"
+        },
+        "T.CONTRACT_SIGNED.DATE": {
+            "label": "合同签署日期",
+            "path_hint": "timeline_events[CONTRACT_SIGNED].date",
+            "kind": "timing"
+        },
+        "T.WORK_STARTED.DATE": {
+            "label": "开工日期",
+            "path_hint": "timeline_events[WORK_STARTED].date",
+            "kind": "timing"
+        },
+        "C.HARDWARE.AMOUNT": {
+            "label": "硬件金额",
+            "path_hint": "costs.buckets.HARDWARE.amount",
+            "kind": "cost"
+        },
+        "C.HARDWARE.BASIS": {
+            "label": "硬件金额口径",
+            "path_hint": "costs.buckets.HARDWARE.amount_basis",
+            "kind": "cost"
+        },
+        "C.LABOR.AMOUNT": {
+            "label": "人工金额",
+            "path_hint": "costs.buckets.LABOR.amount",
+            "kind": "cost"
+        },
+        "C.LABOR.BASIS": {
+            "label": "人工金额口径",
+            "path_hint": "costs.buckets.LABOR.amount_basis",
+            "kind": "cost"
+        },
+        "A.IS_BUSINESS": {
+            "label": "是否企业/商业用途",
+            "path_hint": "attributes.is_business",
+            "kind": "attribute"
+        },
+        "A.BONUS.DUESSELPASS": {
+            "label": "是否具备 Düsselpass",
+            "path_hint": "attributes.bonuses includes DUESSELPASS",
+            "kind": "attribute"
+        },
+        "A.ENERGY_CONSULT_PROOF": {
+            "label": "是否持有 Energiesparberatung 证明（Düsselpass 特殊档前提）",
+            "path_hint": "attributes.ENERGY_CONSULT_PROOF",
+            "kind": "attribute"
+        }
+    },
+    "completeness_rules": {
+        "must_haves": [
+            "T.APPLICATION_SUBMITTED.DATE",
+            "T.CONTRACT_SIGNED.DATE",
+            "T.WORK_STARTED.DATE",
+            "C.HARDWARE.AMOUNT",
+            "C.HARDWARE.BASIS",
+            "C.LABOR.AMOUNT",
+            "C.LABOR.BASIS"
+        ],
+        "nice_to_haves": [
+            "A.IS_BUSINESS",
+            "A.BONUS.DUESSELPASS",
+            "A.ENERGY_CONSULT_PROOF"
+        ],
+        "risk_critical": [
+            "T.APPLICATION_SUBMITTED.DATE",
+            "C.HARDWARE.BASIS",
+            "C.LABOR.BASIS"
+        ],
+        "scoring": {
+            "must_weight": 1.0,
+            "nice_weight": 0.3,
+            "percentage_round": 0
+        }
+    },
+    "normalization": {
+        "date": {
+            "input_formats": [
+                "YYYY-MM-DD",
+                "YYYY/MM/DD"
+            ],
+            "output_format": "YYYY-MM-DD"
+        },
+        "amount_decimal_string": {
+            "rules": [
+                {
+                    "id": "DEC_ALLOW_SIMPLE",
+                    "description": "允许 800 或 1200.50",
+                    "pattern_allow": "^[0-9]+(\\.[0-9]{1,2})?$"
+                },
+                {
+                    "id": "DEC_ALLOW_COMMA_DECIMAL",
+                    "description": "允许 1200,50（欧式小数逗号），将逗号确定性转换为点",
+                    "pattern_allow": "^[0-9]+(\\,[0-9]{1,2})?$",
+                    "transform": {
+                        "type": "replace",
+                        "from": ",",
+                        "to": ".",
+                        "emit_notice": "已将欧式小数逗号转换为点号：{raw} -> {normalized}"
+                    }
+                }
+            ],
+            "pattern_deny": ".*[\\s].*|.*[a-zA-Z].*|.*[\\,\\.][0-9]{3}([\\,\\.][0-9]{1,2})?$",
+            "deny_message": "金额格式不允许千分位或空格，请输入如 800 或 1200.50（不要用 1,200.50 / 1.200,50）"
+        }
+    },
+    "ui_sections": [
+        {
+            "id": "S0_PROJECT",
+            "title": "项目类型",
+            "description": "选择评估的项目类型，用于加载对应政策与提示文案。"
+        },
+        {
+            "id": "S1_ENTITY",
+            "title": "主体信息（可选但推荐）",
+            "description": "这些信息可能影响 bonus/路径，但缺失不会被系统猜测。"
+        },
+        {
+            "id": "S2_TIMING",
+            "title": "关键时间线（红线判断核心）",
+            "description": "任何顺序错误都可能触发 Vorhabenbeginn 风险。未知可选 Unknown。"
+        },
+        {
+            "id": "S3_COSTS",
+            "title": "成本桶（金额与口径）",
+            "description": "金额必须严格 Decimal 字符串；NET/GROSS 决定 VAT 归一化。"
+        },
+        {
+            "id": "S4_CONFIRM",
+            "title": "事实确认",
+            "description": "生成报告前必须确认解析后的结构化事实（审计友好）。"
+        }
+    ],
+    "questions": [
+        {
+            "id": "Q0_PROJECT_TYPE",
+            "section_id": "S0_PROJECT",
+            "type": "select",
+            "label": "项目类型（project_type）",
+            "help": "请选择 BALCONY_PV（阳台光伏）或 HEAT_PUMP（热泵）。MVP 先支持这两类。",
+            "required": true,
+            "options": [
+                {
+                    "value": "PLEASE_SELECT",
+                    "text": "── 请选择项目类型 ──"
+                },
+                {
+                    "value": "BALCONY_PV",
+                    "text": "BALCONY_PV（阳台光伏）"
+                },
+                {
+                    "value": "HEAT_PUMP",
+                    "text": "HEAT_PUMP（热泵）"
+                }
+            ],
+            "emit": [
+                {
+                    "op": "set",
+                    "path": "project_type",
+                    "value_from_answer": true
+                }
+            ]
+        },
+        {
+            "id": "Q1_IS_BUSINESS",
+            "section_id": "S1_ENTITY",
+            "type": "radio",
+            "label": "是否企业/商业用途（is_business）？",
+            "help": "未知可以选 Unknown。系统不会猜测。",
+            "required": false,
+            "options": [
+                {
+                    "value": "YES",
+                    "text": "是（企业/商业用途）"
+                },
+                {
+                    "value": "NO",
+                    "text": "否（个人/非商业）"
+                },
+                {
+                    "value": "UNKNOWN",
+                    "text": "我还不知道（Unknown）"
+                }
+            ],
+            "fact_code": "A.IS_BUSINESS",
+            "emit": [
+                {
+                    "op": "set_bool_if_known",
+                    "path": "attributes.is_business",
+                    "map": {
+                        "YES": true,
+                        "NO": false
+                    },
+                    "skip_if": {
+                        "answer_equals": "UNKNOWN"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Q2_HAS_DUESSELPASS",
+            "section_id": "S1_ENTITY",
+            "type": "radio",
+            "label": "是否具备 Düsselpass（bonus）？",
+            "help": "如果选是，将作为 bonus 参与计算（如政策支持）。未知可选 Unknown。",
+            "required": false,
+            "options": [
+                {
+                    "value": "YES",
+                    "text": "是（有 Düsselpass）"
+                },
+                {
+                    "value": "NO",
+                    "text": "否"
+                },
+                {
+                    "value": "UNKNOWN",
+                    "text": "我还不知道（Unknown）"
+                }
+            ],
+            "fact_code": "A.BONUS.DUESSELPASS",
+            "emit": [
+                {
+                    "op": "append_unique_if",
+                    "path": "attributes.bonuses",
+                    "value": "DUESSELPASS",
+                    "when": {
+                        "answer_equals": "YES"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Q3_APPLICATION_DATE",
+            "section_id": "S2_TIMING",
+            "type": "date_or_unknown",
+            "label": "申请提交日期（APPLICATION_SUBMITTED）",
+            "help": "用于判定 Vorhabenbeginn 风险：通常要求先申请/拿号，再签合同/开工。",
+            "required": false,
+            "fact_code": "T.APPLICATION_SUBMITTED.DATE",
+            "emit": [
+                {
+                    "op": "add_timeline_event_if_date",
+                    "event": "APPLICATION_SUBMITTED",
+                    "date_from_answer": true,
+                    "normalize": "date"
+                }
+            ]
+        },
+        {
+            "id": "Q4_CONTRACT_DATE",
+            "section_id": "S2_TIMING",
+            "type": "date_or_unknown",
+            "label": "合同签署日期（CONTRACT_SIGNED）",
+            "help": "常见违规点：合同早于申请可能触发 Vorhabenbeginn。",
+            "required": false,
+            "fact_code": "T.CONTRACT_SIGNED.DATE",
+            "emit": [
+                {
+                    "op": "add_timeline_event_if_date",
+                    "event": "CONTRACT_SIGNED",
+                    "date_from_answer": true,
+                    "normalize": "date"
+                }
+            ]
+        },
+        {
+            "id": "Q5_WORK_START_DATE",
+            "section_id": "S2_TIMING",
+            "type": "date_or_unknown",
+            "label": "开工日期（WORK_STARTED）",
+            "help": "常见违规点：开工早于申请可能触发 Vorhabenbeginn。",
+            "required": false,
+            "fact_code": "T.WORK_STARTED.DATE",
+            "emit": [
+                {
+                    "op": "add_timeline_event_if_date",
+                    "event": "WORK_STARTED",
+                    "date_from_answer": true,
+                    "normalize": "date"
+                }
+            ]
+        },
+        {
+            "id": "Q6_HARDWARE_AMOUNT",
+            "section_id": "S3_COSTS",
+            "type": "decimal_or_unknown",
+            "label": "硬件金额（HARDWARE.amount）",
+            "help": "请输入精确金额：800 或 1200.50。不要使用千分位分隔符。",
+            "required": false,
+            "fact_code": "C.HARDWARE.AMOUNT",
+            "emit": [
+                {
+                    "op": "set_decimal_if_known",
+                    "path": "costs.buckets.HARDWARE.amount",
+                    "value_from_answer": true,
+                    "normalize": "amount_decimal_string"
+                }
+            ]
+        },
+        {
+            "id": "Q7_HARDWARE_BASIS",
+            "section_id": "S3_COSTS",
+            "type": "select",
+            "label": "硬件价格口径（HARDWARE.amount_basis）",
+            "help": "NET=不含 MwSt，GROSS=含 MwSt。未知可选 Unknown（将触发 NEEDS_INPUT）。",
+            "required": false,
+            "fact_code": "C.HARDWARE.BASIS",
+            "options": [
+                {
+                    "value": "NET",
+                    "text": "NET（净价）"
+                },
+                {
+                    "value": "GROSS",
+                    "text": "GROSS（含税毛价）"
+                },
+                {
+                    "value": "UNKNOWN",
+                    "text": "我还不知道（Unknown）"
+                }
+            ],
+            "emit": [
+                {
+                    "op": "set_if_known",
+                    "path": "costs.buckets.HARDWARE.amount_basis",
+                    "skip_if": {
+                        "answer_equals": "UNKNOWN"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "Q8_LABOR_AMOUNT",
+            "section_id": "S3_COSTS",
+            "type": "decimal_or_unknown",
+            "label": "人工金额（LABOR.amount）",
+            "help": "请输入精确金额：200 或 200.00。不要使用千分位分隔符。",
+            "required": false,
+            "fact_code": "C.LABOR.AMOUNT",
+            "emit": [
+                {
+                    "op": "set_decimal_if_known",
+                    "path": "costs.buckets.LABOR.amount",
+                    "value_from_answer": true,
+                    "normalize": "amount_decimal_string"
+                }
+            ]
+        },
+        {
+            "id": "Q9_LABOR_BASIS",
+            "section_id": "S3_COSTS",
+            "type": "select",
+            "label": "人工价格口径（LABOR.amount_basis）",
+            "help": "NET=不含 MwSt，GROSS=含 MwSt。未知可选 Unknown（将触发 NEEDS_INPUT）。",
+            "required": false,
+            "fact_code": "C.LABOR.BASIS",
+            "options": [
+                {
+                    "value": "NET",
+                    "text": "NET（净价）"
+                },
+                {
+                    "value": "GROSS",
+                    "text": "GROSS（含税毛价）"
+                },
+                {
+                    "value": "UNKNOWN",
+                    "text": "我还不知道（Unknown）"
+                }
+            ],
+            "emit": [
+                {
+                    "op": "set_if_known",
+                    "path": "costs.buckets.LABOR.amount_basis",
+                    "skip_if": {
+                        "answer_equals": "UNKNOWN"
+                    }
+                }
+            ]
+        }
+    ],
+    "risk_hint_rules": [
+        {
+            "id": "RISK_CONTRACT_BEFORE_APPLICATION",
+            "severity": "HIGH",
+            "when_all_dates_present": [
+                "APPLICATION_SUBMITTED",
+                "CONTRACT_SIGNED"
+            ],
+            "compare": {
+                "left": "CONTRACT_SIGNED",
+                "op": "<",
+                "right": "APPLICATION_SUBMITTED"
+            },
+            "message": "高风险：合同签署早于申请提交，可能触发 Vorhabenbeginn（先签后申）。UI 仅提示，最终以引擎裁决为准。"
+        },
+        {
+            "id": "RISK_WORKSTART_BEFORE_APPLICATION",
+            "severity": "HIGH",
+            "when_all_dates_present": [
+                "APPLICATION_SUBMITTED",
+                "WORK_STARTED"
+            ],
+            "compare": {
+                "left": "WORK_STARTED",
+                "op": "<",
+                "right": "APPLICATION_SUBMITTED"
+            },
+            "message": "高风险：开工日期早于申请提交，可能触发 Vorhabenbeginn（先开工后申）。UI 仅提示，最终以引擎裁决为准。"
+        },
+        {
+            "id": "RISK_WORKSTART_BEFORE_CONTRACT",
+            "severity": "MEDIUM",
+            "when_all_dates_present": [
+                "CONTRACT_SIGNED",
+                "WORK_STARTED"
+            ],
+            "compare": {
+                "left": "WORK_STARTED",
+                "op": "<",
+                "right": "CONTRACT_SIGNED"
+            },
+            "message": "提示：开工日期早于合同签署，时间线可能不一致，请确认。"
+        }
+    ],
+    "payload_template": {
+        "project_type": null,
+        "attributes": {},
+        "timeline_events": [],
+        "costs": {
+            "buckets": {
+                "HARDWARE": {},
+                "LABOR": {}
+            }
+        }
+    },
+    "confirm_facts_view": {
+        "must_show_paths": [
+            "project_type",
+            "attributes.is_business",
+            "attributes.bonuses",
+            "timeline_events",
+            "costs.buckets.HARDWARE.amount",
+            "costs.buckets.HARDWARE.amount_basis",
+            "costs.buckets.LABOR.amount",
+            "costs.buckets.LABOR.amount_basis"
+        ],
+        "must_confirm_before_generate": true
+    }
+}

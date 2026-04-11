@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "intake_mode": "PLANNED_ONLY",
+  "activation_rights": "NONE",
+  "evidence_presence_status": "NOT_MOUNTED",
+  "evidence_id": "UUID_PLACEHOLDER",
+  "candidate_id": "STRING",
+  "geometry_format": "GeoJSON",
+  "boundary_confidence": "FLOAT",
+  "building_footprint_present": "BOOLEAN",
+  "source_type": "OSM/Kataster E4"
+}

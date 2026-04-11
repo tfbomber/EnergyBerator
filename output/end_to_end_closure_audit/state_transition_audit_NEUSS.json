@@ -1,0 +1,23 @@
+{
+  "audits": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "state_path_by_stage": {
+        "authorization_status": null,
+        "execution_result": null,
+        "writeback_result": null,
+        "unlock_decision": null,
+        "blocked_state_after_decision": null,
+        "opportunity_readiness": null,
+        "routing_recommendation": null,
+        "live_eligible": null,
+        "test_flow_flag": false
+      },
+      "contradictory_state_detected": false,
+      "unauthorized_jump_detected": false,
+      "final_state_summary": "Extracted linearly via JSON validation matching strict sequence constraints.",
+      "state_transition_verdict": "PASS",
+      "audit_note": "No unapproved jumps found."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "contract_name": "FIELD_04 Metric Restoration Policy",
+  "version": "1.0",
+  "restoration_rules": {
+    "pv_installation_count": {
+      "requires_gate": "GATE_5_SPATIAL_PINNING",
+      "fail_state": "NULL"
+    },
+    "pv_total_kwp": {
+      "requires_gate": "GATE_5_SPATIAL_PINNING",
+      "fail_state": "NULL"
+    },
+    "pv_adoption_score": {
+      "requires_gate": "GATE_6_SCORE_ELIGIBILITY",
+      "fail_state": "NULL"
+    },
+    "adoption_status": {
+      "requires_gate": "GATE_5_SPATIAL_PINNING",
+      "fail_state": "UNKNOWN"
+    },
+    "observed_zero_case": {
+      "trigger": "pinned_count == 0",
+      "assignment": {
+        "score": 0.0,
+        "status": "OBSERVED_ZERO"
+      }
+    }
+  }
+}

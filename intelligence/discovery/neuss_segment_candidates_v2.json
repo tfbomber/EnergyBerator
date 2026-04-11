@@ -1,0 +1,26 @@
+[
+  {
+    "segment_id": "NEUSS_SUBURBAN_01",
+    "estimated_buildings": 120,
+    "dominant_morphology": "Detached/Semi Mix",
+    "targetability": "MEDIUM",
+    "district_heating_risk": "LOW",
+    "pv_roof_potential": "LOW",
+    "opportunity_signal": "MEDIUM",
+    "why_promising": "Solid residential cluster; scale is appropriate for street-campaign.",
+    "why_limited": "Morphology includes higher rowhouse/mix. Requires precise roof sizing.",
+    "recommended_next_check": "Verify individual roof potentials (FIELD_01 fine-tuning)."
+  },
+  {
+    "segment_id": "NEUSS_VILLA_01",
+    "estimated_buildings": 80,
+    "dominant_morphology": "Detached",
+    "targetability": "HIGH",
+    "district_heating_risk": "HIGH",
+    "pv_roof_potential": "LOW",
+    "opportunity_signal": "LOW",
+    "why_promising": "N/A",
+    "why_limited": "High risk of existing or planned district heating network.",
+    "recommended_next_check": "No immediate action."
+  }
+]

@@ -1,0 +1,4 @@
+{
+    "policy_id": "BAD_JSON",
+    "name": "Invalid JSON Policy",
+    "invalid_syntax": [

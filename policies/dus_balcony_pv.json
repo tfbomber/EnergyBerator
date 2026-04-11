@@ -1,0 +1,76 @@
+{
+    "policy_id": "DUS_BALCONY_PV_2025",
+    "region": "Duesseldorf",
+    "level": "City",
+    "status": "Active",
+    "effective_from": "2025-01-01",
+    "effective_to": null,
+    "uncertainty_flag": "LOW",
+    "timing_rules": {
+        "requires_application_before": [
+            "CONTRACT_SIGNED",
+            "WORK_STARTED",
+            "PAYMENT_MADE"
+        ],
+        "blocking_actions": [
+            "CONTRACT_SIGNED",
+            "WORK_STARTED",
+            "PAYMENT_MADE"
+        ],
+        "evidence_anchor": "19.303 Punkt 4.1"
+    },
+    "cost_rules": {
+        "input_amount_basis": "GROSS",
+        "buckets": {
+            "HARDWARE": {
+                "eligible": true,
+                "vat_rate": "0%"
+            },
+            "LABOR": {
+                "eligible": true,
+                "vat_rate": "19%"
+            }
+        }
+    },
+    "calculation": {
+        "type": "GRANT_ON_ELIGIBLE_COST",
+        "grant_rate": 0.50,
+        "eligible_basis": "GROSS",
+        "cap_cents": 60000,
+        "stacking_limit": 1.0,
+        "bonuses": [
+            {
+                "code": "DUESSELPASS",
+                "trigger": "USER_ATTRIBUTE",
+                "trigger_value": true,
+                "eligibility_checks": [
+                    {
+                        "type": "DATE_ON_OR_BEFORE",
+                        "event_type": "APPLICATION_SUBMITTED",
+                        "latest_date": "2026-03-31",
+                        "reason_code": "WINDOW_EXPIRED",
+                        "evidence_anchor": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (befristet bis 31.03.2026)"
+                    },
+                    {
+                        "type": "USER_ATTRIBUTE",
+                        "attribute": "ENERGY_CONSULT_PROOF",
+                        "expected": true,
+                        "reason_code": "CONSULT_PROOF_MISSING",
+                        "evidence_anchor": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass (mit Energiesparberatung)"
+                    }
+                ],
+                "effect": {
+                    "set_grant_rate": 0.80,
+                    "set_cap_cents": 80000
+                },
+                "evidence_anchor": "19.303 Punkt 5.7.2 Sonderförderung Düsselpass"
+            }
+        ],
+        "evidence_anchor": "19.303 Punkt 5.7.2 Förderung"
+    },
+    "citations": {
+        "source_url": "https://www.duesseldorf.de/fileadmin/Amt19/umweltamt/foerderundberatungsprogramme/klimafreundlichwohnen/pdf/Richtlinien/Richtlinie_2025_vom_12.12.2024.pdf",
+        "doc_version": "2025",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z"
+    }
+}

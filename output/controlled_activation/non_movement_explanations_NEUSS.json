@@ -1,0 +1,14 @@
+{
+  "explanations": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "retained_status": "STILL_BLOCKED",
+      "justification": "Absence of admissible evidence. Absence of downstream governance triggers. No physical E4 artifacts successfully parsed."
+    },
+    {
+      "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+      "retained_status": "STILL_BLOCKED",
+      "justification": "Absence of admissible evidence. Absence of downstream governance triggers. No physical E4 artifacts successfully parsed."
+    }
+  ]
+}

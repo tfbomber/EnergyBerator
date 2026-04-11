@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "checklist_items": "Implement Human PKI Key Management System",
+      "verification_method": "Generate Test live-signing keys vs Stage 41",
+      "readiness_dependency": "BLOCKING"
+    },
+    {
+      "checklist_items": "Generate Legal Authorizer Identity Role",
+      "verification_method": "Active compliance user assignments",
+      "readiness_dependency": "BLOCKING"
+    },
+    {
+      "checklist_items": "Deploy Final CRM/Logic API Endpoint Hooks",
+      "verification_method": "Mock dispatch dry-runs into sandbox CRMs",
+      "readiness_dependency": "CONDITIONAL"
+    },
+    {
+      "checklist_items": "Source 10 Authentic Physical Targets from OSM/MaStR pipelines",
+      "verification_method": "Schema validation and spatial join checks",
+      "readiness_dependency": "BLOCKING"
+    }
+  ]
+}

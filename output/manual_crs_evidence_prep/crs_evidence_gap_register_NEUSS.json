@@ -1,0 +1,28 @@
+{
+  "gaps": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "missing_evidence_category": "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "missing_evidence_category": "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "missing_evidence_category": "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "missing_evidence_category": "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "missing_evidence_category": "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "missing_evidence_category": "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+    }
+  ]
+}

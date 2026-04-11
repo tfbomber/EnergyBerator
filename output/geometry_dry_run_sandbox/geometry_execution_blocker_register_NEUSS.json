@@ -1,0 +1,28 @@
+{
+  "blockers": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "CONTRACT_AMBIGUITY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "CRS_NOT_DECLARED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "CONTRACT_AMBIGUITY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "CRS_NOT_DECLARED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "CONTRACT_AMBIGUITY_PRESERVED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "CRS_NOT_DECLARED"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+    "case_id": "E2E-01",
+    "as_of": "2026-03-01",
+    "policy_id": "DESS-V1.2-GOLDEN",
+    "costs": {
+        "mode": "EXACT",
+        "buckets": {
+            "HARDWARE": {
+                "amount": "10000.00",
+                "amount_basis": "GROSS"
+            }
+        }
+    },
+    "timeline_events": [
+        {
+            "event_type": "APPLICATION_SUBMITTED",
+            "date": "2026-06-01"
+        },
+        {
+            "event_type": "WORK_STARTED",
+            "date": "2026-07-01"
+        }
+    ],
+    "evidence": {
+        "evidence_ref": "tests/fixtures/e2e/evidence/golden_evidence.pdf"
+    }
+}

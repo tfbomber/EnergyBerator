@@ -1,0 +1,87 @@
+[
+  {
+    "candidate_id": "CAND_NEUSS_HOISTEN_01",
+    "risks": [
+      {
+        "risk_type": "District Heating Ambiguity",
+        "severity": "HIGH",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Force FIELD_03 execution before generating clusters."
+      },
+      {
+        "risk_type": "Multi-Family Contamination",
+        "severity": "MEDIUM",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Apply strict bounding footprint cuts during Geometry Validation."
+      }
+    ]
+  },
+  {
+    "candidate_id": "CAND_NEUSS_ROSELLERHEIDE_01",
+    "risks": [
+      {
+        "risk_type": "District Heating Ambiguity",
+        "severity": "HIGH",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Force FIELD_03 execution before generating clusters."
+      },
+      {
+        "risk_type": "Multi-Family Contamination",
+        "severity": "MEDIUM",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Apply strict bounding footprint cuts during Geometry Validation."
+      }
+    ]
+  },
+  {
+    "candidate_id": "CAND_NEUSS_ALLERHEILIGEN_01",
+    "risks": [
+      {
+        "risk_type": "District Heating Ambiguity",
+        "severity": "HIGH",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Force FIELD_03 execution before generating clusters."
+      },
+      {
+        "risk_type": "Multi-Family Contamination",
+        "severity": "MEDIUM",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Apply strict bounding footprint cuts during Geometry Validation."
+      }
+    ]
+  },
+  {
+    "candidate_id": "CAND_NEUSS_UEDESHEIM_01",
+    "risks": [
+      {
+        "risk_type": "District Heating Ambiguity",
+        "severity": "HIGH",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Force FIELD_03 execution before generating clusters."
+      },
+      {
+        "risk_type": "Multi-Family Contamination",
+        "severity": "MEDIUM",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Apply strict bounding footprint cuts during Geometry Validation."
+      }
+    ]
+  },
+  {
+    "candidate_id": "CAND_NEUSS_SELIKUM_01",
+    "risks": [
+      {
+        "risk_type": "District Heating Ambiguity",
+        "severity": "HIGH",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Force FIELD_03 execution before generating clusters."
+      },
+      {
+        "risk_type": "Multi-Family Contamination",
+        "severity": "MEDIUM",
+        "probability": "MEDIUM",
+        "mitigation_suggestion": "Apply strict bounding footprint cuts during Geometry Validation."
+      }
+    ]
+  }
+]

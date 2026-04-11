@@ -1,0 +1,11 @@
+{
+  "total_writeback_candidates_seen": 0,
+  "writeback_executed_count": 0,
+  "skipped_conservatively_count": 0,
+  "failed_source_binding_count": 0,
+  "failed_scope_validation_count": 0,
+  "failed_writeback_path_match_count": 0,
+  "failed_production_recompute_count": 0,
+  "partial_revert_required_count": 0,
+  "still_blocked_retained_count": 0
+}

@@ -1,0 +1,15 @@
+{
+  "forbidden_auto_actions": [
+    "Dispatch Installer Email",
+    "Schedule Truck Roll",
+    "Alter CRM Client Stage",
+    "Create Hubspot Lead Autonomous",
+    "Push Marketing Outreach API"
+  ],
+  "required_manual_controls": [
+    "Dispatcher Check on Priority Queues",
+    "Formal Sign-off on Action Packs"
+  ],
+  "activation_review_process": "1. Render Pack -> 2. Load into Review UI -> 3. Human Approval -> 4. Manual API push to CRM",
+  "escalation_path_definition": "REVIEW_ONLY -> HUMAN_DISPATCH_ALLOWED -> LIVE_DISPATCH_ALLOWED"
+}

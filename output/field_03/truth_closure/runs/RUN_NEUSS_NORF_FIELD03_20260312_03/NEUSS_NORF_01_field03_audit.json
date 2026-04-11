@@ -1,0 +1,58 @@
+{
+  "field_id": "FIELD_03",
+  "city": "Neuss",
+  "segment_id": "NEUSS_NORF_01",
+  "audit_run_id": "RUN_NEUSS_NORF_FIELD03_20260312_03",
+  "engine_verdict": "SUPPORTED_DECENTRALIZED",
+  "mapped_business_status": "DECENTRALIZED_PREFERRED",
+  "evidence_tier": "E1",
+  "evidence_items": [
+    {
+      "evidence_id": "EVI_KWP_ZONING_NORF",
+      "source_id": "SRC_NEUSS_KWP_2025_SUMMARY",
+      "claim": "Prüfgebiet Einzellösungen",
+      "tier": "E1",
+      "rationale": "Explicit municipal zoning for decentralized heat solutions."
+    },
+    {
+      "evidence_id": "EVI_SWN_NETWORK_LIMIT",
+      "source_id": "SRC_SWN_ALLERHEILIGEN_FFVAV_2025",
+      "claim": "No grid expansion in Norf Residential Core",
+      "tier": "E1",
+      "rationale": "Utility confirmation of technical network boundaries."
+    }
+  ],
+  "source_conflict_flag": false,
+  "decision_trace": {
+    "segment_identity_aliases": [
+      "ALLERHEILIGEN_PILOT_SEG_01",
+      "NEUSS_NORF_PILOT_01"
+    ],
+    "identity_linkage_source": "JOIN_NORF_01_MULTISOURCE (Archived Run-02)",
+    "rule_applied": "Rule 3 (KWP Einzelversorgung / Dezentral) per KWP_Heat_Gate_Protocol_v1.md",
+    "mapping_logic": "engine_verdict=SUPPORTED_DECENTRALIZED maps to business_status=DECENTRALIZED_PREFERRED per field_03_verdict_mapping_contract_v1.md Section 4"
+  },
+  "final_rationale": "The segment is explicitly categorized as a decentralized focus zone in the Neuss KWP 2025. This zoning is corroborated by SWN utility records confirming no planned district heating expansion for this area. Evaluation follows strict layer separation between evidence engine and business output.",
+  "unresolved_gaps": [
+    {
+      "gap_id": "G1",
+      "title": "Missing Canonical Alias Registry",
+      "detail": "Formal alias records between physical segments and truth-closure IDs are not registered in a central repository.",
+      "blocks_closure": false
+    },
+    {
+      "gap_id": "G2",
+      "title": "Artifact Checksum Reliance",
+      "detail": "Physical file verification and local hashing not re-performed; relying on archived checksums from RUN-02.",
+      "blocks_closure": false
+    },
+    {
+      "gap_id": "G3",
+      "title": "Spatial Intersection Quantification",
+      "detail": "Explicit text-based E1 designation used; precise buffer intersection percentage not computed for this run.",
+      "blocks_closure": false
+    }
+  ],
+  "schema_source_of_truth": "KWP_Heat_Gate_Protocol_v1.md",
+  "mapping_contract_used": "field_03_verdict_mapping_contract_v1.md"
+}

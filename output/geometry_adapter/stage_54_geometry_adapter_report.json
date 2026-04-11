@@ -1,0 +1,16 @@
+{
+  "stage": "54",
+  "mode": "CONTROLLED_SEMANTIC_ADAPTER",
+  "files_considered": 3,
+  "files_processed": 3,
+  "parseable_count": 0,
+  "parseable_with_limitations_count": 3,
+  "ambiguous_count": 0,
+  "blocked_count": 0,
+  "ready_for_geometry_dry_run_count": 0,
+  "needs_schema_bridge_count": 3,
+  "needs_manual_review_count": 0,
+  "overall_verdict": "ADAPTER_READY_WITH_LIMITATIONS",
+  "governance_summary": "Extracted structure-only payload traits (keys, topology). Verified container parseability. No payload content parsed.",
+  "safety_confirmation": "Confirmed: No point-in-polygon executed. No spatial joins run. No business objects extracted. Properties stored as raw strings only."
+}

@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "retry_lock_status": "LOCKED",
+      "retry_lock_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "unlock_condition": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "unlock_condition_type": "NEW_EXTERNAL_REAL_WORLD_SUBMISSION_ONLY"
+    },
+    {
+      "case_id": "EVD_8963BBA2",
+      "retry_lock_status": "LOCKED",
+      "retry_lock_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "unlock_condition": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "unlock_condition_type": "NEW_EXTERNAL_REAL_WORLD_SUBMISSION_ONLY"
+    },
+    {
+      "case_id": "EVD_ACC8C1F4",
+      "retry_lock_status": "LOCKED",
+      "retry_lock_reason": "NO_VALID_MANUAL_EVIDENCE_RECEIVED_IN_REVIEW_WINDOW",
+      "unlock_condition": "ONLY_NEW_EXTERNAL_REAL_SUBMISSION_CAN_TRIGGER_NEW_CYCLE",
+      "unlock_condition_type": "NEW_EXTERNAL_REAL_WORLD_SUBMISSION_ONLY"
+    }
+  ]
+}

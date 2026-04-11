@@ -1,0 +1,114 @@
+{
+    "pack_name": "Module 3 E2E Integration Audit Baseline",
+    "version": "1.0",
+    "protocol": "Unified v1.2",
+    "cases": [
+        {
+            "case_id": "E2E-01",
+            "description": "Golden APPROVED: Evidence exists, hash matches, facts complete, no timeline violation.",
+            "expected_verdict": "APPROVED",
+            "required_trace_keys": [
+                "policy_hash",
+                "evidence_hash",
+                "anchor_resolved",
+                "export_ok"
+            ]
+        },
+        {
+            "case_id": "E2E-02",
+            "description": "Evidence Missing: evidence_ref points to non-existent file.",
+            "expected_verdict": "BLOCKED",
+            "required_trace_keys": [
+                "reason",
+                "evidence_check"
+            ]
+        },
+        {
+            "case_id": "E2E-03",
+            "description": "Anchor Not Found: Evidence exists but anchor cannot be located.",
+            "expected_verdict": "BLOCKED",
+            "required_trace_keys": [
+                "reason",
+                "anchor_id",
+                "anchor_strategy"
+            ]
+        },
+        {
+            "case_id": "E2E-04",
+            "description": "Vorhabenbeginn violation: Work/payment started before allowed timeline.",
+            "expected_verdict": "INELIGIBLE_REJECTED",
+            "required_trace_keys": [
+                "gate",
+                "cutoff_date"
+            ]
+        },
+        {
+            "case_id": "E2E-05",
+            "description": "Missing Facts: Required fields (dates, amounts, eligibility) missing.",
+            "expected_verdict": "NEEDS_INFO",
+            "required_trace_keys": [
+                "missing_facts"
+            ]
+        },
+        {
+            "case_id": "E2E-06",
+            "description": "Invalid Input: Unparsable date/amount format.",
+            "expected_verdict": "INVALID_INPUT",
+            "required_trace_keys": [
+                "parse_error"
+            ]
+        },
+        {
+            "case_id": "E2E-07",
+            "description": "Overlay does not change verdict: PAUSED tag present but REJECTED reason exists.",
+            "expected_verdict": "INELIGIBLE_REJECTED",
+            "required_trace_keys": [
+                "runtime_tags"
+            ]
+        },
+        {
+            "case_id": "E2E-08",
+            "description": "Legacy 120-day compatibility: legacy_mode active within transition period.",
+            "expected_verdict": "APPROVED",
+            "required_trace_keys": [
+                "legacy_mode",
+                "mapping_applied"
+            ]
+        },
+        {
+            "case_id": "E2E-09",
+            "description": "Umlaut/Encoding Pitfall: PDF text extraction fails due to special characters like ö/ü/ß.",
+            "expected_verdict": "BLOCKED",
+            "required_trace_keys": [
+                "reason",
+                "extracted_text_digest"
+            ]
+        },
+        {
+            "case_id": "E2E-10",
+            "description": "Zero-Byte / Corrupt PDF: Evidence file exists but size=0 or unopenable.",
+            "expected_verdict": "BLOCKED",
+            "required_trace_keys": [
+                "reason",
+                "pdf_open_failed"
+            ]
+        },
+        {
+            "case_id": "E2E-11",
+            "description": "Boundary Date Inclusive: Submission timestamp equals cutoff exactly 2026-03-31T23:59:59.",
+            "expected_verdict": "APPROVED",
+            "required_trace_keys": [
+                "cutoff",
+                "comparison_operator"
+            ]
+        },
+        {
+            "case_id": "E2E-12",
+            "description": "Multi-Source Fact Conflict: UI and Evidence disagree on work_started status.",
+            "expected_verdict": "NEEDS_INFO",
+            "required_trace_keys": [
+                "conflicts"
+            ]
+        }
+    ]
+}

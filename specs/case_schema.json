@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "D-ESS Case Schema",
+    "type": "object",
+    "required": [
+        "case_id",
+        "policy_id",
+        "project_type",
+        "costs",
+        "timeline_events"
+    ],
+    "properties": {
+        "case_id": {
+            "type": "string"
+        },
+        "policy_id": {
+            "type": "string"
+        },
+        "project_type": {
+            "type": "string"
+        },
+        "costs": {
+            "type": "object",
+            "required": [
+                "currency",
+                "buckets"
+            ],
+            "properties": {
+                "currency": {
+                    "type": "string",
+                    "const": "EUR"
+                },
+                "buckets": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "required": [
+                            "amount"
+                        ],
+                        "properties": {
+                            "amount": {
+                                "type": "string",
+                                "pattern": "^\\d+(\\.\\d{1,2})?$"
+                            },
+                            "amount_basis": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "enum": [
+                                    "GROSS",
+                                    "NET",
+                                    null
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "timeline_events": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "event_type",
+                    "date"
+                ],
+                "properties": {
+                    "event_type": {
+                        "type": "string",
+                        "enum": [
+                            "IDEA",
+                            "OFFER_RECEIVED",
+                            "APPLICATION_SUBMITTED",
+                            "CONFIRMATION_RECEIVED",
+                            "CONTRACT_SIGNED",
+                            "PAYMENT_MADE",
+                            "WORK_STARTED",
+                            "COMMISSIONED",
+                            "PAYOUT"
+                        ]
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "meta": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "Authoritative Geometry Boundary",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "Building Footprint Anchoring",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "FIELD_03 External Heat Evidence",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "FIELD_04 External PV Evidence",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E3/E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "E4 Minimum Threshold Standard",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_HOISTEN_01",
+    "evidence_needed": "E5 Manual Review Operator Signoff",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E5",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "Authoritative Geometry Boundary",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "Building Footprint Anchoring",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "FIELD_03 External Heat Evidence",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "FIELD_04 External PV Evidence",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E3/E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "E4 Minimum Threshold Standard",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E4",
+    "blocker_severity": "HARD_BLOCKER"
+  },
+  {
+    "candidate_id": "NEUSS_ROSELLERHEIDE_01",
+    "evidence_needed": "E5 Manual Review Operator Signoff",
+    "current_evidence_tier": "E0",
+    "required_minimum_tier": "E5",
+    "blocker_severity": "HARD_BLOCKER"
+  }
+]

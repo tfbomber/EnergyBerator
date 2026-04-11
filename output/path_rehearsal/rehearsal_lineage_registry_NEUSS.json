@@ -1,0 +1,9 @@
+{
+  "rehearsal_lineages": [
+    {
+      "candidate_id": "NEUSS_HOISTEN_01",
+      "anchor": "MOCK_GOV_API_V1",
+      "scope": "REHEARSAL_ONLY"
+    }
+  ]
+}

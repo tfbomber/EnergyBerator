@@ -1,0 +1,27 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "raw_usage_input_detected": true,
+      "raw_usage_label": "Approved for usage",
+      "normalized_usage_label": "USAGE_APPROVED_FOR_FUTURE_MANUAL_CONTACT_STAGE",
+      "reviewer_metadata": {
+        "reviewer_id": "USR_MGR_09",
+        "timestamp": "2026-03-18T08:28:00Z"
+      },
+      "usage_notes_summary": [
+        "Data looks safe for standard follow-up list."
+      ],
+      "review_reference_summary": "Targeting Stage 70 review status: VALIDATED_CONTACT_DATA",
+      "unresolved_compliance_issues": [],
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "CRM_TASK_CREATION",
+        "APPOINTMENT_BOOKING",
+        "INSTALLER_ASSIGNMENT"
+      ],
+      "governance_warning": "Approval unlocks CONDITIONAL ELIGIBILITY for a future stage only. NO execution sequence is triggered in this stage.",
+      "disclaimer_no_contact_authorization": "no contact authorization created in this stage"
+    }
+  ]
+}

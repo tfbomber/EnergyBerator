@@ -1,0 +1,14 @@
+{
+  "validation_logs": [
+    {
+      "token_id": "TEST_TOKEN_MOCK_TARGET_NEUSS_01_001",
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "validation_result": "VALID",
+      "validation_errors": [],
+      "scope_validation": true,
+      "boundary_validation": true,
+      "prohibited_field_check": "PASSED",
+      "out_of_scope_check": "PASSED"
+    }
+  ]
+}

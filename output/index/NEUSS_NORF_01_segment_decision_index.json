@@ -1,0 +1,36 @@
+{
+  "segment_id": "NEUSS_NORF_01",
+  "city": "Neuss",
+  "index_version": "v1.0_baseline",
+  "field_inputs": {
+    "field_01_potential": "AVAILABLE_PROXY",
+    "field_02_morphology": "AVAILABLE_PROXY",
+    "field_03_heat_gate": "DECENTRALIZED_PREFERRED",
+    "field_04_pv_adoption": "PROXY_COMPLETE"
+  },
+  "decision_logic": {
+    "hard_gate_status": "PASSED_DECENTRALIZED",
+    "adoption_signal_strength": "MEDIUM",
+    "morphology_suitability": "OPTIMAL"
+  },
+  "final_business_output": {
+    "overall_opportunity": "MEDIUM",
+    "decision_status": "ACTIONABLE",
+    "confidence": "MEDIUM",
+    "supporting_reasons": [
+      "FIELD_03 confirms no central grid expansion; decentralized path is heavily prioritized.",
+      "Building morphology indicates strong suitability (low-rise residential cluster).",
+      "Postal-code level PV adoption metrics show active interest."
+    ],
+    "blockers_and_caveats": [
+      "FIELD_04 relies on postal-code proxy (PLZ 41470) due to missing segment-exact polygon.",
+      "overall_opportunity limited to MEDIUM and confidence capped at MEDIUM until Point-in-Polygon validation is achieved."
+    ]
+  },
+  "audit_trace": {
+    "assembly_timestamp": "2026-03-14T23:09:00Z",
+    "field_03_evidence_tier": "E1",
+    "field_04_evidence_tier": "E2",
+    "derived_confidence_penalty": "0.4"
+  }
+}

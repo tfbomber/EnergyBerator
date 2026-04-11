@@ -1,0 +1,52 @@
+{
+  "blockers": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "CRS_NOT_DECLARED"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "MATCHING_HISTORY_FRAGILE"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "NO_EXPLICIT_CRS_EVIDENCE"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "CRS_NOT_DECLARED"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "MATCHING_HISTORY_FRAGILE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "NO_EXPLICIT_CRS_EVIDENCE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "CRS_NOT_DECLARED"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "MATCHING_HISTORY_FRAGILE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "NO_EXPLICIT_CRS_EVIDENCE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "TECHNICAL_SIGNALS_ONLY_NOT_SUFFICIENT"
+    }
+  ]
+}

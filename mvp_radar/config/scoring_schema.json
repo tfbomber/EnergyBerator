@@ -1,0 +1,35 @@
+{
+  "__comment__": "D-ESS MVP = Neuss Area Opportunity Radar for area-level opportunity prioritization. It does not perform household-level confirmation or operational activation.",
+  "version": "MVP-1.0",
+  "baseline_formula": {
+    "roof_pv_potential": 0.30,
+    "building_suitability": 0.20,
+    "heat_pump_proxy": 0.15,
+    "owner_occupancy_proxy": 0.15,
+    "electrification_proxy": 0.10,
+    "household_fit_proxy": 0.10
+  },
+  "penalty_logic": {
+    "district_heating_interference": {
+      "type": "component_penalty",
+      "target_component": "heat_pump_proxy",
+      "penalty_multiplier": 0.1
+    },
+    "data_quality_poor": {
+      "type": "confidence_penalty",
+      "penalty_multiplier": 0.5
+    }
+  },
+  "confidence_logic": {
+    "base_confidence": 0.5,
+    "modifiers": {
+      "high_data_quality": 0.5
+    }
+  },
+  "priority_band_thresholds": {
+    "A_TIER_IMMEDIATE": 80,
+    "B_TIER_SECONDARY": 60,
+    "C_TIER_OPPORTUNISTIC": 40,
+    "D_TIER_UNLIKELY": 0
+  }
+}

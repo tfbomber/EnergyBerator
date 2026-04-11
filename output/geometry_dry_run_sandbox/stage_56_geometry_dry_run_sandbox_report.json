@@ -1,0 +1,17 @@
+{
+  "stage": "56",
+  "mode": "GEOMETRY_DRY_RUN_SANDBOX",
+  "files_considered": 3,
+  "files_processed": 3,
+  "executable_count": 0,
+  "executable_with_limitations_count": 3,
+  "partially_executable_count": 0,
+  "non_executable_count": 0,
+  "ready_for_controlled_spatial_gate_count": 0,
+  "ready_with_limitations_count": 3,
+  "needs_manual_contract_review_count": 0,
+  "blocked_for_next_stage_count": 0,
+  "overall_verdict": "SANDBOX_EXECUTABLE_WITH_LIMITATIONS",
+  "governance_summary": "Dry-run ingestion fully rehearsed via canonical structural paths. Null check accounting passed cleanly. No segments mapped.",
+  "safety_confirmation": "Confirmed: Extraction was strictly structural. Analyzed coordinate arrays but no mapping functions invoked. Limits such as unreferenced CRS are persistently anchored."
+}

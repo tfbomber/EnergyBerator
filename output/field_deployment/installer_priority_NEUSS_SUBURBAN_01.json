@@ -1,0 +1,298 @@
+[
+  {
+    "cluster_id": "C_003",
+    "cluster_label": "Himmelgeister Stra\u00dfe (Part 3)",
+    "priority_score": 0.725,
+    "tier": "TIER_2",
+    "lead_count": 17,
+    "val_score": 0.87
+  },
+  {
+    "cluster_id": "C_004",
+    "cluster_label": "Himmelgeister Stra\u00dfe (Part 4)",
+    "priority_score": 0.715,
+    "tier": "TIER_2",
+    "lead_count": 18,
+    "val_score": 0.87
+  },
+  {
+    "cluster_id": "C_005",
+    "cluster_label": "Himmelgeister Stra\u00dfe (Part 5)",
+    "priority_score": 0.634,
+    "tier": "TIER_3",
+    "lead_count": 15,
+    "val_score": 0.87
+  },
+  {
+    "cluster_id": "C_001",
+    "cluster_label": "Himmelgeister Stra\u00dfe (Part 1)",
+    "priority_score": 0.503,
+    "tier": "TIER_3",
+    "lead_count": 17,
+    "val_score": 0.77
+  },
+  {
+    "cluster_id": "C_002",
+    "cluster_label": "Himmelgeister Stra\u00dfe (Part 2)",
+    "priority_score": 0.444,
+    "tier": "TIER_3",
+    "lead_count": 15,
+    "val_score": 0.77
+  },
+  {
+    "cluster_id": "C_008",
+    "cluster_label": "Ernst-Derra-Stra\u00dfe",
+    "priority_score": 0.333,
+    "tier": "TIER_3",
+    "lead_count": 21,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_009",
+    "cluster_label": "Christophstra\u00dfe",
+    "priority_score": 0.333,
+    "tier": "TIER_3",
+    "lead_count": 21,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_006",
+    "cluster_label": "Universit\u00e4tsstra\u00dfe",
+    "priority_score": 0.329,
+    "tier": "TIER_3",
+    "lead_count": 19,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_007",
+    "cluster_label": "Moorenstra\u00dfe",
+    "priority_score": 0.315,
+    "tier": "TIER_3",
+    "lead_count": 12,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_010",
+    "cluster_label": "Wiesbadener Stra\u00dfe",
+    "priority_score": 0.307,
+    "tier": "TIER_3",
+    "lead_count": 8,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_028",
+    "cluster_label": "NEAR_Moorenstra\u00dfe (Spatial)",
+    "priority_score": 0.303,
+    "tier": "TIER_3",
+    "lead_count": 6,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_011",
+    "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+    "priority_score": 0.299,
+    "tier": "TIER_3",
+    "lead_count": 4,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_019",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.295,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_020",
+    "cluster_label": "UNNAMED_SPATIAL_CLUSTER_10",
+    "priority_score": 0.295,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_023",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.295,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_032",
+    "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+    "priority_score": 0.295,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_035",
+    "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+    "priority_score": 0.295,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_012",
+    "cluster_label": "UNNAMED_SPATIAL_CLUSTER_2",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_013",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_014",
+    "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_018",
+    "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_022",
+    "cluster_label": "UNNAMED_SPATIAL_CLUSTER_12",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_024",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_025",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_026",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_029",
+    "cluster_label": "UNNAMED_SPATIAL_CLUSTER_19",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_031",
+    "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_034",
+    "cluster_label": "NEAR_Moorenstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_036",
+    "cluster_label": "NEAR_Christophstra\u00dfe (Spatial)",
+    "priority_score": 0.293,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.67
+  },
+  {
+    "cluster_id": "C_015",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.269,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.61
+  },
+  {
+    "cluster_id": "C_030",
+    "cluster_label": "NEAR_Himmelgeister Stra\u00dfe (Spatial)",
+    "priority_score": 0.269,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.61
+  },
+  {
+    "cluster_id": "C_033",
+    "cluster_label": "NEAR_Wiesbadener Stra\u00dfe (Spatial)",
+    "priority_score": 0.269,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.61
+  },
+  {
+    "cluster_id": "C_016",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.247,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.55
+  },
+  {
+    "cluster_id": "C_021",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.247,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.55
+  },
+  {
+    "cluster_id": "C_027",
+    "cluster_label": "NEAR_Wiesbadener Stra\u00dfe (Spatial)",
+    "priority_score": 0.247,
+    "tier": "TIER_3",
+    "lead_count": 2,
+    "val_score": 0.55
+  },
+  {
+    "cluster_id": "C_017",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.245,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.55
+  },
+  {
+    "cluster_id": "C_037",
+    "cluster_label": "NEAR_Universit\u00e4tsstra\u00dfe (Spatial)",
+    "priority_score": 0.245,
+    "tier": "TIER_3",
+    "lead_count": 1,
+    "val_score": 0.55
+  }
+]

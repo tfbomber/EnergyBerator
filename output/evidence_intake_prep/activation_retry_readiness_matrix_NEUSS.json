@@ -1,0 +1,7 @@
+{
+  "candidates": {
+    "NEUSS_HOISTEN_01": "NOT_RETRY_READY (Missing All E4)",
+    "NEUSS_ROSELLERHEIDE_01": "NOT_RETRY_READY (Missing All E4)"
+  },
+  "planning_status": "PREPARATION_ONLY"
+}

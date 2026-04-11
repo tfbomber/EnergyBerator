@@ -1,0 +1,25 @@
+{
+  "findings": [
+    {
+      "finding_id": "AUD_0006",
+      "audit_dimension": "SAFETY_CLAIM_VERIFICATION",
+      "stage_scope": "STAGE_57",
+      "severity": "INFO",
+      "title": "Spatial Gate Purely Technical",
+      "description": "Extent profiles only hold mathematical box queries.",
+      "evidence_artifacts": [
+        "Registry 57"
+      ],
+      "evidence_fields": [
+        "min_x",
+        "max_x",
+        "min_y",
+        "max_y"
+      ],
+      "expected_condition": "Technical extent bounds only",
+      "observed_condition": "Technical extent bounds only",
+      "audit_verdict": "PASS",
+      "remediation_recommendation": "None"
+    }
+  ]
+}

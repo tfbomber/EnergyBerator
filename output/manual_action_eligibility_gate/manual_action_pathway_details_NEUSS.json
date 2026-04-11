@@ -1,0 +1,25 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "pathway_detail_status": "MAPPED",
+      "decision_basis_summary": "Derived from Stage 66 normalized decision: APPROVED_FOR_MANUAL_CONTACT_PREPARATION. Original upstream gaps detected: 0.",
+      "evidence_gap_summary": [],
+      "contact_preparation_rationale": "conditionally eligible for a future manual contact preparation stage",
+      "document_collection_preparation_rationale": "not yet eligible pending human decision or upstream completion",
+      "installer_precheck_consideration_rationale": "conditionally eligible for future manual installer pre-check consideration",
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "AUTO_ASSIGN_INSTALLER",
+        "AUTO_APPOINTMENT",
+        "AUTO_ACTIVATION",
+        "AUTO_SUBSIDY_INITIATION"
+      ],
+      "governance_warning": "This pathway mapping is preparation eligibility only. No operational permission is granted.",
+      "evidence_sources_used": [
+        "Stage 66 Human Review Decision Registry",
+        "Stage 66 Post-Review Status Registry"
+      ]
+    }
+  ]
+}

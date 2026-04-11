@@ -1,0 +1,33 @@
+{
+  "field_id": "field_03",
+  "city": "Neuss",
+  "segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+  "segment_heat_status": "decentralized_heating_zone",
+  "original_zoning_label": "Prüfgebiet Einzellösungen",
+  "district_heating_status": "no_existing_or_planned_dh",
+  "district_heating_risk_score": 0.05,
+  "heat_pump_preference_score": 0.95,
+  "evidence_tier": "E1",
+  "evidence_items": [
+    {
+      "source_id": "NEUSS_KWP_2025_DRAFT",
+      "source_type": "MUNICIPAL_PLAN",
+      "official": true,
+      "decision_eligible": true,
+      "citation_ref": "Stadt Neuss: Entwurf der Kommunalen Wärmeplanung (2025), Zonierungskarte.",
+      "extracted_claim": "The segment is officially designated as a zone for individual solutions (Prüfgebiet Einzellösungen).",
+      "geographic_scope": "Neuss Norf / Elvekum",
+      "confidence": 0.95
+    },
+    {
+      "source_id": "SWN_NETWORK_MAP_2024",
+      "source_type": "UTILITY_NETWORK_MAP",
+      "official": true,
+      "decision_eligible": true,
+      "citation_ref": "Stadtwerke Neuss: Netzplan Fernwärme (2024).",
+      "extracted_claim": "No existing or planned district heating network coverage registered for the residential cluster in Norf southwest of the S-Bahn station.",
+      "geographic_scope": "Norf Borough",
+      "confidence": 0.98
+    }
+  ]
+}

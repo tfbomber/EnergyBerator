@@ -1,0 +1,50 @@
+{
+  "observation_basis": {
+    "source_system": "MaStR",
+    "source_records_used": [],
+    "observation_window": null,
+    "spatial_join_method": null,
+    "spatial_fallback_rule": null,
+    "segment_geometry_source": null,
+    "registry_geometry_type": null,
+    "spatial_assignment_status": null
+  },
+  "record_accounting": {
+    "raw_record_count": 0,
+    "filtered_record_count": 0,
+    "deduplicated_record_count": 0,
+    "dedupe_rule_applied": null
+  },
+  "raw_metrics": {
+    "pv_installation_count": 0,
+    "pv_total_kwp": 0.0,
+    "pv_mean_kwp": 0.0,
+    "pv_median_kwp": 0.0,
+    "pv_latest_installation_date": null
+  },
+  "normalized_metrics": {
+    "pv_installation_density_per_km2": 0.0,
+    "pv_installation_density_per_100_buildings": 0.0,
+    "pv_kwp_density_per_km2": 0.0,
+    "pv_kwp_per_building": 0.0
+  },
+  "business_output": {
+    "pv_adoption_status": null,
+    "pv_signal_strength": null,
+    "pv_adoption_score": null
+  },
+  "data_quality": {
+    "coverage_status": null,
+    "spatial_match_quality": null,
+    "registry_completeness_risk": null,
+    "residential_relevance_quality": null,
+    "evidence_tier": null
+  },
+  "audit_sections": {
+    "evidence_items": [],
+    "decision_trace": {},
+    "final_rationale": null,
+    "unresolved_gaps": [],
+    "schema_source_of_truth": "field_04_schema.json"
+  }
+}

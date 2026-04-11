@@ -1,0 +1,15 @@
+{
+  "schema_name": "Field04 MaStR Staging Schema",
+  "description": "Output of the spatial join process at record level.",
+  "fields": [
+    { "name": "installation_id", "type": "string" },
+    { "name": "latitude", "type": "float" },
+    { "name": "longitude", "type": "float" },
+    { "name": "segment_id_candidate", "type": "string" },
+    { "name": "building_id_candidate", "type": "string" },
+    { "name": "spatial_match_mode", "type": "enum", "options": ["FOOTPRINT", "BUFFER", "SEGPOLY", "UNRESOLVED", "AMBIGUOUS"] },
+    { "name": "spatial_confidence_level", "type": "enum", "options": ["HIGH", "MEDIUM", "CONTEXT_ONLY", "CONFLICTED", "NONE"] },
+    { "name": "distance_to_building", "type": "float" },
+    { "name": "ambiguity_flag", "type": "boolean" }
+  ]
+}

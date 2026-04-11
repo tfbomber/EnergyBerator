@@ -1,0 +1,40 @@
+{
+  "profiles": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "extent_profile": {
+        "min_x": 6.717532,
+        "max_x": 6.718744,
+        "min_y": 51.203415,
+        "max_y": 51.205203
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "technical_extent_notes": "Extent evaluated inside sandbox boundaries only."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "extent_profile": {
+        "min_x": 6.685192,
+        "max_x": 6.686026,
+        "min_y": 51.20051,
+        "max_y": 51.200972
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "technical_extent_notes": "Extent evaluated inside sandbox boundaries only."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "extent_profile": {
+        "min_x": 6.717329,
+        "max_x": 6.719495,
+        "min_y": 51.200723,
+        "max_y": 51.202716
+      },
+      "degenerate_extent_flag": false,
+      "suspicious_extent_flag": false,
+      "technical_extent_notes": "Extent evaluated inside sandbox boundaries only."
+    }
+  ]
+}

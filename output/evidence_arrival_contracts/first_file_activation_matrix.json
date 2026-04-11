@@ -1,0 +1,35 @@
+{
+  "matrix_definition": "Defines domain mappings logic during ACCEPT_FOR_CONDITIONAL_INTEGRATION logic.",
+  "evidence_classes": [
+    {
+      "class_name": "Authoritative_Geometry_E4",
+      "target_layer": "geometry_connector_state",
+      "frozen_domains": [
+        "field_04_status",
+        "retry_eligibility"
+      ],
+      "recompute_implications": [
+        "trigger_cluster_rebuild",
+        "trigger_boundary_area_calc"
+      ],
+      "retry_implications": "Requires Field evidence first. Does NOT grant retry.",
+      "tier_upgrade_eligibility": "E0 -> E4 (Geometry Only)",
+      "manual_review_dependency": "Required if OSM building footprint count anomalous.",
+      "blocking_condition": "GeoJSON format fails simple polygon structure."
+    },
+    {
+      "class_name": "Manual_Review_Governance_E5",
+      "target_layer": "truth_review_state",
+      "frozen_domains": [
+        "raw_geometry_coordinates"
+      ],
+      "recompute_implications": [
+        "trigger_eligibility_reappraisal"
+      ],
+      "retry_implications": "Unblocks retry queue. Does NOT automatically authorize activation.",
+      "tier_upgrade_eligibility": "E4 -> E5 (Review State)",
+      "manual_review_dependency": "Intrinsic.",
+      "blocking_condition": "Review object payload explicitly marks `reject`."
+    }
+  ]
+}

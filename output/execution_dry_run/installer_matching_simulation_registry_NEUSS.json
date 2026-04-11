@@ -1,0 +1,26 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A",
+      "trace_id": "6dc8014d-f722-49c6-b524-78107f6babcb",
+      "installer_matching_draft": {
+        "installer_candidates": [],
+        "matching_score": 0.0,
+        "candidate_source": "STATIC_PLACEHOLDER",
+        "assignment_status": "NOT_ASSIGNED_SIMULATION",
+        "compliance_note": "DO NOT ASSIGN - SIMULATION ONLY"
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_I",
+      "trace_id": "0a63f2fc-8d4f-4d26-a846-e58796faa996",
+      "installer_matching_draft": {
+        "installer_candidates": [],
+        "matching_score": 0.0,
+        "candidate_source": "STATIC_PLACEHOLDER",
+        "assignment_status": "NOT_ASSIGNED_SIMULATION",
+        "compliance_note": "DO NOT ASSIGN - SIMULATION ONLY"
+      }
+    }
+  ]
+}

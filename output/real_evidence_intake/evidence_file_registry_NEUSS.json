@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "evidence_id": "EVD_ACC8C1F4",
+      "relative_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "filename": "PHYSICAL_E4_16e104e6.json",
+      "extension": ".json",
+      "file_size_bytes": 2812,
+      "last_modified_timestamp": "2026-03-15T19:23:56.342624+00:00",
+      "source_bucket": "geometry",
+      "scan_status": "DISCOVERED"
+    },
+    {
+      "evidence_id": "EVD_56231492",
+      "relative_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "filename": "PHYSICAL_E4_a3c32111.json",
+      "extension": ".json",
+      "file_size_bytes": 2549,
+      "last_modified_timestamp": "2026-03-15T19:23:56.343484+00:00",
+      "source_bucket": "geometry",
+      "scan_status": "DISCOVERED"
+    },
+    {
+      "evidence_id": "EVD_8963BBA2",
+      "relative_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "filename": "PHYSICAL_E4_a79e5e7d.json",
+      "extension": ".json",
+      "file_size_bytes": 10503,
+      "last_modified_timestamp": "2026-03-15T19:23:56.345031+00:00",
+      "source_bucket": "geometry",
+      "scan_status": "DISCOVERED"
+    }
+  ]
+}

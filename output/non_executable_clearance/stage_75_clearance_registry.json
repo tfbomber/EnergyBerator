@@ -1,0 +1,28 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_75_CASE_A_READY",
+      "clearance_state": "READY_FOR_CONTROLLED_EXECUTION",
+      "fatal_blocker_count": 0,
+      "recoverable_blocker_count": 0
+    },
+    {
+      "contact_id": "TEST_75_CASE_B_FATAL",
+      "clearance_state": "FULLY_BLOCKED",
+      "fatal_blocker_count": 1,
+      "recoverable_blocker_count": 0
+    },
+    {
+      "contact_id": "TEST_75_CASE_C_RECOVERABLE",
+      "clearance_state": "NON_EXECUTABLE_BUT_VISIBLE",
+      "fatal_blocker_count": 0,
+      "recoverable_blocker_count": 2
+    },
+    {
+      "contact_id": "TEST_75_CASE_D_MIXED",
+      "clearance_state": "FULLY_BLOCKED",
+      "fatal_blocker_count": 1,
+      "recoverable_blocker_count": 1
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "structure_audits": [
+    {
+      "token_filename": "approval_token_MOCK_TARGET_NEUSS_01_TEST_2026-03-16.json",
+      "token_id": "TEST_TOKEN_MOCK_TARGET_NEUSS_01_001",
+      "missing_fields": [],
+      "malformed_fields": [],
+      "schema_issues": [],
+      "structure_result": "PASSED"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "evaluations": [
+    {
+      "artifact_id": "REHEARSAL_GEO_001",
+      "decision": "ACCEPT_FOR_CONDITIONAL_INTEGRATION",
+      "reasoning": "Contract schemas satisfied structurally in rehearsal bounds."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "artifact_id": "ART_KWP_REPORT_2025_SUMMARY",
+    "source_id": "SRC_NEUSS_KWP_2025_SUMMARY",
+    "file_ref": "neuss_kwp_2025_summary.pdf",
+    "file_size_bytes": 1048576,
+    "checksum_sha256": "a63a8fb90d81bbba262d930dc7f8f61befc2f65dad4383d9d24c9f8d540c493c",
+    "georef_status": "CITY_LEVEL"
+  },
+  {
+    "artifact_id": "ART_SWN_FFVAV_SHEET",
+    "source_id": "SRC_SWN_ALLERHEILIGEN_FFVAV_2025",
+    "file_ref": "swn_allerheiligen_ffvav_2025.pdf",
+    "file_size_bytes": 524288,
+    "checksum_sha256": "b868fabfb37e01f373498220284524563580432843fc4c4c63417a321aeeb7c0",
+    "georef_status": "DISTRICT_LEVEL"
+  }
+]

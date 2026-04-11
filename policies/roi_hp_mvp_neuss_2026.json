@@ -1,0 +1,101 @@
+{
+    "policy_id": "ROI_PV_HP_NEUSS_2026_V3_5",
+    "policy_kind": "ROI",
+    "description": "ROI MVP v3.5 for Heat Pump owners in Neuss/41470 - Precise Math & Strict Caps",
+    "parameters": {
+        "yield_per_kwp": 1000,
+        "loss_bps": 1400,
+        "p_grid_cents_x100": 3800,
+        "p_feed_cents_x100": 778,
+        "capex_per_kwp_cents": 115000,
+        "install_fixed_cents": 200000,
+        "vat_rate_bps": 1900,
+        "opex_annual_cents": 20000,
+        "opex": {
+            "insurance_cents": 8000,
+            "monitoring_cents": 4000,
+            "maintenance_reserve_cents": 8000
+        },
+        "degradation_rate_bps_per_year": 50,
+        "include_inverter_replacement": false,
+        "inverter_replace_year": 13,
+        "inverter_replace_cost_eur": 1500,
+        "co2_factor_g_per_kwh": 363,
+        "pv_ev_share_bps": 4000,
+        "load_profile_match_factors": {
+            "HOUSEHOLD_ONLY": 4500,
+            "HEAT_PUMP": 6000,
+            "HEAT_PUMP_EV": 7000
+        },
+        "e_base_table": {
+            "1": 2000,
+            "2": 3200,
+            "3": 3800,
+            "4": 5200,
+            "5": 6500
+        },
+        "ev_load_mapping": {
+            "NONE": 0,
+            "PLAN": 1500,
+            "YES": 2500
+        },
+        "hp_bucket_mapping": {
+            "MODE_A": {
+                "<3000": 2000,
+                "3000-6000": 4500,
+                "6000-9000": 7500,
+                ">9000": 10000,
+                "UNKNOWN": 4500
+            },
+            "MODE_B": {
+                "<100": 3000,
+                "100_150": 4500,
+                "150_200": 6000,
+                ">200": 7500,
+                "UNKNOWN": 4500
+            }
+        },
+        "export_stack": {
+            "mode": "SHARING_THEN_EEG",
+            "apply_years_mode": "ALL_YEARS",
+            "energy_sharing_enabled": true,
+            "energy_sharing_mode": "assumed",
+            "energy_sharing_realization_bps": 7000,
+            "energy_sharing_net_price_cents_x100": 1400
+        },
+        "financing": {
+            "enabled": true,
+            "loan_principal_pct_bps": 10000,
+            "loan_term_years": 10,
+            "loan_apr_bps": 450
+        },
+        "property_uplift": {
+            "area_sqm_min": 100,
+            "area_sqm_max": 150,
+            "price_eur_per_sqm_min": 4000,
+            "price_eur_per_sqm_max": 4200,
+            "uplift_pct_min_bps": 200,
+            "uplift_pct_max_bps": 500
+        }
+    },
+    "scenarios": [
+        {
+            "name": "CONSERVATIVE (保守)",
+            "match_factor_offset_bps": -1000,
+            "grid_escalation_bps": 200,
+            "energy_sharing_net_price_cents_x100": 1000
+        },
+        {
+            "name": "BASELINE (基准)",
+            "match_factor_offset_bps": 0,
+            "grid_escalation_bps": 300,
+            "energy_sharing_net_price_cents_x100": 1400
+        },
+        {
+            "name": "OPTIMISTIC (乐观)",
+            "match_factor_offset_bps": 1000,
+            "grid_escalation_bps": 400,
+            "energy_sharing_net_price_cents_x100": 1800
+        }
+    ]
+}

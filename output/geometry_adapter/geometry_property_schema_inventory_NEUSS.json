@@ -1,0 +1,86 @@
+{
+  "inventory": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "property_keys_observed": [
+        "addr:city",
+        "addr:country",
+        "addr:housenumber",
+        "addr:postcode",
+        "addr:street",
+        "building",
+        "height",
+        "name",
+        "osm_id",
+        "phone",
+        "website"
+      ],
+      "key_frequency_summaries": {
+        "distinct_keys": 11
+      },
+      "structural_consistency_notes": "MOSTLY_STABLE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "property_keys_observed": [
+        "access",
+        "addr:city",
+        "addr:country",
+        "addr:postcode",
+        "addr:street",
+        "amenity",
+        "building",
+        "capacity",
+        "capacity:disabled",
+        "capacity:women",
+        "charge",
+        "contact:email",
+        "contact:phone",
+        "contact:website",
+        "fee",
+        "maxheight",
+        "name",
+        "opening_hours",
+        "operator",
+        "osm_id",
+        "parking",
+        "surveillance",
+        "surveillance:type"
+      ],
+      "key_frequency_summaries": {
+        "distinct_keys": 23
+      },
+      "structural_consistency_notes": "MOSTLY_STABLE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "property_keys_observed": [
+        "addr:city",
+        "addr:country",
+        "addr:housenumber",
+        "addr:postcode",
+        "addr:street",
+        "building",
+        "email",
+        "fax",
+        "loc_name",
+        "name",
+        "old_name",
+        "opening_hours",
+        "operator",
+        "osm_id",
+        "phone",
+        "shop",
+        "short_name",
+        "website",
+        "wheelchair",
+        "wikidata",
+        "wikipedia"
+      ],
+      "key_frequency_summaries": {
+        "distinct_keys": 21
+      },
+      "structural_consistency_notes": "MOSTLY_STABLE"
+    }
+  ]
+}

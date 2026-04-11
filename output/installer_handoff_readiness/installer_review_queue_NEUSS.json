@@ -1,0 +1,9 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "queue_state": "CONDITIONALLY_READY_FOR_HUMAN_REVIEW",
+      "queue_reason": "Dossier met commercial classification but requires human resolution of contact boundaries."
+    }
+  ]
+}

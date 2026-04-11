@@ -1,0 +1,50 @@
+{
+  "records": [
+    {
+      "dossier_id": "EVD_56231492",
+      "detail_status": "INTAKE_CAPTURED",
+      "raw_input_detected": true,
+      "submitted_fields_present": [
+        "dossier_id",
+        "contact_name",
+        "phone_number",
+        "email_address",
+        "preferred_contact_time",
+        "source_label",
+        "submission_timestamp",
+        "notes"
+      ],
+      "missing_fields": [],
+      "field_format_results": "OK",
+      "linkage_check_result": "PASSED",
+      "consistency_check_result": "PASSED",
+      "provenance_summary": {
+        "source": "CRM_MANUAL_ENTRY",
+        "timestamp": "2026-03-18T07:10:00Z"
+      },
+      "validated_contact_data_snapshot": {
+        "dossier_id": "EVD_56231492",
+        "contact_name": "Max Mustermann",
+        "phone_number": "+49 151 23456789",
+        "email_address": "max.mustermann@example.com",
+        "preferred_contact_time": "Afternoons",
+        "source_label": "CRM_MANUAL_ENTRY",
+        "submission_timestamp": "2026-03-18T07:10:00Z",
+        "notes": "Interested in solar options."
+      },
+      "forbidden_automated_actions": [
+        "AUTO_CONTACT",
+        "MANUAL_CONTACT_EXECUTION",
+        "CRM_TASK_CREATION",
+        "APPOINTMENT_BOOKING",
+        "INSTALLER_ASSIGNMENT",
+        "SUBSIDY_INITIATION"
+      ],
+      "governance_warning": "This snapshot is for human verification only. DO NOT use these values to execute contact yet.",
+      "evidence_sources_used": [
+        "data/contact_data_intake/ input folder"
+      ],
+      "disclaimer_no_contact_authorization": "intake recorded for future human review; no contact authorization created in this stage"
+    }
+  ]
+}

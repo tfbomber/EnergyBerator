@@ -1,0 +1,15 @@
+{
+  "total_records": 8,
+  "ready_records": 1,
+  "not_ready_records": 7,
+  "legal_safe_count": 4,
+  "legal_conditional_count": 1,
+  "legal_forbidden_count": 3,
+  "ownership_clear_count": 6,
+  "ownership_partial_count": 1,
+  "ownership_unclear_count": 1,
+  "operational_ready_count": 6,
+  "operational_partial_count": 1,
+  "operational_not_ready_count": 1,
+  "overall_system_readiness": "PARTIAL"
+}

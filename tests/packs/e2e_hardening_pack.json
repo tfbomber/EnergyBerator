@@ -1,0 +1,64 @@
+{
+    "pack_id": "E2E-HARDENING-V1",
+    "as_of": "2026-03-01",
+    "timezone": "Europe/Berlin",
+    "engine_mode": "INTEGRATION",
+    "determinism": {
+        "ignore_keys": [
+            "run_id",
+            "generated_at"
+        ],
+        "sort_audit_trail": true
+    },
+    "cases": [
+        {
+            "case_id": "E2E-09",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-09_input.json",
+            "expected": {
+                "verdict": "BLOCKED",
+                "must_audit_keys": [
+                    "reason",
+                    "evidence_check",
+                    "anchor_strategy"
+                ],
+                "reason_contains": "EVIDENCE_NOT_FOUND"
+            }
+        },
+        {
+            "case_id": "E2E-10",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-10_input.json",
+            "expected": {
+                "verdict": "BLOCKED",
+                "must_audit_keys": [
+                    "reason",
+                    "anchor_id",
+                    "anchor_strategy"
+                ],
+                "reason_contains": "ANCHOR_NOT_FOUND"
+            }
+        },
+        {
+            "case_id": "E2E-11",
+            "policy_ref": "v1.1_legacy_mock.json",
+            "input_ref": "E2E-11_input.json",
+            "expected": {
+                "verdict": "APPROVED",
+                "must_audit_keys": [
+                    "legacy_mode",
+                    "mapping_applied"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-12",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-12_input.json",
+            "expected": {
+                "verdict": "APPROVED",
+                "subsidy_eur": "1200.00"
+            }
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "source_id": "KWP_NEUSS_2025",
+    "page_ref": "Zonierungskarte Page 4",
+    "spatial_scope": "segment",
+    "extracted_claim": "Residential Norf is categorized as 'Pr\u00fcfgebiet f\u00fcr Einzell\u00f6sungen / Dezentrale Versorgung'.",
+    "evidence_tier": "E1",
+    "relevance_to_hp_route_gate": "Confirms lack of planned district heating for this residential block."
+  }
+]

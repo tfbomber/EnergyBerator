@@ -1,0 +1,28 @@
+{
+  "blockers": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "UNKNOWN_FILE_RELEVANCE"
+    },
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "blocker": "NEEDS_FUTURE_SCHEMA_ADAPTER"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "UNKNOWN_FILE_RELEVANCE"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "blocker": "NEEDS_FUTURE_SCHEMA_ADAPTER"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "UNKNOWN_FILE_RELEVANCE"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "blocker": "NEEDS_FUTURE_SCHEMA_ADAPTER"
+    }
+  ]
+}

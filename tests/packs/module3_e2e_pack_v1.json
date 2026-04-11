@@ -1,0 +1,114 @@
+{
+    "pack_id": "E2E-SMOKE-V1",
+    "as_of": "2026-03-01",
+    "timezone": "Europe/Berlin",
+    "engine_mode": "INTEGRATION",
+    "determinism": {
+        "ignore_keys": [
+            "run_id",
+            "generated_at"
+        ],
+        "sort_audit_trail": true
+    },
+    "cases": [
+        {
+            "case_id": "E2E-01",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-01_input.json",
+            "expected": {
+                "verdict": "APPROVED",
+                "must_audit_keys": [
+                    "policy_hash",
+                    "evidence_hash",
+                    "anchor_resolved",
+                    "export_ok"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-02",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-02_input.json",
+            "expected": {
+                "verdict": "BLOCKED",
+                "must_audit_keys": [
+                    "reason",
+                    "evidence_check"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-03",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-03_input.json",
+            "expected": {
+                "verdict": "BLOCKED",
+                "must_audit_keys": [
+                    "reason",
+                    "anchor_id",
+                    "anchor_strategy"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-04",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-04_input.json",
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "must_audit_keys": [
+                    "gate",
+                    "cutoff_date"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-05",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-05_input.json",
+            "expected": {
+                "verdict": "NEEDS_INFO",
+                "must_audit_keys": [
+                    "missing_facts"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-06",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-06_input.json",
+            "expected": {
+                "verdict": "INVALID_INPUT",
+                "must_audit_keys": [
+                    "parse_error"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-07",
+            "policy_ref": "v1.2_mock.json",
+            "input_ref": "E2E-07_input.json",
+            "expected": {
+                "verdict": "INELIGIBLE_REJECTED",
+                "runtime_tags_contains": [
+                    "PAUSED"
+                ],
+                "must_audit_keys": [
+                    "runtime_tags"
+                ]
+            }
+        },
+        {
+            "case_id": "E2E-08",
+            "policy_ref": "v1.1_legacy_mock.json",
+            "input_ref": "E2E-08_input.json",
+            "expected": {
+                "verdict": "APPROVED",
+                "must_audit_keys": [
+                    "legacy_mode",
+                    "mapping_applied"
+                ]
+            }
+        }
+    ]
+}

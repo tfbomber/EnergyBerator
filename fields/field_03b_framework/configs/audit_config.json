@@ -1,0 +1,14 @@
+{
+  "field_id": "03B",
+  "audit_run_id": "NORF_PILOT_V1_0",
+  "city": "Neuss",
+  "allow_live_fetch": false,
+  "decision_rule": "official_sources_only",
+  "require_citation": true,
+  "require_page_reference": true,
+  "strict_unknown_policy": true,
+  "not_indicated_policy": true,
+  "min_evidence_tier_for_block": "E1",
+  "default_realization_horizon_if_unset": null,
+  "disclaimer_text": "Audit results are based strictly on official evidence provided in the manifest. Neuss KWP 2025 confirms decentral focus for Norf residential."
+}

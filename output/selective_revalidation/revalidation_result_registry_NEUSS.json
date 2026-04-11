@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "prior_stage62_intake_state": "QUEUED_FOR_REVALIDATION",
+      "routed_module_count": 1,
+      "module_results_summary": {
+        "PROGRAM_COMPLIANCE_REVALIDATION": "MODULE_REVALIDATION_PASS"
+      },
+      "case_level_revalidation_result": "REVALIDATION_PASSED",
+      "revalidation_cycle_status": "CYCLE_EVALUATED",
+      "activation_status": "STILL_PROHIBITED",
+      "eligibility_status": "NOT_GRANTED",
+      "governing_stage": "STAGE_63"
+    }
+  ]
+}

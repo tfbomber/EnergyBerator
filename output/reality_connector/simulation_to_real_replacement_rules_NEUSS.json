@@ -1,0 +1,36 @@
+{
+  "artifact_families": [
+    {
+      "artifact_family": "geometry",
+      "simulated_status": "inferred_pending_actual_osm_draw",
+      "real_replacement_status": "GEOMETRY_VALIDATED",
+      "replacement_allowed": true,
+      "replacement_conditions": [
+        "must be E3 or E4 data",
+        "requires manual bounds check"
+      ],
+      "coexistence_rule": "Current active truth OVERWRITES proxy. Archive lineage.",
+      "archival_rule": "Store proxy under /archive/simulated_geo/",
+      "downstream_recompute_required": [
+        "field_signals",
+        "clusters",
+        "validation"
+      ]
+    },
+    {
+      "artifact_family": "field_signals",
+      "simulated_status": "simulated_inference",
+      "real_replacement_status": "FIELD_VALIDATED",
+      "replacement_allowed": true,
+      "replacement_conditions": [
+        "Geometry must be at least EXTERNAL_BOUNDARY_ATTACHED"
+      ],
+      "coexistence_rule": "Overwrite active node. Log historical conflict if differing significantly.",
+      "archival_rule": "Maintain SIM history for algorithm accuracy tracking.",
+      "downstream_recompute_required": [
+        "deployment_candidate_status",
+        "validation"
+      ]
+    }
+  ]
+}

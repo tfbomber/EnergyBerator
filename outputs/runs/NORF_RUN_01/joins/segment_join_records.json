@@ -1,0 +1,9 @@
+[
+  {
+    "segment_id": "NEUSS_NORF_PILOT_01",
+    "physical_segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+    "evidence_id": "EV_NORF_DECENTRAL",
+    "spatial_precision": "SEGMENT_LEVEL",
+    "resolution_trace": "REGISTRY_BRIDGE"
+  }
+]

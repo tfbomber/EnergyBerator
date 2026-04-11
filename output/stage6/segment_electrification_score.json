@@ -1,0 +1,35 @@
+{
+  "score_id": "segment_electrification_score_v1",
+  "city": "Neuss",
+  "segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+  "input_fields_used": ["field_01", "field_02", "field_03", "field_04"],
+
+  "physical_suitability_score": 0.65,
+  "heat_pump_suitability_score": 0.95,
+  "market_whitespace_score": 0.95,
+  "morphology_fit_score": 0.83,
+
+  "segment_electrification_score": 0.836,
+  "lead_priority_bucket": "A",
+
+  "score_confidence": 0.92,
+  "score_confidence_reason": "High confidence due to verified E1 district heating truth and consistent morphology data across all fields.",
+
+  "key_drivers": [
+    "low district heating conflict (Verified NO_DH)",
+    "high heat pump suitability (0.95)",
+    "strong morphology fit (Detached/Semi/Rowhouse dominance)",
+    "meaningful PV whitespace (5% existing adoption)"
+  ],
+  "key_penalties": [
+    "moderate absolute PV potential score (relative to high-density targets)"
+  ],
+
+  "scoring_notes": [
+    "Field 03 used E1 truth-backed status (NO_DH).",
+    "Field 04 market whitespace derived from 5% adoption signal.",
+    "Weights applied: Phys(0.3), HP(0.3), White(0.2), Morph(0.2).",
+    "Morphology fits 100% low-rise residential target."
+  ],
+  "next_recommended_fields": ["field_05", "field_06", "field_07"]
+}

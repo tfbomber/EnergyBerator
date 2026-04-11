@@ -1,0 +1,34 @@
+{
+  "audit": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "prior_crs_limitations": [
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "current_trust_classification": "UNTRUSTED_BLOCKED",
+      "trust_upgraded": false,
+      "upgrade_basis": []
+    },
+    {
+      "file_id": "EVD_56231492",
+      "prior_crs_limitations": [
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "current_trust_classification": "UNTRUSTED_BLOCKED",
+      "trust_upgraded": false,
+      "upgrade_basis": []
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "prior_crs_limitations": [
+        "CRS_NOT_DECLARED",
+        "CRS_REPROJECTION_UNSAFE"
+      ],
+      "current_trust_classification": "UNTRUSTED_BLOCKED",
+      "trust_upgraded": false,
+      "upgrade_basis": []
+    }
+  ]
+}

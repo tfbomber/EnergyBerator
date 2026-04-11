@@ -1,0 +1,73 @@
+{
+  "files": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "file_name": "PHYSICAL_E4_16e104e6.json",
+      "sha256": "FROM_STAGE_52_INTAKE_OR_DEFERRED",
+      "source_path": "geometry/PHYSICAL_E4_16e104e6.json",
+      "accepted_stage_52_status": "ACCEPTED",
+      "classified_type": "UNKNOWN_EVIDENCE_TYPE",
+      "classified_format": "JSON",
+      "evidence_role": "UNKNOWN",
+      "usability_scope": [
+        "GEOMETRY_BUILDING_FOOTPRINT"
+      ],
+      "usability_status": "CONDITIONALLY_USABLE",
+      "blocker_reasons": [
+        "UNKNOWN_FILE_RELEVANCE",
+        "NEEDS_FUTURE_SCHEMA_ADAPTER"
+      ],
+      "future_consumer_modules": [
+        "MODULE_GEOMETRY"
+      ],
+      "confidence_class": "LOW",
+      "notes": "Determined via metadata-only conservative governance bounds."
+    },
+    {
+      "file_id": "EVD_56231492",
+      "file_name": "PHYSICAL_E4_a3c32111.json",
+      "sha256": "FROM_STAGE_52_INTAKE_OR_DEFERRED",
+      "source_path": "geometry/PHYSICAL_E4_a3c32111.json",
+      "accepted_stage_52_status": "ACCEPTED",
+      "classified_type": "UNKNOWN_EVIDENCE_TYPE",
+      "classified_format": "JSON",
+      "evidence_role": "UNKNOWN",
+      "usability_scope": [
+        "GEOMETRY_BUILDING_FOOTPRINT"
+      ],
+      "usability_status": "CONDITIONALLY_USABLE",
+      "blocker_reasons": [
+        "UNKNOWN_FILE_RELEVANCE",
+        "NEEDS_FUTURE_SCHEMA_ADAPTER"
+      ],
+      "future_consumer_modules": [
+        "MODULE_GEOMETRY"
+      ],
+      "confidence_class": "LOW",
+      "notes": "Determined via metadata-only conservative governance bounds."
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "file_name": "PHYSICAL_E4_a79e5e7d.json",
+      "sha256": "FROM_STAGE_52_INTAKE_OR_DEFERRED",
+      "source_path": "geometry/PHYSICAL_E4_a79e5e7d.json",
+      "accepted_stage_52_status": "ACCEPTED",
+      "classified_type": "UNKNOWN_EVIDENCE_TYPE",
+      "classified_format": "JSON",
+      "evidence_role": "UNKNOWN",
+      "usability_scope": [
+        "GEOMETRY_BUILDING_FOOTPRINT"
+      ],
+      "usability_status": "CONDITIONALLY_USABLE",
+      "blocker_reasons": [
+        "UNKNOWN_FILE_RELEVANCE",
+        "NEEDS_FUTURE_SCHEMA_ADAPTER"
+      ],
+      "future_consumer_modules": [
+        "MODULE_GEOMETRY"
+      ],
+      "confidence_class": "LOW",
+      "notes": "Determined via metadata-only conservative governance bounds."
+    }
+  ]
+}

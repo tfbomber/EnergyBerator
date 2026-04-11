@@ -1,0 +1,34 @@
+{
+  "matrix": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS"
+    },
+    {
+      "file_id": "EVD_56231492",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS"
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "total_geometry_records_checked": 1,
+      "valid_geometry_count": 1,
+      "invalid_geometry_count": 0,
+      "empty_geometry_count": 0,
+      "mixed_geometry_type_flag": false,
+      "multipart_geometry_flag": false,
+      "spatial_gate_status": "ADMISSIBLE_WITH_LIMITATIONS"
+    }
+  ]
+}

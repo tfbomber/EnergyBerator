@@ -1,0 +1,64 @@
+{
+    "policy_id": "KFW_458_HEIZUNGSFOERDERUNG",
+    "region": "Federal",
+    "level": "Federal",
+    "status": "Active",
+    "effective_from": "2024-01-01",
+    "effective_to": null,
+    "uncertainty_flag": "LOW",
+    "timing_rules": {
+        "requires_application_before": [
+            "WORK_STARTED"
+        ],
+        "blocking_actions": [
+            "WORK_STARTED"
+        ],
+        "evidence_anchor": "Merkblatt BEG: Punkt 4.1. exception for aufschiebende Bedingung"
+    },
+    "cost_rules": {
+        "input_amount_basis": "GROSS",
+        "buckets": {
+            "HARDWARE": {
+                "eligible": true,
+                "vat_rate": "19%"
+            },
+            "LABOR": {
+                "eligible": true,
+                "vat_rate": "19%"
+            }
+        }
+    },
+    "calculation": {
+        "type": "GRANT_ON_ELIGIBLE_COST",
+        "grant_rate": 0.30,
+        "eligible_basis": "GROSS",
+        "cap_cents": 3000000,
+        "stacking_limit": 0.70,
+        "bonuses": [
+            {
+                "code": "KLIMA_GESCHWINDIGKEITS_BONUS",
+                "trigger": "USER_ATTRIBUTE",
+                "trigger_value": true,
+                "effect": {
+                    "add_grant_rate": 0.20
+                },
+                "evidence_anchor": "Merkblatt BEG: Klimageschwindigkeits-Bonus"
+            },
+            {
+                "code": "EINKOMMENS_BONUS_UNDER_40K",
+                "trigger": "USER_ATTRIBUTE",
+                "trigger_value": true,
+                "effect": {
+                    "add_grant_rate": 0.30
+                },
+                "evidence_anchor": "Merkblatt BEG: Einkommens-Bonus <= 40000"
+            }
+        ],
+        "evidence_anchor": "Merkblatt BEG: max 70% rate, 30,000 eligible cost"
+    },
+    "citations": {
+        "source_url": "https://www.kfw.de/PDF/Download-Center/F%C3%B6rderprogramme-%28Inlandsf%C3%B6rderung%29/PDF-Dokumente/6000005131_M_458.pdf",
+        "doc_version": "2024",
+        "last_policy_sync_timestamp": "2026-02-21T00:00:00Z"
+    }
+}

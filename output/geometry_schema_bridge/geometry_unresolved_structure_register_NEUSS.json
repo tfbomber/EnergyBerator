@@ -1,0 +1,28 @@
+{
+  "unresolved": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "unresolved_paths": [],
+      "unresolved_fields": [],
+      "retained_ambiguities": [
+        "CRS_NOT_DECLARED"
+      ]
+    },
+    {
+      "file_id": "EVD_56231492",
+      "unresolved_paths": [],
+      "unresolved_fields": [],
+      "retained_ambiguities": [
+        "CRS_NOT_DECLARED"
+      ]
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "unresolved_paths": [],
+      "unresolved_fields": [],
+      "retained_ambiguities": [
+        "CRS_NOT_DECLARED"
+      ]
+    }
+  ]
+}

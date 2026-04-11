@@ -1,0 +1,44 @@
+{
+  "document_name": "MaStR_Ingestion_Protocol_v1.2_micro_patch",
+  "patched_sections": [
+    {
+      "section_id": "6",
+      "section_title": "BUILDING-LEVEL DEDUPLICATION LOGIC",
+      "revised_content": {
+        "building_key_prerequisite": "Numerator contribution REQUIRES mapping to a stable, unique Building ID from the D-ESS residential building inventory. Records matched spatially but lacking a stable Building ID link may exist for audit purposes but MUST NOT contribute to the building_pv_count numerator."
+      }
+    },
+    {
+      "section_id": "7",
+      "section_title": "SEGMENT AGGREGATION LOGIC",
+      "revised_content": {
+        "metric_refinement": {
+          "pv_installation_count_resolved_building": "Count of records matched at Tier 1 (Footprint) or Tier 2 (Buffer).",
+          "pv_installation_count_resolved_context": "Count of records matched at Tier 3 (SEG_POLY) only.",
+          "segment_level_summary_fields": [
+            "count_match_footprint",
+            "count_match_buffer",
+            "count_match_seg_poly",
+            "count_unresolved",
+            "count_ambiguous"
+          ]
+        },
+        "resolved_metric_rule": "The term 'resolved' for building-truth purposes refers strictly to pv_installation_count_resolved_building. User metrics should prioritize this over contextual matches."
+      }
+    },
+    {
+      "section_id": "8",
+      "section_title": "OUTPUT DATASET SCHEMA",
+      "revised_content": {
+        "output_level_clarification": "The final deliverable (field_04_real_pv_adoption.parquet) is a segment-level dataset. Record-level attributes (like individual match modes) exist in the staging layer only. The segment-level output must contain aggregated counts (count_match_*) and summary quality indicators.",
+        "spatial_confidence_enum": {
+          "FOOTPRINT": "HIGH",
+          "BUFFER": "MEDIUM",
+          "SEGPOLY": "CONTEXT_ONLY",
+          "AMBIGUOUS": "CONFLICTED",
+          "UNRESOLVED": "NONE"
+        }
+      }
+    }
+  ]
+}

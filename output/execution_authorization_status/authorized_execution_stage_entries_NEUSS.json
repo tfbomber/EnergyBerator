@@ -1,0 +1,8 @@
+{
+  "admitted_targets": [
+    {
+      "target_id": "MOCK_TARGET_NEUSS_01",
+      "stage_entry_authorized": true
+    }
+  ]
+}

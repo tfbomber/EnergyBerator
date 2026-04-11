@@ -1,0 +1,54 @@
+{
+  "records": [
+    {
+      "evidence_item_id": "SYNTH_EVD_ITEM_001",
+      "scenario_id": "SCENARIO_1_VALID_NEW",
+      "file_hash": "2131c044981d56fa70d237d928b5a25c02b718eb3b81095e9474ea0db7de78db",
+      "novelty_verdict": "NEW",
+      "linkage_status": "MATCHED",
+      "structural_presence": true,
+      "duplicate_reference_detected": false,
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "evidence_item_id": "SYNTH_EVD_ITEM_002",
+      "scenario_id": "SCENARIO_2_DUPLICATE_OLD",
+      "file_hash": "2131c044981d56fa70d237d928b5a25c02b718eb3b81095e9474ea0db7de78db",
+      "novelty_verdict": "NOT_NEW",
+      "linkage_status": "MATCHED",
+      "structural_presence": true,
+      "duplicate_reference_detected": true,
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "evidence_item_id": "SYNTH_EVD_ITEM_003",
+      "scenario_id": "SCENARIO_3_UNMATCHED",
+      "file_hash": "c4aacd5c570447c484a47e11e444e685b5e42d2f57896f615a745da90cd86892",
+      "novelty_verdict": "NEW",
+      "linkage_status": "UNMATCHED",
+      "structural_presence": true,
+      "duplicate_reference_detected": false,
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "evidence_item_id": "SYNTH_EVD_ITEM_004",
+      "scenario_id": "SCENARIO_4_EMPTY_CORRUPT",
+      "file_hash": "",
+      "novelty_verdict": "NEW",
+      "linkage_status": "MATCHED",
+      "structural_presence": true,
+      "duplicate_reference_detected": false,
+      "test_marker": "TEST_ONLY"
+    },
+    {
+      "evidence_item_id": "SYNTH_EVD_ITEM_005",
+      "scenario_id": "SCENARIO_5_BORDERLINE_PARTIAL",
+      "file_hash": "f17988d414a855e5dfb5b72a99aac4f6ed737a299f36f90541ddf57819ab1979",
+      "novelty_verdict": "NEW",
+      "linkage_status": "MATCHED",
+      "structural_presence": true,
+      "duplicate_reference_detected": false,
+      "test_marker": "TEST_ONLY"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-03-18T06:20:29.906821+00:00",
+  "total_stage68_dossiers_scanned": 1,
+  "eligible_contact_data_intake_dossiers": 1,
+  "dossiers_with_real_contact_input": 1,
+  "dossiers_without_contact_input": 0,
+  "structurally_valid_intakes": 1,
+  "incomplete_intakes": 0,
+  "invalid_format_intakes": 0,
+  "invalid_linkage_intakes": 0,
+  "conflicting_intakes": 0,
+  "zero_activation_violations": 0,
+  "zero_contact_violations": 0,
+  "zero_crm_task_violations": 0,
+  "zero_booking_violations": 0,
+  "zero_assignment_violations": 0,
+  "zero_execution_signal_violations": 0,
+  "historical_mutation_violations": 0,
+  "final_stage_verdict": "VERIFIED_CONTACT_DATA_INTAKE_RECORDED"
+}

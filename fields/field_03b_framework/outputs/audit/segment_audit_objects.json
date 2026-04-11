@@ -1,0 +1,41 @@
+[
+  {
+    "field_id": "03B",
+    "city": "Neuss",
+    "segment_id": "ALLERHEILIGEN_PILOT_SEG_01",
+    "audit_run_id": "NORF_PILOT_V1_0",
+    "segment_heat_status": "decentral_likely_area",
+    "building_heat_status": "unknown",
+    "evidence_tier": "E1",
+    "evidence_items": [
+      {
+        "source_id": "KWP_NEUSS_2025",
+        "source_type": "PDF_MAP",
+        "official": true,
+        "decision_eligible": true,
+        "citation_ref": "https://www.neuss.de/kwp-2025-draft",
+        "page_ref_or_section": "Zonierungskarte Page 4",
+        "extracted_claim": "Residential Norf is categorized as 'Pr\u00fcfgebiet f\u00fcr Einzell\u00f6sungen / Dezentrale Versorgung'.",
+        "review_outcome": "checked_and_relevant",
+        "relevance_to_segment": "Confirms lack of planned district heating for this residential block.",
+        "evidence_strength": "E1"
+      }
+    ],
+    "search_coverage": "source_checked_and_relevant_section_found",
+    "realization_horizon": {
+      "status": "not_applicable",
+      "target_year": null,
+      "basis": "official_plan"
+    },
+    "window_of_opportunity": {
+      "status": "unknown",
+      "estimated_until_year": null,
+      "basis": "inferred_from_planning_stage",
+      "note": "KWP 2025 confirms No Connection Bylaw."
+    },
+    "heat_source_type": "unknown",
+    "decision_impact": "allow_hp_with_local_obligation_check",
+    "manual_verification_required": false,
+    "disclaimer": "Audit results are based strictly on official evidence provided in the manifest. Neuss KWP 2025 confirms decentral focus for Norf residential."
+  }
+]

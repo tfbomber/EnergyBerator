@@ -1,0 +1,13 @@
+{
+  "records": [
+    {
+      "case_id": "EVD_56231492",
+      "geometry_id": "UNKNOWN",
+      "revalidation_result": "REVALIDATION_PASSED",
+      "opportunity_state": "OPPORTUNITY_CONFIRMED",
+      "deployment_readiness_level": "INSTALLER_CANDIDATE",
+      "classification_reason": "Clear pass on all explicitly routed revalidation modules without blocking signals.",
+      "governing_stage": "STAGE_64"
+    }
+  ]
+}

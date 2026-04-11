@@ -1,0 +1,26 @@
+{
+  "records": [
+    {
+      "contact_id": "TEST_74_CASE_A",
+      "trace_id": "6dc8014d-f722-49c6-b524-78107f6babcb",
+      "crm_task_draft": {
+        "task_type": "INITIAL_OUTREACH",
+        "priority": "LOW",
+        "recommended_timing": "T+14 days",
+        "status": "SIMULATED_ONLY",
+        "compliance_note": "DO NOT CREATE IN CRM - SIMULATION ONLY"
+      }
+    },
+    {
+      "contact_id": "TEST_74_CASE_I",
+      "trace_id": "0a63f2fc-8d4f-4d26-a846-e58796faa996",
+      "crm_task_draft": {
+        "task_type": "INITIAL_OUTREACH",
+        "priority": "LOW",
+        "recommended_timing": "T+14 days",
+        "status": "SIMULATED_ONLY",
+        "compliance_note": "DO NOT CREATE IN CRM - SIMULATION ONLY"
+      }
+    }
+  ]
+}

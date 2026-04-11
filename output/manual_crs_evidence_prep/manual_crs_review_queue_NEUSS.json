@@ -1,0 +1,40 @@
+{
+  "records": [
+    {
+      "file_id": "EVD_ACC8C1F4",
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_ACC8C1F4 satisfying policy rules."
+      ]
+    },
+    {
+      "file_id": "EVD_56231492",
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_56231492 satisfying policy rules."
+      ]
+    },
+    {
+      "file_id": "EVD_8963BBA2",
+      "manual_review_workflow_state": "AWAITING_EVIDENCE_SUBMISSION",
+      "missing_evidence_categories": [
+        "EXPLICIT_CRS_DECLARATION_IN_ORIGINAL_SOURCE",
+        "FORMALLY_REGISTERED_MANUAL_REVIEW_RECORD"
+      ],
+      "rerun_58_5_preconditions": [
+        "A formally registered manual review artifact must be provided in pipeline input.",
+        "The registered artifact must establish EPSG mapping for EVD_8963BBA2 satisfying policy rules."
+      ]
+    }
+  ]
+}

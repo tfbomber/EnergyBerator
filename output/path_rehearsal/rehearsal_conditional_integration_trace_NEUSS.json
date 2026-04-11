@@ -1,0 +1,9 @@
+{
+  "rehearsal_integrations": [
+    {
+      "artifact": "REHEARSAL_GEO_001",
+      "target_layer_assessment": "geometry_connector_state",
+      "mutation_applied": "NONE (Production Truth preserved)"
+    }
+  ]
+}

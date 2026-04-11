@@ -1,0 +1,122 @@
+[
+    {
+        "case_id": "ROBUST_01_EMPTY_ESTIMATE",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": ""
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_02_NEG_ESTIMATE",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": -500.0
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_03_INVALID_DATE",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "timeline": {
+            "application_submitted_date": "2026-13-45"
+        },
+        "expected": {
+            "status": "NEEDS_INPUT",
+            "violations": [
+                "DATE_PARSE_ERROR"
+            ]
+        }
+    },
+    {
+        "case_id": "ROBUST_04_NULL_VALS",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": null,
+        "measure": null,
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": 1200.0
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_05_UNKNOWN_MIX",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "applicant": {
+            "is_private_person": "UNKNOWN",
+            "has_duessepass": "UNKNOWN"
+        },
+        "timeline": {
+            "work_started": "UNKNOWN",
+            "down_payment_made": "UNKNOWN"
+        },
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": 1200.0
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_06_MISSING_COSTS",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK"
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_07_ZERO_ESTIMATE",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "costs": {
+            "mode": "QUICK",
+            "total_estimate_eur": 0
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    },
+    {
+        "case_id": "ROBUST_08_EXCESSIVE_DESCRIPTION",
+        "as_of": "2026-02-28",
+        "policy_id": "DUS_BALCONY_PV_2025",
+        "timeline": {
+            "application_submitted_date": "10.02.2026",
+            "contract_signed_date": "15.02.2026",
+            "has_conditional_clause": "NO",
+            "down_payment_made": "NO",
+            "work_started": "NO"
+        },
+        "costs": {
+            "mode": "EXACT",
+            "items": [
+                {
+                    "amount_eur": 100,
+                    "is_eligible": "YES",
+                    "label": "This_Is_A_Very_Long_Label_To_Test_If_The_System_Breaks_In_The_Report_Generator_Step_And_Audit_Trail_Assembly"
+                }
+            ]
+        },
+        "expected": {
+            "status": "APPROVED"
+        }
+    }
+]
