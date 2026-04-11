@@ -194,21 +194,35 @@ def _score_color(score: float, high: float = 0.75, mid: float = 0.50) -> str:
     return "#8b0000"
 
 
+# Streets rendered per page in a drill-down (keeps DOM small)
+_PAGE_SIZE = 25
+
+
 # ---------------------------------------------------------------------------
 # Street list renderer (shared between Region Cards and Global Analysis)
 # ---------------------------------------------------------------------------
-def _render_street_list(seg_streets: pd.DataFrame) -> None:
+def _render_street_list(
+    seg_streets: pd.DataFrame,
+    page: int = 0,
+    page_size: int = _PAGE_SIZE,
+) -> None:
     """
-    Render a sorted street list for one segment.
+    Render a paginated street list for one segment.
+    Only rows on the current page are rendered — critical for performance.
     seg_streets must already have heat_status / hp_status merged in.
     Sorted by adjusted_street_score DESC.
     """
     seg_streets = seg_streets.sort_values("adjusted_street_score", ascending=False)
+    total       = len(seg_streets)
+    start       = page * page_size
+    end         = min(start + page_size, total)
+    seg_page    = seg_streets.iloc[start:end]
 
     st.caption(
-        "Score = A-signals (building quality ×0.70) + B-signals (roof ×0.20 + PV-oppty ×0.10) "
-        "× segment modifiers (Fernwärme × HP × certainty). "
-        "Sorted by adjusted score — highest building quality first."
+        f"Score = A-signals (building quality ×0.70) + B-signals (roof ×0.20 + PV-oppty ×0.10) "
+        f"× segment modifiers (Fernwärme × HP × certainty). "
+        f"Sorted by adjusted score — highest building quality first. "
+        f"| Zeige {start+1}–{end} von {total} Straßen."
     )
 
     # Column headers
@@ -222,7 +236,7 @@ def _render_street_list(seg_streets: pd.DataFrame) -> None:
     H[6].markdown("**Hinweis**")
     st.markdown("<hr style='margin:4px 0'>", unsafe_allow_html=True)
 
-    for rank_i, (_, s) in enumerate(seg_streets.iterrows(), start=1):
+    for rank_i, (_, s) in enumerate(seg_page.iterrows(), start=start + 1):
         gate_str  = str(s.get("structure_gate", "?"))
         gate_icon = GATE_COLOR.get(gate_str, ("⚪", "#666"))[0]
 
@@ -471,14 +485,49 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
                 unsafe_allow_html=True,
             )
 
-        # ── Street Drill-Down (collapsed) ─────────────────────────────────
+        # ── Street Drill-Down — session_state gated (NOT st.expander) ──────
+        # PERF: st.expander still runs Python inside when collapsed.
+        # Using session_state button means uncollapsed segments execute ZERO
+        # street rendering — from ~3600 API calls to ~200 per interaction.
+        expand_key = f"_srk_exp_{unit_id}"
+        page_key   = f"_srk_pg_{unit_id}"
+        is_open    = st.session_state.get(expand_key, False)
+
         if n_total_streets > 0:
-            with st.expander(
-                f"🗺 {n_total_streets} Straßen anzeigen "
-                f"· {n_pass} ✅ PASS · {n_fail} ❌ FAIL",
-                expanded=False,
-            ):
-                _render_street_list(seg_streets_all)
+            btn_lbl = (
+                f"▲ Straßen ausblenden ({n_total_streets})"
+                if is_open
+                else f"▼ {n_total_streets} Straßen anzeigen  ·  "
+                     f"{n_pass} ✅ PASS  ·  {n_fail} ❌ FAIL"
+            )
+            if st.button(btn_lbl, key=f"_srk_btn_{unit_id}", use_container_width=True):
+                st.session_state[expand_key] = not is_open
+                if is_open:                          # collapsing → reset page
+                    st.session_state.pop(page_key, None)
+                st.rerun()
+
+            if is_open:
+                page    = st.session_state.get(page_key, 0)
+                n_pages = max(1, (n_total_streets + _PAGE_SIZE - 1) // _PAGE_SIZE)
+                _render_street_list(seg_streets_all, page=page, page_size=_PAGE_SIZE)
+
+                if n_pages > 1:
+                    pc1, pc2, pc3 = st.columns([1, 3, 1])
+                    with pc1:
+                        if page > 0:
+                            if st.button("← Zurück", key=f"_srk_prev_{unit_id}"):
+                                st.session_state[page_key] = page - 1
+                                st.rerun()
+                    with pc2:
+                        st.caption(
+                            f"Seite {page + 1} / {n_pages}  ·  "
+                            f"{n_total_streets} Straßen gesamt"
+                        )
+                    with pc3:
+                        if page < n_pages - 1:
+                            if st.button("Weiter →", key=f"_srk_next_{unit_id}"):
+                                st.session_state[page_key] = page + 1
+                                st.rerun()
         else:
             st.caption("No street data available for this segment.")
 
@@ -565,10 +614,17 @@ def render_street_ranking_view() -> None:
         gate_opts = ["All gates", "PASS", "QUALIFIED", "REVIEW", "FAIL"]
         sel_gate  = st.selectbox("Filter by gate", gate_opts, key="global_analysis_gate")
 
-        global_view = street_df.copy()
-        if sel_gate != "All gates":
-            global_view = global_view[global_view["structure_gate"] == sel_gate]
-        global_view = global_view.sort_values("global_rank").head(top_n)
+        gate_key = "_global_analysis_active"
+        if st.button("🔍 Analyse laden", key="run_global_analysis"):
+            st.session_state[gate_key] = True
+
+        if not st.session_state.get(gate_key, False):
+            st.caption("Klicke 'Analyse laden' um die Tabelle zu rendern.")
+        else:
+            global_view = street_df.copy()
+            if sel_gate != "All gates":
+                global_view = global_view[global_view["structure_gate"] == sel_gate]
+            global_view = global_view.sort_values("global_rank").head(top_n)
 
         # Column headers
         G = st.columns([2, 1, 6, 2, 2, 2, 3, 3])
