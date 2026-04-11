@@ -68,9 +68,16 @@ OUTPUT_PARQUET  = BASE_DIR / "data" / "layer2" / "street_level_ranking_v1.parque
 # Segment ↔ PLZ mapping (source: fields/field_04_pv_adoption.py)
 # ---------------------------------------------------------------------------
 PLZ_TO_SEGMENT: dict[str, str] = {
-    "41470": "NEUSS_NORF_01",
-    "41472": "NEUSS_SUBURB_01",
-    "41464": "NEUSS_GRIML_01",
+    # === MVP segments (field_01–06 computed) ===
+    "41470": "NEUSS_NORF_01",      # Allerheiligen / Rosellen
+    "41472": "NEUSS_SUBURB_01",    # Holzheim / Grefrath
+    "41464": "NEUSS_GRIML_01",     # Pomona / Westfeld
+    # === Option-A expansion — one PLZ = one segment ===
+    "41460": "NEUSS_PLZ41460",     # Innenstadt / Hammfeld
+    "41462": "NEUSS_PLZ41462",     # Furth (Furth-Mitte, Furth-Nord, Furth-Süd)
+    "41466": "NEUSS_PLZ41466",     # Reuschenberg / Weckhoven
+    "41468": "NEUSS_PLZ41468",     # Grimlinghausen / Furth-Süd / Gnadental
+    "41469": "NEUSS_PLZ41469",     # Norf / Erfttal
 }
 
 # PV coverage score cap (E3 max, from field_04)

@@ -50,9 +50,12 @@ OUT_PATH = DATA / "street_ranking_v1.parquet"
 # Street name labels (Neuss MVP hardcoded map)
 # ---------------------------------------------------------------------------
 STREET_LABEL_MAP = {
-    "NEUSS_NORF_01":   "Norf (PLZ 41470)",
-    "NEUSS_SUBURB_01": "Neuss Suburbs (PLZ 41472)",
-    "NEUSS_GRIML_01":  "Grimlinghausen (PLZ 41464)",
+    # PLZ 41470: Allerheiligen, Rosellen (not "Norf" — corrected 2026-04-11)
+    "NEUSS_NORF_01":   "Allerheiligen / Rosellen (PLZ 41470)",
+    # PLZ 41472: Holzheim, Grefrath, Speck, Hoisten
+    "NEUSS_SUBURB_01": "Holzheim / Grefrath (PLZ 41472)",
+    # PLZ 41464: Pomona, Westfeld, Augustinusviertel (not "Grimlinghausen" — corrected 2026-04-11)
+    "NEUSS_GRIML_01":  "Pomona / Westfeld (PLZ 41464)",
 }
 
 # ---------------------------------------------------------------------------
