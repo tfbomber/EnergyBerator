@@ -61,6 +61,14 @@ def render_workspace(navigate_to):
         from ui.components.street_ranking_view import render_street_ranking_view
         render_street_ranking_view()
 
+    elif st.session_state.workspace_view == "CLIENT_STREET_RANKING":
+        from ui.customer.street_ranking_client import render_street_ranking_client
+        render_street_ranking_client()
+
+    elif st.session_state.workspace_view == "CLIENT_ROI_REPORT":
+        from ui.customer.roi_report_client import render_roi_report_client
+        render_roi_report_client()
+
     elif st.session_state.workspace_view == "STREET_ROI_FULL":
         # Full ROI report launched from the global street ranking compact card
         from ui.components.s2_roi_report import render_roi_report
