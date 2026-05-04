@@ -59,9 +59,13 @@ def count_buildings_per_segment(
             clusters = data
             
         fd_plz_counts = {}
+        _seen_streets = set()
         for c in clusters:
             plz = str(c.get("plz", "")).strip()
-            if plz:
+            street = c.get("street_name", "")
+            key = (plz, street)
+            if plz and key not in _seen_streets:
+                _seen_streets.add(key)
                 fd_plz_counts[plz] = fd_plz_counts.get(plz, 0) + int(c.get("building_count_total", 0) or 0)
                 
         for plz, n in fd_plz_counts.items():

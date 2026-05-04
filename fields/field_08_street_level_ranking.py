@@ -402,6 +402,22 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
     clusters = [c for c in clusters if str(c.get("plz", "")) in tracked_plzs]
     logger.info(f"[FILTER] {len(clusters)} clusters in tracked PLZs {tracked_plzs}")
 
+    # ── Deduplicate clusters ────────────────────────────────────────
+    # Foundation creates address-range clusters that share identical
+    # street-level aggregate data. Keep first per (plz, street_name).
+    _seen_streets: set[tuple[str, str]] = set()
+    dedup_clusters: list[dict] = []
+    for c in clusters:
+        key = (str(c.get("plz", "")), c.get("street_name", ""))
+        if key not in _seen_streets:
+            _seen_streets.add(key)
+            dedup_clusters.append(c)
+    n_removed = len(clusters) - len(dedup_clusters)
+    if n_removed > 0:
+        logger.info(f"[DEDUP] Removed {n_removed} duplicate clusters "
+                     f"({len(dedup_clusters)} unique streets remain)")
+    clusters = dedup_clusters
+
     rows: list[dict] = []
     for c in clusters:
         plz        = str(c.get("plz", ""))
