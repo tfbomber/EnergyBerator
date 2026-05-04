@@ -69,9 +69,9 @@ OUTPUT_PARQUET  = BASE_DIR / "data" / "layer2" / "street_level_ranking_v1.parque
 # ---------------------------------------------------------------------------
 PLZ_TO_SEGMENT: dict[str, str] = {
     # === MVP segments (field_01–06 computed) ===
-    "41470": "NEUSS_NORF_01",      # Allerheiligen / Rosellen
-    "41472": "NEUSS_SUBURB_01",    # Holzheim / Grefrath
-    "41464": "NEUSS_GRIML_01",     # Pomona / Westfeld
+    "41470": "NEUSS_PLZ41470",      # Allerheiligen / Rosellen
+    "41472": "NEUSS_PLZ41472",    # Holzheim / Grefrath
+    "41464": "NEUSS_PLZ41464",     # Pomona / Westfeld
     # === Option-A expansion — one PLZ = one segment ===
     "41460": "NEUSS_PLZ41460",     # Innenstadt / Hammfeld
     "41462": "NEUSS_PLZ41462",     # Furth (Furth-Mitte, Furth-Nord, Furth-Süd)
@@ -80,8 +80,11 @@ PLZ_TO_SEGMENT: dict[str, str] = {
     "41469": "NEUSS_PLZ41469",     # Norf / Erfttal
 }
 
-# PV coverage score cap (E3 max, from field_04)
-PV_SCORE_CAP = 0.50   # field_04 E3_MAX_FIELD_VALUE
+# PV coverage score cap (E3 max, from field_04) — LEGACY constant.
+# field_04 is now produced by bridge_mastr_to_field04.py (source: MASTR_DIRECT_COUNT_V2).
+# field_value = market_gap = 1 - pv_adoption_rate  (higher = more remaining opportunity).
+# This constant is retained for documentation only; no longer used in scoring logic.
+PV_SCORE_CAP = 0.50   # LEGACY — E3_MAX_FIELD_VALUE from old field_04_pv_adoption.py
 
 # Minimum building count for reliable street-level inference
 # Streets below this threshold receive a low_sample_flag in the output
@@ -171,25 +174,20 @@ def load_b_signals(l2_path: Path) -> dict[str, dict]:
         roof_raw  = row.get("roof_suitability_score_norm")
         roof_norm = float(roof_raw) if pd.notna(roof_raw) else B_NEUTRAL["roof_norm"]
 
-        # PV opportunity with saturation guard
+        # PV opportunity — FIX A (2026-04-15): semantic correction.
+        # field_04 is now produced by bridge_mastr_to_field04.py (MASTR_DIRECT_COUNT_V2).
+        # field_value = market_gap = 1 - pv_adoption_rate.
+        # Semantics: HIGH value = large untapped market = HIGH opportunity.
+        # Previous logic (1 - pv_val/cap) was an inversion designed for the OLD E3
+        # field_04_pv_adoption.py where field_value = penetration rate (opposite).
+        # That inversion is now REMOVED. market_gap maps directly to pv_oppty.
         pv_raw         = row.get("pv_coverage_score")
-        pv_saturated   = False
+        pv_saturated   = False   # no E3 cap artifact with MASTR_DIRECT_COUNT_V2
         if pd.notna(pv_raw) and float(pv_raw) > 0:
-            pv_val = float(pv_raw)
-            if pv_val >= PV_SCORE_CAP:
-                # PLZ allocation hit the hard cap — signal is not directional
-                pv_oppty   = B_NEUTRAL["pv_oppty"]  # neutral 0.50
-                pv_saturated = True
-                logger.warning(
-                    "[PV_DATA_SATURATED] %s: pv_coverage_score=%.3f >= cap=%.2f. "
-                    "Using neutral pv_oppty=%.2f instead of %.3f to avoid false zero-opportunity signal.",
-                    seg, pv_val, PV_SCORE_CAP, B_NEUTRAL["pv_oppty"],
-                    1.0 - pv_val / PV_SCORE_CAP,
-                )
-            else:
-                pv_oppty = max(0.0, 1.0 - pv_val / PV_SCORE_CAP)
+            # market_gap in [0, 1]: clamp defensively, use directly as opportunity
+            pv_oppty = round(min(1.0, max(0.0, float(pv_raw))), 4)
         else:
-            pv_oppty = B_NEUTRAL["pv_oppty"]
+            pv_oppty = B_NEUTRAL["pv_oppty"]   # 0.50 neutral when data missing
 
         # SFH stage quality (data source transparency)
         sfh_confirmed = float(row.get("sfh_confirmed_share", 0.0))
@@ -211,6 +209,7 @@ def load_b_signals(l2_path: Path) -> dict[str, dict]:
             "sfh_confirmed_share": round(sfh_confirmed, 4),
             "sfh_proxy_share":     round(sfh_proxy, 4),
             "data_quality":        data_quality,
+            "l1_gate_label":       str(row.get("l1_gate_label", "NOT_AVAILABLE")),
         }
         logger.info(
             "[B-SIGNALS] %s: roof=%.3f pv_oppty=%.3f%s sfh_confirmed=%.0f%% sfh_proxy=%.0f%% quality=%s",
@@ -329,7 +328,9 @@ def _street_score(
     return total, sfh_q, gate_s, scale, mfh_c
 
 
-def _top_reason(row: dict, sfh_q: float, gate_s: float) -> str:
+def _top_reason(row: dict, sfh_q: float, gate_s: float, coherence_capped: bool = False) -> str:
+    if coherence_capped:
+        return "Segment data quality low — verify building types on site"
     sfh_ratio = float(row.get("sfh_total_ratio", 0.0) or 0.0)
     det_count = int(row.get("sfh_detached_count", 0) or 0)
     n         = int(row.get("building_count_total", 1) or 1)
@@ -407,11 +408,28 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
         segment_id = PLZ_TO_SEGMENT.get(plz, "UNKNOWN")
         b          = b_signals.get(segment_id, B_NEUTRAL)
 
+        # ── Coherence Guard ─────────────────────────────────
+        # If the segment is BLOCKED (< 30% Foundation PASS rate),
+        # cap street gates to REVIEW. This prevents individual streets
+        # from showing misleading PASS in urban/MFH-dominant segments.
+        seg_blocked = b.get("l1_gate_label") == "BLOCKED"
+        if seg_blocked:
+            gate_override = "REVIEW"
+        else:
+            gate_override = None
+
         roof_norm  = b["roof_norm"]
         pv_oppty   = b["pv_oppty"]
 
-        score, sfh_q, gate_s, scale, mfh_c = _street_score(c, roof_norm, pv_oppty)
-        reason = _top_reason(c, sfh_q, gate_s)
+        # Apply gate override BEFORE scoring so gate_score reflects the cap
+        if gate_override and str(c.get("structure_gate", "")).upper() in ("PASS", "QUALIFIED"):
+            c_copy = dict(c)
+            c_copy["structure_gate"] = gate_override
+            score, sfh_q, gate_s, scale, mfh_c = _street_score(c_copy, roof_norm, pv_oppty)
+            reason = _top_reason(c, sfh_q, gate_s, coherence_capped=True)
+        else:
+            score, sfh_q, gate_s, scale, mfh_c = _street_score(c, roof_norm, pv_oppty)
+            reason = _top_reason(c, sfh_q, gate_s)
 
         # Apply segment modifiers (full coupling: fern × hp × certainty)
         seg_mod  = seg_modifiers.get(segment_id, NEUTRAL_MODIFIER)
@@ -446,7 +464,9 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
             "b_roof_norm":         round(roof_norm, 3),
             "b_pv_oppty":          round(pv_oppty, 3),
             # Foundation labels
-            "structure_gate":      c.get("structure_gate"),
+            "structure_gate":      gate_override if (gate_override and str(c.get("structure_gate","")).upper() in ("PASS","QUALIFIED")) else c.get("structure_gate"),
+            "structure_gate_original": c.get("structure_gate"),
+            "coherence_capped":    bool(gate_override and str(c.get("structure_gate","")).upper() in ("PASS","QUALIFIED")),
             "structure_profile":   c.get("structure_profile"),
             # SFH/MFH breakdown
             "sfh_total_ratio":     float(c.get("sfh_total_ratio", 0.0) or 0.0),
