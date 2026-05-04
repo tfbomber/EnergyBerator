@@ -7,7 +7,7 @@ Mode    : EXECUTION — assembles real agg + direct-attach inputs
 Guardrails:
   - No scoring, no ranking, no weight selection
   - Only 4 in-scope inputs: field_01, field_02, foundation gate, field_04
-  - NEUSS_NORF_01 is the only REAL_GROUNDED row
+  - NEUSS_PLZ41470 is the only REAL_GROUNDED row
   - SYNTHETIC segments get stub rows with NULLs and row_usable_for_ranking=False
 
 Produces
@@ -24,6 +24,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
+
+import sys
+BASE_DIR = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+from core.building_universe import count_buildings_per_segment
 
 # ---------------------------------------------------------------------------
 logging.basicConfig(
@@ -42,18 +49,29 @@ OUT_PARQ_DIR = BASE_DIR / "data" / "layer2"
 OUT_MD_DIR   = BASE_DIR / "output" / "layer2"
 
 REAL_GROUNDED_PLZ_MAP  = {
-    "NEUSS_NORF_01":   "41470",   # PLZ from field_04 PILOT_DEFAULTS (verified)
-    "NEUSS_SUBURB_01": "41472",   # PLZ confirmed from OSM extraction (expansion round 1)
-    "NEUSS_GRIML_01":  "41464",   # PLZ confirmed from OSM extraction (expansion round 2)
+    "NEUSS_NORF_01": "41470",     # 41470 mapped from old ID
+    "NEUSS_SUBURB_01": "41472",   # 41472 mapped from old ID
+    "NEUSS_GRIML_01": "41464",    # 41464 mapped from old ID
+    "NEUSS_PLZ41470": "41470",    # PLZ from field_04 PILOT_DEFAULTS (verified)
+    "NEUSS_PLZ41472": "41472",    # PLZ confirmed from OSM extraction (expansion round 1)
+    "NEUSS_PLZ41464": "41464",    # PLZ confirmed from OSM extraction (expansion round 2)
+    "NEUSS_PLZ41460": "41460",
+    "NEUSS_PLZ41462": "41462",
+    "NEUSS_PLZ41466": "41466",
+    "NEUSS_PLZ41468": "41468",
+    "NEUSS_PLZ41469": "41469",
 }
 # Mapping from legacy persistent_id → current segment_id
 # Source: segment_registry_neuss_v1.json — each segment has a persistent_id field
 PERSISTENT_TO_SEGMENT = {
-    "ALLERHEILIGEN_PILOT_SEG_01": "NEUSS_NORF_01",
-    "NEUSS_DENSE_01":             "NEUSS_GRIML_01",
+    "ALLERHEILIGEN_PILOT_SEG_01": "NEUSS_PLZ41470",
+    "NEUSS_DENSE_01":             "NEUSS_PLZ41464",
     "NEUSS_VILLA_01":             "NEUSS_CENTRAL_01",
     "NEUSS_OLD_TOWN_01":          "NEUSS_OLD_TOWN_01",
-    "NEUSS_SUBURBAN_01":          "NEUSS_SUBURB_01",
+    "NEUSS_SUBURBAN_01":          "NEUSS_PLZ41472",
+    "NEUSS_NORF_01":              "NEUSS_PLZ41470",
+    "NEUSS_SUBURB_01":            "NEUSS_PLZ41472",
+    "NEUSS_GRIML_01":             "NEUSS_PLZ41464"
 }
 
 GATE_DEPLOY_THR   = 0.60      # >= 60% PASS clusters → DEPLOYABLE
@@ -80,11 +98,13 @@ def load_segment_registry() -> dict:
     return {s["segment_id"]: s for s in segments}
 
 
+
+
 # ---------------------------------------------------------------------------
 # Step 1 — field_02 groupby → sfh_friendly_share, dominant_form
 # ---------------------------------------------------------------------------
 
-def agg_field02() -> dict:
+def agg_field02(total_buildings_per_segment: dict[str, int] | None = None) -> dict:
     """
     Returns {segment_id: {sfh_friendly_share, dominant_form, f02_building_count,
                           f02_confidence, f02_note}}
@@ -100,8 +120,9 @@ def agg_field02() -> dict:
         lambda x: PERSISTENT_TO_SEGMENT.get(x, x)
     )
     logger.info(f"[STEP 1] After translation, segments: {df['segment_id'].unique().tolist()}")
+    _bld_map = total_buildings_per_segment or {}
     for seg_id, grp in df.groupby("segment_id"):
-        n_total = len(grp)
+        n_classified = len(grp)  # buildings that field_02 could classify
         vc      = grp["field_value"].value_counts()
 
         # Stage 1/2 confirmed counts
@@ -112,7 +133,28 @@ def agg_field02() -> dict:
         # Legacy labels (ALLERHEILIGEN_PILOT_SEG_01 rows if Stage 1/2 not yet run)
         n_legacy_sfh    = int(vc.reindex(list(_LEGACY_SFH_TYPES),    fill_value=0).sum())
 
+        # FIX 2026-05-04: Use building universe total as denominator.
+        # Source: buildings.parquet (ALL buildings per segment, unfiltered).
+        # field_02 only classifies buildings with usable OSM tags.
+        # In urban areas, many commercial/office buildings are unclassified,
+        # inflating SFH ratios when using n_classified as denominator.
+        n_total = _bld_map.get(seg_id, n_classified)
+        if n_total < n_classified:
+            logger.warning(
+                f"[DENOMINATOR] {seg_id}: universe total ({n_total}) < "
+                f"classified ({n_classified}). Using classified as floor."
+            )
+            n_total = n_classified
+        n_unclassified = n_total - n_classified
+        if n_unclassified > 0:
+            logger.info(
+                f"[DENOMINATOR_FIX] {seg_id}: universe_total={n_total:,} "
+                f"classified={n_classified:,} unclassified={n_unclassified:,} "
+                f"({n_unclassified/n_total:.1%} of buildings not in field_02)"
+            )
+
         # Conservative formula (fail-closed): only Stage 1 confirmed count
+        # Denominator = ALL buildings (foundation), not just classified
         sfh_confirmed_share = round(n_sfh_confirmed / n_total, 4) if n_total > 0 else None
         mfh_confirmed_share = round(n_mfh_confirmed / n_total, 4) if n_total > 0 else None
         uncertain_share     = round(
@@ -125,17 +167,20 @@ def agg_field02() -> dict:
             (n_sfh_confirmed + n_sfh_weak + n_legacy_sfh) / n_total, 4
         ) if n_total > 0 else None
 
-        dominant = grp["field_value"].mode().iloc[0] if n_total > 0 else None
+        dominant = grp["field_value"].mode().iloc[0] if n_classified > 0 else None
 
         # Confidence depends on geometry source
-        is_point_geom = seg_id in {s for s in REAL_GROUNDED_PLZ_MAP if s != "NEUSS_NORF_01"}
+        is_point_geom = seg_id in {s for s in REAL_GROUNDED_PLZ_MAP if s != "NEUSS_PLZ41470"}
+        n_f02_uncertain = n_classified - n_sfh_confirmed - n_mfh_confirmed - n_sfh_weak - n_mfh_suspect
         if is_point_geom:
             f02_conf = 0.70
             f02_source = "osm_building_tag_proxy_v1"
             f02_note_text = (
                 f"Stage 1/2 label counts: SFH_CONFIRMED={n_sfh_confirmed} "
                 f"MFH_CONFIRMED={n_mfh_confirmed} SFH_WEAK={n_sfh_weak} "
-                f"MFH_SUSPECT={n_mfh_suspect} UNCERTAIN={n_total-n_sfh_confirmed-n_mfh_confirmed-n_sfh_weak-n_mfh_suspect}. "
+                f"MFH_SUSPECT={n_mfh_suspect} UNCERTAIN_LABELED={n_f02_uncertain} "
+                f"NOT_IN_FIELD02={n_unclassified}. "
+                f"Denominator: universe_total={n_total} (classified={n_classified}). "
                 "Source: OSM building tag (POINT geometry). "
                 "UNCERTAIN = fail-closed (tag absent or ambiguous)."
             )
@@ -145,7 +190,9 @@ def agg_field02() -> dict:
             f02_note_text = (
                 f"Stage 1/2 label counts: SFH_CONFIRMED={n_sfh_confirmed} "
                 f"MFH_CONFIRMED={n_mfh_confirmed} SFH_WEAK={n_sfh_weak} "
-                f"MFH_SUSPECT={n_mfh_suspect} UNCERTAIN={n_total-n_sfh_confirmed-n_mfh_confirmed-n_sfh_weak-n_mfh_suspect}. "
+                f"MFH_SUSPECT={n_mfh_suspect} UNCERTAIN_LABELED={n_f02_uncertain} "
+                f"NOT_IN_FIELD02={n_unclassified}. "
+                f"Denominator: universe_total={n_total} (classified={n_classified}). "
                 "Source: spatial adjacency + Stage 2 footprint fallback. "
                 "Adjacency buffer=~1m. effective_sfh_share is conservative (Stage 1 only)."
             )
@@ -157,13 +204,14 @@ def agg_field02() -> dict:
             "effective_sfh_share":  effective_sfh_share,
             "sfh_friendly_share":   sfh_friendly_share,   # legacy
             "dominant_form":        dominant,
-            "f02_building_count":   n_total,
+            "f02_building_count":   n_total,              # foundation total (denominator)
+            "f02_classified_count": n_classified,          # field_02 classified (audit)
             "f02_confidence":       f02_conf,
             "f02_source":           f02_source,
             "f02_note":             f02_note_text,
         }
         logger.info(
-            f"[STEP 1] {seg_id}: {n_total} bldgs "
+            f"[STEP 1] {seg_id}: total={n_total:,} classified={n_classified:,} "
             f"sfh_confirmed={sfh_confirmed_share:.2%} "
             f"mfh_confirmed={mfh_confirmed_share:.2%} "
             f"uncertain={uncertain_share:.2%} "
@@ -174,7 +222,7 @@ def agg_field02() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Step 2 — Foundation gate PLZ bridge for NEUSS_NORF_01
+# Step 2 — Foundation gate PLZ bridge for NEUSS_PLZ41470
 # ---------------------------------------------------------------------------
 
 def agg_foundation_gate(plz: str) -> dict:
@@ -185,7 +233,7 @@ def agg_foundation_gate(plz: str) -> dict:
     Returns dict with gate fields, or a NOT_AVAILABLE record if PLZ not found.
 
     Caveat: join is PLZ-proxied, not segment_id key join.
-    Valid only because PLZ 41470 ≅ NEUSS_NORF_01 territory.
+    Valid only because PLZ 41470 ≅ NEUSS_PLZ41470 territory.
     """
     logger.info(f"[STEP 2] Loading foundation JSON for PLZ={plz}...")
     with open(FOUNDATION, encoding="utf-8") as f:
@@ -248,7 +296,7 @@ def agg_foundation_gate(plz: str) -> dict:
             f"PLZ={plz}: {n_pass}/{n_total} clusters PASS ({pct_pass:.1%}). "
             f"Profiles: {profiles}. sfh_ratio_median={median_r}. "
             "⚠️ Join method: PLZ proxy bridge — no segment_id in foundation JSON. "
-            "Valid only while PLZ 41470 ≅ NEUSS_NORF_01 territory."
+            "Valid only while PLZ 41470 ≅ NEUSS_PLZ41470 territory."
         ),
     }
 
@@ -340,12 +388,13 @@ def assemble_table(
                 }
 
             # ── field_04 ─────────────────────────────────────────────────
-            r4 = f04.get(seg_id, {
+            plz_seg_id = f"NEUSS_PLZ{plz}" if plz else seg_id
+            r4 = f04.get(seg_id) or f04.get(plz_seg_id) or {
                 "pv_coverage_score":        None,
                 "pv_coverage_availability": "NOT_AVAILABLE",
                 "pv_confidence":            None,
                 "pv_source":                None,
-            })
+            }
 
             row_usable = (
                 r1.get("roof_suitability_score") is not None and
@@ -536,7 +585,7 @@ def render_md_summary(df: pd.DataFrame) -> str:
         "",
         "## Key Caveats",
         "",
-        "1. **foundation gate** join is PLZ-proxied — valid only while PLZ 41470 ≅ NEUSS_NORF_01 territory.",
+        "1. **foundation gate** join is PLZ-proxied — valid only while PLZ 41470 ≅ NEUSS_PLZ41470 territory.",
         "2. **field_02 sfh_friendly_share** confidence is per-building (0.90), not aggregate — adjacency classification has known edge cases.",
         "3. **field_04 pv_coverage_score** is E3-capped at 0.50, confidence=0.45 — use as weak modifier only.",
         "4. **field_01 roof_suitability_score** is a raw area ratio (adjusted_area/segment_area_proxy), preserved unchanged. "
@@ -569,8 +618,14 @@ def main():
     segments = load_segment_registry()
     logger.info(f"[0/4] {len(segments)} segments: {list(segments.keys())}")
 
-    # Step 1 — field_02 aggregation
-    f02 = agg_field02()
+    # Step 0b — Building universe counts (denominator for all share calculations)
+    # Source: buildings.parquet — the most upstream, unfiltered data source.
+    # FIX 2026-05-04: replaces Foundation JSON counting (which had coverage gaps).
+    seg_bld_counts = count_buildings_per_segment()
+    logger.info(f"[STEP 0b] Building universe counts: {seg_bld_counts}")
+
+    # Step 1 — field_02 aggregation (with foundation denominator fix)
+    f02 = agg_field02(total_buildings_per_segment=seg_bld_counts)
 
     # Step 2 — Foundation gate per PLZ (use REAL_GROUNDED_PLZ_MAP for real segments)
     plzs_needed = set()
