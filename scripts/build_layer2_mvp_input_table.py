@@ -436,6 +436,7 @@ def assemble_table(
             "sfh_friendly_share":      r2.get("sfh_friendly_share"),   # legacy
             "dominant_form":           r2.get("dominant_form"),
             "f02_building_count":      r2.get("f02_building_count"),
+            "f02_classified_count":    r2.get("f02_classified_count"),
             "f02_confidence":          r2.get("f02_confidence"),
             "f02_classification_note": r2.get("f02_note"),
             # foundation gate
