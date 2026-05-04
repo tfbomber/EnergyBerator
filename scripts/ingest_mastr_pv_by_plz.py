@@ -4,18 +4,24 @@ ingest_mastr_pv_by_plz.py
 Step 1 of D-ESS Phase 2: Extract MaStR PV installation counts for
 ALL 8 Neuss PLZs from local XML exports.
 
+Root-fix (2026-05-04):
+  - Numerator: Only RESIDENTIAL-scale PV units counted (Nettonennleistung <= 30 kWp).
+  - Denominator: Uses building_universe.count_buildings_per_segment() which takes
+    max(buildings.parquet, Foundation dedup) per PLZ for the most reliable count.
+  - Audit fields: pv_total_count and pv_commercial_count preserved for auditability.
+
 Computes per-PLZ:
-  - pv_installation_count : actual installations in MaStR
-  - pv_adoption_rate      : count / estimated_buildings (from buildings.parquet)
+  - pv_installation_count : residential PV units (<= 30 kWp)
+  - pv_adoption_rate      : pv_installation_count / estimated_buildings (unified)
   - pv_market_gap         : 1 - pv_adoption_rate  (remaining opportunity)
-  - data_confidence       : based on install count size
+  - data_confidence       : based on residential install count size
 
 Output:
   data/sources/mastr/mastr_pv_adoption_neuss.parquet
   output/layer2/mastr_pv_adoption_report.json
 
 Regression test:
-  PLZ 41470 count must equal fill_rate_report_plz41470.json total_records_in_plz = 1259
+  PLZ 41470 TOTAL count must equal fill_rate_report_plz41470.json total_records_in_plz = 1259
 """
 
 import json
@@ -151,7 +157,7 @@ def extract_plz_counts_from_xml(xml_dir: Path, target_plzs: set[str]) -> dict[st
     return results
 
 
-def load_building_counts(buildings_parq: Path, plz_to_seg: dict[str, str]) -> dict[str, int]:
+def load_building_counts(plz_to_seg: dict[str, str]) -> dict[str, int]:
     """Load unified building count per PLZ from building_universe (max of buildings.parquet and Foundation)."""
     seg_counts = count_buildings_per_segment()
     seg_to_plz = {v: k for k, v in plz_to_seg.items()}
@@ -245,7 +251,7 @@ def main():
         return
 
     # Step 3: Building counts (unified: max of buildings.parquet and Foundation)
-    bldg_counts = load_building_counts(BUILDINGS_P, PLZ_TO_SEGMENT)
+    bldg_counts = load_building_counts(PLZ_TO_SEGMENT)
 
     # Step 4: Compute adoption table (residential PV / unified buildings)
     df = compute_adoption_table(pv_results, bldg_counts, PLZ_TO_SEGMENT)
