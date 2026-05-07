@@ -274,7 +274,11 @@ if __name__ == "__main__":
     else:
         buildings_df = pd.read_parquet(b_path)
         # POINT-geometry segments are handled by patch_field_pipelines_point_geometry.py
-        POINT_SEGS = {"NEUSS_SUBURB_01", "NEUSS_GRIML_01"}
+        POINT_SEGS = {
+            "NEUSS_PLZ41472", "NEUSS_PLZ41464",
+            "NEUSS_PLZ41460", "NEUSS_PLZ41462", "NEUSS_PLZ41466",
+            "NEUSS_PLZ41468", "NEUSS_PLZ41469"
+        }
         buildings_adj = buildings_df[~buildings_df["segment_id"].isin(POINT_SEGS)]
         logger.info(
             f"[MAIN] Running Stage 1/2 on {len(buildings_adj)} adjacency-path buildings "

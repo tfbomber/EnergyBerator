@@ -66,7 +66,12 @@ def compute_scores(clusters: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         max(0.0, float(c["sfh_total_ratio"]) - float(c["mfh_ratio"]))
         for c in clusters
     ]
-    raw_scale = [float(c["building_count_total"]) for c in clusters]
+    # Scale: use cluster_building_count (range-scoped, corrected in v2) when available.
+    # Falls back to building_count_total for backward compatibility with pre-v2 data.
+    raw_scale = [
+        float(c.get("cluster_building_count") or c["building_count_total"])
+        for c in clusters
+    ]
     raw_purity = [1.0 - float(c["other_ratio"]) for c in clusters]
 
     # Normalize each dimension independently within the universe
@@ -93,13 +98,13 @@ def compute_scores(clusters: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             sfh_ratio=float(c["sfh_total_ratio"]),
             mfh_ratio=float(c["mfh_ratio"]),
             other_ratio=float(c["other_ratio"]),
-            scale=float(c["building_count_total"]),
+            scale=float(c.get("cluster_building_count") or c["building_count_total"]),
             q75_scale=q75_scale,
         )
         secondary = _resolve_secondary_reason(
             mfh_ratio=float(c["mfh_ratio"]),
             other_ratio=float(c["other_ratio"]),
-            scale=float(c["building_count_total"]),
+            scale=float(c.get("cluster_building_count") or c["building_count_total"]),
             q25_scale=q25_scale,
         )
 

@@ -1,4 +1,5 @@
 import streamlit as st
+from ui.i18n import t, render_lang_switcher
 
 
 def set_view_and_nav(view_name, nav_func, target=None):
@@ -12,38 +13,38 @@ def render_navigator(navigate_to):
     # ================================================================
     # SECTION 1 — DATA INTAKE
     # ================================================================
-    st.markdown("#### 📥 Data Intake")
+    st.markdown(t("nav.section_intake"))
 
     is_prop = st.session_state.get("workspace_view", "PROPERTY") == "PROPERTY"
 
     st.button(
-        "📄 1. 项目概览 (Overview)",
+        t("nav.overview"),
         use_container_width=True,
         type="primary" if st.session_state.project_state in ["S0", "S1"] and is_prop else "secondary",
         on_click=set_view_and_nav, args=("PROPERTY", navigate_to, None),
     )
     st.button(
-        "📝 2. 资料输入 (Input Facts)",
+        t("nav.input_facts"),
         use_container_width=True,
         on_click=set_view_and_nav, args=("PROPERTY", navigate_to, None),
     )
-    st.markdown("- 🏠 房屋信息")
-    st.markdown("- ⚡ 项目类型 (PV/WP)")
-    st.markdown("- 💶 报价单/合同")
+    st.markdown(t("nav.house_info"))
+    st.markdown(t("nav.project_type"))
+    st.markdown(t("nav.quote"))
 
-    st.markdown("**补贴路径 (自动衍生)**")
-    st.checkbox("KfW 458 联邦计划", value=True, disabled=True)
-    st.checkbox("BAFA 联邦计划 (可选)", value=False, disabled=True)
-    st.checkbox("Düsseldorf 地方计划", value=True, disabled=True)
+    st.markdown(t("nav.subsidy_path"))
+    st.checkbox(t("nav.kfw"),           value=True,  disabled=True)
+    st.checkbox(t("nav.bafa"),          value=False, disabled=True)
+    st.checkbox(t("nav.city_programme"), value=True, disabled=True)
 
-    st.markdown("**输出模块**")
+    st.markdown(t("nav.output_modules"))
     st.button(
-        "⏳ 合规时间线 (Timeline)",
+        t("nav.timeline"),
         use_container_width=True,
         on_click=set_view_and_nav, args=("PROPERTY", navigate_to, None),
     )
     st.button(
-        "📊 报告与导出 (Report)",
+        t("nav.report"),
         use_container_width=True,
         on_click=set_view_and_nav, args=("PROPERTY", navigate_to, "Report"),
     )
@@ -53,11 +54,11 @@ def render_navigator(navigate_to):
     # ================================================================
     # SECTION 2 — CORE ANALYSIS (Internal)
     # ================================================================
-    st.markdown("#### 🔬 Core Analysis")
+    st.markdown(t("nav.section_analysis"))
 
     is_neuss = st.session_state.get("workspace_view") == "NEUSS_MVP"
     st.button(
-        "📍 诺伊斯 MVP (Neuss Target)",
+        t("nav.neuss_mvp"),
         use_container_width=True,
         type="primary" if is_neuss else "secondary",
         on_click=set_view_and_nav, args=("NEUSS_MVP", navigate_to, None),
@@ -65,7 +66,7 @@ def render_navigator(navigate_to):
 
     is_foundation = st.session_state.get("workspace_view") == "FOUNDATION_FILTER"
     st.button(
-        "🏗️ Foundation Filter (结构筛查)",
+        t("nav.foundation_filter"),
         use_container_width=True,
         type="primary" if is_foundation else "secondary",
         on_click=set_view_and_nav, args=("FOUNDATION_FILTER", navigate_to, None),
@@ -73,7 +74,7 @@ def render_navigator(navigate_to):
 
     is_l2review = st.session_state.get("workspace_view") == "LAYER2_REVIEW"
     st.button(
-        "🔍 Layer 2 Review (排名预览)",
+        t("nav.layer2_review"),
         use_container_width=True,
         type="primary" if is_l2review else "secondary",
         on_click=set_view_and_nav, args=("LAYER2_REVIEW", navigate_to, None),
@@ -81,7 +82,7 @@ def render_navigator(navigate_to):
 
     is_general = st.session_state.get("workspace_view") == "GENERAL_WORKSPACE"
     st.button(
-        "📊 General Track Workspace",
+        t("nav.general_workspace"),
         use_container_width=True,
         type="primary" if is_general else "secondary",
         on_click=set_view_and_nav, args=("GENERAL_WORKSPACE", navigate_to, None),
@@ -89,7 +90,7 @@ def render_navigator(navigate_to):
 
     is_street_ranking = st.session_state.get("workspace_view") == "STREET_RANKING"
     st.button(
-        "🏘 PV Street Ranking (Internal)",
+        t("nav.street_ranking_internal"),
         use_container_width=True,
         type="primary" if is_street_ranking else "secondary",
         on_click=set_view_and_nav, args=("STREET_RANKING", navigate_to, None),
@@ -100,11 +101,11 @@ def render_navigator(navigate_to):
     # ================================================================
     # SECTION 3 — CUSTOMER VIEW
     # ================================================================
-    st.markdown("#### 👤 Customer View")
+    st.markdown(t("nav.section_customer"))
 
     is_client_ranking = st.session_state.get("workspace_view") == "CLIENT_STREET_RANKING"
     st.button(
-        "🏘 PV Street Ranking (Kunde)",
+        t("nav.street_ranking_customer"),
         use_container_width=True,
         type="primary" if is_client_ranking else "secondary",
         on_click=set_view_and_nav, args=("CLIENT_STREET_RANKING", navigate_to, None),
@@ -112,7 +113,7 @@ def render_navigator(navigate_to):
 
     is_client_roi = st.session_state.get("workspace_view") == "CLIENT_ROI_REPORT"
     st.button(
-        "📄 ROI Bericht (Kunde)",
+        t("nav.roi_report_customer"),
         use_container_width=True,
         type="primary" if is_client_roi else "secondary",
         on_click=set_view_and_nav, args=("CLIENT_ROI_REPORT", navigate_to, None),
@@ -120,7 +121,13 @@ def render_navigator(navigate_to):
 
     st.divider()
     st.button(
-        "👈 返回 Quick Scan",
+        t("app.back_scan"),
         use_container_width=True,
         on_click=set_view_and_nav, args=("PROPERTY", navigate_to, "Landing"),
     )
+
+    # ================================================================
+    # LANGUAGE SWITCHER — pinned at bottom of sidebar
+    # ================================================================
+    st.divider()
+    render_lang_switcher()

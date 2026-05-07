@@ -150,8 +150,10 @@ def run():
 
         # Deployment score (conservative: no sfh_confirmed, use neutral gate/form)
         deploy = _deploy_score(sfh_conf=0.30, gate_label="MIXED", dominant_form="UNCERTAIN")
+        # risk_penalty: audit column only — NOT applied to priority_score (Fix C 2026-04-15).
+        # Mirrors change in field_07: uncertainty already embedded in final_score via structural_certainty.
         risk   = round(truly_unc * 0.30, 4)
-        priority = round(final_score * deploy * (1.0 - risk), 4)
+        priority = round(final_score * deploy, 4)   # Fix C: no (1 - risk_penalty)
 
         log.info(
             "[NEW_SEG] %s: base=%.4f fern×%.2f hp×%.2f certainty×%.3f → final=%.4f | "

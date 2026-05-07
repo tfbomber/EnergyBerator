@@ -1,10 +1,10 @@
 """
 extract_osm_plz41464_retry.py
 ==============================
-Single-PLZ retry extractor for PLZ 41464 → NEUSS_GRIML_01.
+Single-PLZ retry extractor for PLZ 41464 → NEUSS_PLZ41464.
 
 Differences from extract_osm_buildings_by_plz.py:
-  - Only PLZ 41464 (NEUSS_GRIML_01)
+  - Only PLZ 41464 (NEUSS_PLZ41464)
   - Dual-endpoint fallback: kumi.systems first, then overpass-api.de
   - 10s pre-request cooldown to respect rate limits
   - Tight bbox: (51.130, 6.660, 51.165, 6.720) — Grimlinghausen / Allerheiligen core
@@ -33,7 +33,7 @@ BUILDINGS_OUT = BASE_DIR / "data" / "buildings.parquet"
 AUDIT_DIR     = BASE_DIR / "output" / "layer2"
 
 PLZ       = "41464"
-SEGMENT   = "NEUSS_GRIML_01"
+SEGMENT   = "NEUSS_PLZ41464"
 BBOX      = (51.130, 6.660, 51.165, 6.720)   # Grimlinghausen / Allerheiligen core
 
 ENDPOINTS = [

@@ -1,0 +1,15 @@
+{
+  "run_timestamp_utc": "2026-04-11T20:42:50.463714+00:00",
+  "target_plz_segments": {
+    "41460": "NEUSS_PLZ41460"
+  },
+  "extractions": [
+    {
+      "plz": "41460",
+      "segment_id": "NEUSS_PLZ41460",
+      "overpass_count": 7424,
+      "valid_rows": 844
+    }
+  ],
+  "total_new_rows": 844
+}

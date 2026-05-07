@@ -12,7 +12,7 @@ Scope
 -----
 - Only processes REAL_GROUNDED segments (segment_registry status = REAL_GROUNDED)
 - SYNTHETIC segments are explicitly excluded from real PV coverage
-- Current pilot: NEUSS_NORF_01 / PLZ 41470 only
+- Current pilot: NEUSS_PLZ41470 / PLZ 41470 only
 
 Architecture (see pv_coverage_audit_plan.md)
 --------------------------------------------
@@ -95,7 +95,7 @@ E3_MAX_FIELD_VALUE   = 0.50   # hard cap after penalty
 # and would produce meaningless adoption rates.
 # ---------------------------------------------------------------------------
 REAL_GROUNDED_SEGMENTS = {
-    "NEUSS_NORF_01": {
+    "NEUSS_PLZ41470": {
         "plz": "41470",
         "segment_buildings": 298,        # from segment_registry, geometry_source=osm_buildings_ground_truth
         "plz_buildings": 4250,           # baseline estimate for PLZ 41470 (Neuss Norf/Rosellerheide)
@@ -103,7 +103,7 @@ REAL_GROUNDED_SEGMENTS = {
         "city": "Neuss",
         "persistent_id": "ALLERHEILIGEN_PILOT_SEG_01",
     },
-    "NEUSS_SUBURB_01": {
+    "NEUSS_PLZ41472": {
         "plz": "41472",
         "segment_buildings": 3436,       # from OSM extraction (PLZ 41472 addr:postcode filter, expansion round 1)
         "plz_buildings": 6500,           # baseline estimate for PLZ 41472 (Norf / Selikum areas)
@@ -111,13 +111,53 @@ REAL_GROUNDED_SEGMENTS = {
         "city": "Neuss",
         "persistent_id": "NEUSS_SUBURBAN_01",
     },
-    "NEUSS_GRIML_01": {
+    "NEUSS_PLZ41464": {
         "plz": "41464",
         "segment_buildings": 863,        # from OSM extraction (PLZ 41464 wider bbox, expansion round 2)
         "plz_buildings": 5000,           # baseline estimate for PLZ 41464 (Grimlinghausen / Allerheiligen)
         "morphology_factor": 0.95,       # slight discount — mixed SFH/rowhouse profile, higher morphology variance
         "city": "Neuss",
         "persistent_id": "NEUSS_DENSE_01",
+    },
+    "NEUSS_PLZ41460": {
+        "plz": "41460",
+        "segment_buildings": 844,
+        "plz_buildings": 1000,
+        "morphology_factor": 0.80,       # dense city center
+        "city": "Neuss",
+        "persistent_id": "NEUSS_PLZ41460",
+    },
+    "NEUSS_PLZ41462": {
+        "plz": "41462",
+        "segment_buildings": 7021,
+        "plz_buildings": 8500,
+        "morphology_factor": 0.90,
+        "city": "Neuss",
+        "persistent_id": "NEUSS_PLZ41462",
+    },
+    "NEUSS_PLZ41466": {
+        "plz": "41466",
+        "segment_buildings": 4205,
+        "plz_buildings": 5200,
+        "morphology_factor": 0.95,
+        "city": "Neuss",
+        "persistent_id": "NEUSS_PLZ41466",
+    },
+    "NEUSS_PLZ41468": {
+        "plz": "41468",
+        "segment_buildings": 4843,
+        "plz_buildings": 6000,
+        "morphology_factor": 0.95,
+        "city": "Neuss",
+        "persistent_id": "NEUSS_PLZ41468",
+    },
+    "NEUSS_PLZ41469": {
+        "plz": "41469",
+        "segment_buildings": 3934,
+        "plz_buildings": 5000,
+        "morphology_factor": 0.95,
+        "city": "Neuss",
+        "persistent_id": "NEUSS_PLZ41469",
     },
 }
 

@@ -24,11 +24,11 @@ Fix (MVP-appropriate):
        This proxy is conservative and documented. Confidence is reduced to 0.65.
 
 Affected segments:
-    NEUSS_SUBURB_01  (3,436 POINT buildings from PLZ 41472)
+    NEUSS_PLZ41472  (3,436 POINT buildings from PLZ 41472)
 
 Output:
     data/fields/field_02_building_type.parquet  (appended, not replaced for other segments)
-    data/fields/field_01_roof_potential.parquet (NEUSS_SUBURB_01 row updated)
+    data/fields/field_01_roof_potential.parquet (NEUSS_PLZ41472 row updated)
 
 Audit trail:
     output/layer2/patch_point_geometry_<ts>.json
@@ -75,7 +75,11 @@ UTILIZATION_FACTORS = {
 # Segment area proxy: sum of buffered footprint areas (use 110% of footprint sum as proxy)
 AREA_PROXY_MULTIPLIER = 3.5    # realistic building density: footprint ≈ 1/3.5 of segment area
 
-TARGET_SEGMENTS_POINT = {"NEUSS_SUBURB_01", "NEUSS_GRIML_01"}
+TARGET_SEGMENTS_POINT = {
+    "NEUSS_PLZ41472", "NEUSS_PLZ41464",
+    "NEUSS_PLZ41460", "NEUSS_PLZ41462", "NEUSS_PLZ41466",
+    "NEUSS_PLZ41468", "NEUSS_PLZ41469"
+}
 
 # ---------------------------------------------------------------------------
 # Stage 1 tag sets — mirrored from fields/field_02_building_type.py
@@ -177,7 +181,7 @@ def patch_field02(buildings_df: pd.DataFrame) -> pd.DataFrame:
 def patch_field01(buildings_df: pd.DataFrame) -> pd.DataFrame:
     """
     For POINT-geometry segments: estimate field_01 using standard footprint area proxy.
-    Updates NEUSS_SUBURB_01 row in field_01 parquet.
+    Updates NEUSS_PLZ41472 row in field_01 parquet.
     """
     logger.info("[PATCH F01] Computing field_01 area proxy for POINT-geometry segments...")
     existing_f01 = pd.read_parquet(FIELD01_P) if FIELD01_P.exists() else pd.DataFrame()

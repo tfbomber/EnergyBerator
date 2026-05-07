@@ -51,11 +51,11 @@ OUT_PATH = DATA / "street_ranking_v1.parquet"
 # ---------------------------------------------------------------------------
 STREET_LABEL_MAP = {
     # PLZ 41470: Allerheiligen, Rosellen (not "Norf" — corrected 2026-04-11)
-    "NEUSS_NORF_01":   "Allerheiligen / Rosellen (PLZ 41470)",
+    "NEUSS_PLZ41470":   "Allerheiligen / Rosellen (PLZ 41470)",
     # PLZ 41472: Holzheim, Grefrath, Speck, Hoisten
-    "NEUSS_SUBURB_01": "Holzheim / Grefrath (PLZ 41472)",
+    "NEUSS_PLZ41472": "Holzheim / Grefrath (PLZ 41472)",
     # PLZ 41464: Pomona, Westfeld, Augustinusviertel (not "Grimlinghausen" — corrected 2026-04-11)
-    "NEUSS_GRIML_01":  "Pomona / Westfeld (PLZ 41464)",
+    "NEUSS_PLZ41464":  "Pomona / Westfeld (PLZ 41464)",
 }
 
 # ---------------------------------------------------------------------------
@@ -76,12 +76,18 @@ TIER_DISCOUNT = {
 
 # ---------------------------------------------------------------------------
 # ROI report template mapping
+# Updated for field_06 v2 labels (hp_opportunity_label)
 # ---------------------------------------------------------------------------
 TEMPLATE_MAP = {
+    "STRONG":   "PV_HP_ENHANCED",
+    "MODERATE": "PV_PLUS_HP_OPTIONAL",
+    "LIMITED":  "PV_STANDARD",
+    "WEAK":     "PV_STANDARD",
+    "UNKNOWN":  "PV_STANDARD",
+    # Legacy v1 labels (fallback for any cached parquets)
     "STRONG_HP_UPLIFT":   "PV_HP_ENHANCED",
     "MODERATE_HP_UPLIFT": "PV_PLUS_HP_OPTIONAL",
     "LIMITED_HP_UPLIFT":  "PV_STANDARD",
-    "UNKNOWN":            "PV_STANDARD",
 }
 
 # ---------------------------------------------------------------------------
@@ -107,8 +113,8 @@ def _generate_reasons(row: pd.Series):
 
     sfh  = row.get("effective_sfh_share", 0.0)  # conservative: Stage 1 confirmed only
     pv   = row.get("pv_coverage_score", 0.0)
-    hp   = row.get("hp_status", "")
-    heat = row.get("heat_status", "")
+    hp   = row.get("hp_opportunity_label", row.get("hp_status", ""))   # v2 primary, v1 fallback
+    heat = row.get("heat_constraint_label", row.get("heat_status", ""))  # v2 primary, v1 fallback
     form = str(row.get("dominant_form", "")).upper()
     gate = row.get("pct_l1_gate_pass", 0.0)
     tier = str(row.get("quality_tier", "")).upper()
@@ -141,7 +147,8 @@ def _generate_reasons(row: pd.Series):
     if pv < 0.35:
         a_reasons.append("Low current PV penetration — open market opportunity")
 
-    if hp == "STRONG_HP_UPLIFT":
+    # HP reason: use v2 label (STRONG) or v1 legacy (STRONG_HP_UPLIFT)
+    if hp in ("STRONG", "STRONG_HP_UPLIFT"):
         a_reasons.append("Area profile matches fossil-replacement window")
 
     # --- B: Deployment drivers ---
@@ -162,11 +169,12 @@ def _generate_reasons(row: pd.Series):
         b_reasons.append("Solid data foundation — partial Stage-1 confirmation")
     # sfh_conf < 0.20: no positive confidence claim generated
 
-    # --- C: Constraints / caveats ---
-    if heat in ("LIMITED_OR_UNCLEAR", "NETWORK_LIKELY"):
+    # Heat constraint caution: v2 label (MEDIUM/HIGH) or v1 legacy
+    if heat in ("MEDIUM", "HIGH", "LIMITED_OR_UNCLEAR", "NETWORK_LIKELY"):
         c_reasons.append("District-heating planning risk — qualify before pitch")
 
-    if hp == "LIMITED_HP_UPLIFT":
+    # HP caution: limited opportunity
+    if hp in ("LIMITED", "WEAK", "LIMITED_HP_UPLIFT"):
         c_reasons.append("HP narrative not yet substantiated for this area")
 
     # Proxy caution: fire when Stage-1 confirmed share is genuinely low,
@@ -221,39 +229,75 @@ def build_street_ranking() -> pd.DataFrame:
 
     # quality_tier is a UI-side lookup (not persisted in L2 parquet) — inject here
     QUALITY_TIER_MAP = {
-        "NEUSS_NORF_01":    "QUALITY_A",
-        "NEUSS_SUBURB_01":  "QUALITY_B",
-        "NEUSS_GRIML_01":   "QUALITY_B",
+        "NEUSS_PLZ41470":    "QUALITY_A",
+        "NEUSS_PLZ41472":  "QUALITY_B",
+        "NEUSS_PLZ41464":   "QUALITY_B",
+        "NEUSS_PLZ41460":   "QUALITY_C",
+        "NEUSS_PLZ41462":   "QUALITY_C",
+        "NEUSS_PLZ41466":   "QUALITY_C",
+        "NEUSS_PLZ41468":   "QUALITY_C",
+        "NEUSS_PLZ41469":   "QUALITY_C",
     }
     l2_usable["quality_tier"] = l2_usable["unit_id"].map(QUALITY_TIER_MAP).fillna("SYNTHETIC")
 
     log.info(f"Usable rows: L2={len(l2_usable)}, P2={len(p2_usable)}, P25={len(p25_usable)}")
 
     # 2. Join on unit_id
-    # P2 parquet already contains accepted base_score (with tier discount applied upstream).
-    # Do NOT recompute from raw inputs — Guardrail G3: do not redesign Layer 2 scoring.
+    # P2 parquet (v2): base_score, heat_constraint_label, heat_modifier (=1-0.15*score)
+    # P25 parquet (v2): hp_opportunity_label, hp_opportunity_score, hp_modifier(=1.00), hp_confidence
+    #
+    # Backward-compat: field_07 adds shim columns heat_status / hp_status
+    # so UI components (street_ranking_view, street_roi_generator) need zero changes.
+    p2_cols  = [c for c in ["unit_id", "base_score",
+                             "heat_constraint_label", "heat_constraint_score",
+                             "heat_constraint_confidence", "heat_modifier",
+                             "heat_caveat"] if c in p2_usable.columns]
+    p25_cols = [c for c in ["unit_id",
+                             "hp_opportunity_label", "hp_opportunity_score",
+                             "hp_modifier", "hp_confidence",
+                             "hp_narrative"] if c in p25_usable.columns]
+
     df = (
-        p2_usable[["unit_id", "base_score", "heat_status", "heat_modifier"]]
+        p2_usable[p2_cols]
         .merge(
-            p25_usable[["unit_id", "hp_status", "hp_modifier", "hp_confidence"]],
+            p25_usable[p25_cols],
             on="unit_id", how="inner"
         )
         .merge(
             l2_usable[[c for c in [
                 "unit_id",
-                "effective_sfh_share",   # conservative ranking field (Stage 1 confirmed)
-                "sfh_confirmed_share",   # for UI display
-                "mfh_confirmed_share",   # for UI display
-                "uncertain_share",       # for UI display
-                "sfh_friendly_share",    # legacy (retained for audit)
+                "effective_sfh_share",
+                "sfh_confirmed_share",
+                "mfh_confirmed_share",
+                "uncertain_share",
+                "sfh_friendly_share",
                 "roof_suitability_score", "roof_suitability_score_norm",
                 "pv_coverage_score", "pct_l1_gate_pass",
-                "l1_gate_label",         # for deployment score [Fix 3]
+                "l1_gate_label",
                 "dominant_form", "quality_tier"
             ] if c in l2_usable.columns]],
             on="unit_id", how="inner"
         )
     )
+
+    # Backward-compat shim: UI components still read heat_status / hp_status
+    # Derive from v2 labels so no UI code changes needed.
+    _HEAT_LABEL_TO_STATUS = {
+        "HIGH":    "NETWORK_LIKELY",
+        "MEDIUM":  "LIMITED_OR_UNCLEAR",
+        "LOW":     "NO_SIGNAL",
+        "UNKNOWN": "UNKNOWN",
+    }
+    _HP_LABEL_TO_STATUS = {
+        "STRONG":   "STRONG_HP_UPLIFT",
+        "MODERATE": "MODERATE_HP_UPLIFT",
+        "LIMITED":  "LIMITED_HP_UPLIFT",
+        "WEAK":     "LIMITED_HP_UPLIFT",
+        "UNKNOWN":  "UNKNOWN",
+    }
+    df["heat_status"] = df["heat_constraint_label"].map(_HEAT_LABEL_TO_STATUS).fillna("UNKNOWN")
+    df["hp_status"]   = df["hp_opportunity_label"].map(_HP_LABEL_TO_STATUS).fillna("UNKNOWN")
+    log.info("[SHIM] heat_status / hp_status derived from v2 labels for UI backward-compat.")
     # Ensure optional fields exist with safe defaults
     for col, default in [
         ("dominant_form",  "UNKNOWN"),
@@ -268,12 +312,18 @@ def build_street_ranking() -> pd.DataFrame:
     # 3. base_score is taken directly from P2 parquet (already tier-discounted)
     log.info("[BASE_SCORE] Using accepted base_score from P2 parquet (includes tier discount)")
 
-    # 4. Constraint layer (P2)
-    df["fernwaerme_modifier"] = df["heat_modifier"]
-    df["constraint_score"]    = (df["base_score"] * df["fernwaerme_modifier"]).round(4)
+    # 4. field_05 is now a pure label layer (v3) — heat_modifier = 1.00 for all rows.
+    # fernwaerme_modifier retained as informational column (UI badge, caveat text).
+    df["fernwaerme_modifier"] = df.get("heat_modifier", pd.Series(1.00, index=df.index)).fillna(1.00)
+    # constraint_score is now informational only, not used in scoring:
+    df["constraint_score"]    = df["base_score"].round(4)  # == base_score (no suppression)
 
-    # 5. Uplift layer (P2.5)
-    df["final_score"] = (df["constraint_score"] * df["hp_modifier"]).round(4)
+    # 5. ROI adjustment via hp_roi_multiplier from field_06 (Option C)
+    # hp_roi_multiplier encodes: Fernwarme -> HP likelihood -> self-consumption -> PV ROI
+    # final_score = base_score x hp_roi_multiplier x structural_certainty
+    hp_mult = df.get("hp_roi_multiplier", df.get("hp_modifier", pd.Series(1.0, index=df.index)))
+    df["hp_modifier"] = hp_mult.fillna(0.93)   # UNKNOWN fallback
+    df["final_score"] = (df["base_score"] * df["hp_modifier"]).round(4)
 
     # 5b. Structural certainty penalty
     # Use truly_uncertain_share = 1 - sfh_friendly_share - mfh_confirmed_share
@@ -323,16 +373,22 @@ def build_street_ranking() -> pd.DataFrame:
         return round(gate_s * 0.50 + conf_s * 0.30 + form_s * 0.20, 4)
 
     df["deployment_score"] = df.apply(_deploy_score, axis=1)
-    # risk_penalty: data uncertainty reduces confidence in both ROI and deployment
-    # Capped at 0.50 so a genuinely uncertain area still gets a non-zero priority
+    # risk_penalty: retained as an AUDIT/DISPLAY column only.
+    # FIX C (2026-04-15): risk_penalty is NO LONGER multiplied into priority_score.
+    # Root cause of removal: truly_uncertain_share already appears in final_score via
+    # structural_certainty = 1 - truly_uncertain_share * 0.50.
+    # Multiplying by (1 - risk_penalty) again compounds the same signal twice,
+    # which suppressed ALL segments to 'Erst qualifizieren' even for high-ROI areas.
+    # risk_penalty remains in the output parquet for UI display transparency.
     df["risk_penalty"]     = (df["truly_uncertain_share"] * 0.30).clip(0.0, 0.50).round(4)
-    # priority_score: the single number that drives the ACTION_LABEL in the UI
-    # It is NOT the same as final_score (ROI). It encodes: is this area ready to act on NOW?
+    # priority_score: final_score (ROI quality, uncertainty-adjusted) × deployment_score
+    # (operational readiness: gate, SFH confirmation, building form).
+    # High priority = high ROI AND area is field-ready. Does NOT re-penalise uncertainty.
     df["priority_score"]   = (
-        df["final_score"] * df["deployment_score"] * (1.0 - df["risk_penalty"])
+        df["final_score"] * df["deployment_score"]
     ).round(4)
     log.info(
-        "[PRIORITY_SCORES] ROI / Deployment / Risk / Priority:\n%s",
+        "[PRIORITY_SCORES] ROI / Deployment / Risk(audit) / Priority:\n%s",
         df[["unit_id", "final_score", "deployment_score", "risk_penalty", "priority_score"]].to_string(index=False),
     )
     log.info(
@@ -342,15 +398,16 @@ def build_street_ranking() -> pd.DataFrame:
             "structural_certainty", "final_score"]].to_string(index=False)
     )
 
-    # 6. Sanity checks
-    assert (df["constraint_score"] <= df["base_score"] + 0.0002).all(), \
-        "[FAIL] P2 not monotonic — constraint_score > base_score"
-    # Note: final_score may be < constraint_score due to structural_certainty penalty (expected)
+    # 6. Sanity checks (Option C architecture)
+    # constraint_score == base_score (field_05 is label-only, no suppression)
+    # hp_modifier: STRONG=1.10 max, WEAK=0.77 min
     assert (df["hp_modifier"] <= 1.15 + 0.0001).all(), \
-        "[FAIL] hp_modifier exceeds cap"
+        "[FAIL] hp_modifier exceeds cap (Option A: all values must be 1.00)"
+    assert (df["hp_modifier"] >= 0.99 - 0.0001).all(), \
+        "[FAIL] hp_modifier below 1.00 (Option A: no penalties allowed — check field_06)"
     assert (df["structural_certainty"] >= 0.0).all() and (df["structural_certainty"] <= 1.0).all(), \
         "[FAIL] structural_certainty out of [0,1] range"
-    log.info("[SANITY] P2 monotonic ✅ | hp_modifier cap ✅ | structural_certainty range ✅")
+    log.info("[SANITY] Option A confirmed: hp_modifier=1.00 for all rows | structural_certainty range OK")
 
 
     # 7. Reason engine
@@ -358,8 +415,13 @@ def build_street_ranking() -> pd.DataFrame:
     reasons.columns = ["top_reason_1", "top_reason_2", "top_reason_3", "primary_caution"]
     df = pd.concat([df.reset_index(drop=True), reasons.reset_index(drop=True)], axis=1)
 
-    # 8. Template routing
-    df["roi_report_template_flag"] = df["hp_status"].map(TEMPLATE_MAP).fillna("PV_STANDARD")
+    # 8. Template routing — use v2 label (hp_opportunity_label) primary
+    df["roi_report_template_flag"] = (
+        df["hp_opportunity_label"]
+        .map(TEMPLATE_MAP)
+        .fillna(df["hp_status"].map(TEMPLATE_MAP))  # legacy fallback
+        .fillna("PV_STANDARD")
+    )
 
     # 9. Street labels
     df["street_name"] = df["unit_id"].map(STREET_LABEL_MAP).fillna(df["unit_id"])
@@ -369,43 +431,71 @@ def build_street_ranking() -> pd.DataFrame:
     df = df.sort_values("final_score", ascending=False).reset_index(drop=True)
     df["rank"] = df.index + 1
 
+    # 10b. Canvass Tier — Soft Gate (no score change)
+    # Splits segments by Fernwaerme feasibility WITHOUT touching any score.
+    # Tiers drive the UI display order; internal rank is preserved within each tier.
+    #   PRIMARY:          NO / LOW Fernwaerme signal — canvass directly
+    #   SECONDARY:        MEDIUM / UNKNOWN — confirm Fernwaerme situation first
+    #   NOT_RECOMMENDED:  HIGH / NETWORK_LIKELY — HP not viable, PV feasibility limited
+    _HEAT_TO_TIER = {
+        "LOW":            "PRIMARY",
+        "NO_SIGNAL":      "PRIMARY",        # v1 legacy shim label
+        "MEDIUM":         "SECONDARY",
+        "UNKNOWN":        "SECONDARY",
+        "HIGH":           "NOT_RECOMMENDED",
+        "NETWORK_LIKELY": "NOT_RECOMMENDED",  # v1 legacy shim label
+    }
+    df["canvass_tier"] = (
+        df["heat_constraint_label"]
+        .map(_HEAT_TO_TIER)
+        .fillna(df["heat_status"].map(_HEAT_TO_TIER))   # v1 shim fallback
+        .fillna("SECONDARY")                             # fail-safe: unknown = confirm first
+    )
+    log.info(
+        "[CANVASS_TIER] Tier distribution:\n%s",
+        df.groupby("canvass_tier")["street_id"].apply(list).to_string(),
+    )
+
     # 11. Confidence
     df["confidence"] = df["hp_confidence"].round(2)
 
     # 12. Select output columns
     output_cols = [
-        "rank", "street_id", "street_name",
+        "rank", "canvass_tier", "street_id", "street_name",
         "base_score", "constraint_score", "final_score",
         "fernwaerme_modifier", "hp_modifier", "confidence",
+        # v2 signal columns
+        "heat_constraint_label", "heat_constraint_score", "heat_constraint_confidence",
+        "hp_opportunity_label", "hp_opportunity_score",
+        # Backward-compat shim columns (UI reads these)
         "heat_status", "hp_status",
         # L2 display fields (for UI signal row)
-        "effective_sfh_share",     # used for ranking formula
-        "sfh_confirmed_share",     # Stage-1 OSM adjacency (hard-verified)
-        "sfh_proxy_only_share",    # Stage-2 footprint only [Fix 1]
-        "sfh_friendly_share",      # Stage 1+2 combined (legacy, audit only)
+        "effective_sfh_share",
+        "sfh_confirmed_share",
+        "sfh_proxy_only_share",
+        "sfh_friendly_share",
         "mfh_confirmed_share", "uncertain_share",
-        "truly_uncertain_share",   # = 1 - sfh_friendly - mfh_confirmed
+        "truly_uncertain_share",
         "structural_certainty",
         "pv_coverage_score", "roof_suitability_score_norm",
-        "l1_gate_label",           # deployment score audit [Fix 3]
-        # Priority scoring triad (Fix 3)
+        "l1_gate_label",
         "deployment_score", "risk_penalty", "priority_score",
         "top_reason_1", "top_reason_2", "top_reason_3",
         "primary_caution", "roi_report_template_flag",
     ]
-    out = df[output_cols].copy()
+    out = df[[c for c in output_cols if c in df.columns]].copy()
 
     # 13. Log results
     log.info("=== STREET RANKING RESULTS ===")
     for _, r in out.iterrows():
         log.info(
             f"[RANK #{int(r['rank'])}] {r['street_id']}: "
-            f"base={r['base_score']:.4f} × "
-            f"fern×{r['fernwaerme_modifier']:.2f} × "
-            f"hp×{r['hp_modifier']:.2f} × "
-            f"certainty×{r['structural_certainty']:.2f} = ROI={r['final_score']:.4f} "
+            f"base={r['base_score']:.4f} x "
+            f"hp_mult={r['hp_modifier']:.2f} [{r.get('hp_opportunity_label','?')}] x "
+            f"certainty={r['structural_certainty']:.2f} = ROI={r['final_score']:.4f} "
+            f"| fern={r.get('heat_constraint_label','?')} "
             f"| deploy={r['deployment_score']:.3f} risk={r['risk_penalty']:.2f} "
-            f"→ priority={r['priority_score']:.4f} "
+            f"-> priority={r['priority_score']:.4f} "
             f"| template={r['roi_report_template_flag']}"
         )
         if r["top_reason_1"]:

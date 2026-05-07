@@ -1,4 +1,5 @@
 import streamlit as st
+from ui.i18n import t
 from ui.components.state_bar import render_state_bar
 from ui.components.navigator import render_navigator
 from ui.components.canvas import render_canvas
@@ -13,7 +14,7 @@ def render_workspace(navigate_to):
 
     # 1. Navigator (Left Sidebar)
     with st.sidebar:
-        st.markdown("### D-ESS Navigator 🧭")
+        st.markdown(f"### {t('app.nav_title')}")
         render_navigator(navigate_to)
 
     if st.session_state.workspace_view == "PROPERTY":
@@ -35,10 +36,10 @@ def render_workspace(navigate_to):
         st.markdown("---")
         
         # 4. Copilot & Test Generator (Bottom)
-        with st.expander("🤖 D-ESS Copilot (当前项目防呆助手)", expanded=True):
+        with st.expander(t("ws.copilot_expander"), expanded=True):
             render_copilot()
 
-        with st.expander("🧪 测试用例快捷生成器 (JSON ➔ 白话双向协议)", expanded=False):
+        with st.expander(t("ws.test_gen_expander"), expanded=False):
             render_test_generator()
             
     elif st.session_state.workspace_view == "NEUSS_MVP":
@@ -78,12 +79,15 @@ def render_workspace(navigate_to):
         # Back navigation bar
         col_back, col_title = st.columns([1, 6])
         with col_back:
-            if st.button("← Zurück zur Rangfolge", use_container_width=True):
-                st.session_state.workspace_view = "STREET_RANKING"
+            if st.button(t("ws.back_btn"), use_container_width=True):
+                return_view = st.session_state.get(
+                    "street_roi_return_view", "STREET_RANKING"
+                )
+                st.session_state.workspace_view = return_view
                 st.rerun()
         with col_title:
             st.markdown(
-                f"<small style='color:#666;'>Vollbericht für: <strong>{context}</strong></small>",
+                f"<small style='color:#666;'>{t('ws.full_report_for')} <strong>{context}</strong></small>",
                 unsafe_allow_html=True,
             )
 

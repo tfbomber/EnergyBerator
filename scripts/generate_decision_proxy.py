@@ -59,11 +59,15 @@ def main():
     logger.info("Starting Lightweight SFH/MFH Decision-Structure Proxy")
     
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    clusters_file = os.path.join(base_dir, "output", "clusters", "neuss_hybrid_clusters_v1.json")
-    
+    clusters_file_v2 = os.path.join(base_dir, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+    clusters_file_v1 = os.path.join(base_dir, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    clusters_file = clusters_file_v2 if os.path.exists(clusters_file_v2) else clusters_file_v1
+
     if not os.path.exists(clusters_file):
-        logger.error("Base MVP cluster feed not found. Run generate_neuss_osm_clusters.py first.")
+        logger.error("No cluster feed found (v1 or v2). Run generate_neuss_osm_clusters_v2.py first.")
         sys.exit(1)
+
+    logger.info(f"[ClusterFeed] Using: {os.path.basename(clusters_file)}")
         
     with open(clusters_file, 'r', encoding='utf-8') as f:
         existing_clusters = json.load(f)

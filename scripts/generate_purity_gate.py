@@ -98,7 +98,10 @@ def main():
     df_other = df[df["gate_tier"] != 2.4].copy()
 
     # Re-join centroid coordinates from clusters JSON (not stored in gate CSV)
-    clusters_path = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    clusters_path_v2 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+    clusters_path_v1 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    clusters_path = clusters_path_v2 if os.path.exists(clusters_path_v2) else clusters_path_v1
+    logger.info(f"[ClusterFeed] Using: {os.path.basename(clusters_path)}")
     if not os.path.exists(clusters_path):
         logger.error(f"Clusters file not found: {clusters_path}")
         sys.exit(1)

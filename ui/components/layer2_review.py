@@ -44,14 +44,18 @@ RANKING_WEIGHTS = {
 CONF_DISCOUNT = {
     "QUALITY_A": 1.00,
     "QUALITY_B": 0.85,
+    "QUALITY_C": 0.50,
     "SYNTHETIC": 0.00,
 }
 QUALITY_TIER_MAP = {
-    "NEUSS_NORF_01":    "QUALITY_A",
-    "NEUSS_SUBURB_01":  "QUALITY_B",
-    "NEUSS_GRIML_01":   "QUALITY_B",
-    "NEUSS_CENTRAL_01": "SYNTHETIC",
-    "NEUSS_OLD_TOWN_01":"SYNTHETIC",
+    "NEUSS_PLZ41470":    "QUALITY_A",
+    "NEUSS_PLZ41472":  "QUALITY_B",
+    "NEUSS_PLZ41464":   "QUALITY_B",
+    "NEUSS_PLZ41460":   "QUALITY_C",
+    "NEUSS_PLZ41462":   "QUALITY_C",
+    "NEUSS_PLZ41466":   "QUALITY_C",
+    "NEUSS_PLZ41468":   "QUALITY_C",
+    "NEUSS_PLZ41469":   "QUALITY_C",
 }
 
 # ---------------------------------------------------------------------------
@@ -101,6 +105,8 @@ _CSS = """
 .l2r-qa  { background: rgba(25,135,84,0.20); color: #2ecc71; border: 1px solid rgba(25,135,84,0.40); }
 /* QUALITY_B — amber */
 .l2r-qb  { background: rgba(255,193,7,0.18); color: #f39c12; border: 1px solid rgba(255,193,7,0.35); }
+/* QUALITY_C — blue */
+.l2r-qc  { background: rgba(13,110,253,0.18); color: #3498db; border: 1px solid rgba(13,110,253,0.35); }
 /* SYNTHETIC — grey */
 .l2r-syn { background: rgba(108,117,125,0.18); color: #a0a0b0; border: 1px solid rgba(108,117,125,0.35); }
 /* Gate: DEPLOYABLE */
@@ -223,7 +229,7 @@ def _draft_score(row: pd.Series, tier: str) -> float | None:
 
 
 def _tier_badge(tier: str) -> str:
-    cls = {"QUALITY_A": "l2r-qa", "QUALITY_B": "l2r-qb", "SYNTHETIC": "l2r-syn"}.get(tier, "l2r-syn")
+    cls = {"QUALITY_A": "l2r-qa", "QUALITY_B": "l2r-qb", "QUALITY_C": "l2r-qc", "SYNTHETIC": "l2r-syn"}.get(tier, "l2r-syn")
     return f'<span class="l2r-badge {cls}">{tier}</span>'
 
 
@@ -372,8 +378,8 @@ def render_layer2_review() -> None:
 
     # ── C · Quality Tier card ────────────────────────────
     with col_tier:
-        tier_colors = {"QUALITY_A": "#0f5132", "QUALITY_B": "#664d03", "SYNTHETIC": "#383d41"}
-        tier_bgs    = {"QUALITY_A": "#d1e7dd", "QUALITY_B": "#fff3cd", "SYNTHETIC": "#e2e3e5"}
+        tier_colors = {"QUALITY_A": "#0f5132", "QUALITY_B": "#664d03", "QUALITY_C": "#084298", "SYNTHETIC": "#383d41"}
+        tier_bgs    = {"QUALITY_A": "#d1e7dd", "QUALITY_B": "#fff3cd", "QUALITY_C": "#cfe2ff", "SYNTHETIC": "#e2e3e5"}
         tc = tier_colors.get(tier, "#333")
         tb = tier_bgs.get(tier, "#eee")
         disc_pct = int(CONF_DISCOUNT.get(tier, 0) * 100)
@@ -573,7 +579,7 @@ def render_layer2_review() -> None:
                         letter-spacing:0.08em;margin-bottom:7px;">Tier Discount</div>
         """, unsafe_allow_html=True)
         for t_name, disc in CONF_DISCOUNT.items():
-            t_colors = {"QUALITY_A":"#0f5132","QUALITY_B":"#664d03","SYNTHETIC":"#383d41"}
+            t_colors = {"QUALITY_A":"#0f5132","QUALITY_B":"#664d03","QUALITY_C":"#084298","SYNTHETIC":"#383d41"}
             st.markdown(f"""
             <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
               <span style="color:{t_colors.get(t_name,'#333')};">{t_name}</span>
@@ -850,9 +856,9 @@ def render_layer2_review() -> None:
         checklist = [
             ("🔍", "Inspect each REAL_GROUNDED row using the detail panel above", "#333"),
             ("📊", "Confirm quality tier assignment (A vs B) matches your confidence in the data", "#333"),
-            ("⚠️", "Review all caveats for NEUSS_SUBURB_01 and NEUSS_GRIML_01 (proxy-patched rows)", "#664d03"),
+            ("⚠️", "Review all caveats for NEUSS_PLZ41472 and NEUSS_PLZ41464 (proxy-patched rows)", "#664d03"),
             ("🎯", "Check confidence values — field_01/02 for QUALITY_B rows are 0.65–0.70 (not 0.85)", "#664d03"),
-            ("🏷️",  "Check gate labels — NEUSS_GRIML_01 is MIXED (51.4%), not DEPLOYABLE", "#664d03"),
+            ("🏷️",  "Check gate labels — NEUSS_PLZ41464 is MIXED (51.4%), not DEPLOYABLE", "#664d03"),
             ("📈", "Review DRAFT ranking — does the order feel directionally reasonable?", "#333"),
             ("⚖️",  "Decide whether QUALITY_B rows need additional discounting before acceptance", "#333"),
             ("✅", "Formally accept or reject Layer 2 → then Priority 2 inputs can enter", "#0f5132"),

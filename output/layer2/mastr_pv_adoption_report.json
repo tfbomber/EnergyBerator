@@ -1,0 +1,106 @@
+{
+  "run_timestamp_utc": "2026-05-04T15:19:49.213254+00:00",
+  "xml_source_dir": "D:\\Stock Analysis\\D-Energy Berater\\d-ess-engine\\data\\sources\\mastr\\2026-03-12_einheitensolar",
+  "xml_files_scanned": 60,
+  "target_plzs": [
+    "41460",
+    "41462",
+    "41464",
+    "41466",
+    "41468",
+    "41469",
+    "41470",
+    "41472"
+  ],
+  "regression_passed": true,
+  "results": [
+    {
+      "plz": "41460",
+      "segment_id": "NEUSS_PLZ41460",
+      "pv_installation_count": 109,
+      "pv_total_count": 157,
+      "pv_commercial_count": 48,
+      "estimated_buildings": 1936,
+      "pv_adoption_rate": 0.0563,
+      "pv_market_gap": 0.9437,
+      "data_confidence": "MEDIUM"
+    },
+    {
+      "plz": "41462",
+      "segment_id": "NEUSS_PLZ41462",
+      "pv_installation_count": 929,
+      "pv_total_count": 945,
+      "pv_commercial_count": 16,
+      "estimated_buildings": 7021,
+      "pv_adoption_rate": 0.1323,
+      "pv_market_gap": 0.8677,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41464",
+      "segment_id": "NEUSS_PLZ41464",
+      "pv_installation_count": 757,
+      "pv_total_count": 781,
+      "pv_commercial_count": 24,
+      "estimated_buildings": 4230,
+      "pv_adoption_rate": 0.179,
+      "pv_market_gap": 0.821,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41466",
+      "segment_id": "NEUSS_PLZ41466",
+      "pv_installation_count": 910,
+      "pv_total_count": 916,
+      "pv_commercial_count": 6,
+      "estimated_buildings": 4205,
+      "pv_adoption_rate": 0.2164,
+      "pv_market_gap": 0.7836,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41468",
+      "segment_id": "NEUSS_PLZ41468",
+      "pv_installation_count": 981,
+      "pv_total_count": 1028,
+      "pv_commercial_count": 47,
+      "estimated_buildings": 4843,
+      "pv_adoption_rate": 0.2026,
+      "pv_market_gap": 0.7974,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41469",
+      "segment_id": "NEUSS_PLZ41469",
+      "pv_installation_count": 879,
+      "pv_total_count": 888,
+      "pv_commercial_count": 9,
+      "estimated_buildings": 3934,
+      "pv_adoption_rate": 0.2234,
+      "pv_market_gap": 0.7766,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41470",
+      "segment_id": "NEUSS_PLZ41470",
+      "pv_installation_count": 1242,
+      "pv_total_count": 1259,
+      "pv_commercial_count": 17,
+      "estimated_buildings": 1498,
+      "pv_adoption_rate": 0.8291,
+      "pv_market_gap": 0.1709,
+      "data_confidence": "HIGH"
+    },
+    {
+      "plz": "41472",
+      "segment_id": "NEUSS_PLZ41472",
+      "pv_installation_count": 969,
+      "pv_total_count": 985,
+      "pv_commercial_count": 16,
+      "estimated_buildings": 3440,
+      "pv_adoption_rate": 0.2817,
+      "pv_market_gap": 0.7183,
+      "data_confidence": "HIGH"
+    }
+  ]
+}

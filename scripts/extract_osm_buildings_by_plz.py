@@ -8,8 +8,8 @@ Neuss PLZ codes, assigns them to Layer 2 expansion segments, and appends
 real-grounded rows to buildings.parquet.
 
 Target segments (expansion round 1):
-    NEUSS_SUBURB_01   ← PLZ 41472  (confirmed: 63 foundation clusters, 81% PASS)
-    NEUSS_GRIML_01    ← PLZ 41464  (confirmed: 107 foundation clusters, 51% PASS)
+    NEUSS_PLZ41472   ← PLZ 41472  (confirmed: 63 foundation clusters, 81% PASS)
+    NEUSS_PLZ41464    ← PLZ 41464  (confirmed: 107 foundation clusters, 51% PASS)
 
 Guardrails:
     - Only building ways with addr:postcode matching target PLZ are kept
@@ -47,8 +47,14 @@ OVERPASS_URL  = "https://overpass.kumi.systems/api/interpreter"
 # PLZ → segment mapping (expansion round 1)
 # Cross-checked with foundation JSON PLZ coverage
 PLZ_TO_SEGMENT = {
-    "41472": "NEUSS_SUBURB_01",    # Neuss-Norf + Selikum — 63 clusters, 81% PASS
-    "41464": "NEUSS_GRIML_01",     # Grimlinghausen / Allerheiligen-Meertal — 107 clusters, 51% PASS
+    "41472": "NEUSS_PLZ41472",    # Holzheim / Grefrath
+    "41464": "NEUSS_PLZ41464",    # Pomona / Westfeld
+    "41460": "NEUSS_PLZ41460",
+    "41462": "NEUSS_PLZ41462",
+    "41466": "NEUSS_PLZ41466",
+    "41468": "NEUSS_PLZ41468",
+    "41469": "NEUSS_PLZ41469",
+    "41470": "NEUSS_PLZ41470",    # Allerheiligen / Rosellen — added 2026-04-12
 }
 
 # Tight bounding boxes per PLZ (south,west,north,east)
@@ -56,8 +62,14 @@ PLZ_TO_SEGMENT = {
 # deliberately conservative (slightly over-inclusive) — city+PLZ tag filter
 # acts as secondary verification inside fetch function.
 PLZ_BBOX = {
-    "41472": (51.140, 6.650, 51.180, 6.730),   # Neuss-Norf / Selikum
-    "41464": (51.145, 6.680, 51.180, 6.760),   # Grimlinghausen / Allerheiligen
+    "41472": (51.140, 6.650, 51.180, 6.730),   # Holzheim / Grefrath
+    "41464": (51.145, 6.680, 51.180, 6.760),   # Pomona / Westfeld
+    "41460": (51.180, 6.660, 51.220, 6.720),
+    "41462": (51.100, 6.600, 51.250, 6.800),
+    "41466": (51.100, 6.600, 51.250, 6.800),
+    "41468": (51.100, 6.600, 51.250, 6.800),
+    "41469": (51.100, 6.600, 51.250, 6.800),
+    "41470": (51.125, 6.620, 51.165, 6.700),   # Allerheiligen / Rosellen (south-west Neuss)
 }
 
 OVERPASS_TIMEOUT = 90   # seconds — increased from 60
@@ -215,8 +227,11 @@ def main():
 
     all_new_rows = []
 
-    for plz, segment_id in PLZ_TO_SEGMENT.items():
-        logger.info(f"\n[PLZ={plz}] → segment={segment_id}")
+    # 2026-04-12: targeted run — PLZ 41470 only (others already complete)
+    TARGET_PLZ = {"41470": PLZ_TO_SEGMENT["41470"]}
+
+    for plz, segment_id in TARGET_PLZ.items():
+        logger.info(f"\n[PLZ={plz}] -> segment={segment_id}")
 
         # Overpass fetch
         elements = fetch_osm_buildings_for_plz(plz)

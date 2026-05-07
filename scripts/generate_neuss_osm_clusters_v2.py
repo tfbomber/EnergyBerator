@@ -1,0 +1,242 @@
+"""
+generate_neuss_osm_clusters_v2.py
+==================================
+Regenerates the Neuss cluster feed using the local PBF extract.
+
+Key fixes vs v1:
+  1. Data source: local Geofabrik PBF (no Overpass dependency)
+  2. Building tag set: adds 'yes' and 'residential' which v1 missed,
+     fixing the gap where buildings tagged building=yes were never clustered.
+  3. Output: neuss_hybrid_clusters_v2.json (does NOT overwrite v1)
+
+Clustering logic (unchanged from v1):
+  - Group by (street_name + PLZ)
+  - Minimum 3 buildings per cluster
+  - house_range = min-to-max housenumber found in that group
+  - lead_count = number of buildings in that group
+"""
+
+import os
+import sys
+import json
+import re
+import logging
+import datetime
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from core.boundary_filter import _load_polygon, _point_in_polygon, DEFAULT_BOUNDARY_PATH
+import osmium
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - [%(levelname)s] %(message)s")
+logger = logging.getLogger("ClusterGenV2")
+
+BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PBF_PATH   = os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf")
+NEUSS_BBOX = (6.61, 51.13, 6.77, 51.25)   # lon_min, lat_min, lon_max, lat_max
+
+# All building tags we consider residential (superset of v1)
+RESIDENTIAL_BUILDING_TAGS = {
+    "yes",               # ← NEW: was missing in v1 (most common generic tag)
+    "residential",
+    "house",
+    "apartments",
+    "detached",
+    "semidetached_house",
+    "terrace",
+    "multi_family",
+    "dormitory",
+}
+
+
+class _BuildingExtractorV2(osmium.SimpleHandler):
+    """
+    Extracts buildings with addr:street from PBF, filtered to Neuss bbox.
+    Includes building=yes which was missing from the v1 Overpass query.
+    """
+    def __init__(self, bbox, polygon):
+        osmium.SimpleHandler.__init__(self)
+        self.buildings = []
+        self.bbox = bbox         # (lon_min, lat_min, lon_max, lat_max)
+        self.polygon = polygon   # Neuss boundary polygon for precise PiP check
+
+    def way(self, w):
+        tags = w.tags
+
+        # Must have addr:street to be useful for clustering
+        street = tags.get("addr:street", "")
+        if not street:
+            return
+
+        # Must be a residential building
+        building_tag = tags.get("building", "").lower().strip()
+        if building_tag not in RESIDENTIAL_BUILDING_TAGS:
+            return
+
+        # Get centroid (requires locations=True)
+        nodes = [(n.location.lon, n.location.lat) for n in w.nodes if n.location.valid()]
+        if not nodes:
+            return
+
+        c_lon = sum(x for x, _ in nodes) / len(nodes)
+        c_lat = sum(y for _, y in nodes) / len(nodes)
+
+        # Bbox pre-filter (fast)
+        lon_min, lat_min, lon_max, lat_max = self.bbox
+        if not (lat_min <= c_lat <= lat_max and lon_min <= c_lon <= lon_max):
+            return
+
+        # Precise boundary polygon check (Neuss boundary)
+        if self.polygon and not _point_in_polygon(c_lat, c_lon, self.polygon):
+            return
+
+        self.buildings.append({
+            "street":      street,
+            "housenumber": tags.get("addr:housenumber", ""),
+            "plz":         tags.get("addr:postcode", "UNKNOWN"),
+            "building":    building_tag,
+            "lat":         c_lat,
+            "lon":         c_lon,
+        })
+
+
+def sort_housenumber(s):
+    m = re.search(r"\d+", str(s))
+    return int(m.group()) if m else 99999
+
+
+def main():
+    logger.info("=== Neuss Cluster Generation v2 ===")
+    logger.info(f"PBF: {PBF_PATH}")
+
+    if not os.path.exists(PBF_PATH):
+        logger.error(f"PBF not found: {PBF_PATH}")
+        sys.exit(1)
+
+    # Load Neuss boundary polygon
+    polygon = _load_polygon(DEFAULT_BOUNDARY_PATH)
+    if not polygon:
+        logger.error("Failed to load Neuss boundary polygon.")
+        sys.exit(1)
+
+    # Extract buildings from PBF
+    logger.info("Extracting residential buildings from PBF (Neuss bbox + boundary)...")
+    handler = _BuildingExtractorV2(bbox=NEUSS_BBOX, polygon=polygon)
+    handler.apply_file(PBF_PATH, locations=True, idx="flex_mem")
+    buildings = handler.buildings
+
+    logger.info(f"Extracted {len(buildings)} buildings with addr:street inside Neuss boundary.")
+
+    # --- Tag breakdown (diagnostic) ---
+    from collections import Counter
+    tag_counts = Counter(b["building"] for b in buildings)
+    logger.info("Building tag breakdown:")
+    for tag, cnt in sorted(tag_counts.items(), key=lambda x: -x[1]):
+        v1_covered = "✓ v1" if tag in {"house", "residential", "apartments", "detached", "semidetached_house", "terrace"} else "NEW"
+        logger.info(f"  {tag:<25} {cnt:>5}  {v1_covered}")
+
+    # --- Cluster by (street + PLZ) ---
+    clusters_dict: dict = {}
+    for b in buildings:
+        key = f"{b['street']}___{b['plz']}"
+        if key not in clusters_dict:
+            clusters_dict[key] = {
+                "street":       b["street"],
+                "plz":          b["plz"],
+                "lats":         [],
+                "lons":         [],
+                "housenumbers": [],
+            }
+        clusters_dict[key]["lats"].append(b["lat"])
+        clusters_dict[key]["lons"].append(b["lon"])
+        if b["housenumber"]:
+            clusters_dict[key]["housenumbers"].append(b["housenumber"])
+
+    logger.info(f"Street+PLZ groups before size filter: {len(clusters_dict)}")
+
+    # --- Build cluster records ---
+    out_clusters = []
+    c_idx = 1
+    skipped_small = 0
+
+    for key, data in sorted(clusters_dict.items()):
+        count = len(data["lats"])
+        if count < 3:
+            skipped_small += 1
+            continue
+
+        c_lat = sum(data["lats"]) / count
+        c_lon = sum(data["lons"]) / count
+
+        # House range from tagged housenumbers
+        hns = [hn for hn in data["housenumbers"] if str(hn).strip()]
+        if hns:
+            try:
+                hns_sorted = sorted(set(hns), key=sort_housenumber)
+                house_range = f"{hns_sorted[0]} - {hns_sorted[-1]}" if len(hns_sorted) > 1 else str(hns_sorted[0])
+            except Exception:
+                house_range = f"{hns[0]}... ({len(set(hns))} parsed)"
+        else:
+            house_range = "unknown"
+
+        plz_clean = data["plz"].replace(" ", "_")
+        seg_id = f"NEUSS_OSM_{plz_clean}" if data["plz"] != "UNKNOWN" else "NEUSS_OSM_GENERAL"
+        A_count = max(1, int(count * 0.4))
+        B_count = count - A_count
+
+        out_clusters.append({
+            "cluster_id":            f"N_{c_idx:03d}",
+            "segment_id":            seg_id,
+            "primary_street":        data["street"],
+            "house_range":           house_range,
+            "lead_count":            count,
+            "A_count":               A_count,
+            "B_count":               B_count,
+            "unnamed_attached_count": 0,
+            "recommended_action":    "DOOR_TO_DOOR_FIRST" if count > 10 else "DESK_REVIEW_FIRST",
+            "cluster_centroid_lat":  round(c_lat, 6),
+            "cluster_centroid_lon":  round(c_lon, 6),
+            # v2 metadata
+            "_v2_generated_at":      datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "_v2_buildings_in_pbf":  count,
+            "_v2_housenumber_coverage": round(len(hns) / count, 3) if count else 0.0,
+        })
+        c_idx += 1
+
+    logger.info(f"Skipped {skipped_small} street+PLZ groups with < 3 buildings.")
+    logger.info(f"Generated {len(out_clusters)} clusters (v1 had 554).")
+
+    # --- Save ---
+    out_path = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(out_clusters, f, indent=2, ensure_ascii=False)
+    logger.info(f"Saved: {out_path}")
+
+    # --- Quick comparison vs v1 ---
+    v1_path = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    if os.path.exists(v1_path):
+        with open(v1_path, encoding="utf-8") as f:
+            v1 = json.load(f)
+        v1_streets = {c["primary_street"] for c in v1}
+        v2_streets = {c["primary_street"] for c in out_clusters}
+        new_streets = v2_streets - v1_streets
+        removed_streets = v1_streets - v2_streets
+        logger.info(f"\n=== v1 vs v2 Comparison ===")
+        logger.info(f"  v1 clusters: {len(v1)}")
+        logger.info(f"  v2 clusters: {len(out_clusters)}")
+        logger.info(f"  Net change : {len(out_clusters) - len(v1):+d}")
+        logger.info(f"  New streets in v2 (were missing): {len(new_streets)}")
+        if new_streets:
+            for s in sorted(new_streets)[:20]:
+                logger.info(f"    + {s}")
+        if removed_streets:
+            logger.info(f"  Streets in v1 but not v2 (dropped below threshold): {len(removed_streets)}")
+            for s in sorted(removed_streets)[:10]:
+                logger.info(f"    - {s}")
+
+    logger.info("Done.")
+
+
+if __name__ == "__main__":
+    main()

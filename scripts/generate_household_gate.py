@@ -117,8 +117,11 @@ def main():
 
     # --- Load Data ---
     proxy_path = os.path.join(BASE_DIR, "output", "proxy", "sfh_mfh_cluster_proxy_summary.csv")
-    clusters_path = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    clusters_path_v2 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+    clusters_path_v1 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+    clusters_path = clusters_path_v2 if os.path.exists(clusters_path_v2) else clusters_path_v1
     explainer_path = os.path.join(BASE_DIR, "output", "stage6", "stage6_segment_explainer.csv")
+    logger.info(f"[ClusterFeed] Using: {os.path.basename(clusters_path)}")
 
     for p in [proxy_path, clusters_path, explainer_path]:
         if not os.path.exists(p):

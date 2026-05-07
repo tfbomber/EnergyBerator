@@ -53,6 +53,10 @@
                 "150_200": 6000,
                 ">200": 7500,
                 "UNKNOWN": 4500
+            },
+            "HOUSEHOLD_ONLY": {
+                "NONE": 0,
+                "UNKNOWN": 0
             }
         },
         "export_stack": {

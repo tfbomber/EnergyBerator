@@ -2,7 +2,7 @@
 Widen PLZ 41464 bbox re-extraction.
 Previous bbox (51.130, 6.660, 51.165, 6.720) was too tight — only 59 buildings.
 Foundation JSON shows 107 clusters for PLZ 41464 → many more buildings exist.
-This script removes existing NEUSS_GRIML_01 rows and re-extracts with wider bbox.
+This script removes existing NEUSS_PLZ41464 rows and re-extracts with wider bbox.
 """
 import json, logging, os, time
 from datetime import datetime, timezone
@@ -16,7 +16,7 @@ BASE_DIR      = Path(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BUILDINGS_OUT = BASE_DIR / "data" / "buildings.parquet"
 AUDIT_DIR     = BASE_DIR / "output" / "layer2"
 PLZ     = "41464"
-SEGMENT = "NEUSS_GRIML_01"
+SEGMENT = "NEUSS_PLZ41464"
 
 # Wider bbox covering full Grimlinghausen / Allerheiligen-Meertal / cross-PLZ fringe
 # PLZ 41464 is known to extend from ~51.130 to ~51.175, 6.640 to 6.750

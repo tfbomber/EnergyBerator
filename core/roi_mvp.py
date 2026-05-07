@@ -586,3 +586,82 @@ def calculate_roi_mvp(case: Dict[str, Any], policy: Dict[str, Any]) -> Dict[str,
     }
 
     return result
+
+
+# ---------------------------------------------------------------------------
+# Dual-Scenario Wrapper: calculate_roi_dual (KI C12 — Locked 2026-04-20)
+# ---------------------------------------------------------------------------
+def calculate_roi_dual(base_case: Dict[str, Any], policy: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    ROI Dual-Scenario Wrapper — computes HOUSEHOLD_ONLY and HIGH_LOAD simultaneously.
+
+    DESIGN CONTRACT (KI C12, additive — does NOT modify calculate_roi_mvp):
+        HOUSEHOLD_ONLY: has_heat_pump=False, hp_input_mode=HOUSEHOLD_ONLY, hp_bucket=NONE
+                        → e_hp = 0 (policy HOUSEHOLD_ONLY/NONE key), load_profile=HOUSEHOLD_ONLY
+                        → annual load ≈ e_base only (~3,500 kWh for 3-person), self-consumption 45%
+        HIGH_LOAD:      has_heat_pump=True,  hp_input_mode=MODE_B,         hp_bucket=100_150
+                        → e_hp ≈ 4,500 kWh, load_profile=HEAT_PUMP, self-consumption 60%
+
+    Returns:
+        {
+            "household":      <roi_result for HOUSEHOLD_ONLY scenario>,
+            "high_load":      <roi_result for HIGH_LOAD / HEAT_PUMP scenario>,
+            "delta_annual_eur": float (high_load Y1 benefit − household Y1 benefit),
+            "hp_uplift_class": "STRONG_HP_UPLIFT" | "MODERATE_HP_UPLIFT" | "LIMITED_HP_UPLIFT"
+        }
+    """
+    import copy
+
+    # ── HOUSEHOLD_ONLY case ───────────────────────────────────────────────────
+    case_hh = copy.deepcopy(base_case)
+    case_hh.setdefault("attributes", {})
+    case_hh["attributes"]["has_heat_pump"]  = False
+    case_hh["attributes"]["hp_input_mode"]  = "HOUSEHOLD_ONLY"  # maps to e_hp=0 via policy
+    case_hh["attributes"]["hp_bucket"]      = "NONE"
+    case_hh["attributes"]["electric_vehicle"] = "NONE"           # conservative: no EV
+    case_hh["case_id"] = str(base_case.get("case_id", "DUAL")) + "_HOUSEHOLD_ONLY"
+
+    # ── HIGH_LOAD case ────────────────────────────────────────────────────────
+    case_hl = copy.deepcopy(base_case)
+    case_hl.setdefault("attributes", {})
+    case_hl["attributes"]["has_heat_pump"]  = True
+    case_hl["attributes"]["hp_input_mode"]  = "MODE_B"
+    # Preserve caller's hp_bucket if present; fallback to 100_150 (moderate HP)
+    if not case_hl["attributes"].get("hp_bucket") or case_hl["attributes"]["hp_bucket"] == "NONE":
+        case_hl["attributes"]["hp_bucket"]  = "100_150"
+    case_hl["case_id"] = str(base_case.get("case_id", "DUAL")) + "_HIGH_LOAD"
+
+    # ── Run both scenarios ────────────────────────────────────────────────────
+    result_hh = calculate_roi_mvp(case_hh, policy)
+    result_hl = calculate_roi_mvp(case_hl, policy)
+
+    # ── Extract Y1 BASELINE benefit for delta calculation ─────────────────────
+    def _y1_benefit_eur(roi: Dict[str, Any]) -> float:
+        """Return Y1 annual_benefit in EUR from BASELINE scenario (index 1), or 0."""
+        if roi.get("verdict") != "ROI_OK":
+            return 0.0
+        scens = roi.get("scenarios", [])
+        baseline = scens[1] if len(scens) > 1 else (scens[0] if scens else {})
+        return baseline.get("annual_benefit_cents", 0) / 100.0
+
+    hh_benefit = _y1_benefit_eur(result_hh)
+    hl_benefit  = _y1_benefit_eur(result_hl)
+    delta       = round(hl_benefit - hh_benefit, 2)
+
+    # ── HP uplift classification (mirrors KI C12 UWG framing rules) ──────────
+    # delta >= 400 EUR/year → STRONG   (headline: high_load savings)
+    # delta >= 150 EUR/year → MODERATE (headline: high_load savings, moderate footnote)
+    # delta <  150 EUR/year → LIMITED  (headline: household savings only)
+    if delta >= 400:
+        hp_uplift_class = "STRONG_HP_UPLIFT"
+    elif delta >= 150:
+        hp_uplift_class = "MODERATE_HP_UPLIFT"
+    else:
+        hp_uplift_class = "LIMITED_HP_UPLIFT"
+
+    return {
+        "household":       result_hh,
+        "high_load":       result_hl,
+        "delta_annual_eur": delta,
+        "hp_uplift_class":  hp_uplift_class,
+    }

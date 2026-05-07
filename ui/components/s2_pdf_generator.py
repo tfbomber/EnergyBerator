@@ -305,7 +305,7 @@ def generate_sales_pdf_bytes(report: Dict[str, Any]) -> bytes:
     pdf.text(15, 275, footer_text)
     
     ts = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
-    pdf.text(170, 280, f"Stand: {ts} (D-ESS Engine)")
+    pdf.text(170, 280, f"Stand: {ts} (TerritoryAI)")
 
     # -----------------------------------------------------------------------
     # EXPORT

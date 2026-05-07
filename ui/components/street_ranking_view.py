@@ -18,6 +18,7 @@ GUARDRAILS (UI layer):
 import streamlit as st
 import pandas as pd
 from pathlib import Path
+from ui.i18n import t
 from ui.components.street_roi_generator import render_street_roi_expander
 
 ROOT           = Path(__file__).resolve().parents[2]
@@ -25,31 +26,29 @@ PARQUET        = ROOT / "data" / "layer2" / "street_ranking_v1.parquet"
 STREET_PARQUET = ROOT / "data" / "layer2" / "street_level_ranking_v1.parquet"
 
 # ---------------------------------------------------------------------------
-# Cached data loaders  (TTL=0 → cache lives for the lifetime of the session;
-# clear with st.cache_data.clear() or app restart after data pipeline re-run)
+# Cached data loaders
 # ---------------------------------------------------------------------------
-@st.cache_data(show_spinner=False, ttl=None)
+@st.cache_data(show_spinner=False, ttl=120)
 def _load_segment_df() -> pd.DataFrame:
     """Load segment-level ranking (field_07 output). Cached for session."""
     return pd.read_parquet(PARQUET)
 
 
-@st.cache_data(show_spinner=False, ttl=None)
+@st.cache_data(show_spinner=False, ttl=120)
 def _load_street_df() -> pd.DataFrame:
     """Load street-level ranking (field_08 output). Cached for session."""
     return pd.read_parquet(STREET_PARQUET)
 
 
-@st.cache_data(show_spinner=False, ttl=None)
+@st.cache_data(show_spinner=False, ttl=120)
 def _load_merged_data() -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Load and merge segment + street data into final render-ready dataframes.
-    Cached so the merge (514 rows × 30 cols) only runs once per session.
+    Cached so the merge only runs once per session.
     Returns (segment_df, street_df_with_meta).
     """
     seg_df    = _load_segment_df()
     street_df = _load_street_df()
-    # Pre-merge segment signals (heat_status, hp_status) into street rows
     seg_meta  = seg_df[["street_id", "heat_status", "hp_status"]].rename(
         columns={"street_id": "segment_id"}
     )
@@ -94,7 +93,9 @@ TEMPLATE_COLOR = {
 RANK_ICON = {1: "🔥", 2: "📍", 3: "📋"}
 
 # ---------------------------------------------------------------------------
-# Plain-language translations for technical labels
+# Plain-language translations for technical labels (kept as static dicts so
+# they don't require t() lookup — they were originally German-only, now the
+# short label is derived from i18n keys and the full dict is for badge lookup)
 # ---------------------------------------------------------------------------
 _FERN_PLAIN = {
     "NO_SIGNAL":             ("✅", "Kein Fernwärme-Netz",        "Freie Technologiewahl — PV+WP ohne Einschränkung"),
@@ -169,21 +170,27 @@ def _readiness_plain(deploy: float, risk: float) -> tuple[str, str]:
 
 
 def _translate_reason(en: str) -> str:
-    return _REASON_DE.get(en.strip(), en)
+    from ui.i18n import get_lang
+    if get_lang() == "de":
+        return _REASON_DE.get(en.strip(), en)
+    return en
 
 
 def _translate_caution(en: str) -> str:
-    return _CAUTION_DE.get(en.strip(), en)
+    from ui.i18n import get_lang
+    if get_lang() == "de":
+        return _CAUTION_DE.get(en.strip(), en)
+    return en
 
 
 def _priority_action(priority_score: float) -> str:
     if priority_score >= 0.70:
-        return "🔥 Jetzt starten — hohe Priorität"
+        return t("srk.priority_now")
     elif priority_score >= 0.50:
-        return "📍 Bald angehen — nächster freier Slot"
+        return t("srk.priority_soon")
     elif priority_score >= 0.30:
-        return "🔎 Vorqualifizieren — Daten prüfen"
-    return "📋 Warten — noch nicht kontaktbereit"
+        return t("srk.priority_qualify")
+    return t("srk.priority_wait")
 
 
 def _score_color(score: float, high: float = 0.75, mid: float = 0.50) -> str:
@@ -218,22 +225,17 @@ def _render_street_list(
     end         = min(start + page_size, total)
     seg_page    = seg_streets.iloc[start:end]
 
-    st.caption(
-        f"Score = A-signals (building quality ×0.70) + B-signals (roof ×0.20 + PV-oppty ×0.10) "
-        f"× segment modifiers (Fernwärme × HP × certainty). "
-        f"Sorted by adjusted score — highest building quality first. "
-        f"| Zeige {start+1}–{end} von {total} Straßen."
-    )
+    st.caption(t("srk.street_score_caption", a=start+1, b=end, n=total))
 
     # Column headers
     H = st.columns([2, 1, 8, 2, 2, 2, 4])
-    H[0].markdown("**Rank**")
-    H[1].markdown("**Gate**")
-    H[2].markdown("**Straße / PLZ / Nr.**")
-    H[3].markdown("**Score**")
-    H[4].markdown("**SFH%**")
-    H[5].markdown("**EFH / n**")
-    H[6].markdown("**Hinweis**")
+    H[0].markdown(t("srk.street_col_rank"))
+    H[1].markdown(t("srk.street_col_gate"))
+    H[2].markdown(t("srk.street_col_name"))
+    H[3].markdown(t("srk.street_col_score"))
+    H[4].markdown(t("srk.street_col_sfh"))
+    H[5].markdown(t("srk.street_col_efh"))
+    H[6].markdown(t("srk.street_col_note"))
     st.markdown("<hr style='margin:4px 0'>", unsafe_allow_html=True)
 
     for rank_i, (_, s) in enumerate(seg_page.iterrows(), start=start + 1):
@@ -259,8 +261,8 @@ def _render_street_list(
         # Data-quality label
         dq_note  = str(s.get("data_quality_note", ""))
         dq_label = (
-            "✅ OSM bestätigt"     if "Stage-1" in dq_note
-            else "🟡 Typ geschätzt" if "Stage-2" in dq_note
+            t("srk.osm_confirmed") if "Stage-1" in dq_note
+            else t("srk.proxy_type") if "Stage-2" in dq_note
             else ""
         )
         dq_color = (
@@ -301,13 +303,12 @@ def _render_street_list(
                 f"<div style='margin:-6px 0 4px 0;padding:3px 8px;"
                 f"background:rgba(230,160,32,0.12);border-left:3px solid #e0a020;"
                 f"border-radius:0 4px 4px 0;font-size:0.73em;'>"
-                f"⚠️ <strong>Kleine Stichprobe</strong> — {n_total} Gebäude. "
-                f"Score-Genauigkeit eingeschränkt."
+                + t("srk.street_small_sample", n=n_total) +
                 f"</div>",
                 unsafe_allow_html=True,
             )
 
-        # ROI Expander (reused, no changes needed)
+        # ROI Expander
         render_street_roi_expander(s)
 
 
@@ -318,11 +319,7 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
     """Render one segment card (collapsed) with its drill-down street list."""
     rank      = int(seg_row["rank"])
     name      = seg_row["street_name"]
-    base      = float(seg_row["base_score"])
     final     = float(seg_row["final_score"])
-    conf      = float(seg_row["confidence"])
-    fern      = _fern_badge(seg_row.get("heat_status", "UNCLEAR"))
-    hp        = _hp_badge(seg_row.get("hp_status", "UNKNOWN"))
     priority  = float(seg_row.get("priority_score", -1.0))
     deploy    = float(seg_row.get("deployment_score", -1.0))
     risk      = float(seg_row.get("risk_penalty", 0.0))
@@ -331,10 +328,10 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
     rank_icon  = RANK_ICON.get(rank, "📋")
     unit_id    = str(seg_row.get("street_id", ""))
 
-    # Truly uncertain share for structural warning
-    truly_unc    = float(seg_row.get("truly_uncertain_share", 0.0))
+    # Structural data
+    truly_unc        = float(seg_row.get("truly_uncertain_share", 0.0))
     sfh_confirmed_sh = float(seg_row.get("sfh_confirmed_share", 0.0))
-    caution      = seg_row.get("primary_caution", "")
+    caution          = seg_row.get("primary_caution", "")
 
     # Segment street stats
     seg_streets_all = street_df[street_df["segment_id"] == unit_id]
@@ -346,7 +343,7 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
          (~seg_streets_all["low_sample_flag"].fillna(False))).sum()
     )
 
-    # ── Aggregate actual building counts from street-level data ─────────────
+    # Aggregate building counts
     total_efh = int(seg_streets_all["sfh_detached_count"].sum())
     total_rh  = int(seg_streets_all["sfh_rowhouse_count"].sum())
     total_dhh = int(seg_streets_all["sfh_semi_count"].sum())
@@ -354,9 +351,8 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
     total_bld = int(seg_streets_all["building_count_total"].sum())
     sfh_pct   = total_sfh / total_bld if total_bld > 0 else 0.0
 
-    # Roof yield estimate (same formula as street_roi_generator)
+    # Roof yield estimate
     roof_norm = float(seg_row.get("roof_suitability_score_norm", 0.5) or 0.5)
-    yield_kwh = int(900 + 200 * max(0.0, min(1.0, roof_norm)))
     roof_label = (
         "🟢 Sehr gut" if roof_norm >= 0.80
         else "🟢 Gut"    if roof_norm >= 0.55
@@ -364,28 +360,15 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
         else "🔴 Gering"
     )
 
-    # PV market saturation / potential signal
+    # PV saturation
     pv_score = float(seg_row.get("pv_coverage_score", 0.0) or 0.0)
-    pv_market_label = (
-        "🟢 Hohe PV-Nachfrage"   if pv_score >= 0.60
-        else "🟡 Mittlere Nachfrage" if pv_score >= 0.35
-        else "🔴 Niedrige Nachfrage"
-    )
 
-    # WP pitch potential from heat_status
+    # Heat / HP status
     heat_status = str(seg_row.get("heat_status", "UNKNOWN"))
     hp_status   = str(seg_row.get("hp_status", "UNKNOWN"))
-    _WP_CARD = {
-        "NO_SIGNAL":             ("✅", "WP+PV-Paket pitchbar",        "Kein Netz — Wärmepumpe ideal kombinierbar"),
-        "LIMITED_OR_UNCLEAR":    ("⚠️", "WP erst abklären",           "Fernwärme mögl. — vor WP-Pitch prüfen"),
-        "PLANNED_DISTRICT_HEAT": ("🟠", "WP kritisch — PV-Focus",     "Netzausbau geplant — WP zurückstellen"),
-        "STRONG_DISTRICT_HEAT":  ("🚫", "PV-Only",                    "Fernwärme vorhanden — kein WP-Paket"),
-        "UNKNOWN":               ("—",  "Heizung klären",              "Situation vor Ort erfragen"),
-        "LOW_NETWORK_SIGNAL":    ("⚠️", "WP möglich, klären",         "Schwaches Signal — kurze Abklärung"),
-        "NETWORK_LIKELY":        ("🚫", "PV-Only",                    "Netz wahrscheinlich — kein WP"),
-        "UNCLEAR":               ("—",  "Heizung klären",              "Situation vor Ort erfragen"),
-    }
-    wp_icon, wp_label, wp_desc = _WP_CARD.get(heat_status, ("—", "Unbekannt", "Keine Daten"))
+
+    fern  = _fern_badge(heat_status)
+    hp    = _hp_badge(hp_status)
 
     with st.container(border=True):
         # ── Card Header ──────────────────────────────────────────────────────
@@ -397,12 +380,31 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
         with h2:
             st.markdown(f"**{name}**")
             st.caption(
-                f"{n_total_streets} Straßen &nbsp;·&nbsp; "
-                f"{n_canvass} 🟢 sofort ansprechbar &nbsp;·&nbsp; "
-                f"Score: {final:.3f}"
+                f"{n_total_streets} {t('srk.card_streets_count')} &nbsp;·&nbsp; "
+                f"{n_canvass} 🟢 {t('srk.card_ready')} &nbsp;·&nbsp; "
+                f"{t('srk.card_score')}: {final:.3f}"
             )
 
         with h3:
+            # Canvass Tier badge (Option A soft gate)
+            tier = str(seg_row.get("canvass_tier", ""))
+            if not tier:
+                # backward-compat: derive from heat_constraint_label
+                _hl = str(seg_row.get("heat_constraint_label", seg_row.get("heat_status", "")))
+                tier = "PRIMARY" if _hl in ("LOW", "NO_SIGNAL") \
+                    else "NOT_RECOMMENDED" if _hl in ("HIGH", "NETWORK_LIKELY") \
+                    else "SECONDARY"
+            _tier_badge = {
+                "PRIMARY":          ("🟢", "Sofort aktiv",         "#1e6b3c"),
+                "SECONDARY":        ("🟡", "Vor Besuch klären",    "#8b6914"),
+                "NOT_RECOMMENDED":  ("🔴", "Nicht empfohlen",      "#8b0000"),
+            }.get(tier, ("⚪", tier, "#555"))
+            _tb_icon, _tb_label, _tb_color = _tier_badge
+            st.markdown(
+                f"<span style='font-size:0.75em;font-weight:700;color:{_tb_color}'>"
+                f"{_tb_icon} {_tb_label}</span>",
+                unsafe_allow_html=True,
+            )
             st.markdown(
                 f"<span style='color:{tmpl_color};font-size:0.8em'>⬡ {tmpl}</span>",
                 unsafe_allow_html=True,
@@ -410,54 +412,54 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
             if priority >= 0:
                 st.caption(_priority_action(priority))
 
-        # ── Signal row — raw data, 6 columns ──────────────────────────────────────
-        fern  = _fern_badge(heat_status)
-        hp    = _hp_badge(hp_status)
 
+        # ── Signal row ──────────────────────────────────────────────────────
         s1, s2, s3, s4, s5, s6 = st.columns(6)
         s1.markdown(
-            f"**Fernwärme**  \n{fern}  \n"
-            f"<small style='opacity:0.60'>Netz-Risiko</small>",
+            f"**{t('srk.card_fern_label')}**  \n{fern}  \n"
+            f"<small style='opacity:0.60'>{t('srk.card_fern_sub')}</small>",
             unsafe_allow_html=True,
         )
         s2.markdown(
-            f"**HP Signal**  \n{hp}  \n"
-            f"<small style='opacity:0.60'>Wärmepumpe</small>",
+            f"**{t('srk.card_hp_label')}**  \n{hp}  \n"
+            f"<small style='opacity:0.60'>{t('srk.card_hp_sub')}</small>",
             unsafe_allow_html=True,
         )
         if priority >= 0:
             s3.markdown(
                 f"**Priority**  \n"
                 f"<span style='color:#6c5ce7;font-weight:600'>{priority:.3f}</span>  \n"
-                f"<small style='opacity:0.60'>ROI×Deploy×Risk</small>",
+                f"<small style='opacity:0.60'>{t('srk.card_priority_sub')}</small>",
                 unsafe_allow_html=True,
             )
             s4.markdown(
                 f"**Deploy**  \n{deploy:.2f}  \n"
-                f"<small style='opacity:0.60'>Einsatzbereit</small>"
+                f"<small style='opacity:0.60'>{t('srk.card_deploy_sub')}</small>",
+                unsafe_allow_html=True,
             )
             s5.markdown(
                 f"**Risk Penalty**  \n−{risk:.0%}  \n"
-                f"<small style='opacity:0.60'>Risiko-Abzug</small>"
+                f"<small style='opacity:0.60'>{t('srk.card_risk_sub')}</small>",
+                unsafe_allow_html=True,
             )
         else:
             s3.markdown(f"**Gate**  \n{seg_row.get('l1_gate_label', '—')}")
-            s4.markdown(f"**Deploy**  \n—")
-            s5.markdown(f"**Risk**  \n—")
+            s4.markdown("**Deploy**  \n—")
+            s5.markdown("**Risk**  \n—")
 
-        # Building count line (raw numbers)
+        # Building count line
         parts = []
         if total_efh > 0: parts.append(f"EFH {total_efh}")
         if total_rh  > 0: parts.append(f"RH {total_rh}")
         if total_dhh > 0: parts.append(f"DHH {total_dhh}")
         bld_detail = " · ".join(parts)
         conf_tag = (
-            "OSM-bestätigt" if sfh_confirmed_sh >= 0.70
-            else "tlw. geschätzt" if sfh_confirmed_sh >= 0.30
-            else "Proxy"
+            t("srk.card_conf_osm")     if sfh_confirmed_sh >= 0.70
+            else t("srk.card_conf_partial") if sfh_confirmed_sh >= 0.30
+            else t("srk.card_conf_proxy")
         )
         s6.markdown(
-            f"**SFH gesamt**  \n{total_sfh} ({sfh_pct:.0%})  \n"
+            f"**{t('srk.card_sfh_total')}**  \n{total_sfh} ({sfh_pct:.0%})  \n"
             f"<small style='opacity:0.60'>{bld_detail} · {conf_tag}</small>",
             unsafe_allow_html=True,
         )
@@ -465,44 +467,39 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
         # Structural uncertainty banner
         if truly_unc > 0.40:
             st.warning(
-                f"⚠️ **Strukturdaten unvollständig**: {truly_unc:.0%} nicht klassifiziert — "
-                f"Feldbegehung empfohlen.",
+                t("srk.card_uncert_banner", pct=f"{truly_unc:.0%}").replace("{pct}", f"{truly_unc:.0%}"),
                 icon="🏗",
             )
 
-        # ── Reasons + caution (original format, raw) ───────────────────────────
+        # ── Reasons + caution ───────────────────────────────────────────────
         r1 = seg_row.get("top_reason_1", "")
         r2 = seg_row.get("top_reason_2", "")
         if r1 or r2:
             reason_text = ""
-            if r1: reason_text += f"↗ {r1}"
-            if r2: reason_text += f"  ·  ↗ {r2}"
+            if r1: reason_text += f"↗ {_translate_reason(r1)}"
+            if r2: reason_text += f"  ·  ↗ {_translate_reason(r2)}"
             st.markdown(f"<small>{reason_text}</small>", unsafe_allow_html=True)
 
         if caution:
             st.markdown(
-                f"<small style='color:#e67e22'>⚠️ {caution}</small>",
+                f"<small style='color:#e67e22'>⚠️ {_translate_caution(caution)}</small>",
                 unsafe_allow_html=True,
             )
 
-        # ── Street Drill-Down — session_state gated (NOT st.expander) ──────
-        # PERF: st.expander still runs Python inside when collapsed.
-        # Using session_state button means uncollapsed segments execute ZERO
-        # street rendering — from ~3600 API calls to ~200 per interaction.
+        # ── Street Drill-Down ────────────────────────────────────────────────
         expand_key = f"_srk_exp_{unit_id}"
         page_key   = f"_srk_pg_{unit_id}"
         is_open    = st.session_state.get(expand_key, False)
 
         if n_total_streets > 0:
             btn_lbl = (
-                f"▲ Straßen ausblenden ({n_total_streets})"
+                t("srk.card_hide_streets", n=n_total_streets)
                 if is_open
-                else f"▼ {n_total_streets} Straßen anzeigen  ·  "
-                     f"{n_pass} ✅ PASS  ·  {n_fail} ❌ FAIL"
+                else t("srk.card_show_streets", n=n_total_streets, p=n_pass, f=n_fail)
             )
             if st.button(btn_lbl, key=f"_srk_btn_{unit_id}", use_container_width=True):
                 st.session_state[expand_key] = not is_open
-                if is_open:                          # collapsing → reset page
+                if is_open:
                     st.session_state.pop(page_key, None)
                 st.rerun()
 
@@ -515,52 +512,39 @@ def _render_region_card(seg_row: pd.Series, street_df: pd.DataFrame) -> None:
                     pc1, pc2, pc3 = st.columns([1, 3, 1])
                     with pc1:
                         if page > 0:
-                            if st.button("← Zurück", key=f"_srk_prev_{unit_id}"):
+                            if st.button(t("srk.street_prev"), key=f"_srk_prev_{unit_id}"):
                                 st.session_state[page_key] = page - 1
                                 st.rerun()
                     with pc2:
-                        st.caption(
-                            f"Seite {page + 1} / {n_pages}  ·  "
-                            f"{n_total_streets} Straßen gesamt"
-                        )
+                        st.caption(t("srk.street_page_info", p=page+1, t=n_pages, n=n_total_streets))
                     with pc3:
                         if page < n_pages - 1:
-                            if st.button("Weiter →", key=f"_srk_next_{unit_id}"):
+                            if st.button(t("srk.street_next"), key=f"_srk_next_{unit_id}"):
                                 st.session_state[page_key] = page + 1
                                 st.rerun()
         else:
-            st.caption("No street data available for this segment.")
+            st.caption(t("srk.card_no_streets"))
 
 
 # ---------------------------------------------------------------------------
 # Main render function
 # ---------------------------------------------------------------------------
 def render_street_ranking_view() -> None:
-    st.markdown("## 🏘 PV Opportunity Street Ranking")
-    st.caption(
-        "Region cards ranked by segment opportunity score (ROI × deployment × risk). "
-        "Click a region to view its streets ranked by building quality. "
-        "No household-level claims implied."
-    )
+    st.markdown(t("srk.title"))
+    st.caption(t("srk.subtitle"))
 
     # --- Load data (cached) ---
     if not PARQUET.exists():
-        st.warning(
-            "⚠️ Segment ranking data not found. "
-            "Run `python fields/field_07_street_ranking.py` first."
-        )
+        st.warning(t("srk.warn_no_segments"))
         return
 
     if not STREET_PARQUET.exists():
-        st.warning(
-            "⚠️ Street-level data not found. "
-            "Run `python fields/field_08_street_level_ranking.py` first."
-        )
+        st.warning(t("srk.warn_no_streets"))
         return
 
     df, street_df = _load_merged_data()
     if df.empty:
-        st.info("No segment data available.")
+        st.info(t("srk.no_data"))
         return
 
     # --- Summary metrics ---
@@ -575,133 +559,136 @@ def render_street_ranking_view() -> None:
     n_segments = len(df)
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Regionen", n_segments)
-    col2.metric("Straßen gesamt", total_streets)
-    col3.metric("Top Score", f"{top_score:.3f}")
+    col1.metric(t("srk.metric_regions"), n_segments)
+    col2.metric(t("srk.metric_streets"), total_streets)
+    col3.metric(t("srk.metric_top_score"), f"{top_score:.3f}")
     col4.metric(
-        "🟢 Canvass-bereit",
+        t("srk.metric_canvass"),
         ready_count,
-        help=(
-            "Straßen mit Gate=PASS und ausreichend Gebäudedaten (kein n-small-sample). "
-            "Sofort ansprechbar."
-        ),
+        help=t("srk.metric_canvass_help"),
     )
 
     st.markdown("---")
 
-    # ── Region Cards (all collapsed by default) ──────────────────────────────
+    # ── Region Cards ────────────────────────────────────────────────────────
     for _, seg_row in df.sort_values("rank").iterrows():
         _render_region_card(seg_row, street_df)
 
     st.markdown("---")
 
-    # ── Global Cross-Segment Analysis (collapsed, for analysts) ──────────────
-    with st.expander("🔬 Global Cross-Segment Analysis (advanced)", expanded=False):
-        st.caption(
-            "All streets ranked by adjusted_street_score across all segments. "
-            "Use this for analyst-level cross-region comparison only. "
-            "For canvassing route planning, use the region cards above."
-        )
+    # ── Global Cross-Segment Analysis ───────────────────────────────────────
+    with st.expander(t("srk.global_title"), expanded=False):
+        st.caption(t("srk.global_caption"))
+
+        gate_opts_keys = ["All gates", "PASS", "QUALIFIED", "REVIEW", "FAIL"]
+        gate_opts_display = [
+            t("srk.global_gate_all") if k == "All gates" else k
+            for k in gate_opts_keys
+        ]
 
         top_n = st.slider(
-            "Show top N streets",
+            t("srk.global_top_n"),
             min_value=10,
             max_value=len(street_df),
             value=30,
             step=10,
             key="global_analysis_n",
         )
-        gate_opts = ["All gates", "PASS", "QUALIFIED", "REVIEW", "FAIL"]
-        sel_gate  = st.selectbox("Filter by gate", gate_opts, key="global_analysis_gate")
+        sel_gate_display = st.selectbox(
+            t("srk.global_gate_filter"),
+            gate_opts_display,
+            key="global_analysis_gate",
+        )
+        # Map display back to data key
+        sel_gate = gate_opts_keys[gate_opts_display.index(sel_gate_display)]
 
         gate_key = "_global_analysis_active"
-        if st.button("🔍 Analyse laden", key="run_global_analysis"):
+        if st.button(t("srk.global_load_btn"), key="run_global_analysis"):
             st.session_state[gate_key] = True
 
         if not st.session_state.get(gate_key, False):
-            st.caption("Klicke 'Analyse laden' um die Tabelle zu rendern.")
+            st.caption(t("srk.global_load_hint"))
         else:
             global_view = street_df.copy()
             if sel_gate != "All gates":
                 global_view = global_view[global_view["structure_gate"] == sel_gate]
             global_view = global_view.sort_values("global_rank").head(top_n)
 
-        # Column headers
-        G = st.columns([2, 1, 6, 2, 2, 2, 3, 3])
-        G[0].markdown("**Global #**")
-        G[1].markdown("**Gate**")
-        G[2].markdown("**Straße**")
-        G[3].markdown("**Score**")
-        G[4].markdown("**SFH%**")
-        G[5].markdown("**EFH/n**")
-        G[6].markdown("**Segment**")
-        G[7].markdown("**Hinweis**")
-        st.markdown("<hr style='margin:4px 0'>", unsafe_allow_html=True)
+            # Column headers
+            G = st.columns([2, 1, 6, 2, 2, 2, 3, 3])
+            G[0].markdown(t("srk.global_col_rank"))
+            G[1].markdown(t("srk.global_col_gate"))
+            G[2].markdown(t("srk.global_col_street"))
+            G[3].markdown(t("srk.global_col_score"))
+            G[4].markdown(t("srk.global_col_sfh"))
+            G[5].markdown(t("srk.global_col_efh"))
+            G[6].markdown(t("srk.global_col_segment"))
+            G[7].markdown(t("srk.global_col_note"))
+            st.markdown("<hr style='margin:4px 0'>", unsafe_allow_html=True)
 
-        for _, s in global_view.iterrows():
-            gate_str  = str(s.get("structure_gate", "?"))
-            gate_icon = GATE_COLOR.get(gate_str, ("⚪", "#666"))[0]
-            score_v   = float(s.get("adjusted_street_score", s["street_score"]))
-            score_col = _score_color(score_v)
-            fern_icon = FERNWAERME_BADGE.get(
-                str(s.get("heat_status", "UNCLEAR")), ("—", "—", "#666")
-            )[0]
-            plz_str   = str(s.get("plz", ""))
-            addr_str  = str(s.get("address_range", "")).strip()
-            addr_sub  = (
-                f"<small style='opacity:0.65;font-size:0.72em'>"
-                f"PLZ {plz_str}" + (f" &nbsp;·&nbsp; Nr. {addr_str}" if addr_str else "") +
-                "</small>"
-            )
-            n_total   = int(s.get("building_count_total", 0))
-            efh_pct   = float(s["sfh_detached_ratio"])
-            seg_short = s["segment_id"].replace("NEUSS_", "").replace("_01", "")
-            seg_r     = int(s.get("segment_rank", 99))
-            dq_note   = str(s.get("data_quality_note", ""))
-            dq_label  = (
-                "✅ OSM"         if "Stage-1" in dq_note
-                else "🟡 Proxy" if "Stage-2" in dq_note
-                else ""
-            )
-            dq_color  = (
-                "#2ecc71" if "Stage-1" in dq_note
-                else "#f39c12" if "Stage-2" in dq_note
-                else "inherit"
-            )
-            dq_html   = (
-                f"<br><span style='color:{dq_color};font-size:0.68em'>{dq_label}</span>"
-                if dq_label else ""
-            )
-            low_sample = bool(s.get("low_sample_flag", False))
+            for _, s in global_view.iterrows():
+                gate_str  = str(s.get("structure_gate", "?"))
+                gate_icon = GATE_COLOR.get(gate_str, ("⚪", "#666"))[0]
+                score_v   = float(s.get("adjusted_street_score", s["street_score"]))
+                score_col = _score_color(score_v)
+                fern_icon = FERNWAERME_BADGE.get(
+                    str(s.get("heat_status", "UNCLEAR")), ("—", "—", "#666")
+                )[0]
+                plz_str   = str(s.get("plz", ""))
+                addr_str  = str(s.get("address_range", "")).strip()
+                addr_sub  = (
+                    f"<small style='opacity:0.65;font-size:0.72em'>"
+                    f"PLZ {plz_str}" + (f" &nbsp;·&nbsp; Nr. {addr_str}" if addr_str else "") +
+                    "</small>"
+                )
+                n_total   = int(s.get("building_count_total", 0))
+                efh_pct   = float(s["sfh_detached_ratio"])
+                seg_short = s["segment_id"].replace("NEUSS_", "").replace("_01", "")
+                seg_r     = int(s.get("segment_rank", 99))
+                dq_note   = str(s.get("data_quality_note", ""))
+                dq_label  = (
+                    t("srk.osm_confirmed") if "Stage-1" in dq_note
+                    else t("srk.proxy_type") if "Stage-2" in dq_note
+                    else ""
+                )
+                dq_color  = (
+                    "#2ecc71" if "Stage-1" in dq_note
+                    else "#f39c12" if "Stage-2" in dq_note
+                    else "inherit"
+                )
+                dq_html   = (
+                    f"<br><span style='color:{dq_color};font-size:0.68em'>{dq_label}</span>"
+                    if dq_label else ""
+                )
+                low_sample = bool(s.get("low_sample_flag", False))
 
-            G2 = st.columns([2, 1, 6, 2, 2, 2, 3, 3])
-            G2[0].markdown(f"**#{int(s['global_rank'])}**")
-            G2[1].markdown(gate_icon)
-            G2[2].markdown(f"{s['street_name']}<br>{addr_sub}", unsafe_allow_html=True)
-            G2[3].markdown(
-                f"<span style='color:{score_col};font-weight:600'>{score_v:.3f}</span>",
-                unsafe_allow_html=True,
-            )
-            G2[4].markdown(f"{float(s['sfh_total_ratio']):.0%}")
-            G2[5].markdown(f"{efh_pct:.0%} /{n_total}")
-            G2[6].markdown(
-                f"<small><b>#{seg_r}</b> {seg_short}</small>",
-                unsafe_allow_html=True,
-            )
-            G2[7].markdown(
-                f"<small>{s['top_reason']}</small>  {fern_icon}{dq_html}",
-                unsafe_allow_html=True,
-            )
-
-            if low_sample:
-                st.markdown(
-                    f"<div style='margin:-6px 0 4px 0;padding:3px 8px;"
-                    f"background:rgba(230,160,32,0.12);border-left:3px solid #e0a020;"
-                    f"border-radius:0 4px 4px 0;font-size:0.73em;'>"
-                    f"⚠️ <strong>Kleine Stichprobe</strong> — {n_total} Gebäude.</div>",
+                G2 = st.columns([2, 1, 6, 2, 2, 2, 3, 3])
+                G2[0].markdown(f"**#{int(s['global_rank'])}**")
+                G2[1].markdown(gate_icon)
+                G2[2].markdown(f"{s['street_name']}<br>{addr_sub}", unsafe_allow_html=True)
+                G2[3].markdown(
+                    f"<span style='color:{score_col};font-weight:600'>{score_v:.3f}</span>",
+                    unsafe_allow_html=True,
+                )
+                G2[4].markdown(f"{float(s['sfh_total_ratio']):.0%}")
+                G2[5].markdown(f"{efh_pct:.0%} /{n_total}")
+                G2[6].markdown(
+                    f"<small><b>#{seg_r}</b> {seg_short}</small>",
+                    unsafe_allow_html=True,
+                )
+                G2[7].markdown(
+                    f"<small>{s['top_reason']}</small>  {fern_icon}{dq_html}",
                     unsafe_allow_html=True,
                 )
 
-    st.caption(
-        "2 synthetic units excluded by default (SYNTHETIC / row_usable_for_ranking = False)."
-    )
+                if low_sample:
+                    st.markdown(
+                        f"<div style='margin:-6px 0 4px 0;padding:3px 8px;"
+                        f"background:rgba(230,160,32,0.12);border-left:3px solid #e0a020;"
+                        f"border-radius:0 4px 4px 0;font-size:0.73em;'>"
+                        + t("srk.street_small_sample", n=n_total) +
+                        f"</div>",
+                        unsafe_allow_html=True,
+                    )
+
+    st.caption(t("srk.footer"))

@@ -49,9 +49,9 @@ CONF_DISCOUNT = {
 }
 
 QUALITY_TIER_MAP = {
-    "NEUSS_NORF_01":    "QUALITY_A",
-    "NEUSS_SUBURB_01":  "QUALITY_B",
-    "NEUSS_GRIML_01":   "QUALITY_B",
+    "NEUSS_PLZ41470":    "QUALITY_A",
+    "NEUSS_PLZ41472":  "QUALITY_B",
+    "NEUSS_PLZ41464":   "QUALITY_B",
     "NEUSS_CENTRAL_01": "SYNTHETIC",
     "NEUSS_OLD_TOWN_01":"SYNTHETIC",
 }
@@ -540,9 +540,9 @@ with col_check:
     checklist = [
         ("🔍", "Inspect each REAL_GROUNDED row individually (use panel above)", "#aaa"),
         ("📊", "Confirm quality tier assignment (A vs B) reflects your confidence in the data sources", "#aaa"),
-        ("⚠️", "Review all caveats for NEUSS_SUBURB_01 and NEUSS_GRIML_01 (proxy-patched rows)", "#ffd08a"),
+        ("⚠️", "Review all caveats for NEUSS_PLZ41472 and NEUSS_PLZ41464 (proxy-patched rows)", "#ffd08a"),
         ("🎯", "Inspect confidence values — field_01 / field_02 for QUALITY_B rows are 0.65–0.70, not 0.85", "#ffd08a"),
-        ("🏷️",  "Inspect Gate labels — NEUSS_GRIML_01 is MIXED (51%), not DEPLOYABLE", "#ffd08a"),
+        ("🏷️",  "Inspect Gate labels — NEUSS_PLZ41464 is MIXED (51%), not DEPLOYABLE", "#ffd08a"),
         ("📈", "Review the DRAFT ranking — does the result feel directionally reasonable?", "#aaa"),
         ("⚖️", "Decide whether QUALITY_B rows need additional confidence discounting before acceptance", "#aaa"),
         ("✅", "Formally accept or reject Layer 2 — then Priority 2 inputs can enter", "#75e09e"),

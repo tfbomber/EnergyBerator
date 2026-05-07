@@ -59,10 +59,41 @@ from foundation_confidence import compute_street_confidence  # noqa: E402
 # METADATA-ONLY: do not use explanation fields in gate/ranking/scoring logic.
 from foundation_explainer import generate_explanation  # noqa: E402
 
-OVERPASS_URL = "http://overpass-api.de/api/interpreter"
+OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_MIRRORS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://lz4.overpass-api.de/api/interpreter",
+]
 
 # Neuss bounding box: lat 51.13 to 51.25, lon 6.61 to 6.77
 NEUSS_BBOX = "(51.13, 6.61, 51.25, 6.77)"
+
+# ---------------------------------------------------------------------------
+# OSM PBF Data Source Registry
+# ---------------------------------------------------------------------------
+# Primary data source: local Geofabrik PBF extract.
+# This eliminates the dependency on public Overpass API for pipeline runs.
+# Update cadence: once per year is sufficient (OSM building data changes slowly).
+#
+# To add a new city:
+#   1. Download the relevant PBF from https://download.geofabrik.de/europe/germany/
+#   2. Add an entry to OSM_PBF_REGISTRY with the city's bounding box
+#   3. Pass city_key to fetch_buildings() in main()
+#
+# bbox format: (lon_min, lat_min, lon_max, lat_max)
+OSM_PBF_REGISTRY = {
+    "neuss": {
+        "pbf": os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf"),
+        "bbox": (6.61, 51.13, 6.77, 51.25),   # lon_min, lat_min, lon_max, lat_max
+        "description": "Neuss (Rhein-Kreis Neuss, PLZ 41460-41472)",
+    },
+    "duesseldorf": {
+        "pbf": os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf"),
+        "bbox": (6.68, 51.10, 6.95, 51.35),   # Düsseldorf city bbox (future)
+        "description": "Düsseldorf (PLZ 40xxx)",
+    },
+}
 
 # --- Mandatory Gate Thresholds (FROM SPECIFICATION, Phase 15 revised) ---
 # REMOVED: MIN_CLUSTER_SIZE from gate (Phase 15 Finding A)
@@ -98,14 +129,8 @@ MFH_TAGS = {"apartments", "apartment", "dormitory", "hotel", "flat"}
 def fetch_buildings():
     """
     Query Overpass for all residential building ways in Neuss bbox.
-
-    Patch v2 — Geometry Upgrade:
-        Changed 'out center tags' -> 'out geom tags' so that full polygon
-        coordinates are available for spatial adjacency correction.
-
-    Patch v3 — Other-Rescue Expansion:
-        Added 'yes|residential' to query regex so that building=yes and
-        building=residential elements are included for geometry-based rescue.
+    [DEPRECATED] — prefer load_buildings_from_pbf() via fetch_buildings(city_key).
+    Kept as automatic fallback when local PBF is not available.
     """
     query = f"""
 [out:json][timeout:120];
@@ -115,15 +140,168 @@ def fetch_buildings():
 out geom tags;
 """
     logger.info("Querying Overpass API for Neuss building data (with geometry)...")
-    try:
-        resp = requests.post(OVERPASS_URL, data={"data": query}, timeout=130)
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        logger.error(f"Overpass API request failed: {e}")
-        sys.exit(1)
-    elements = resp.json().get("elements", [])
-    logger.info(f"Received {len(elements)} building elements from Overpass.")
+    import time as _time
+    last_err = None
+    for mirror in OVERPASS_MIRRORS:
+        try:
+            logger.info(f"  Trying: {mirror}")
+            resp = requests.post(
+                mirror,
+                data={"data": query},
+                headers={"User-Agent": "TerritoryAI-FoundationLayer/1.0"},
+                timeout=140,
+            )
+            resp.raise_for_status()
+            elements = resp.json().get("elements", [])
+            logger.info(f"Received {len(elements)} building elements from Overpass ({mirror}).")
+            return elements
+        except requests.RequestException as e:
+            logger.warning(f"  Mirror {mirror} failed: {e} — trying next...")
+            last_err = e
+            _time.sleep(3)
+    logger.error(f"All Overpass mirrors failed. Last error: {last_err}")
+    sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
+# PBF-Based Building Loader (Primary Data Source)
+# ---------------------------------------------------------------------------
+
+# OSM building tags that are residential / relevant to our pipeline
+_BUILDING_TAGS_OF_INTEREST = {
+    "yes", "residential", "house", "apartments", "detached",
+    "semidetached_house", "terrace", "multi_family", "dormitory",
+}
+
+
+class _BuildingExtractor:
+    """
+    osmium-based handler that extracts residential building ways from a PBF file
+    and converts them to the same format as Overpass API 'out geom tags' results.
+
+    Output element format (Overpass-compatible):
+        {
+            "type": "way",
+            "id": <int>,
+            "tags": {
+                "building": <str>,
+                "addr:street": <str>,
+                "addr:housenumber": <str>,
+                "addr:postcode": <str>,
+                "building:levels": <str>,
+            },
+            "geometry": [{"lat": <float>, "lon": <float>}, ...]
+        }
+    """
+
+    def __init__(self, bbox=None):
+        """
+        Args:
+            bbox: Optional (lon_min, lat_min, lon_max, lat_max) to spatially
+                  restrict results. If None, all buildings in the PBF are returned.
+        """
+        self.elements = []
+        self.bbox = bbox  # (lon_min, lat_min, lon_max, lat_max)
+
+    def extract(self, pbf_path: str) -> list:
+        """Run extraction. Returns list of Overpass-compatible element dicts."""
+        try:
+            import osmium
+        except ImportError:
+            raise RuntimeError(
+                "osmium package not installed. Run: pip install osmium"
+            )
+
+        import osmium
+
+        class _WayHandler(osmium.SimpleHandler):
+            def __init__(handler_self):
+                osmium.SimpleHandler.__init__(handler_self)
+                handler_self.elements = []
+                handler_self.bbox = self.bbox
+
+            def way(handler_self, w):
+                tags = w.tags
+                building_tag = tags.get("building", "")
+                if not building_tag or building_tag.lower() in ("no", ""):
+                    return
+                if building_tag.lower() not in _BUILDING_TAGS_OF_INTEREST:
+                    return  # Skip non-residential (commercial, industrial, etc.)
+
+                # Collect node coordinates
+                nodes = []
+                for n in w.nodes:
+                    if n.location.valid():
+                        nodes.append({
+                            "lat": round(n.location.lat, 7),
+                            "lon": round(n.location.lon, 7),
+                        })
+
+                if not nodes:
+                    return  # No geometry — skip
+
+                # Bounding box filter (centroid-based)
+                if handler_self.bbox:
+                    lon_min, lat_min, lon_max, lat_max = handler_self.bbox
+                    lats = [nd["lat"] for nd in nodes]
+                    lons = [nd["lon"] for nd in nodes]
+                    c_lat = sum(lats) / len(lats)
+                    c_lon = sum(lons) / len(lons)
+                    if not (lat_min <= c_lat <= lat_max and lon_min <= c_lon <= lon_max):
+                        return
+
+                handler_self.elements.append({
+                    "type": "way",
+                    "id": w.id,
+                    "tags": {
+                        "building":          tags.get("building", ""),
+                        "addr:street":       tags.get("addr:street", ""),
+                        "addr:housenumber":  tags.get("addr:housenumber", ""),
+                        "addr:postcode":     tags.get("addr:postcode", ""),
+                        "building:levels":   tags.get("building:levels", ""),
+                    },
+                    "geometry": nodes,
+                })
+
+        handler = _WayHandler()
+        # locations=True enables NodeLocationsForWays so way.nodes have coordinates
+        handler.apply_file(pbf_path, locations=True, idx="flex_mem")
+        return handler.elements
+
+
+def load_buildings_from_pbf(city_key: str = "neuss") -> list:
+    """
+    Load residential building ways from a local Geofabrik PBF extract.
+
+    Returns a list of Overpass-compatible element dicts — drop-in replacement
+    for the original fetch_buildings() Overpass response.
+
+    Args:
+        city_key: Key into OSM_PBF_REGISTRY (default 'neuss').
+    """
+    registry_entry = OSM_PBF_REGISTRY.get(city_key)
+    if not registry_entry:
+        raise ValueError(f"Unknown city_key '{city_key}'. Add it to OSM_PBF_REGISTRY.")
+
+    pbf_path = registry_entry["pbf"]
+    bbox     = registry_entry.get("bbox")
+    desc     = registry_entry.get("description", city_key)
+
+    if not os.path.exists(pbf_path):
+        raise FileNotFoundError(
+            f"PBF file not found: {pbf_path}\n"
+            f"Download from: https://download.geofabrik.de/europe/germany/nordrhein-westfalen/"
+        )
+
+    logger.info(f"[PBF] Loading buildings from local OSM extract: {pbf_path}")
+    logger.info(f"[PBF] City: {desc} | bbox filter: {bbox}")
+
+    extractor = _BuildingExtractor(bbox=bbox)
+    elements = extractor.extract(pbf_path)
+
+    logger.info(f"[PBF] Extracted {len(elements)} residential building elements.")
     return elements
+
 
 
 def classify_building_tag(tag: str) -> str:
@@ -322,6 +500,21 @@ def score_ambiguous_building(
     SFH confidence capped at MEDIUM when levels are missing.
     Pure function — no I/O.
     """
+    # ── HARD GATE: levels >= 3 → MFH ────────────────────────────────────
+    # German building regulation: genuine SFH/DHH/RH ≤ 2 Vollgeschosse.
+    # building=yes or building=residential with 3+ levels is definitionally
+    # not a single-family home. Override soft scoring.
+    # FIX 2026-05-04: prevents city-center apartment blocks from being
+    # classified as rowhouse by spatial adjacency heuristic.
+    if levels is not None and levels >= 3:
+        return {
+            "mfh_prob":     0.95,
+            "sfh_prob":     0.05,
+            "decision":     "mfh",
+            "confidence":   "HIGH",
+            "reason_trace": [f"HARD_GATE: building:levels={levels} >= 3 → MFH (no soft scoring)"],
+        }
+
     # ── Signal: area ────────────────────────────────────────────────────────
     area_signal = _clamp(
         (area_m2 - _AREA_FULL_SFH) / (_AREA_FULL_MFH - _AREA_FULL_SFH)
@@ -1087,19 +1280,92 @@ def compute_small_mfh_suspect(
     return False
 
 
+# ---------------------------------------------------------------------------
+# Cluster-Scoped Building Count Helpers (Range Filtering)
+# ---------------------------------------------------------------------------
+
+def _parse_housenumber_numeric(hn: str) -> "int | None":
+    """
+    Extract the leading integer from a German house number string.
+    Examples: '5a' -> 5, '407b' -> 407, '1b' -> 1, '30c' -> 30.
+    Returns None if no leading integer is found.
+    """
+    import re as _re
+    m = _re.match(r"^(\d+)", str(hn).strip())
+    return int(m.group(1)) if m else None
+
+
+def _count_cluster_buildings(
+    building_list: list,
+    house_range_str: str,
+) -> "tuple[int | None, int, int]":
+    """
+    Filter a street's building list to those falling within the cluster's house_range.
+
+    Returns:
+        (cluster_count, unaddressed_count, in_range_count)
+
+        cluster_count       : buildings with housenumber within [min_num, max_num],
+                              OR None if house_range cannot be parsed.
+        unaddressed_count   : buildings with addr:street but NO addr:housenumber.
+        in_range_count      : alias for cluster_count (0 if None).
+
+    Design decision:
+        When fewer than 10% of buildings have housenumbers (LOW coverage),
+        cluster_count is still returned — the caller decides whether to trust it.
+        The address_filter_coverage field signals reliability to downstream consumers.
+    """
+    import re as _re
+
+    nums = _re.findall(r"\d+", str(house_range_str))
+    if len(nums) < 2:
+        # Range string is unparseable (e.g. 'unknown', single-number, empty)
+        unaddressed = sum(1 for b in building_list if not b.get("housenumber"))
+        return None, unaddressed, 0
+
+    min_num = int(nums[0])
+    max_num = int(nums[-1])
+
+    in_range = 0
+    unaddressed = 0
+    for b in building_list:
+        hn = b.get("housenumber", "")
+        if not hn:
+            unaddressed += 1
+            continue
+        num = _parse_housenumber_numeric(hn)
+        if num is None:
+            unaddressed += 1
+            continue
+        if min_num <= num <= max_num:
+            in_range += 1
+
+    return in_range, unaddressed, in_range
+
+
 def main():
     logger.info("Starting Foundation Layer: Residential Structure Filter")
 
     # 1. Load base cluster feed
-    clusters_path = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
-    if not os.path.exists(clusters_path):
-        logger.error(f"Cluster feed not found: {clusters_path}")
+    # v2 is the corrected feed: includes building=yes, 889 clusters, full street coverage.
+    # v1 is kept as fallback for backward compatibility.
+    clusters_path_v2 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+    clusters_path_v1 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+
+    if os.path.exists(clusters_path_v2):
+        clusters_path = clusters_path_v2
+        logger.info("[ClusterFeed] Using v2 cluster feed (889 clusters, building=yes fix).")
+    elif os.path.exists(clusters_path_v1):
+        clusters_path = clusters_path_v1
+        logger.warning("[ClusterFeed] v2 not found — falling back to v1 (554 clusters, missing building=yes).")
+    else:
+        logger.error("No cluster feed found (v1 or v2). Aborting.")
         sys.exit(1)
 
     with open(clusters_path, "r", encoding="utf-8") as f:
         clusters_data = json.load(f)
 
-    logger.info(f"Loaded {len(clusters_data)} clusters from MVP feed.")
+    logger.info(f"Loaded {len(clusters_data)} clusters from feed.")
 
     # Build lookup: primary_street -> list of clusters
     street_to_clusters = {}
@@ -1110,7 +1376,18 @@ def main():
         street_to_clusters[street].append(c)
 
     # 2. Fetch raw OSM building data
-    elements = fetch_buildings()
+    # PBF-first: load from local Geofabrik extract (reliable, no API dependency).
+    # Falls back to public Overpass API only when PBF is not available.
+    pbf_entry = OSM_PBF_REGISTRY.get("neuss", {})
+    if os.path.exists(pbf_entry.get("pbf", "")):
+        logger.info("[DataSource] Using local PBF extract (primary).")
+        elements = load_buildings_from_pbf(city_key="neuss")
+    else:
+        logger.warning(
+            "[DataSource] Local PBF not found — falling back to public Overpass API. "
+            "Download PBF for reliability: see data/osm/README.md"
+        )
+        elements = fetch_buildings()
 
     # 3. Aggregate per-street building type counts AND PLZ (from OSM addr:postcode)
     # NOTE: Two separate dicts to avoid type-checker ambiguity (int vs list)
@@ -1118,6 +1395,12 @@ def main():
     street_plz_votes: dict[str, dict[str, int]] = {}  # street -> {plz: count}
     street_house_tags: dict[str, int] = {}  # Phase B Revised: track building=house count separately
     # 'house' routes to detached but is a generic tag — many attached homes hide inside it
+
+    # Range-filter support: per-building housenumber + type list, keyed by street name.
+    # Used downstream to compute cluster_building_count (scoped to cluster's house_range).
+    # This is the ONLY correct unit of analysis for canvassing; building_count_total
+    # remains the street-level total used for scoring (unchanged for backward compat).
+    street_building_list: dict[str, list] = {}
 
     for el in elements:
         tags = el.get("tags", {})
@@ -1143,6 +1426,15 @@ def main():
         # These become detached in our output but may include real attached homes (H1 leakage)
         if building_tag.lower().strip() == "house":
             street_house_tags[street] = street_house_tags.get(street, 0) + 1
+
+        # Range-filter: record per-building housenumber for cluster-scoped counting.
+        housenumber = tags.get("addr:housenumber", "").strip()
+        if street not in street_building_list:
+            street_building_list[street] = []
+        street_building_list[street].append({
+            "housenumber": housenumber,
+            "type": building_class,
+        })
 
         # Collect PLZ votes from OSM tags — most reliable source
         postcode = tags.get("addr:postcode", "").strip()
@@ -1213,6 +1505,48 @@ def main():
         if building_total == 0:
             building_total = int(c.get("lead_count", 0))
             logger.debug(f"[{cluster_id}] No Overpass data for '{street}', using lead_count={building_total} as building_count_total")
+
+        # --- Cluster-Scoped Building Count (range-filtered) ---
+        # street_building_count = total buildings on the whole street (same as building_total)
+        # cluster_building_count = buildings whose housenumber falls within this cluster's house_range
+        # unaddressed_building_count = buildings that have addr:street but no addr:housenumber
+        # address_filter_coverage = fraction of buildings that were range-filterable (quality signal)
+        _blist = street_building_list.get(street, [])
+        _street_total = len(_blist)  # should equal building_total for streets with Overpass data
+        _cluster_count, _unaddressed, _ = _count_cluster_buildings(_blist, house_range)
+        _addressable = _street_total - _unaddressed
+        _coverage = round(_addressable / _street_total, 3) if _street_total > 0 else 0.0
+
+        # When range is unparseable (house_range='unknown' or single address point),
+        # cluster_building_count is None → downstream UI falls back to building_count_total.
+        cluster_building_count = _cluster_count   # int or None
+        street_building_count  = building_total   # always the full-street total
+        unaddressed_building_count = _unaddressed
+        address_filter_coverage    = _coverage
+
+        # Task A: Cluster-scoped subtype counts (proportional scaling from post-correction aggregates).
+        # These are ESTIMATES for multi-cluster streets; exact for single-cluster streets (ratio=1.0).
+        # Correction algorithms (adjacency, rescue) modify street_counts at the aggregate level,
+        # so per-building re-correction is not possible without architectural refactor.
+        # The '~' prefix in UI chips already signals approximation to installers.
+        if cluster_building_count is not None and building_total > 0:
+            _scale_ratio = cluster_building_count / building_total
+            cluster_sfh_detached_count = round(sfh_detached * _scale_ratio)
+            cluster_sfh_semi_count     = round(sfh_semi     * _scale_ratio)
+            cluster_sfh_rowhouse_count = round(sfh_row      * _scale_ratio)
+        else:
+            # Unparseable range → use whole-street counts as fallback
+            cluster_sfh_detached_count = sfh_detached
+            cluster_sfh_semi_count     = sfh_semi
+            cluster_sfh_rowhouse_count = sfh_row
+
+        if cluster_building_count is not None:
+            logger.debug(
+                f"[{cluster_id}] '{street}' range={house_range!r}: "
+                f"cluster_count={cluster_building_count}/{_street_total} "
+                f"(unaddressed={_unaddressed}, coverage={_coverage:.0%}) "
+                f"EFH={cluster_sfh_detached_count} DHH={cluster_sfh_semi_count} RH={cluster_sfh_rowhouse_count}"
+            )
 
         # Compute ratios safely
         if building_total > 0:
@@ -1297,6 +1631,20 @@ def main():
             "small_mfh_suspect": small_mfh_suspect,
             # Enhancement C: descriptive reliability metadata (no gate coupling)
             "street_confidence": street_confidence,
+            # --- Cluster-Scoped Count (range-filtered) ---
+            # These fields fix the semantic mismatch where building_count_total
+            # always reflected the full street, regardless of cluster house_range.
+            # building_count_total is PRESERVED UNCHANGED for scoring backward compat.
+            # UI and canvassing estimates should prefer cluster_building_count when available.
+            "cluster_building_count":      cluster_building_count,      # int | None
+            "street_building_count":       street_building_count,       # = building_count_total
+            "unaddressed_building_count":  unaddressed_building_count,
+            "address_filter_coverage":     address_filter_coverage,     # 0.0-1.0
+            # --- Cluster-Scoped Subtype Counts (Task A: proportional from post-correction aggregate) ---
+            # For 75% of v2 clusters: ratio=1.0, exact. For multi-cluster streets: scaled estimate.
+            "cluster_sfh_detached_count": cluster_sfh_detached_count,
+            "cluster_sfh_semi_count":     cluster_sfh_semi_count,
+            "cluster_sfh_rowhouse_count": cluster_sfh_rowhouse_count,
             # Layer 1.5: explanation / sales translation metadata (no gate/ranking coupling)
             "top_reasons":         explanation["top_reasons"],
             "risk_flags":          explanation["risk_flags"],
