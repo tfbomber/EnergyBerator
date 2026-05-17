@@ -88,6 +88,11 @@ OSM_PBF_REGISTRY = {
         "bbox": (6.61, 51.13, 6.77, 51.25),   # lon_min, lat_min, lon_max, lat_max
         "description": "Neuss (Rhein-Kreis Neuss, PLZ 41460-41472)",
     },
+    "kaarst": {
+        "pbf": os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf"),
+        "bbox": (6.55, 51.19, 6.68, 51.27),
+        "description": "Kaarst (Rhein-Kreis Neuss, PLZ 41564)",
+    },
     "duesseldorf": {
         "pbf": os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf"),
         "bbox": (6.68, 51.10, 6.95, 51.35),   # Düsseldorf city bbox (future)
@@ -1344,23 +1349,37 @@ def _count_cluster_buildings(
 
 
 def main():
-    logger.info("Starting Foundation Layer: Residential Structure Filter")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--city", type=str, default="neuss", help="City key from OSM_PBF_REGISTRY")
+    parser.add_argument("--clusters", type=str, help="Path to input clusters JSON")
+    parser.add_argument("--out", type=str, help="Path to output foundation JSON")
+    args = parser.parse_args()
+
+    city_key = args.city
+    logger.info(f"Starting Foundation Layer: Residential Structure Filter for {city_key.upper()}")
 
     # 1. Load base cluster feed
-    # v2 is the corrected feed: includes building=yes, 889 clusters, full street coverage.
-    # v1 is kept as fallback for backward compatibility.
-    clusters_path_v2 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
-    clusters_path_v1 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
-
-    if os.path.exists(clusters_path_v2):
-        clusters_path = clusters_path_v2
-        logger.info("[ClusterFeed] Using v2 cluster feed (889 clusters, building=yes fix).")
-    elif os.path.exists(clusters_path_v1):
-        clusters_path = clusters_path_v1
-        logger.warning("[ClusterFeed] v2 not found — falling back to v1 (554 clusters, missing building=yes).")
+    if args.clusters:
+        clusters_path = args.clusters
+        if not os.path.exists(clusters_path):
+            logger.error(f"Cluster feed not found: {clusters_path}")
+            sys.exit(1)
+        logger.info(f"[ClusterFeed] Using specified cluster feed: {clusters_path}")
     else:
-        logger.error("No cluster feed found (v1 or v2). Aborting.")
-        sys.exit(1)
+        # Fallback to Neuss default
+        clusters_path_v2 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v2.json")
+        clusters_path_v1 = os.path.join(BASE_DIR, "output", "clusters", "neuss_hybrid_clusters_v1.json")
+
+        if os.path.exists(clusters_path_v2):
+            clusters_path = clusters_path_v2
+            logger.info("[ClusterFeed] Using v2 cluster feed (889 clusters, building=yes fix).")
+        elif os.path.exists(clusters_path_v1):
+            clusters_path = clusters_path_v1
+            logger.warning("[ClusterFeed] v2 not found — falling back to v1 (554 clusters, missing building=yes).")
+        else:
+            logger.error("No cluster feed found (v1 or v2). Aborting.")
+            sys.exit(1)
 
     with open(clusters_path, "r", encoding="utf-8") as f:
         clusters_data = json.load(f)
@@ -1376,12 +1395,10 @@ def main():
         street_to_clusters[street].append(c)
 
     # 2. Fetch raw OSM building data
-    # PBF-first: load from local Geofabrik extract (reliable, no API dependency).
-    # Falls back to public Overpass API only when PBF is not available.
-    pbf_entry = OSM_PBF_REGISTRY.get("neuss", {})
+    pbf_entry = OSM_PBF_REGISTRY.get(city_key, {})
     if os.path.exists(pbf_entry.get("pbf", "")):
         logger.info("[DataSource] Using local PBF extract (primary).")
-        elements = load_buildings_from_pbf(city_key="neuss")
+        elements = load_buildings_from_pbf(city_key=city_key)
     else:
         logger.warning(
             "[DataSource] Local PBF not found — falling back to public Overpass API. "
@@ -1659,7 +1676,10 @@ def main():
     # 5. Write output
     out_dir = os.path.join(BASE_DIR, "output", "foundation")
     os.makedirs(out_dir, exist_ok=True)
-    out_path = os.path.join(out_dir, "foundation_structure_results.json")
+    if args.out:
+        out_path = args.out
+    else:
+        out_path = os.path.join(out_dir, "foundation_structure_results.json")
 
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)

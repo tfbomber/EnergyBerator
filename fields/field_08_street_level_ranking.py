@@ -90,6 +90,13 @@ PV_SCORE_CAP = 0.50   # LEGACY — E3_MAX_FIELD_VALUE from old field_04_pv_adopt
 # Streets below this threshold receive a low_sample_flag in the output
 LOW_SAMPLE_THRESHOLD = 10
 
+# SFH Scale Dampening — saturation point (sfh_total_count >= this → multiplier = 1.0)
+# Streets with fewer SFH targets get proportionally lower adjusted_street_score.
+# Formula: scale_dampening = min(1.0, sfh_total_count / SFH_SCALE_SATURATION)
+# Rationale: a street with 1 EFH has 1/15 the canvassing value of a street with 15+ EFH,
+# regardless of per-building quality. Expected Campaign ROI = Volume × Quality.
+SFH_SCALE_SATURATION = 15
+
 # SFH classification quality thresholds
 # A segment is HIGH quality if >50% of buildings have Stage-1 OSM confirmation
 # A segment is PROXY  quality if <10% confirmed AND >40% Stage-2 proxy
@@ -449,7 +456,15 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
 
         # Apply segment modifiers (full coupling: fern × hp × certainty)
         seg_mod  = seg_modifiers.get(segment_id, NEUTRAL_MODIFIER)
-        adj_score = round(score * seg_mod["combined"], 4)
+
+        # SFH Scale Dampening: streets with very few SFH targets are proportionally
+        # deprioritized. Uses sfh_total_count (EFH + DHH + RH) — the actual canvassable
+        # target count — not building_count_total which includes MFH/commercial.
+        # ANTI-DOUBLE-COUNT: dampening applied here (post-score, pre-agg) so that
+        # street_quality_agg (which uses raw street_score) is NOT affected.
+        sfh_n          = int(c.get("sfh_total_count", 0) or 0)
+        scale_dampening = round(min(1.0, sfh_n / SFH_SCALE_SATURATION), 4)
+        adj_score = round(score * scale_dampening * seg_mod["combined"], 4)
 
         sfh_total = int(c.get("sfh_total_count", 0) or 0)
         n_total   = int(c.get("building_count_total", 0) or 0)
@@ -462,8 +477,9 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
             "segment_id":          segment_id,
             "segment_rank":        seg_rank_map.get(segment_id, 99),  # from field_07
             # Composite scores
-            "street_score":         score,       # pure building quality (A+B signals)
-            "adjusted_street_score": adj_score,  # street_score × segment modifiers (for global_rank)
+            "street_score":         score,        # pure building quality (A+B signals)
+            "scale_dampening":      scale_dampening,  # min(1, sfh_total/15) — volume correction
+            "adjusted_street_score": adj_score,   # street_score × scale_dampening × seg_mod
             # Segment modifier audit trail
             "segment_fern_modifier": seg_mod["fern"],
             "segment_hp_modifier":   seg_mod["hp"],
@@ -582,12 +598,13 @@ def build_street_ranking() -> tuple[pd.DataFrame, pd.DataFrame]:  # LOW-02 FIX (
             f"| {len(seg_df)} streets | PASS={passes} FAIL={fails}"
         )
 
-    logger.info(f"[GLOBAL] Top-10 streets:")
+    logger.info(f"[GLOBAL] Top-10 streets (after SFH scale dampening):")
     for _, r in df.head(10).iterrows():
         logger.info(
             f"  #{int(r['global_rank']):<4} {r['street_name']:<35} "
             f"({r['segment_id']:<20}) score={r['street_score']:.3f} "
-            f"gate={r['structure_gate']}"
+            f"damp={r['scale_dampening']:.2f} (sfh={int(r['sfh_total_count'] or 0)}) "
+            f"adj={r['adjusted_street_score']:.3f} gate={r['structure_gate']}"
         )
 
     OUTPUT_PARQUET.parent.mkdir(parents=True, exist_ok=True)

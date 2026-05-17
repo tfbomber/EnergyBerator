@@ -88,6 +88,12 @@ def run(buildings_df: pd.DataFrame) -> pd.DataFrame:
         })
     df_detail = pd.DataFrame(detail_results)
     detail_path = os.path.join(output_base_dir, "field_03_district_heating_detail.parquet")
+    if os.path.exists(detail_path):
+        existing_detail = pd.read_parquet(detail_path)
+        # Replace only the rows for segments currently being processed
+        seg_ids = df_detail["segment_id"].unique()
+        existing_detail = existing_detail[~existing_detail["segment_id"].isin(seg_ids)]
+        df_detail = pd.concat([existing_detail, df_detail], ignore_index=True)
     df_detail.to_parquet(detail_path, index=False)
     logger.info(f"Detailed artifact saved to {detail_path}")
 
