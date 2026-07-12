@@ -94,67 +94,75 @@ E3_MAX_FIELD_VALUE   = 0.50   # hard cap after penalty
 # Do not add SYNTHETIC segments here. They have fabricated building counts
 # and would produce meaningless adoption rates.
 # ---------------------------------------------------------------------------
+# segment_buildings refreshed 2026-07-11 (Layer 2 rearch, see
+# docs/neuss_buildings_duplicate_building_id_root_cause.md) to the corrected
+# post-Stage-A/B buildings.parquet counts (duplicate-building-id + fabricated-
+# postcode bug fixed, 58.7% -> 87.8% street match). plz_buildings / morphology_factor
+# are DELIBERATELY left unchanged — they are hand-tuned baseline estimates with no
+# documented derivation formula; refreshing them needs a real PLZ-level building-stock
+# source, which is out of scope for this round (D2 in
+# territoryai/.ai/implementation_plan_neuss_layer2_rearch.md).
 REAL_GROUNDED_SEGMENTS = {
     "NEUSS_PLZ41470": {
         "plz": "41470",
-        "segment_buildings": 298,        # from segment_registry, geometry_source=osm_buildings_ground_truth
-        "plz_buildings": 4250,           # baseline estimate for PLZ 41470 (Neuss Norf/Rosellerheide)
+        "segment_buildings": 1494,       # was 298 (orphaned pre-rebuild pilot count); now the real Stage A/B POINT-recovery count
+        "plz_buildings": 4250,           # baseline estimate for PLZ 41470 (Neuss Norf/Rosellerheide) — UNCHANGED, no formula (D2)
         "morphology_factor": 1.1,        # slight uplift for residential density suitability
         "city": "Neuss",
         "persistent_id": "ALLERHEILIGEN_PILOT_SEG_01",
     },
     "NEUSS_PLZ41472": {
         "plz": "41472",
-        "segment_buildings": 3436,       # from OSM extraction (PLZ 41472 addr:postcode filter, expansion round 1)
-        "plz_buildings": 6500,           # baseline estimate for PLZ 41472 (Norf / Selikum areas)
+        "segment_buildings": 1859,       # was 3436; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 6500,           # baseline estimate for PLZ 41472 (Norf / Selikum areas) — UNCHANGED, no formula (D2)
         "morphology_factor": 1.0,        # neutral — SFH-dominant but POINT geometry limits certainty
         "city": "Neuss",
         "persistent_id": "NEUSS_SUBURBAN_01",
     },
     "NEUSS_PLZ41464": {
         "plz": "41464",
-        "segment_buildings": 863,        # from OSM extraction (PLZ 41464 wider bbox, expansion round 2)
-        "plz_buildings": 5000,           # baseline estimate for PLZ 41464 (Grimlinghausen / Allerheiligen)
+        "segment_buildings": 3599,       # was 863; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 5000,           # baseline estimate for PLZ 41464 (Grimlinghausen / Allerheiligen) — UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,       # slight discount — mixed SFH/rowhouse profile, higher morphology variance
         "city": "Neuss",
         "persistent_id": "NEUSS_DENSE_01",
     },
     "NEUSS_PLZ41460": {
         "plz": "41460",
-        "segment_buildings": 844,
-        "plz_buildings": 1000,
+        "segment_buildings": 1682,       # was 844; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 1000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.80,       # dense city center
         "city": "Neuss",
         "persistent_id": "NEUSS_PLZ41460",
     },
     "NEUSS_PLZ41462": {
         "plz": "41462",
-        "segment_buildings": 7021,
-        "plz_buildings": 8500,
+        "segment_buildings": 3010,       # was 7021 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 8500,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.90,
         "city": "Neuss",
         "persistent_id": "NEUSS_PLZ41462",
     },
     "NEUSS_PLZ41466": {
         "plz": "41466",
-        "segment_buildings": 4205,
-        "plz_buildings": 5200,
+        "segment_buildings": 1670,       # was 4205 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 5200,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",
         "persistent_id": "NEUSS_PLZ41466",
     },
     "NEUSS_PLZ41468": {
         "plz": "41468",
-        "segment_buildings": 4843,
-        "plz_buildings": 6000,
+        "segment_buildings": 4053,       # was 4843 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 6000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",
         "persistent_id": "NEUSS_PLZ41468",
     },
     "NEUSS_PLZ41469": {
         "plz": "41469",
-        "segment_buildings": 3934,
-        "plz_buildings": 5000,
+        "segment_buildings": 2174,       # was 3934 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "plz_buildings": 5000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",
         "persistent_id": "NEUSS_PLZ41469",
@@ -418,9 +426,37 @@ def run() -> pd.DataFrame:
     # Emit parquet
     df_out = pd.DataFrame(parquet_rows)
     OUTPUT_PARQUET.parent.mkdir(parents=True, exist_ok=True)
-    df_out.to_parquet(OUTPUT_PARQUET, index=False)
+
+    # Preserve every existing row NOT recomputed by this run — i.e. any other
+    # city's segments already in the shared parquet (Augsburg / Kaarst, added by
+    # their own run_<city>_fields.py drivers, which monkey-patch REAL_GROUNDED_
+    # SEGMENTS in-process, not by this run()).
+    #
+    # BUGFIX 2026-07-12: the previous unconditional df_out.to_parquet() rewrote
+    # the file with ONLY this run's REAL_GROUNDED_SEGMENTS rows, silently wiping
+    # every non-recomputed segment on each run. This bit in all three directions:
+    # a plain Neuss run wiped Augsburg+Kaarst; run_kaarst_fields wiped Augsburg
+    # (run() writes before the driver re-appends); run_augsburg_fields wiped
+    # Kaarst. Confirmed the shipped parquet held only the 8 Neuss rows. Same
+    # root-cause pattern as field_02_building_type.py's fix (2026-07-11); mirror
+    # it here — key off "not in this run's recomputed segment set", never off a
+    # Neuss-only constant. The RETURNED df_out stays recomputed-only, so callers
+    # that filter it (run_kaarst_fields.py / run_augsburg_fields.py) are
+    # unaffected; only the on-disk write is merged.
+    recomputed_segments = set(REAL_GROUNDED_SEGMENTS.keys())
+    if OUTPUT_PARQUET.exists():
+        existing = pd.read_parquet(OUTPUT_PARQUET)
+        preserved = existing[~existing["segment_id"].isin(recomputed_segments)]
+        combined = pd.concat([preserved, df_out], ignore_index=True)
+    else:
+        preserved = df_out.iloc[0:0]
+        combined = df_out
+    combined.to_parquet(OUTPUT_PARQUET, index=False)
     logger.info(f"[FIELD_04] Parquet emitted -> {OUTPUT_PARQUET}")
-    logger.info(f"[FIELD_04] Rows: {len(df_out)}")
+    logger.info(
+        f"[FIELD_04] Rows: {len(df_out)} recomputed, {len(preserved)} preserved "
+        f"(non-recomputed segments), {len(combined)} total"
+    )
 
     # Emit audit JSON
     OUTPUT_AUDIT_DIR.mkdir(parents=True, exist_ok=True)

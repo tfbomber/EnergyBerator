@@ -45,10 +45,22 @@ def main():
         
     df_out = pd.DataFrame(rows)
     logger.info(f"Generated field_04 dataframe with {len(df_out)} rows.")
-    
+
+    # BUGFIX 2026-07-12: preserve every existing segment this run does NOT
+    # itself recompute (Augsburg / Kaarst rows written by their own drivers).
+    # The previous bare df_out.to_parquet() wiped them — same root-cause class
+    # as field_04_pv_adoption.py::run() (fixed same day). NOTE: this bridge is a
+    # legacy MASTR_DIRECT_COUNT_V2 producer superseded by field_04_pv_adoption's
+    # E3 allocation; if re-run it still replaces Neuss's E3 rows with market-gap
+    # rows — kept for provenance, but prefer field_04_pv_adoption.run().
     OUT_PARQ.parent.mkdir(parents=True, exist_ok=True)
+    recomputed = set(df_out["segment_id"])
+    if OUT_PARQ.exists():
+        existing = pd.read_parquet(OUT_PARQ)
+        preserved = existing[~existing["segment_id"].isin(recomputed)]
+        df_out = pd.concat([preserved, df_out], ignore_index=True)
     df_out.to_parquet(OUT_PARQ, index=False)
-    logger.info(f"Saved to {OUT_PARQ}")
+    logger.info(f"Saved to {OUT_PARQ} ({len(df_out)} rows total)")
     
     print("\n=== NEW field_04_pv_adoption.parquet ===")
     print(df_out.to_string())
