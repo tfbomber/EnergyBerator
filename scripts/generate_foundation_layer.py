@@ -98,6 +98,24 @@ OSM_PBF_REGISTRY = {
         "bbox": (6.68, 51.10, 6.95, 51.35),   # Düsseldorf city bbox (future)
         "description": "Düsseldorf (PLZ 40xxx)",
     },
+    "augsburg": {
+        "pbf": os.path.join(BASE_DIR, "data", "osm", "schwaben-latest.osm.pbf"),
+        # bbox computed from Nominatim relation/62407 (Augsburg city proper,
+        # NOT relation/62622 Landkreis Augsburg) — see
+        # config/boundaries/augsburg_admin_boundary.geojson.
+        "bbox": (10.7633615, 48.2581444, 10.9593328, 48.4586541),
+        "description": "Augsburg (Bayern/Schwaben, PLZ 861xx)",
+    },
+    "leipzig": {
+        "pbf": os.path.join(BASE_DIR, "data", "osm", "sachsen-latest.osm.pbf"),
+        # bbox computed from Nominatim relation/62649 (Leipzig kreisfreie
+        # Stadt proper, NOT Landkreis Leipzig — the bbox area (~305 km^2)
+        # matches Leipzig city's known ~297 km^2, not the much larger
+        # ~1650 km^2 Landkreis) — see
+        # config/boundaries/leipzig_admin_boundary.geojson.
+        "bbox": (12.2366519, 51.2381704, 12.5424918, 51.4481145),
+        "description": "Leipzig (Sachsen, PLZ 04xxx)",
+    },
 }
 
 # --- Mandatory Gate Thresholds (FROM SPECIFICATION, Phase 15 revised) ---
