@@ -21,17 +21,71 @@ Guardrails:
 Output:
     data/buildings.parquet   (appended, not overwritten)
     output/layer2/expansion_extract_<ts>.json  (audit trail)
+
+================================================================================
+DEPRECATED — 2026-07-11. DO NOT RUN THIS SCRIPT. Use
+`build_neuss_buildings_from_geojson.py` (+ `build_neuss_buildings_final.py`) instead.
+================================================================================
+Confirmed root cause (see docs/neuss_buildings_duplicate_building_id_root_cause.md):
+this script has THREE compounding defects that together corrupted `buildings.parquet`
+for Neuss (27,681 rows written, only 18,559 unique building_id):
+
+  1. Whole-city bounding boxes for 4 of 8 PLZ. `PLZ_BBOX` (below) gives PLZ 41462,
+     41466, 41468, and 41469 the SAME oversized box covering the entire city, while
+     the other PLZ get tight neighborhood boxes. Each Overpass query for those four
+     PLZ therefore returns the same city-wide set of ways.
+  2. Fabricated `postal_code` for address-less buildings. `elements_to_rows` keeps a
+     building with NO `addr:postcode` tag and stamps it with the query's TARGET PLZ
+     rather than skipping it or routing it to a general/unknown bucket. Every
+     address-less way returned by the city-wide query above is therefore kept and
+     mislabeled once per PLZ that queried for it.
+  3. No cross-PLZ dedup within a single run. `deduplicate_against_existing` only
+     removes building_ids already present in the pre-run `buildings.parquet`
+     snapshot; it never dedupes across PLZ within the same run, and all PLZ's rows
+     are concatenated at the end. The same address-less building extracted under
+     41462 and again under 41466 survives both times.
+
+  Net effect: every address-less building in the whole-city box was cloned into
+  4-5 different PLZ segments, each with a fabricated postal_code equal to that
+  segment's PLZ — 12,157 duplicated rows across 3,035 distinct building_ids.
+
+The replacement (`build_neuss_buildings_from_geojson.py`, modeled on the proven-good
+`generate_augsburg_buildings.py`) fixes all three: single pass over one pre-fetched
+geojson snapshot (duplication structurally impossible), REQUIRES a real
+`addr:street` + `addr:postcode` on every kept feature (never fabricates), and adds a
+mandatory point-in-polygon boundary filter. It lifted the Neuss building-weighted
+street-match rate from 58.7% to ~87-88%. See
+`.ai/implementation_plan_neuss_fix.md` (territoryai repo) for the full writeup.
+
+This script is kept for historical reference only and is NOT deleted. Do not run it
+against `data/buildings.parquet` again — it will reintroduce the duplicate/fabricated
+data this fix removed.
 """
 
 import json
 import logging
 import os
 import time
+import warnings
 from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import requests
+
+warnings.warn(
+    "extract_osm_buildings_by_plz.py is DEPRECATED (2026-07-11) and known to "
+    "corrupt data/buildings.parquet for Neuss: it uses whole-city bounding boxes "
+    "for 4 of 8 PLZ, fabricates postal_code for address-less buildings, and never "
+    "dedupes across PLZ within a single run, producing duplicate building_id rows "
+    "with fabricated postal codes. Use build_neuss_buildings_from_geojson.py + "
+    "build_neuss_buildings_final.py instead. See "
+    "docs/neuss_buildings_duplicate_building_id_root_cause.md for the full root-cause "
+    "analysis. This warning fires at import time — running this script's main() will "
+    "reintroduce the bug it documents.",
+    category=DeprecationWarning,
+    stacklevel=2,
+)
 
 logging.basicConfig(
     level=logging.INFO,

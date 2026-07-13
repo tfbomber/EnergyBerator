@@ -48,32 +48,48 @@ def run(buildings_df: pd.DataFrame) -> pd.DataFrame:
     buildings_df['footprint_area_m2'] = buildings_df['geometry'].apply(get_area_m2)
 
     # 2. Join with Field 02
+    # field_02's field_value is a Stage1/2 confidence label (SFH_CONFIRMED /
+    # MFH_CONFIRMED / SFH_WEAK / MFH_SUSPECT / UNCERTAIN), not a raw OSM
+    # building=* tag. 'raw_building_type' (buildings_df's own column) is
+    # carried through separately so SFH_CONFIRMED — which merges
+    # detached/semi/rowhouse into one Stage-1 bucket — can be split back out
+    # to the original per-subtype rates using that raw tag.
     df_merged = pd.merge(
-        buildings_df[['building_id', 'segment_id', 'footprint_area_m2', 'geometry']],
+        buildings_df[['building_id', 'segment_id', 'footprint_area_m2', 'geometry', 'building_type']].rename(
+            columns={'building_type': 'raw_building_type'}
+        ),
         df_f02[['building_id', 'field_value']],
         on='building_id',
         how='left'
     )
-    df_merged['field_value'] = df_merged['field_value'].fillna('unknown')
+    df_merged['field_value'] = df_merged['field_value'].fillna('UNCERTAIN')
 
     # 3. Apply Utilization Factors
-    # detached: 0.45, semi: 0.40, rowhouse: 0.35, others: 0.20
-    utilization_factors = {
-        'detached': 0.45,
-        'semi': 0.40,
-        'rowhouse': 0.35,
-        'apartment': 0.20,
-        'large_block': 0.20,
-        'unknown': 0.20
+    # Keyed on field_02's real Stage1/2 labels (fields/field_02_building_type.py).
+    # SFH_CONFIRMED sub-rates recover the original detached/semi/rowhouse split
+    # via the raw OSM tag (same tags as field_02's STAGE1_SFH_CONFIRMED_TAGS).
+    # SFH_WEAK's flat 0.40 is the neighbour-count-weighted average of
+    # detached/semi/rowhouse observed for Kaarst's Stage-2-inferred buildings
+    # (~26% isolated / ~41% one-neighbour / ~33% row-like -> ~0.396).
+    SFH_CONFIRMED_SUBTYPE_FACTORS = {
+        'detached': 0.45, 'detached_house': 0.45, 'bungalow': 0.45,
+        'semidetached_house': 0.40, 'semi': 0.40,
+        'terrace': 0.35, 'terraced_house': 0.35, 'rowhouse': 0.35,
     }
-    
-    def get_factor(b_type, area):
-        # Heuristic for MFH if not explicitly typed but large
-        if b_type == 'unknown' and area > 400:
-            return 0.20
+    utilization_factors = {
+        'SFH_CONFIRMED': 0.40,  # fallback only; normally sub-classified below
+        'MFH_CONFIRMED': 0.20,
+        'SFH_WEAK': 0.40,
+        'MFH_SUSPECT': 0.20,
+        'UNCERTAIN': 0.20,
+    }
+
+    def get_factor(b_type, raw_tag):
+        if b_type == 'SFH_CONFIRMED':
+            return SFH_CONFIRMED_SUBTYPE_FACTORS.get(raw_tag, utilization_factors['SFH_CONFIRMED'])
         return utilization_factors.get(b_type, 0.20)
 
-    df_merged['utilization_factor'] = df_merged.apply(lambda x: get_factor(x['field_value'], x['footprint_area_m2']), axis=1)
+    df_merged['utilization_factor'] = df_merged.apply(lambda x: get_factor(x['field_value'], x['raw_building_type']), axis=1)
     df_merged['adjusted_area_m2'] = df_merged['footprint_area_m2'] * df_merged['utilization_factor']
 
     # 4. Aggregate to Segment Level
@@ -127,7 +143,8 @@ def run(buildings_df: pd.DataFrame) -> pd.DataFrame:
             "notes": (
                 f"v2: field_value = roof_pool_adjusted_m2 / roof_pool_area_m2 "
                 f"(weighted-average PV utilization rate). "
-                f"Util factors: {utilization_factors}. "
+                f"Util factors (Stage1/2 labels): {utilization_factors}. "
+                f"SFH_CONFIRMED subtype factors (raw OSM tag): {SFH_CONFIRMED_SUBTYPE_FACTORS}. "
                 f"segment_area_m2_proxy (ConvexHull+10m) retained for audit only."
             )
         })

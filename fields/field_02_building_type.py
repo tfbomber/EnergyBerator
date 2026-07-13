@@ -273,12 +273,11 @@ if __name__ == "__main__":
         logger.error(f"buildings.parquet not found at {b_path}")
     else:
         buildings_df = pd.read_parquet(b_path)
-        # POINT-geometry segments are handled by patch_field_pipelines_point_geometry.py
-        POINT_SEGS = {
-            "NEUSS_PLZ41472", "NEUSS_PLZ41464",
-            "NEUSS_PLZ41460", "NEUSS_PLZ41462", "NEUSS_PLZ41466",
-            "NEUSS_PLZ41468", "NEUSS_PLZ41469"
-        }
+        # POINT-geometry segments are handled by patch_field_pipelines_point_geometry.py.
+        # REARCH 2026-07-11: only NEUSS_PLZ41470 remains POINT geometry post Stage A/B
+        # buildings.parquet rebuild — the other 7 Neuss PLZ are now real POLYGON and run
+        # through the real Stage1/2 spatial-adjacency pipeline below directly.
+        POINT_SEGS = {"NEUSS_PLZ41470"}
         buildings_adj = buildings_df[~buildings_df["segment_id"].isin(POINT_SEGS)]
         logger.info(
             f"[MAIN] Running Stage 1/2 on {len(buildings_adj)} adjacency-path buildings "
@@ -286,10 +285,18 @@ if __name__ == "__main__":
         )
         result = run(buildings_adj)
 
-        # Preserve existing POINT-patch rows; replace adjacency-path rows
+        # Preserve every existing row NOT recomputed by this run — i.e. POINT-patch
+        # rows (POINT_SEGS) AND any other city's segments already in the shared
+        # parquet (Augsburg/Kaarst — added by their own build scripts, not by this
+        # __main__). BUGFIX 2026-07-11: the previous filter kept only POINT_SEGS
+        # rows, silently dropping every non-Neuss segment on each run — confirmed
+        # this wiped 63,533 Augsburg/Kaarst rows the first time this ran post their
+        # onboarding. Must key off "not in this run's recomputed segment set",
+        # not off the POINT_SEGS constant, which only describes Neuss.
+        recomputed_segments = set(buildings_adj["segment_id"].unique())
         if out_path.exists():
             existing = pd.read_parquet(out_path)
-            existing = existing[existing["segment_id"].isin(POINT_SEGS)]
+            existing = existing[~existing["segment_id"].isin(recomputed_segments)]
             combined = pd.concat([existing, result], ignore_index=True)
         else:
             combined = result
