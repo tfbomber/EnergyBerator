@@ -59,6 +59,95 @@ from foundation_confidence import compute_street_confidence  # noqa: E402
 # METADATA-ONLY: do not use explanation fields in gate/ranking/scoring logic.
 from foundation_explainer import generate_explanation  # noqa: E402
 
+# ROOT FIX (2026-07-13, KI-012): street-level SFH/MFH type counts and the
+# gate/profile derived from them now come from core/street_building_types.py
+# (field_02 as classification source of truth, keyed by real (street, plz))
+# instead of this script's own bbox-extraction + classify_building_tag /
+# correct_house_tags_by_adjacency / rescue_other_by_geometry. See that
+# module's docstring for the full root-cause writeup. apply_structure_gate /
+# classify_structure_profile / the gate threshold constants moved there too
+# (re-imported here so `from scripts.generate_foundation_layer import
+# apply_structure_gate` etc. — e.g. tests/test_foundation_gate_phase15.py —
+# keeps working unchanged) — semantics UNCHANGED, only relocated.
+sys.path.insert(0, os.path.dirname(_SCRIPTS_DIR))  # repo root, for core/
+from core.street_building_types import (  # noqa: E402
+    compute_street_type_counts,
+    apply_structure_gate,
+    classify_structure_profile,
+    PASS_MAX_MFH_RATIO,
+    PASS_MIN_SFH_RATIO,
+    REVIEW_MAX_MFH_RATIO,
+    QUALIFIED_OTHER_THRESHOLD,
+    QUALIFIED_MIN_SFH_RATIO,
+)
+
+# ---------------------------------------------------------------------------
+# ROOT FIX rollout gate (KI-012): the field_02-based path is only used for
+# cities that have gone through their own P2-style validation (diff report +
+# satellite/Overpass spot-check reviewed by a human — see
+# territoryai/.ai/implementation_plan_foundation_classifier.md P2/P3). Other
+# cities keep using the legacy Foundation-native classification (below,
+# classify_building_tag / correct_house_tags_by_adjacency /
+# rescue_other_by_geometry) UNCHANGED until their own sign-off — this is a
+# deliberate phased rollout, not a leftover shim: touching Neuss/Kaarst/
+# Augsburg's shipped rankings is a separate, explicitly gated decision (D2).
+_FIELD02_VALIDATED_CITIES = {"leipzig"}
+
+# Per-city buildings parquet path + a filter to exclude the "noise" bucket
+# (unregistered-PLZ / stray neighbor-municipality buildings — see each
+# city's own generate_<city>_buildings.py). Only entries for
+# _FIELD02_VALIDATED_CITIES are required right now; add a city's entry here
+# when it's promoted into that set (P3).
+_CITY_BUILDINGS_PARQUET = {
+    "leipzig": os.path.join(BASE_DIR, "data", "leipzig_buildings.parquet"),
+}
+_FIELD02_PARQUET = os.path.join(BASE_DIR, "data", "fields", "field_02_building_type.parquet")
+
+
+def _load_field02_street_counts(city_key: str) -> "dict[tuple[str, str], dict] | None":
+    """
+    Load `<city>_buildings.parquet` + field_02_building_type.parquet and
+    compute field_02-based street-level type counts (KI-012 root fix).
+    Returns None (triggering the legacy path) if city_key isn't in
+    _FIELD02_VALIDATED_CITIES yet, or if either input file is missing.
+    """
+    if city_key not in _FIELD02_VALIDATED_CITIES:
+        return None
+
+    buildings_path = _CITY_BUILDINGS_PARQUET.get(city_key)
+    if not buildings_path or not os.path.exists(buildings_path):
+        logger.warning(
+            f"[STREET_BUILDING_TYPES] {city_key}: buildings parquet not found "
+            f"({buildings_path}) — falling back to legacy classification path."
+        )
+        return None
+    if not os.path.exists(_FIELD02_PARQUET):
+        logger.warning(
+            f"[STREET_BUILDING_TYPES] field_02 parquet not found ({_FIELD02_PARQUET}) "
+            f"— falling back to legacy classification path."
+        )
+        return None
+
+    import pandas as pd
+
+    buildings_df = pd.read_parquet(buildings_path)
+    # Exclude the unregistered-PLZ / stray-neighbor-municipality noise
+    # bucket — these buildings can't be attributed to a real named street
+    # in this city anyway (same convention as merge_building_geometry_
+    # into_territoryai.py's per-city filters).
+    buildings_df = buildings_df[
+        ~buildings_df["segment_id"].astype(str).str.endswith("_GENERAL")
+    ]
+    field02_df = pd.read_parquet(_FIELD02_PARQUET, columns=["building_id", "field_value"])
+
+    logger.info(
+        f"[STREET_BUILDING_TYPES] {city_key}: using field_02-based street type "
+        f"counts (KI-012 root fix) — {len(buildings_df)} buildings, real "
+        f"(street, plz) keys, not Foundation's own bbox-extraction/classifier."
+    )
+    return compute_street_type_counts(buildings_df, field02_df)
+
+
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
 OVERPASS_MIRRORS = [
     "https://overpass-api.de/api/interpreter",
@@ -121,18 +210,9 @@ OSM_PBF_REGISTRY = {
 # --- Mandatory Gate Thresholds (FROM SPECIFICATION, Phase 15 revised) ---
 # REMOVED: MIN_CLUSTER_SIZE from gate (Phase 15 Finding A)
 # Small size alone MUST NOT cause structural FAIL.
-PASS_MAX_MFH_RATIO = 0.25
-PASS_MIN_SFH_RATIO = 0.50
-REVIEW_MAX_MFH_RATIO = 0.40
-# QUALIFIED tier: PASS-eligible by mfh_ratio, but >= this fraction of buildings
-# are unclassified (Other). Indicates lower data confidence.
-# IMPORTANT: sfh_ratio must still be >= QUALIFIED_MIN_SFH_RATIO.
-# High other_ratio alone (without strong SFH dominance) routes to REVIEW instead.
-QUALIFIED_OTHER_THRESHOLD = 0.15   # other_ratio >= this triggers QUALIFIED check
-QUALIFIED_MIN_SFH_RATIO   = 0.70   # sfh_ratio must be >= this to get QUALIFIED
-                                    # (was implicitly 0.50 = PASS_MIN_SFH_RATIO)
-                                    # Raised: low sfh_ratio + high other may be
-                                    # undetected MFH, not uncertain SFH.
+# MOVED to core/street_building_types.py (2026-07-13, KI-012) — re-imported
+# above so PASS_MAX_MFH_RATIO etc. are still accessible from this module's
+# namespace unchanged; do not redefine them here (would shadow the import).
 
 # --- Execution Scale Threshold (separate concern from structural gate) ---
 # Clusters below this count are structurally eligible but operationally subscale.
@@ -1132,52 +1212,9 @@ def correct_house_tags_by_adjacency(
     return new_counts, new_house_tags
 
 
-def classify_structure_profile(sfh_total_ratio: float, mfh_ratio: float) -> str:
-    """Compute structure_profile from prompt specification."""
-    if sfh_total_ratio >= 0.6 and mfh_ratio <= 0.25:
-        return "SFH_DOMINANT"
-    if mfh_ratio >= 0.4:
-        return "MFH_HEAVY"
-    return "MIXED_RESIDENTIAL"
-
-
-def apply_structure_gate(
-    mfh_ratio: float,
-    sfh_total_ratio: float,
-    other_ratio: float = 0.0,
-) -> tuple:
-    """
-    Apply STRUCTURAL gate — 4-tier version.
-
-    Tiers (in priority order):
-      FAIL      — MFH-dominant, not suitable for SFH product
-      PASS      — SFH clearly dominant, low ambiguity (other_ratio < QUALIFIED_OTHER_THRESHOLD)
-      QUALIFIED — SFH strongly dominant (sfh_ratio >= QUALIFIED_MIN_SFH_RATIO=0.70)
-                  but notable unclassified fraction (other_ratio >= 0.15).
-                  Meaning: SFH subtype is clear, data is partially incomplete.
-                  NOT included in PASS_ONLY ranking universe by default.
-                  CAUTION: if sfh_ratio is only borderline (0.50-0.70) AND other_ratio
-                  is high, route to REVIEW — unresolved buildings may be unlabeled MFH.
-      REVIEW    — Borderline MFH/SFH or high ambiguity
-
-    Phase 15 Change (Finding A) preserved:
-        REMOVED: CLUSTER_TOO_SMALL → FAIL
-        Size is an operational concern, not a structural one.
-    """
-    if mfh_ratio > REVIEW_MAX_MFH_RATIO:
-        return ("FAIL", "MFH_RATIO_TOO_HIGH")
-    if mfh_ratio <= PASS_MAX_MFH_RATIO and sfh_total_ratio >= PASS_MIN_SFH_RATIO:
-        if other_ratio >= QUALIFIED_OTHER_THRESHOLD:
-            # Only QUALIFIED if SFH is strongly dominant (>= 70%).
-            # If sfh_ratio is only borderline (50-70%) with high other, route REVIEW:
-            # the other buildings may be unlabeled MFH, not uncertain SFH.
-            if sfh_total_ratio >= QUALIFIED_MIN_SFH_RATIO:
-                return ("QUALIFIED", "LOW_MFH_STRONG_SFH_BUT_HIGH_OTHER")
-            else:
-                return ("REVIEW", "LOW_MFH_BORDERLINE_SFH_HIGH_OTHER")
-        return ("PASS", "LOW_MFH_HIGH_SFH")
-    return ("REVIEW", "BORDERLINE_MIXED_STREET")
-
+# classify_structure_profile() and apply_structure_gate() MOVED to
+# core/street_building_types.py (2026-07-13, KI-012) — re-imported above,
+# semantics unchanged. Do not redefine them here (would shadow the import).
 
 
 def compute_execution_scale_flag(building_count_total: int) -> str:
@@ -1480,18 +1517,27 @@ def main():
 
     logger.info(f"Aggregated building data for {len(street_counts)} streets.")
 
-    # Patch v2 — Geometry-based correction for building=house misclassification.
-    # Corrects detached overcounting on streets like Am Mühlenweg.
-    street_counts, street_house_tags = correct_house_tags_by_adjacency(
-        elements, street_counts, street_house_tags
-    )
+    # ROOT FIX (2026-07-13, KI-012): try the field_02-based path first (only
+    # active for cities in _FIELD02_VALIDATED_CITIES — see that set's
+    # docstring). new_counts is None for every other city, which runs the
+    # legacy correction below UNCHANGED, exactly as before this fix.
+    new_counts = _load_field02_street_counts(city_key)
 
-    # Patch v3 — Rescue building=yes / building=residential from Other bucket.
-    # Uses footprint area + levels to classify high-confidence SFH/MFH.
-    # Ambiguous band (250–600 m², no clear level signal) stays as 'other'.
-    street_counts = rescue_other_by_geometry(
-        elements, street_counts, street_to_clusters
-    )
+    if new_counts is None:
+        # LEGACY PATH — unchanged. Patch v2: geometry-based correction for
+        # building=house misclassification (corrects detached overcounting
+        # on streets like Am Mühlenweg). Patch v3: rescue building=yes /
+        # building=residential from the Other bucket via footprint area +
+        # levels. Ambiguous band (250-600 m², no clear level signal) stays
+        # 'other'. Neither patch ever promotes a building to MFH from the
+        # 'house' tag path — see core/street_building_types.py's docstring
+        # for why that's exactly what KI-012 fixes for validated cities.
+        street_counts, street_house_tags = correct_house_tags_by_adjacency(
+            elements, street_counts, street_house_tags
+        )
+        street_counts = rescue_other_by_geometry(
+            elements, street_counts, street_to_clusters
+        )
 
     # 4. Build output records
     results = []
@@ -1501,37 +1547,61 @@ def main():
         house_range = c.get("house_range", "unknown")
         segment_id = c.get("segment_id", "")
 
-        # --- PLZ Resolution (Priority: OSM addr:postcode > segment_id parsing) ---
-        # 1. OSM majority-vote PLZ (most reliable — directly from building tags)
-        plz = "UNKNOWN"
-        osm_votes = street_plz_votes.get(street)
-        if osm_votes:
-            plz = max(osm_votes, key=lambda p: osm_votes[p])
+        if new_counts is not None:
+            # ROOT FIX (KI-012) path. segment_id is authoritative here — it
+            # was assigned per-building from a REAL polygon-bounded
+            # extraction (see generate_<city>_buildings.py), unlike the
+            # legacy path's OSM-majority-vote (Bug A: voting across a bare
+            # street name silently merges cross-PLZ / cross-town buildings
+            # sharing that name). Parse it directly, no voting.
+            plz = "UNKNOWN"
+            if segment_id:
+                parts = segment_id.split("_")
+                for part in reversed(parts):
+                    if part.isdigit() and len(part) == 5:
+                        plz = part
+                        break
 
-        # 2. Fallback: parse segment_id (e.g. NEUSS_OSM_41464 → 41464)
-        if plz == "UNKNOWN" and segment_id:
-            parts = segment_id.split("_")
-            for part in reversed(parts):
-                if part.isdigit() and len(part) == 5:
-                    plz = part
-                    break
-
-        # Get counts from Overpass aggregation (or zeroes if street not found)
-        sc = street_counts.get(street)
-
-        if sc is not None:
-            sfh_detached: int = int(sc["detached"])
-            sfh_semi: int = int(sc["semi_detached"])
-            sfh_row: int = int(sc["rowhouse"])
-            mfh_count: int = int(sc["mfh"])
-            other_count: int = int(sc["other"])
+            sc = new_counts.get((street, plz))
+            if sc is not None:
+                sfh_detached: int = int(sc["detached"])
+                sfh_semi: int = int(sc["semi_detached"])
+                sfh_row: int = int(sc["rowhouse"])
+                mfh_count: int = int(sc["mfh"])
+                other_count: int = int(sc["uncertain"])  # uncertain plays other's gate role (D-D)
+            else:
+                sfh_detached = sfh_semi = sfh_row = mfh_count = other_count = 0
         else:
-            # Street not seen in Overpass data — explicit data gap, not an assumption
-            sfh_detached = 0
-            sfh_semi = 0
-            sfh_row = 0
-            mfh_count = 0
-            other_count = 0
+            # --- LEGACY PLZ Resolution (Priority: OSM addr:postcode > segment_id parsing) ---
+            # 1. OSM majority-vote PLZ (most reliable — directly from building tags)
+            plz = "UNKNOWN"
+            osm_votes = street_plz_votes.get(street)
+            if osm_votes:
+                plz = max(osm_votes, key=lambda p: osm_votes[p])
+
+            # 2. Fallback: parse segment_id (e.g. NEUSS_OSM_41464 → 41464)
+            if plz == "UNKNOWN" and segment_id:
+                parts = segment_id.split("_")
+                for part in reversed(parts):
+                    if part.isdigit() and len(part) == 5:
+                        plz = part
+                        break
+
+            # Get counts from Overpass aggregation (or zeroes if street not found)
+            sc = street_counts.get(street)
+            if sc is not None:
+                sfh_detached: int = int(sc["detached"])
+                sfh_semi: int = int(sc["semi_detached"])
+                sfh_row: int = int(sc["rowhouse"])
+                mfh_count: int = int(sc["mfh"])
+                other_count: int = int(sc["other"])
+            else:
+                # Street not seen in Overpass data — explicit data gap, not an assumption
+                sfh_detached = 0
+                sfh_semi = 0
+                sfh_row = 0
+                mfh_count = 0
+                other_count = 0
 
         sfh_total: int = sfh_detached + sfh_semi + sfh_row
         building_total: int = sfh_total + mfh_count + other_count
