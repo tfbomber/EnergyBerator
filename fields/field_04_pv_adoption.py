@@ -94,18 +94,27 @@ E3_MAX_FIELD_VALUE   = 0.50   # hard cap after penalty
 # Do not add SYNTHETIC segments here. They have fabricated building counts
 # and would produce meaningless adoption rates.
 # ---------------------------------------------------------------------------
-# segment_buildings refreshed 2026-07-11 (Layer 2 rearch, see
-# docs/neuss_buildings_duplicate_building_id_root_cause.md) to the corrected
-# post-Stage-A/B buildings.parquet counts (duplicate-building-id + fabricated-
-# postcode bug fixed, 58.7% -> 87.8% street match). plz_buildings / morphology_factor
-# are DELIBERATELY left unchanged — they are hand-tuned baseline estimates with no
-# documented derivation formula; refreshing them needs a real PLZ-level building-stock
-# source, which is out of scope for this round (D2 in
-# territoryai/.ai/implementation_plan_neuss_layer2_rearch.md).
+# segment_buildings refreshed 2026-07-14 (Neuss Layer2 rearch v2, second
+# attempt — see territoryai .ai/implementation_plan_neuss_layer2_rearch_v2.md)
+# to the corrected post-spatial-PLZ-fallback buildings.parquet counts
+# (2026-07-14: build_neuss_buildings_from_geojson.py's spatial fallback
+# recovered 1577 previously-dropped untagged buildings). plz_buildings /
+# morphology_factor are DELIBERATELY left unchanged — confirmed by real
+# computation (not assumed) that switching plz_buildings to the D4=gamma
+# residential-count definition (as done for Leipzig/Augsburg the same day)
+# produces IMPLAUSIBLE results for Neuss: 6 of 8 PLZ would compute a raw
+# adoption intensity of 24-82% (physically impossible PV adoption rates),
+# because Neuss's hand-tuned plz_buildings values (1000-8500) represent a
+# genuine "all buildings in this PLZ" estimate that is legitimately larger
+# than the OSM residential-with-addr:street count here — unlike Leipzig/
+# Augsburg where that gap was small. Only segment_buildings (the numerator
+# side) is refreshed; plz_buildings stays the historical hand-tuned
+# baseline with no documented derivation formula (same as the 2026-07-11
+# note this superseded).
 REAL_GROUNDED_SEGMENTS = {
     "NEUSS_PLZ41470": {
         "plz": "41470",
-        "segment_buildings": 1494,       # was 298 (orphaned pre-rebuild pilot count); now the real Stage A/B POINT-recovery count
+        "segment_buildings": 1494,       # unchanged 2026-07-14 (41470 untouched by today's spatial fix — separate legacy POINT source)
         "plz_buildings": 4250,           # baseline estimate for PLZ 41470 (Neuss Norf/Rosellerheide) — UNCHANGED, no formula (D2)
         "morphology_factor": 1.1,        # slight uplift for residential density suitability
         "city": "Neuss",
@@ -113,7 +122,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41472": {
         "plz": "41472",
-        "segment_buildings": 1859,       # was 3436; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 1867,       # was 1859; +8 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 6500,           # baseline estimate for PLZ 41472 (Norf / Selikum areas) — UNCHANGED, no formula (D2)
         "morphology_factor": 1.0,        # neutral — SFH-dominant but POINT geometry limits certainty
         "city": "Neuss",
@@ -121,7 +130,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41464": {
         "plz": "41464",
-        "segment_buildings": 3599,       # was 863; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 4295,       # was 3599; +696 from 2026-07-14 spatial-PLZ recovery (largest recovery of the 8)
         "plz_buildings": 5000,           # baseline estimate for PLZ 41464 (Grimlinghausen / Allerheiligen) — UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,       # slight discount — mixed SFH/rowhouse profile, higher morphology variance
         "city": "Neuss",
@@ -129,7 +138,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41460": {
         "plz": "41460",
-        "segment_buildings": 1682,       # was 844; corrected real building count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 2094,       # was 1682; +412 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 1000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.80,       # dense city center
         "city": "Neuss",
@@ -137,7 +146,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41462": {
         "plz": "41462",
-        "segment_buildings": 3010,       # was 7021 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 3393,       # was 3010; +383 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 8500,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.90,
         "city": "Neuss",
@@ -145,7 +154,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41466": {
         "plz": "41466",
-        "segment_buildings": 1670,       # was 4205 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 1702,       # was 1670; +32 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 5200,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",
@@ -153,7 +162,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41468": {
         "plz": "41468",
-        "segment_buildings": 4053,       # was 4843 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 4087,       # was 4053; +34 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 6000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",
@@ -161,7 +170,7 @@ REAL_GROUNDED_SEGMENTS = {
     },
     "NEUSS_PLZ41469": {
         "plz": "41469",
-        "segment_buildings": 2174,       # was 3934 (inflated by duplicate-building-id bug); corrected real count (Stage A/B rebuild, real POLYGON)
+        "segment_buildings": 2186,       # was 2174; +12 from 2026-07-14 spatial-PLZ recovery
         "plz_buildings": 5000,           # UNCHANGED, no formula (D2)
         "morphology_factor": 0.95,
         "city": "Neuss",

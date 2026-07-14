@@ -91,7 +91,25 @@ from core.street_building_types import (  # noqa: E402
 # rescue_other_by_geometry) UNCHANGED until their own sign-off — this is a
 # deliberate phased rollout, not a leftover shim: touching Neuss/Kaarst/
 # Augsburg's shipped rankings is a separate, explicitly gated decision (D2).
-_FIELD02_VALIDATED_CITIES = {"leipzig"}
+#
+# Augsburg promoted 2026-07-14 (territoryai
+# .ai/implementation_plan_augsburg_ki012_promotion.md) after quantifying the
+# legacy path's cross-town contamination for Augsburg: 42.4% of Foundation's
+# raw bbox-extracted buildings fall outside the real Augsburg boundary
+# polygon, and 26.9% (210/780) of CURRENTLY ACTIVE PASS/QUALIFIED streets
+# shared a name with contaminated data — several even carrying a PLZ
+# entirely outside Augsburg's real 14-PLZ set (86482, 86343, 86420, 86399,
+# 86391, 86356, 86368 — genuinely different towns). Sample-verified before
+# flipping this: of the 112 streets that vanish under the new path, 111
+# (99%) carry one of those foreign PLZ codes — confirmed contamination
+# correctly removed, not real Augsburg data lost; the 299 "new" streets are
+# overwhelmingly the SAME real Augsburg street names correctly relocated
+# from their contaminated foreign-PLZ legacy entry to their true PLZ (not
+# spurious new entries); known cross-PLZ collapse case August-Wessels-Straße
+# now correctly splits into its 2 real portions (86154 n=11, 86156 n=4;
+# legacy path merged/hid the 86156 portion), same class of fix as Leipzig's
+# Karl-Liebknecht-Straße.
+_FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg"}
 
 # Per-city buildings parquet path + a filter to exclude the "noise" bucket
 # (unregistered-PLZ / stray neighbor-municipality buildings — see each
@@ -100,6 +118,7 @@ _FIELD02_VALIDATED_CITIES = {"leipzig"}
 # when it's promoted into that set (P3).
 _CITY_BUILDINGS_PARQUET = {
     "leipzig": os.path.join(BASE_DIR, "data", "leipzig_buildings.parquet"),
+    "augsburg": os.path.join(BASE_DIR, "data", "augsburg_buildings.parquet"),
 }
 _FIELD02_PARQUET = os.path.join(BASE_DIR, "data", "fields", "field_02_building_type.parquet")
 
