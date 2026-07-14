@@ -17,47 +17,57 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 FIELDS_DIR = os.path.join(DATA_DIR, "fields")
 
-# Real per-PLZ building counts, both derived from actual osmium extraction
-# passes over data/osm/schwaben-latest.osm.pbf (NOT hand-estimated, unlike
-# Kaarst's REAL_GROUNDED_SEGMENTS entries):
-#   segment_buildings = residential buildings with addr:street tag
-#                        (scripts/generate_augsburg_buildings.py segment_id counts)
-#   plz_buildings      = ALL building=* ways (any type) with a recognized
-#                        addr:postcode tag, within the Augsburg boundary
-#                        (separate broader osmium pass, no addr:street/
-#                        residential-type filter)
+# Real per-PLZ residential building counts, recomputed from the current
+# augsburg_buildings.parquet (2026-07-14, post spatial-PLZ-fallback
+# re-extraction — spatial-PLZ P3, see scripts/generate_augsburg_buildings.py
+# and .ai/implementation_plan_leipzig_plz_spatial.md). Values refreshed via
+# `df.groupby("segment_id").size()`, replacing the pre-fix counts (which
+# excluded the 3.6% of buildings that lacked addr:postcode).
+#
+# D4=gamma (2026-07-14, same definition locked for Leipzig, applied here for
+# consistency): plz_buildings denominator is now the SAME residential count
+# as segment_buildings — a true residential PV-adoption rate, not the old
+# separate all-type-tagged-only denominator (which was itself a hardcoded
+# hand-derived estimate, not reproducibly computed here).
 # morphology_factor = 1.0 (neutral) for every segment — unlike Neuss/Kaarst's
 # per-PLZ factors (0.80-1.1), there is no evidence basis here to justify
 # differentiated per-PLZ morphology adjustment, so no adjustment is applied
 # rather than fabricating one.
+_SEGMENT_BUILDINGS_COUNTS = {
+    "86150": 1365, "86152": 1481, "86153": 1377, "86154": 1865,
+    "86156": 4444, "86157": 2752, "86159": 1603, "86161": 1943,
+    "86163": 3857, "86165": 2098, "86167": 2038, "86169": 3362,
+    "86179": 3997, "86199": 5068,
+}
+
 AUGSBURG_PLZ_BUILDING_COUNTS = {
-    "86150": {"segment_buildings": 1349, "plz_buildings": 1512},
-    "86152": {"segment_buildings": 1338, "plz_buildings": 1409},
-    "86153": {"segment_buildings": 1076, "plz_buildings": 1181},
-    "86154": {"segment_buildings": 1704, "plz_buildings": 1787},
-    "86156": {"segment_buildings": 4287, "plz_buildings": 4448},
-    "86157": {"segment_buildings": 2739, "plz_buildings": 2822},
-    "86159": {"segment_buildings": 1575, "plz_buildings": 1722},
-    "86161": {"segment_buildings": 1879, "plz_buildings": 1945},
-    "86163": {"segment_buildings": 3570, "plz_buildings": 3638},
-    "86165": {"segment_buildings": 2063, "plz_buildings": 2165},
-    "86167": {"segment_buildings": 2025, "plz_buildings": 2084},
-    "86169": {"segment_buildings": 3343, "plz_buildings": 3382},
-    "86179": {"segment_buildings": 3919, "plz_buildings": 4071},
-    "86199": {"segment_buildings": 5056, "plz_buildings": 5224},
+    plz: {
+        "segment_buildings": count,
+        "plz_buildings": count,  # D4=gamma: denominator == residential count
+    }
+    for plz, count in _SEGMENT_BUILDINGS_COUNTS.items()
 }
 
 
 def append_to_parquet(df_new, file_name, segment_col="segment_id"):
+    """
+    BUGFIX (2026-07-14, same fix as run_leipzig_fields.py — found while
+    executing the Leipzig spatial-PLZ fix, applied here proactively since
+    AUGSBURG_OSM_GENERAL shrinks from 115 to 2 clusters this run, meaning
+    most of its building_ids move to a different segment_id and the old
+    `~isin(segs)` dedup would otherwise leave stale duplicate rows behind
+    for every building whose segment_id changed. Drop ALL prior AUGSBURG_*
+    rows (this script only ever processes Augsburg's own segment universe,
+    so a full-city replace is always correct here), not just the subset
+    whose segment_id happens to reappear in this run.
+    """
     if df_new.empty:
         logger.warning(f"No data returned for {file_name}")
         return
     path = os.path.join(FIELDS_DIR, file_name)
     if os.path.exists(path):
         df_old = pd.read_parquet(path)
-        # Remove any existing rows for the segments we are processing
-        segs = df_new[segment_col].unique()
-        df_old = df_old[~df_old[segment_col].isin(segs)]
+        df_old = df_old[~df_old[segment_col].astype(str).str.startswith("AUGSBURG_")]
         df_combined = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_combined = df_new

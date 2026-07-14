@@ -53,7 +53,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CURRENT_PATH = os.path.join(BASE_DIR, "data", "buildings.parquet")
 FINAL_PATH = os.path.join(BASE_DIR, "data", "buildings_neuss_final.parquet")
-BACKUP_PATH = os.path.join(BASE_DIR, "data", "backups", "buildings.parquet.pre_neuss_fix_2026-07-11")
+# NOTE (2026-07-14, second run — spatial-PLZ P3): this is a NEW backup path
+# for THIS swap, distinct from the 2026-07-11 fix's own backup. Reusing the
+# 2026-07-11 path would fail its own idempotency check for the right reason
+# (buildings.parquet legitimately changed between the two runs, via that
+# first fix) — both backups are kept, not one overwritten by the other.
+BACKUP_PATH = os.path.join(BASE_DIR, "data", "backups", "buildings.parquet.pre_neuss_plz_spatial_fix_2026-07-14")
 
 KNOWN_NEUSS_PLZ = ["41460", "41462", "41464", "41466", "41468", "41469", "41470", "41472"]
 NEUSS_8PLZ_SEGMENTS = {f"NEUSS_PLZ{plz}" for plz in KNOWN_NEUSS_PLZ}

@@ -66,9 +66,16 @@ def main():
     assert "41470" not in rebuilt_plz, "rebuilt set unexpectedly already contains 41470"
 
     # --- Recover 41470 from current buildings.parquet ---
+    # NOTE (2026-07-14, second run — spatial-PLZ P3): the original 1498 count
+    # below was the RAW pre-filter count as of the FIRST run (2026-07-11),
+    # before this script's own no-street-tag filter dropped 4 rows. Since
+    # that first run's Stage B swap already wrote the filtered 1494-row
+    # result back into buildings.parquet, a second run against the now-
+    # already-processed file correctly finds 1494, not 1498 — confirmed
+    # 0 blank-street rows remain. Assertion updated to match a rerun.
     sub = current[current["segment_id"] == "NEUSS_PLZ41470"].copy()
     print(f"\n[RECOVER 41470] {len(sub)} rows with segment_id == NEUSS_PLZ41470")
-    assert len(sub) == 1498, f"expected 1498 NEUSS_PLZ41470 rows, found {len(sub)} -- investigate before proceeding"
+    assert len(sub) == 1494, f"expected 1494 NEUSS_PLZ41470 rows, found {len(sub)} -- investigate before proceeding"
 
     dup_in_sub = int(sub["building_id"].duplicated().sum())
     print(f"[RECOVER 41470] duplicate building_id within 41470 subset: {dup_in_sub}")

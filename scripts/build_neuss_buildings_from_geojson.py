@@ -14,18 +14,27 @@ fabricates `postal_code` for address-less buildings, and never dedupes across
 PLZ within a single run -> 27,681 rows but only 18,559 unique building_id.
 
 This rebuild takes the opposite approach on every axis (Augsburg-strict, D2):
-  - Requires a REAL `addr:street` AND a REAL `addr:postcode` tag on every kept
-    feature. Never fabricates a postcode. Buildings failing this are dropped,
-    not stamped with a guessed PLZ.
-  - Restricts to the 8 real, shipped Neuss PLZ (drops any leaked/edge PLZ,
-    e.g. genuinely-Duesseldorf 402xx that the raw geojson's bbox pull swept in).
+  - Requires a REAL `addr:street` tag on every kept feature.
+  - PLZ assignment (spatial-PLZ P3, 2026-07-14 — extends
+    .ai/implementation_plan_leipzig_plz_spatial.md to Neuss): a tagged
+    `addr:postcode` in KNOWN_NEUSS_PLZ is trusted as-is (fast path, D1=a —
+    the original 2026-07-11 rebuild's tagged rows are untouched by this
+    change). A missing/foreign-tag building gets a point-in-polygon lookup
+    against the 8 real Neuss PLZ boundary polygons (PlzLookup) instead of
+    being unconditionally dropped. Never fabricates a postcode from a query
+    target — a spatially-resolved PLZ is a real geographic fact, not a
+    guess, so this preserves the "never fabricate" principle while
+    recovering real Neuss buildings the original 2026-07-11 rebuild
+    silently dropped for lacking a postcode tag. Only a building that falls
+    outside ALL 8 PLZ polygons (true noise, or genuinely outside the known
+    set) is still dropped, matching this script's original philosophy.
   - Applies a MANDATORY real point-in-polygon boundary filter against
     `config/boundaries/neuss_admin_boundary.geojson` (1,614-vertex Nominatim
     polygon) as a second, independent safety net beyond the postcode-set
     restriction — catches buildings that carry an in-range postcode tag but
     sit geographically outside the city (or vice versa / mistagged edge cases).
-  - `segment_id` is derived PER BUILDING from its own real postcode tag
-    (`NEUSS_PLZ{postcode}`), never from a query target.
+  - `segment_id` is derived PER BUILDING from its own real (or spatially
+    resolved) postcode, never from a query target.
   - Single pass over one geojson snapshot -> duplication is structurally
     impossible (unlike the per-PLZ-query original), verified by an explicit
     drop_duplicates(building_id) safety check anyway.
@@ -51,6 +60,7 @@ from shapely.prepared import prep
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.boundary_filter import _load_polygon  # noqa: E402
+from core.plz_lookup import PlzLookup  # noqa: E402
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -102,7 +112,7 @@ def load_boundary_polygon():
     return poly, prep(poly)
 
 
-def extract_buildings(geojson_path: str, boundary_poly, boundary_prepared):
+def extract_buildings(geojson_path: str, boundary_poly, boundary_prepared, plz_lookup):
     with open(geojson_path, "r", encoding="utf-8") as f:
         gj = json.load(f)
     features = gj.get("features", [])
@@ -112,11 +122,12 @@ def extract_buildings(geojson_path: str, boundary_poly, boundary_prepared):
 
     counters = {
         "total": len(features),
-        "missing_street_or_postcode": 0,
-        "postcode_outside_8plz": 0,
+        "missing_street": 0,
         "bad_geometry": 0,
         "outside_boundary_bbox": 0,
         "outside_boundary_polygon": 0,
+        "postcode_spatially_recovered": 0,
+        "postcode_unresolvable_dropped": 0,
         "missing_osm_id": 0,
         "kept": 0,
     }
@@ -126,17 +137,10 @@ def extract_buildings(geojson_path: str, boundary_poly, boundary_prepared):
         props = ft.get("properties") or {}
 
         street = (props.get("addr:street") or "").strip()
-        postcode = (props.get("addr:postcode") or "").strip()
 
-        # --- D2: Augsburg-strict. Require BOTH real tags. Never fabricate. ---
-        if not street or not postcode:
-            counters["missing_street_or_postcode"] += 1
-            continue
-
-        # --- Restrict to the 8 real Neuss PLZ; drop anything else (e.g. leaked
-        # Duesseldorf 402xx from the raw bbox pull). ---
-        if postcode not in KNOWN_NEUSS_PLZ:
-            counters["postcode_outside_8plz"] += 1
+        # --- D2: still requires a real street tag. Never fabricates one. ---
+        if not street:
+            counters["missing_street"] += 1
             continue
 
         geometry = ft.get("geometry") or {}
@@ -173,6 +177,20 @@ def extract_buildings(geojson_path: str, boundary_poly, boundary_prepared):
         if not boundary_prepared.contains(Point(c_lon, c_lat)):
             counters["outside_boundary_polygon"] += 1
             continue
+
+        # --- PLZ resolution: tag-first (fast path, D1=a), spatial fallback
+        # for missing/foreign tags (P3), drop if genuinely unresolvable. ---
+        postcode_raw = (props.get("addr:postcode") or "").strip()
+        if postcode_raw in KNOWN_NEUSS_PLZ:
+            postcode = postcode_raw
+        else:
+            spatial_plz = plz_lookup.lookup(c_lon, c_lat)
+            if spatial_plz is not None:
+                postcode = spatial_plz
+                counters["postcode_spatially_recovered"] += 1
+            else:
+                counters["postcode_unresolvable_dropped"] += 1
+                continue
 
         osm_id = props.get("osm_id")
         if osm_id is None:
@@ -225,8 +243,14 @@ def main():
     print(f"[BOUNDARY] Loaded polygon, bounds={boundary_poly.bounds}, "
           f"vertices={len(boundary_poly.exterior.coords)}")
 
+    print("\n[PLZ LOOKUP] Loading 8 Neuss PLZ boundary polygons for spatial fallback...")
+    plz_lookup = PlzLookup(
+        os.path.join(BASE_DIR, "config", "boundaries", "neuss_plz_boundaries.geojson"),
+        expected_count=8,
+    )
+
     print(f"\n[EXTRACT] Reading {GEOJSON_PATH} ...")
-    rows, counters = extract_buildings(GEOJSON_PATH, boundary_poly, boundary_prepared)
+    rows, counters = extract_buildings(GEOJSON_PATH, boundary_poly, boundary_prepared, plz_lookup)
 
     print("\n[FILTER FUNNEL]")
     for k, v in counters.items():

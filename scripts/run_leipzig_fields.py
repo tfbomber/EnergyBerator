@@ -1,4 +1,3 @@
-import json
 import os
 import sys
 import pandas as pd
@@ -18,47 +17,68 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 FIELDS_DIR = os.path.join(DATA_DIR, "fields")
 
-# Real per-PLZ building counts, both derived from actual osmium extraction
-# passes over data/osm/sachsen-latest.osm.pbf (NOT hand-estimated) — see
-# scripts/generate_leipzig_buildings.py (single combined pass, 2026-07-13):
-#   segment_buildings = residential buildings with addr:street tag
-#   plz_buildings      = ALL building=* ways (any type) with a recognized
-#                        addr:postcode tag, within the Leipzig boundary
-#                        (data/leipzig_plz_buildings_denominator.json)
-# morphology_factor = 1.0 (neutral) for every segment — same rationale as
-# Augsburg: no evidence basis here to justify differentiated per-PLZ
-# morphology adjustment, so no adjustment is applied rather than fabricating one.
-with open(os.path.join(DATA_DIR, "leipzig_plz_buildings_denominator.json"), encoding="utf-8") as f:
-    _PLZ_BUILDINGS_DENOM = json.load(f)
-
+# Real per-PLZ residential building counts, recomputed from the current
+# leipzig_buildings.parquet (2026-07-14, post spatial-PLZ-fallback
+# re-extraction — see scripts/generate_leipzig_buildings.py and
+# .ai/implementation_plan_leipzig_plz_spatial.md). Values refreshed via
+# `df.groupby("segment_id").size()`, replacing the pre-fix counts (which
+# excluded the ~22.6% of buildings that lacked addr:postcode).
+#
+# D4=gamma (2026-07-14, locked): plz_buildings denominator is now the SAME
+# residential count as segment_buildings — a true residential PV-adoption
+# rate (pv_est / residential_buildings), not the old separate all-type
+# denominator (leipzig_plz_buildings_denominator.json, no longer produced —
+# generate_leipzig_buildings.py dropped it since D4=gamma has no use for a
+# non-residential count). morphology_factor = 1.0 (neutral) for every
+# segment — same rationale as Augsburg: no evidence basis here to justify
+# differentiated per-PLZ morphology adjustment, so no adjustment is applied
+# rather than fabricating one.
 _SEGMENT_BUILDINGS_COUNTS = {
-    "04103": 351, "04105": 913, "04107": 541, "04109": 578, "04129": 793,
-    "04155": 1166, "04157": 1208, "04158": 2949, "04159": 3117, "04177": 1161,
-    "04178": 1564, "04179": 1312, "04205": 528, "04207": 741, "04209": 45,
-    "04229": 2035, "04249": 2576, "04275": 1188, "04277": 2232, "04279": 569,
-    "04288": 1408, "04289": 990, "04299": 996, "04315": 609, "04316": 1156,
-    "04317": 562, "04318": 368, "04319": 1768, "04328": 434, "04329": 188,
-    "04347": 1034, "04349": 1047, "04356": 369, "04357": 848,
+    "04103": 401, "04105": 963, "04107": 562, "04109": 593,
+    "04129": 1206, "04155": 1244, "04157": 1261, "04158": 3874,
+    "04159": 3588, "04177": 1224, "04178": 2102, "04179": 1356,
+    "04205": 985, "04207": 1929, "04209": 63, "04229": 2255,
+    "04249": 3514, "04275": 1209, "04277": 2283, "04279": 1187,
+    "04288": 3214, "04289": 1080, "04299": 1087, "04315": 643,
+    "04316": 1846, "04317": 598, "04318": 466, "04319": 1959,
+    "04328": 588, "04329": 461, "04347": 1087, "04349": 1759,
+    "04356": 761, "04357": 912,
 }
 
 LEIPZIG_PLZ_BUILDING_COUNTS = {
     plz: {
-        "segment_buildings": _SEGMENT_BUILDINGS_COUNTS[plz],
-        "plz_buildings": _PLZ_BUILDINGS_DENOM[plz],
+        "segment_buildings": count,
+        "plz_buildings": count,  # D4=gamma: denominator == residential count
     }
-    for plz in _SEGMENT_BUILDINGS_COUNTS
+    for plz, count in _SEGMENT_BUILDINGS_COUNTS.items()
 }
 
 
 def append_to_parquet(df_new, file_name, segment_col="segment_id"):
+    """
+    BUGFIX (2026-07-14, found while executing the PLZ-spatial-fallback fix):
+    the old dedup (`~isin(segs)`, segs = this run's OWN segment_id set) only
+    drops old rows whose segment_id is STILL present in the new output. That
+    silently breaks the moment a segment_id vanishes entirely from a rerun —
+    exactly what happens here: LEIPZIG_OSM_GENERAL produced 10,916 rows
+    before the spatial-PLZ fix and ZERO after (every one of those buildings
+    now resolves to a real PLZ). The old logic left 10,916 stale
+    LEIPZIG_OSM_GENERAL rows in field_01/02/03's parquets, duplicating every
+    reassigned building_id (once under its old GENERAL label, once under its
+    new correct segment_id) — which would have silently doubled every
+    building street_building_types.compute_street_type_counts joins by
+    building_id downstream. Fix: drop ALL prior LEIPZIG_* rows (this script
+    only ever processes Leipzig's own segment universe, so a full-city
+    replace is always correct here), not just the subset whose segment_id
+    happens to reappear in this run.
+    """
     if df_new.empty:
         logger.warning(f"No data returned for {file_name}")
         return
     path = os.path.join(FIELDS_DIR, file_name)
     if os.path.exists(path):
         df_old = pd.read_parquet(path)
-        segs = df_new[segment_col].unique()
-        df_old = df_old[~df_old[segment_col].isin(segs)]
+        df_old = df_old[~df_old[segment_col].astype(str).str.startswith("LEIPZIG_")]
         df_combined = pd.concat([df_old, df_new], ignore_index=True)
     else:
         df_combined = df_new

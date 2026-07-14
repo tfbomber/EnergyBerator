@@ -10,6 +10,16 @@ Clustering logic:
   - Minimum 3 buildings per cluster
   - house_range = min-to-max housenumber found in that group
   - lead_count = number of buildings in that group
+
+PLZ assignment (spatial-PLZ P3, 2026-07-14 — extends
+.ai/implementation_plan_leipzig_plz_spatial.md to Augsburg): this script does
+its OWN independent PBF pass (separate from generate_augsburg_buildings.py)
+and previously bucketed every building missing addr:postcode straight into
+plz="UNKNOWN" -> segment_id=AUGSBURG_OSM_GENERAL, with no spatial fallback
+and no membership check against the known 14-PLZ set. Fixed the same way as
+Leipzig's cluster script: tagged addr:postcode in KNOWN_AUGSBURG_PLZ is
+trusted as-is (fast path); a missing/foreign tag gets a point-in-polygon
+lookup via the same PlzLookup the other extractor uses.
 """
 
 import os
@@ -22,6 +32,7 @@ import datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.boundary_filter import _load_polygon, _point_in_polygon
+from core.plz_lookup import PlzLookup
 import osmium
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - [%(levelname)s] %(message)s")
@@ -31,6 +42,12 @@ BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PBF_PATH   = os.path.join(BASE_DIR, "data", "osm", "schwaben-latest.osm.pbf")
 AUGSBURG_BBOX = (10.7633615, 48.2581444, 10.9593328, 48.4586541)   # lon_min, lat_min, lon_max, lat_max
 AUGSBURG_BOUNDARY_PATH = os.path.join(BASE_DIR, "config", "boundaries", "augsburg_admin_boundary.geojson")
+
+# Must match generate_augsburg_buildings.py's KNOWN_AUGSBURG_PLZ exactly.
+KNOWN_AUGSBURG_PLZ = {
+    "86150", "86152", "86153", "86154", "86156", "86157", "86159",
+    "86161", "86163", "86165", "86167", "86169", "86179", "86199",
+}
 
 # All building tags we consider residential
 RESIDENTIAL_BUILDING_TAGS = {
@@ -50,11 +67,14 @@ class _BuildingExtractorV2(osmium.SimpleHandler):
     """
     Extracts buildings with addr:street from PBF, filtered to Augsburg bbox.
     """
-    def __init__(self, bbox, polygon):
+    def __init__(self, bbox, polygon, plz_lookup):
         osmium.SimpleHandler.__init__(self)
         self.buildings = []
         self.bbox = bbox         # (lon_min, lat_min, lon_max, lat_max)
         self.polygon = polygon   # Augsburg boundary polygon for precise PiP check
+        self.plz_lookup = plz_lookup
+        self.n_spatial_recovered = 0
+        self.n_still_unknown = 0
 
     def way(self, w):
         tags = w.tags
@@ -86,10 +106,22 @@ class _BuildingExtractorV2(osmium.SimpleHandler):
         if self.polygon and not _point_in_polygon(c_lat, c_lon, self.polygon):
             return
 
+        postal_code_raw = tags.get("addr:postcode", "")
+        if postal_code_raw in KNOWN_AUGSBURG_PLZ:
+            plz = postal_code_raw  # fast path — tagged, untouched
+        else:
+            spatial_plz = self.plz_lookup.lookup(c_lon, c_lat)
+            if spatial_plz is not None:
+                plz = spatial_plz
+                self.n_spatial_recovered += 1
+            else:
+                plz = "UNKNOWN"
+                self.n_still_unknown += 1
+
         self.buildings.append({
             "street":      street,
             "housenumber": tags.get("addr:housenumber", ""),
-            "plz":         tags.get("addr:postcode", "UNKNOWN"),
+            "plz":         plz,
             "building":    building_tag,
             "lat":         c_lat,
             "lon":         c_lon,
@@ -115,13 +147,21 @@ def main():
         logger.error(f"Failed to load Augsburg boundary polygon at {AUGSBURG_BOUNDARY_PATH}.")
         sys.exit(1)
 
+    logger.info("Loading 14 Augsburg PLZ boundary polygons for spatial fallback...")
+    plz_lookup = PlzLookup(
+        os.path.join(BASE_DIR, "config", "boundaries", "augsburg_plz_boundaries.geojson"),
+        expected_count=14,
+    )
+
     # Extract buildings from PBF
     logger.info("Extracting residential buildings from PBF (Augsburg bbox + boundary)...")
-    handler = _BuildingExtractorV2(bbox=AUGSBURG_BBOX, polygon=polygon)
+    handler = _BuildingExtractorV2(bbox=AUGSBURG_BBOX, polygon=polygon, plz_lookup=plz_lookup)
     handler.apply_file(PBF_PATH, locations=True, idx="flex_mem")
     buildings = handler.buildings
 
     logger.info(f"Extracted {len(buildings)} buildings with addr:street inside Augsburg boundary.")
+    logger.info(f"Spatially recovered (untagged/foreign-tag, PiP-matched): {handler.n_spatial_recovered}")
+    logger.info(f"Still UNKNOWN (outside all 14 PLZ polygons): {handler.n_still_unknown}")
 
     # --- Tag breakdown (diagnostic) ---
     from collections import Counter

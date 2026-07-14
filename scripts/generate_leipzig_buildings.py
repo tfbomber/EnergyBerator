@@ -1,4 +1,3 @@
-import json
 import os
 import sys
 import pandas as pd
@@ -7,6 +6,7 @@ import osmium
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.boundary_filter import _load_polygon, _point_in_polygon
+from core.plz_lookup import LeipzigPlzLookup
 
 BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PBF_PATH   = os.path.join(BASE_DIR, "data", "osm", "sachsen-latest.osm.pbf")
@@ -35,19 +35,34 @@ RESIDENTIAL_BUILDING_TAGS = {
 
 
 class LeipzigBuildingExtractor(osmium.SimpleHandler):
-    """Single-pass extractor: collects (a) residential buildings with
-    addr:street (the parquet consumed everywhere downstream) AND (b) a count
-    of ALL building=* ways with a recognized addr:postcode tag regardless of
-    building type/addr:street (the plz_buildings denominator field_04 needs
-    for PV-adoption-intensity normalization) — avoids parsing the 253MB PBF
-    twice, unlike Augsburg's apparent two-separate-script approach."""
+    """Single-pass extractor: collects residential buildings with
+    addr:street (the parquet consumed everywhere downstream).
 
-    def __init__(self, bbox, polygon):
+    PLZ assignment (KI-012 follow-up, 2026-07-14, D1=a/D2=a/D6 —
+    .ai/implementation_plan_leipzig_plz_spatial.md): a tagged addr:postcode
+    is trusted as-is (fast path, untouched). A MISSING addr:postcode no
+    longer buckets the building into LEIPZIG_OSM_GENERAL unconditionally —
+    it first gets a point-in-polygon lookup against the 34 real Leipzig PLZ
+    boundary polygons (LeipzigPlzLookup). Only a building that falls outside
+    ALL 34 polygons (true noise / genuinely outside Leipzig's PLZ set) stays
+    GENERAL. The city-boundary polygon filter below still runs first (D6) —
+    unrelated concern, prevents cross-town contamination independent of PLZ
+    assignment.
+
+    D4=gamma (2026-07-14): the plz_buildings denominator field_04 uses for
+    PV-adoption-intensity normalization is now the RESIDENTIAL building
+    count (this parquet's own per-segment row count), not a separate
+    all-type-including-non-residential count — so this extractor no longer
+    tracks a separate plz_building_counts dict. See run_leipzig_fields.py."""
+
+    def __init__(self, bbox, polygon, plz_lookup):
         osmium.SimpleHandler.__init__(self)
         self.buildings = []
-        self.plz_building_counts = {}  # ALL building=* with addr:postcode, any type
         self.bbox = bbox
         self.polygon = polygon
+        self.plz_lookup = plz_lookup
+        self.n_spatial_recovered = 0
+        self.n_still_general = 0
 
     def way(self, w):
         tags = w.tags
@@ -68,14 +83,7 @@ class LeipzigBuildingExtractor(osmium.SimpleHandler):
         if self.polygon and not _point_in_polygon(c_lat, c_lon, self.polygon):
             return
 
-        postal_code = tags.get("addr:postcode", "")
-
-        # (b) broad plz_buildings denominator — any building=* type, any
-        # addr:street presence, just needs a recognized Leipzig postal code.
-        if postal_code in KNOWN_LEIPZIG_PLZ:
-            self.plz_building_counts[postal_code] = self.plz_building_counts.get(postal_code, 0) + 1
-
-        # (a) residential-only, addr:street-required — the parquet.
+        # Residential-only, addr:street-required — the parquet.
         street = tags.get("addr:street", "")
         if not street:
             return
@@ -91,14 +99,25 @@ class LeipzigBuildingExtractor(osmium.SimpleHandler):
         except Exception:
             return
 
-        if postal_code in KNOWN_LEIPZIG_PLZ:
+        postal_code_raw = tags.get("addr:postcode", "")
+        if postal_code_raw in KNOWN_LEIPZIG_PLZ:
+            # Fast path (D1=a) — tagged buildings are never touched by the
+            # spatial fallback.
+            postal_code = postal_code_raw
             segment_id = f"LEIPZIG_OSM_{postal_code}"
         else:
-            # Untagged, or a stray neighboring-municipality/noise PLZ (e.g.
-            # 04195, 1 building) that leaked through the boundary polygon
-            # edge — bucket generically rather than mint a segment_id for a
-            # PLZ we haven't registered anywhere.
-            segment_id = "LEIPZIG_OSM_GENERAL"
+            spatial_plz = self.plz_lookup.lookup(c_lon, c_lat)
+            if spatial_plz is not None:
+                postal_code = spatial_plz
+                segment_id = f"LEIPZIG_OSM_{spatial_plz}"
+                self.n_spatial_recovered += 1
+            else:
+                # Genuinely outside all 34 known Leipzig PLZ polygons — a
+                # stray neighboring-municipality/noise building (e.g. 04195,
+                # 1 building) that leaked through the boundary polygon edge.
+                postal_code = ""
+                segment_id = "LEIPZIG_OSM_GENERAL"
+                self.n_still_general += 1
 
         self.buildings.append({
             "building_id": f"OSM_{w.id}",
@@ -117,11 +136,16 @@ def main():
     print("Loading Leipzig boundary...")
     polygon = _load_polygon(LEIPZIG_BOUNDARY_PATH)
 
-    print("Extracting buildings (residential parquet + plz_buildings denominator)...")
-    handler = LeipzigBuildingExtractor(bbox=LEIPZIG_BBOX, polygon=polygon)
+    print("Loading 34 Leipzig PLZ boundary polygons for spatial fallback...")
+    plz_lookup = LeipzigPlzLookup()
+
+    print("Extracting residential buildings (tag-first + spatial PLZ fallback)...")
+    handler = LeipzigBuildingExtractor(bbox=LEIPZIG_BBOX, polygon=polygon, plz_lookup=plz_lookup)
     handler.apply_file(PBF_PATH, locations=True, idx="flex_mem")
 
     print(f"Extracted {len(handler.buildings)} residential buildings.")
+    print(f"Spatially recovered (untagged, PiP-matched): {handler.n_spatial_recovered}")
+    print(f"Still GENERAL (untagged, outside all 34 PLZ polygons): {handler.n_still_general}")
     df = pd.DataFrame(handler.buildings)
 
     print("segment_id breakdown:")
@@ -130,11 +154,6 @@ def main():
     out_path = os.path.join(BASE_DIR, "data", "leipzig_buildings.parquet")
     df.to_parquet(out_path, index=False)
     print(f"Saved to {out_path}")
-
-    plz_counts_path = os.path.join(BASE_DIR, "data", "leipzig_plz_buildings_denominator.json")
-    with open(plz_counts_path, "w", encoding="utf-8") as f:
-        json.dump(handler.plz_building_counts, f, indent=2, sort_keys=True)
-    print(f"Saved plz_buildings denominator ({len(handler.plz_building_counts)} PLZ) to {plz_counts_path}")
 
 
 if __name__ == "__main__":
