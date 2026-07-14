@@ -109,7 +109,26 @@ from core.street_building_types import (  # noqa: E402
 # now correctly splits into its 2 real portions (86154 n=11, 86156 n=4;
 # legacy path merged/hid the 86156 portion), same class of fix as Leipzig's
 # Karl-Liebknecht-Straße.
-_FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg"}
+#
+# Neuss promoted 2026-07-14 (territoryai
+# .ai/implementation_plan_neuss_foundation_ki012.md), same session. Quantified
+# cross-town contamination first: 38.1% of Foundation's raw bbox-extracted
+# buildings fall outside the real Neuss boundary polygon (743 contaminated
+# street names) — the ALREADY-SHIPPED foundation_structure_results.json had
+# outright foreign-town PLZ records live in it (40219/40221/40223/40545/
+# 40547/40549/40667 = Düsseldorf, 41516 = Grevenbroich, 41564 = Kaarst).
+# Blocked by a real geometry gap unique to Neuss (D6 in the plan): PLZ 41470
+# had ONLY POINT geometry (a 2026-04-12 legacy Overpass recovery, no polygon
+# in the source geojson snapshot), so field_02's Stage 2 footprint
+# classifier could never run on it — 74.4% UNCERTAIN vs ~3-8% for the other
+# 7 (POLYGON) PLZ. Fixed surgically (D1): a new targeted extractor,
+# scripts/extract_neuss_41470_polygons.py, pulls real POLYGON geometry for
+# 41470 directly from the PBF (same source data/osm/duesseldorf-regbez-
+# latest.osm.pbf the other 7 PLZ's original geojson snapshot came from),
+# swapped in via scripts/swap_neuss_41470_polygons.py — the other 7 PLZ
+# untouched. Confirmed the fix: 41470's field_02 UNCERTAIN rate dropped
+# 74.4%->2.3% once it had real polygons to classify against.
+_FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg", "neuss"}
 
 # Per-city buildings parquet path + a filter to exclude the "noise" bucket
 # (unregistered-PLZ / stray neighbor-municipality buildings — see each
@@ -119,8 +138,24 @@ _FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg"}
 _CITY_BUILDINGS_PARQUET = {
     "leipzig": os.path.join(BASE_DIR, "data", "leipzig_buildings.parquet"),
     "augsburg": os.path.join(BASE_DIR, "data", "augsburg_buildings.parquet"),
+    # Neuss's buildings live in the shared (not per-city-suffixed)
+    # data/buildings.parquet — it has no "_GENERAL" noise segment the way
+    # Leipzig/Augsburg do, but it DOES hold 5 non-8-PLZ pilot segments
+    # (ALLERHEILIGEN_PILOT_SEG_01, NEUSS_DENSE_01, NEUSS_OLD_TOWN_01,
+    # NEUSS_SUBURBAN_01, NEUSS_VILLA_01 — 931 rows) that must be excluded
+    # the same way merge_building_geometry_into_territoryai.py's own
+    # NEUSS_PLZ* filter does. See _CITY_SEGMENT_PREFIX_FILTER below.
+    "neuss": os.path.join(BASE_DIR, "data", "buildings.parquet"),
 }
 _FIELD02_PARQUET = os.path.join(BASE_DIR, "data", "fields", "field_02_building_type.parquet")
+
+# Cities whose buildings parquet holds OTHER segments beyond the real
+# registered PLZ set that the generic "_GENERAL" suffix filter doesn't
+# catch (Neuss's 5 pilot segments don't end in "_GENERAL"). Maps city_key
+# -> the required segment_id prefix; only registered-PLZ rows pass.
+_CITY_SEGMENT_PREFIX_FILTER = {
+    "neuss": "NEUSS_PLZ",
+}
 
 
 def _load_field02_street_counts(city_key: str) -> "dict[tuple[str, str], dict] | None":
@@ -157,6 +192,20 @@ def _load_field02_street_counts(city_key: str) -> "dict[tuple[str, str], dict] |
     buildings_df = buildings_df[
         ~buildings_df["segment_id"].astype(str).str.endswith("_GENERAL")
     ]
+    # Some cities' buildings parquet holds additional non-registered
+    # segments the "_GENERAL" suffix filter above doesn't catch (e.g.
+    # Neuss's 5 pilot segments, out of scope for KI-012 / TC-033).
+    required_prefix = _CITY_SEGMENT_PREFIX_FILTER.get(city_key)
+    if required_prefix:
+        before = len(buildings_df)
+        buildings_df = buildings_df[
+            buildings_df["segment_id"].astype(str).str.startswith(required_prefix)
+        ]
+        logger.info(
+            f"[STREET_BUILDING_TYPES] {city_key}: segment-prefix filter "
+            f"'{required_prefix}*' — {before} -> {len(buildings_df)} buildings "
+            f"({before - len(buildings_df)} non-registered-segment rows excluded)."
+        )
     field02_df = pd.read_parquet(_FIELD02_PARQUET, columns=["building_id", "field_value"])
 
     logger.info(

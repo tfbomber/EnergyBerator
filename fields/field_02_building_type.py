@@ -274,10 +274,12 @@ if __name__ == "__main__":
     else:
         buildings_df = pd.read_parquet(b_path)
         # POINT-geometry segments are handled by patch_field_pipelines_point_geometry.py.
-        # REARCH 2026-07-11: only NEUSS_PLZ41470 remains POINT geometry post Stage A/B
-        # buildings.parquet rebuild — the other 7 Neuss PLZ are now real POLYGON and run
-        # through the real Stage1/2 spatial-adjacency pipeline below directly.
-        POINT_SEGS = {"NEUSS_PLZ41470"}
+        # REARCH 2026-07-14: the unified 8-PLZ direct-PBF rebuild (generate_neuss_buildings.py
+        # + swap_neuss_buildings_v2.py) gives NEUSS_PLZ41470 real POLYGON geometry too —
+        # every Neuss segment now runs through Stage1/2 spatial-adjacency below. No segment
+        # is excluded any more (this used to carve out NEUSS_PLZ41470 when it was still
+        # POINT-only from a 2026-04-12 legacy Overpass recovery).
+        POINT_SEGS = set()
         buildings_adj = buildings_df[~buildings_df["segment_id"].isin(POINT_SEGS)]
         logger.info(
             f"[MAIN] Running Stage 1/2 on {len(buildings_adj)} adjacency-path buildings "

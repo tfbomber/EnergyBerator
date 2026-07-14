@@ -14,6 +14,22 @@ Clustering logic (unchanged from v1):
   - Minimum 3 buildings per cluster
   - house_range = min-to-max housenumber found in that group
   - lead_count = number of buildings in that group
+
+PLZ assignment (Neuss Foundation KI-012 promotion, 2026-07-14 — territoryai
+.ai/implementation_plan_neuss_foundation_ki012.md): this script does its OWN
+independent PBF pass (separate from buildings.parquet's own extraction) and
+previously bucketed every building missing addr:postcode straight into
+plz="UNKNOWN" -> segment_id=NEUSS_OSM_GENERAL, with no spatial fallback —
+the exact same bug already found and fixed for Leipzig
+(generate_leipzig_osm_clusters.py) and Augsburg
+(generate_augsburg_osm_clusters.py) the same week: Foundation resolves a
+cluster's PLZ from the CLUSTER's own segment_id (not buildings.parquet), so
+an unpatched cluster generator silently reintroduces contamination/UNKNOWN
+regardless of how clean buildings.parquet itself is. Fixed identically:
+tagged addr:postcode in KNOWN_NEUSS_PLZ is trusted as-is (fast path); a
+missing/foreign tag gets a point-in-polygon lookup via the same
+core.plz_lookup.PlzLookup + config/boundaries/neuss_plz_boundaries.geojson
+built for the 2026-07-14 spatial-PLZ P3.
 """
 
 import os
@@ -26,6 +42,7 @@ import datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.boundary_filter import _load_polygon, _point_in_polygon, DEFAULT_BOUNDARY_PATH
+from core.plz_lookup import PlzLookup
 import osmium
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - [%(levelname)s] %(message)s")
@@ -33,7 +50,18 @@ logger = logging.getLogger("ClusterGenV2")
 
 BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PBF_PATH   = os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf")
-NEUSS_BBOX = (6.61, 51.13, 6.77, 51.25)   # lon_min, lat_min, lon_max, lat_max
+# Widened 2026-07-14 (Neuss Foundation KI-012 full-8-PLZ promotion): the old
+# (6.61, 51.13, 6.77, 51.25) bbox cut off PLZ 41468's eastern/southern edge —
+# neuss_admin_boundary.geojson's true extent is lon 6.6148-6.7984, lat
+# 51.1168-51.2356. Found via generate_neuss_buildings.py's coverage diff
+# (36 whole streets silently dropped). The boundary polygon check right after
+# this bbox remains authoritative, so widening only removes false negatives.
+NEUSS_BBOX = (6.60, 51.10, 6.81, 51.25)   # lon_min, lat_min, lon_max, lat_max
+NEUSS_PLZ_BOUNDARIES_PATH = os.path.join(BASE_DIR, "config", "boundaries", "neuss_plz_boundaries.geojson")
+
+KNOWN_NEUSS_PLZ = {
+    "41460", "41462", "41464", "41466", "41468", "41469", "41470", "41472",
+}
 
 # All building tags we consider residential (superset of v1)
 RESIDENTIAL_BUILDING_TAGS = {
@@ -54,11 +82,14 @@ class _BuildingExtractorV2(osmium.SimpleHandler):
     Extracts buildings with addr:street from PBF, filtered to Neuss bbox.
     Includes building=yes which was missing from the v1 Overpass query.
     """
-    def __init__(self, bbox, polygon):
+    def __init__(self, bbox, polygon, plz_lookup):
         osmium.SimpleHandler.__init__(self)
         self.buildings = []
         self.bbox = bbox         # (lon_min, lat_min, lon_max, lat_max)
         self.polygon = polygon   # Neuss boundary polygon for precise PiP check
+        self.plz_lookup = plz_lookup
+        self.n_spatial_recovered = 0
+        self.n_still_unknown = 0
 
     def way(self, w):
         tags = w.tags
@@ -90,10 +121,22 @@ class _BuildingExtractorV2(osmium.SimpleHandler):
         if self.polygon and not _point_in_polygon(c_lat, c_lon, self.polygon):
             return
 
+        postal_code_raw = tags.get("addr:postcode", "")
+        if postal_code_raw in KNOWN_NEUSS_PLZ:
+            plz = postal_code_raw  # fast path — tagged, untouched
+        else:
+            spatial_plz = self.plz_lookup.lookup(c_lon, c_lat)
+            if spatial_plz is not None:
+                plz = spatial_plz
+                self.n_spatial_recovered += 1
+            else:
+                plz = "UNKNOWN"
+                self.n_still_unknown += 1
+
         self.buildings.append({
             "street":      street,
             "housenumber": tags.get("addr:housenumber", ""),
-            "plz":         tags.get("addr:postcode", "UNKNOWN"),
+            "plz":         plz,
             "building":    building_tag,
             "lat":         c_lat,
             "lon":         c_lon,
@@ -119,13 +162,18 @@ def main():
         logger.error("Failed to load Neuss boundary polygon.")
         sys.exit(1)
 
+    logger.info("Loading 8 Neuss PLZ boundary polygons for spatial fallback...")
+    plz_lookup = PlzLookup(NEUSS_PLZ_BOUNDARIES_PATH, expected_count=8)
+
     # Extract buildings from PBF
     logger.info("Extracting residential buildings from PBF (Neuss bbox + boundary)...")
-    handler = _BuildingExtractorV2(bbox=NEUSS_BBOX, polygon=polygon)
+    handler = _BuildingExtractorV2(bbox=NEUSS_BBOX, polygon=polygon, plz_lookup=plz_lookup)
     handler.apply_file(PBF_PATH, locations=True, idx="flex_mem")
     buildings = handler.buildings
 
     logger.info(f"Extracted {len(buildings)} buildings with addr:street inside Neuss boundary.")
+    logger.info(f"Spatially recovered (untagged/foreign-tag, PiP-matched): {handler.n_spatial_recovered}")
+    logger.info(f"Still UNKNOWN (outside all 8 PLZ polygons): {handler.n_still_unknown}")
 
     # --- Tag breakdown (diagnostic) ---
     from collections import Counter
