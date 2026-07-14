@@ -9,6 +9,27 @@ Clustering logic:
   - Minimum 3 buildings per cluster
   - house_range = min-to-max housenumber found in that group
   - lead_count = number of buildings in that group
+
+PLZ assignment (Kaarst KI-012 promotion, 2026-07-14 — territoryai
+.ai/implementation_plan_kaarst_ki012_promotion.md): this script used to trust
+`addr:postcode` directly, unlike `generate_kaarst_buildings.py`'s own
+`KaarstBuildingExtractor`, which hardcodes segment_id="KAARST_OSM_41564"
+unconditionally once a building passes the real boundary-polygon check
+(Kaarst has exactly one real PLZ for this product — there's no multi-PLZ
+ambiguity to resolve the way Leipzig/Augsburg/Neuss have). That mismatch put
+56 of 494 clusters (600 buildings, 6.1% of all extracted buildings) into
+KAARST_OSM_GENERAL — real Kaarst buildings (0% of street-tagged buildings
+fall outside the real boundary, confirmed separately), just missing/
+foreign-PLZ addr:postcode tags (common OSM address-tagging noise near a town
+border). Foundation resolves a cluster's PLZ from the cluster's OWN
+segment_id (not buildings.parquet), and `build_kaarst_layer2.py` then hard-
+filters to segment plz=="41564" — so these 56 clusters weren't just
+downgraded, they were silently dropped from the shipped ranking entirely.
+Fixed by mirroring the buildings extractor: once a building passes the
+boundary check, assign it plz="41564" unconditionally, the same as that
+script already does. No `core/plz_lookup.PlzLookup`-style spatial lookup is
+needed here — there's only one possible output PLZ, not several to
+disambiguate between.
 """
 
 import os
@@ -30,6 +51,7 @@ BASE_DIR   = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PBF_PATH   = os.path.join(BASE_DIR, "data", "osm", "duesseldorf-regbez-latest.osm.pbf")
 KAARST_BBOX = (6.55, 51.19, 6.68, 51.27)   # lon_min, lat_min, lon_max, lat_max
 KAARST_BOUNDARY_PATH = os.path.join(BASE_DIR, "config", "boundaries", "kaarst_admin_boundary.geojson")
+KAARST_PLZ = "41564"  # the one real PLZ this product tracks for Kaarst
 
 # All building tags we consider residential
 RESIDENTIAL_BUILDING_TAGS = {
@@ -85,10 +107,15 @@ class _BuildingExtractorV2(osmium.SimpleHandler):
         if self.polygon and not _point_in_polygon(c_lat, c_lon, self.polygon):
             return
 
+        # PLZ: hardcoded, not read from addr:postcode (see module docstring —
+        # Kaarst has exactly one real PLZ; a building's own postcode tag can
+        # be missing or carry a neighboring town's code near the border, but
+        # having already passed the boundary-polygon check above means it IS
+        # a real Kaarst building for this product's purposes).
         self.buildings.append({
             "street":      street,
             "housenumber": tags.get("addr:housenumber", ""),
-            "plz":         tags.get("addr:postcode", "UNKNOWN"),
+            "plz":         KAARST_PLZ,
             "building":    building_tag,
             "lat":         c_lat,
             "lon":         c_lon,

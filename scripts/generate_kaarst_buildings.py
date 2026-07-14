@@ -56,6 +56,18 @@ class KaarstBuildingExtractor(osmium.SimpleHandler):
         except Exception:
             return
 
+        # postal_code: hardcoded like segment_id above, not read from
+        # addr:postcode (Kaarst KI-012 promotion, 2026-07-14 — territoryai
+        # .ai/implementation_plan_kaarst_ki012_promotion.md). Discovered during
+        # execution: this field WAS reading the raw tag, so 636 of 9,949
+        # buildings (6.4%, missing addr:postcode entirely) got postal_code=""
+        # even though segment_id was already correctly hardcoded — and
+        # merge_building_geometry_into_territoryai.py drops any row with a
+        # blank postal_code before it ever reaches the map. Same root cause,
+        # same fix, as the sibling generate_kaarst_osm_clusters.py bug fixed
+        # in this same round: Kaarst has exactly one real PLZ, so a building
+        # that already passed the boundary-polygon check above IS Kaarst,
+        # regardless of what its own addr:postcode tag says (or doesn't say).
         self.buildings.append({
             "building_id": f"OSM_{w.id}",
             "segment_id": "KAARST_OSM_41564",
@@ -64,7 +76,7 @@ class KaarstBuildingExtractor(osmium.SimpleHandler):
             "city": "Kaarst",
             "street": street,
             "house_number": tags.get("addr:housenumber", ""),
-            "postal_code": tags.get("addr:postcode", ""),
+            "postal_code": "41564",
             "neighbors": []
         })
 

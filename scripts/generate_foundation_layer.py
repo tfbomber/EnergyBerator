@@ -128,7 +128,28 @@ from core.street_building_types import (  # noqa: E402
 # swapped in via scripts/swap_neuss_41470_polygons.py — the other 7 PLZ
 # untouched. Confirmed the fix: 41470's field_02 UNCERTAIN rate dropped
 # 74.4%->2.3% once it had real polygons to classify against.
-_FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg", "neuss"}
+#
+# Kaarst promoted 2026-07-14 (territoryai
+# .ai/implementation_plan_kaarst_ki012_promotion.md), same session — the
+# fourth and last city. Unlike the other three, Kaarst's cross-town
+# contamination measured 0% (of 19,808 street-tagged buildings in Foundation's
+# own bbox extraction, 0 fall outside the real kaarst_admin_boundary.geojson
+# polygon) and its buildings parquet was already real POLYGON geometry with
+# field_02 already computed — no buildings rebuild needed, unlike Leipzig/
+# Augsburg/Neuss. The real bug was in the SEPARATE cluster feed
+# (generate_kaarst_osm_clusters.py), which trusted addr:postcode directly
+# instead of hardcoding the one real PLZ the way generate_kaarst_buildings.py
+# already does — 56 of 494 clusters (600 buildings) fell into
+# KAARST_OSM_GENERAL and were then silently dropped entirely by
+# build_kaarst_layer2.py's PLZ==41564 filter (not downgraded — absent).
+# Fixed by hardcoding plz="41564" in the cluster generator too (no
+# core/plz_lookup.PlzLookup spatial lookup needed — Kaarst has only one
+# possible output PLZ, nothing to disambiguate). Also confirmed a real
+# classification-magnitude delta vs field_02, same class as the other
+# cities' MFH-misclassification bug: of 443 (street,plz) pairs matched
+# between legacy and field_02, 147 (33%) shift SFH ratio by >15pp, 131 of
+# those upgrades.
+_FIELD02_VALIDATED_CITIES = {"leipzig", "augsburg", "neuss", "kaarst"}
 
 # Per-city buildings parquet path + a filter to exclude the "noise" bucket
 # (unregistered-PLZ / stray neighbor-municipality buildings — see each
@@ -146,6 +167,7 @@ _CITY_BUILDINGS_PARQUET = {
     # the same way merge_building_geometry_into_territoryai.py's own
     # NEUSS_PLZ* filter does. See _CITY_SEGMENT_PREFIX_FILTER below.
     "neuss": os.path.join(BASE_DIR, "data", "buildings.parquet"),
+    "kaarst": os.path.join(BASE_DIR, "data", "kaarst_buildings.parquet"),
 }
 _FIELD02_PARQUET = os.path.join(BASE_DIR, "data", "fields", "field_02_building_type.parquet")
 
